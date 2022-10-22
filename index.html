@@ -1,1 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>about me</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,700;1,700&family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+        <script src="https://unpkg.com/phosphor-icons"></script>
+        
+        <style type="text/css">
+            :root {
+                --text: 'Nunito', sans-serif;
+                --title: 'Noto Serif', serif;
+                --text-size: 0.75rem;
+                --title-size: 0.8rem;
+                --accent: #d8a4a4;
+                --text-color: #fff;
+                --bg-color: #2b2b2b;
+                --link: #d3d3d3;
+                --link-hover: #aaa;
+            }
+            
+           ::-webkit-scrollbar {
+               display: hidden;
+           }
 
+            body {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: var(--text);
+                font-size: var(--text-size);
+                color: var(--text-color);
+                background: var(--bg-color);
+                line-height: 190%;
+            }
+
+            a {
+                text-decoration: none;
+                color: var(--link);
+                transition: color 0.6s ease-in-out;
+            }
+            
+            a:hover {
+                color: var(--link-hover);
+            }
+
+            #header {
+                display: flex;
+                align-items: center;
+                margin: 100px auto 0px;
+            }
+
+            #footer {
+                margin: 0px auto 0px;
+            }
+
+            #header, #footer, #info, #quote-box {
+                width: 330px;
+                padding: 0.5rem;
+                border: 1px dashed var(--accent);
+            }
+
+            #header .ph {
+                font-size: 1rem;
+                border: 1px solid var(--accent);
+                padding: 0.3rem;
+                border-radius: 100%;
+                margin-right: 3px;
+            }
+
+            #header #title {
+                display: flex;
+                align-items: center;
+                gap: 0.2rem;
+            }
+
+            #header #phrase {
+                font-size: var(--title-size);
+                font-family: var(--title);
+                font-weight: bold;
+                padding-right: 5px;
+            }
+            
+            
+            #header #nav {
+                margin-left: auto;
+            }
+
+            #info {
+                max-height: 180px;
+                overflow: scroll;
+                margin: 10px auto 10px;
+            }
+
+            #info p:last-child {
+                margin-bottom: 0;
+            }
+            
+            #misc-wrap {
+                width: 345px;
+                margin: 0px auto 10px;
+                display: grid;
+                grid-template-areas: 'right main';
+                gap: 10px;
+            }
+            
+            #currently-box {
+                grid-area: main;
+                border: 1px dashed var(--accent);
+                padding: 0.5rem;
+                height: 130px;
+                overflow: scroll;
+            }
+            
+            #stats-box .ph {
+                font-size: 0.9rem;
+                background: var(--accent);
+                border-radius: 100%;
+                padding: 0.25rem;
+                color: white;
+                margin-right: 5px;
+            }
+            
+            .currently {
+                padding:10px 0px 10px;
+                border-bottom: 1px dashed var(--accent);
+            }
+            
+            .currently b {
+                font-weight: 900;
+                text-transform: uppercase;
+            }
+            
+            .currently:first-of-type {
+                padding-top: 0;
+            }
+            
+            .currently:last-of-type {
+                margin-bottom: 0!important;
+                padding-bottom: 0!important;
+                border: 0;
+            }
+            
+            #stats-box {
+                grid-area: right;
+                border: 1px dashed var(--accent);
+                padding: 0.5rem;
+                text-align: left;
+                height: 130px;
+                overflow: scroll;
+            }
+            
+            .stats {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            
+            .stats:last-of-type {
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            
+            #quote-box {
+                margin: 0px auto 10px;
+            }
+            
+            #quote-box .ph {
+                border-radius: 100%;
+                background: var(--accent);
+                color: white;
+                padding: 0.25rem;
+                font-size: 0.9rem;
+                margin-right: 5px;
+            }
+
+            #footer #links {
+                font-size: var(--text-size);
+                font-family: var(--text);
+                text-align: center;
+            }
+
+            #footer a {
+                transition: color 0.6s ease-in-out;
+                margin: 5px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="header">
+            <div id="title">
+            <span class="ph ph-user"></span> <span id="phrase">about me</span>
+            </div>
+            <span id="nav"><a href="/">home</a> <a href="/ask">mssg</a> <a href="http://tumblr.com/dashboard">dash</a></span>
+        </div>
+
+        <div id="info">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate odio ut enim blandit volutpat maecenas volutpat. Phasellus faucibus scelerisque eleifend donec pretium. Quam viverra orci sagittis eu volutpat odio facilisis mauris sit. Suspendisse interdum consectetur libero id faucibus nisl tincidunt. Mauris in aliquam sem fringilla ut. Porta lorem mollis aliquam ut porttitor leo. Sed augue lacus viverra vitae. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Eleifend mi in nulla posuere. Imperdiet proin fermentum leo vel orci porta non pulvinar neque. A cras semper auctor neque vitae tempus quam pellentesque. Lacinia at quis risus sed vulputate. Habitant morbi tristique senectus et. Consequat nisl vel pretium lectus. Tortor aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque.
+
+            <p>Nulla facilisi etiam dignissim diam quis. Dis parturient montes nascetur ridiculus mus mauris vitae. Dignissim suspendisse in est ante in nibh mauris cursus. Bibendum at varius vel pharetra vel turpis. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Ac felis donec et odio pellentesque diam volutpat commodo sed. Dictumst vestibulum rhoncus est pellentesque elit. Pretium nibh ipsum consequat nisl vel pretium lectus quam. Netus et malesuada fames ac turpis egestas. Purus non enim praesent elementum facilisis leo vel. Tincidunt ornare massa eget egestas purus viverra accumsan.</p>
+        </div>
+        
+      <div id="misc-wrap">
+      
+       <div id="stats-box">
+            <div class="stats"> <span class="ph ph-info"></span> <b>name</b></div>
+            <div class="stats"> <span class="ph ph-gender-neuter"></span> <b>gender, sexuality</b></div>
+            <div class="stats"> <span class="ph ph-cake"></span> <b>birth year, age</b></div>
+            <div class="stats"><span class="ph ph-flag"></span> <b>timezone</b></div>
+            <div class="stats"><span class="ph ph-laptop"></span> <b>status</b></div>
+            <div class="stats"><span class="ph ph-smiley"></span> <b>mood</b></div>
+            <div class="stats"><span class="ph ph-thumbs-up"></span> <b>misc.</b></div>
+             
+          </div>
+          
+          <div id="currently-box">
+             <div class="currently"> <b>watching</b> street man fighter (+ be mbitious), the golden spoon, writes something else just to see what'll happen</div>
+              <div class="currently"><b>reading</b> <a href="/fic">link to fic recs</a></div>
+             <div class="currently"> <b>listening to</b> music i'm listening to</div>
+              <div class="currently"><b>writing</b> choose your own adventure fic, look at how this overflows</div>
+              <div class="currently"><b>waiting for</b> put something that you're waiting for. whether it's a movie or a show or something else entirely</div>
+          </div>
+        
+      </div>
+      
+      <div id="quote-box">
+          <span class="ph ph-quotes"></span>you begin to adore a god that no one bows down to.
+      </div>
+
+        <div id="footer">
+            <div id="links">
+                <a href="/">link 1</a>
+                <a href="/">link 2</a>
+                <a href="/">link 3</a>
+            </div>
+            
+        </div>
+    </body>
+</html>
