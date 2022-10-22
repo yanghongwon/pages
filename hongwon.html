@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+
+<!-- 
+
+about page by tumblr user pouthongwon
+
+icons are from http://phosphoricons.com
+
+-->
+
+
 <html>
     <head>
     <title>about me</title>
@@ -8,9 +18,11 @@
         <script src="https://unpkg.com/phosphor-icons"></script>
         
         <style type="text/css">
+        
+        /* customization options */
             :root {
-                --text: 'Nunito', sans-serif;
-                --title: 'Noto Serif', serif;
+                --text: 'Nunito', sans-serif; /* if you want to change this, change the font in the head, too, */
+                --title: 'Noto Serif', serif; /*if you want to change this, change the font in the head, too */
                 --text-size: 0.75rem;
                 --title-size: 0.8rem;
                 --accent: #d8a4a4;
@@ -56,7 +68,7 @@
             }
 
             #header, #footer, #info, #quote-box {
-                width: 330px;
+                width: 330px; /* width of the boxes */
                 padding: 0.5rem;
                 border: 1px dashed var(--accent);
             }
@@ -98,7 +110,7 @@
             }
             
             #misc-wrap {
-                width: 345px;
+                width: 345px; /*width of the wrapper around the stats and currently, if you want to change this, then add 15px to whatever the width of the other boxes are. ex: 350px + 15px = 365px*/
                 margin: 0px auto 10px;
                 display: grid;
                 grid-template-areas: 'right main';
@@ -185,6 +197,14 @@
                 transition: color 0.6s ease-in-out;
                 margin: 5px;
             }
+            
+            #credit {
+                font-size: 0.8rem;
+                margin-top: 40px;
+                margin-left: 40px;
+                padding: 10px;
+                float: right;
+            }
 
         </style>
     </head>
@@ -196,6 +216,8 @@
             </div>
             <span id="nav"><a href="/">home</a> <a href="/ask">mssg</a> <a href="http://tumblr.com/dashboard">dash</a></span>
         </div>
+        
+        <!-- biography section, put as much as you want, since it scrolls -->
 
         <div id="info">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate odio ut enim blandit volutpat maecenas volutpat. Phasellus faucibus scelerisque eleifend donec pretium. Quam viverra orci sagittis eu volutpat odio facilisis mauris sit. Suspendisse interdum consectetur libero id faucibus nisl tincidunt. Mauris in aliquam sem fringilla ut. Porta lorem mollis aliquam ut porttitor leo. Sed augue lacus viverra vitae. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Eleifend mi in nulla posuere. Imperdiet proin fermentum leo vel orci porta non pulvinar neque. A cras semper auctor neque vitae tempus quam pellentesque. Lacinia at quis risus sed vulputate. Habitant morbi tristique senectus et. Consequat nisl vel pretium lectus. Tortor aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque.
@@ -203,8 +225,11 @@
             <p>Nulla facilisi etiam dignissim diam quis. Dis parturient montes nascetur ridiculus mus mauris vitae. Dignissim suspendisse in est ante in nibh mauris cursus. Bibendum at varius vel pharetra vel turpis. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Ac felis donec et odio pellentesque diam volutpat commodo sed. Dictumst vestibulum rhoncus est pellentesque elit. Pretium nibh ipsum consequat nisl vel pretium lectus quam. Netus et malesuada fames ac turpis egestas. Purus non enim praesent elementum facilisis leo vel. Tincidunt ornare massa eget egestas purus viverra accumsan.</p>
         </div>
         
+        <!-- biography section ends -->
+        
       <div id="misc-wrap">
       
+      <!-- stats start, feel free to add/get rid of things -->
        <div id="stats-box">
             <div class="stats"> <span class="ph ph-info"></span> <b>name</b></div>
             <div class="stats"> <span class="ph ph-gender-neuter"></span> <b>gender, sexuality</b></div>
@@ -215,7 +240,10 @@
             <div class="stats"><span class="ph ph-thumbs-up"></span> <b>misc.</b></div>
              
           </div>
+          <!--stats end-->
           
+          
+          <!-- currently starts-->
           <div id="currently-box">
              <div class="currently"> <b>watching</b> street man fighter (+ be mbitious), the golden spoon, writes something else just to see what'll happen</div>
               <div class="currently"><b>reading</b> <a href="/fic">link to fic recs</a></div>
@@ -223,20 +251,29 @@
               <div class="currently"><b>writing</b> choose your own adventure fic, look at how this overflows</div>
               <div class="currently"><b>waiting for</b> put something that you're waiting for. whether it's a movie or a show or something else entirely</div>
           </div>
-        
       </div>
+      <!--currently ends -->
       
+      <!-- quote starts, keep it a line, please -->
       <div id="quote-box">
           <span class="ph ph-quotes"></span>you begin to adore a god that no one bows down to.
       </div>
+      <!-- quote ends -->
 
+        <!--footer starts -->
         <div id="footer">
             <div id="links">
                 <a href="/">link 1</a>
                 <a href="/">link 2</a>
                 <a href="/">link 3</a>
             </div>
-            
+        </div>
+        <!-- footer ends -->
+        
+        <!-- credit to pouthongwon, please don't delete -->
+        
+        <div id="credit">
+           <a href="http://pouthongwon.tumblr.com">phw</a>
         </div>
     </body>
 </html>
