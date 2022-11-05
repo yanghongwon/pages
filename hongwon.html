@@ -20,6 +20,7 @@ icons are from http://phosphoricons.com
         
         <style type="text/css">
         
+       
         /* customization options */
             :root {
                 --text: 'Nunito', sans-serif; /* if you want to change this, change the font in the head, too, */
@@ -60,6 +61,7 @@ icons are from http://phosphoricons.com
 
             #header {
                 display: flex;
+                justify-content: center;
                 align-items: center;
                 margin: 100px auto 0px;
             }
@@ -84,6 +86,7 @@ icons are from http://phosphoricons.com
 
             #header #title {
                 display: flex;
+                justify-content: center;
                 align-items: center;
                 gap: 0.2rem;
             }
@@ -113,17 +116,18 @@ icons are from http://phosphoricons.com
             #misc-wrap {
                 width: 345px; /*width of the wrapper around the stats and currently. if you want to change this, then add 15px to whatever the width of the other boxes are. ex: 330px + 15px = 345px*/
                 margin: 0px auto 10px;
-                display: grid;
-                grid-template-areas: 'right main';
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
                 gap: 10px;
             }
             
             #currently-box {
-                grid-area: main;
                 border: 1px dashed var(--accent);
                 padding: 0.5rem;
                 height: 130px;
                 overflow: scroll;
+                flex-basis: 55%;
             }
             
             #stats-box .ph {
@@ -156,7 +160,7 @@ icons are from http://phosphoricons.com
             }
             
             #stats-box {
-                grid-area: right;
+                flex-basis: 45%;
                 border: 1px dashed var(--accent);
                 padding: 0.5rem;
                 text-align: left;
@@ -166,6 +170,7 @@ icons are from http://phosphoricons.com
             
             .stats {
                 display: flex;
+                justify-content: flex-start;
                 align-items: center;
                 margin-bottom: 10px;
             }
@@ -207,7 +212,7 @@ icons are from http://phosphoricons.com
                 margin-right: 5px;
                 margin-top: 40px;
             }
-
+            
         </style>
     </head>
 
