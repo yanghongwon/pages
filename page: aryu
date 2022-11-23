@@ -34,12 +34,14 @@
                 --text: 'Nunito', sans-serif;
                 --title: 'Libre Baskerville', serif;
                 
-                --text-color: #eee;
+                --text-color: #ededed;
                 --title-color: #fff;
-                --link-color: #d3d3d3;
+                --link-color: #eee;
                 --bg-color: #2b2b2b;
+                --border: #767676;
                 
-                --accent: #b4c3d1;
+                --accent: #dfa8a8;
+                --accent-text: #000;
                 
                 --text-size: 0.8rem;
                 
@@ -105,7 +107,7 @@
             }
             
             #headerleft {
-                border-left: 1px solid var(--accent);
+                border-left: 1px solid var(--border);
                 padding-left: 10px;
                 font-size: 1rem;
                 font-family: var(--title);
@@ -136,7 +138,7 @@
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
-                border-bottom: 1px solid var(--accent);
+                border-bottom: 1px solid var(--border);
                 padding-bottom: 0.5rem;
             }
             
@@ -179,7 +181,7 @@
                 flex: 50%;
                 overflow: scroll;
                 max-height: 130px;
-                border-left: 1px solid var(--accent);
+                border-left: 1px solid var(--border);
                 padding-left: 0.3rem;
                 padding-right: 0;
                 box-sizing: border-box;
@@ -193,7 +195,7 @@
             
             .charinfo .charstats .stats {
                 padding: 0.3rem 0 0.4rem;
-                border-bottom: 1px solid var(--accent);
+                border-bottom: 1px solid var(--border);
             }
             
             .charinfo .charstats .stats:last-of-type {
@@ -205,14 +207,14 @@
                 padding: 0.2rem;
                 font-size: 0.8rem;
                 border-radius: 100%;
-                color: #000;
+                color: var(--accent-text);
                 margin-right: 2px;
             }
             
             .charlinks {
                 text-align: center;
-                border-top: 1px solid var(--accent);
-                border-bottom: 1px solid var(--accent);
+                border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
                 padding: 0.4rem 0 0.4rem;
                 display: flex;
                 justify-content: space-evenly;
@@ -228,14 +230,14 @@
             }
             
             .charlinks .links:nth-child(n+2) {
-                border-left: 1px solid var(--accent);
+                border-left: 1px solid var(--border);
                 padding-left: 0.3rem;
             }
             
             #credit {
                 margin-right: 5px;
                 margin-top: 35px;
-                border: 1px dashed var(--accent);
+                border: 1px dashed var(--border);
                 padding: 0.3rem;
                 border-radius: 6px;
                 display: flex;
