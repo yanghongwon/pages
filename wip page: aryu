@@ -248,6 +248,10 @@ everything's labelled in case you want to change some things
                grid-template-rows: masonry;
            }
            
+           .wip-grid > * {
+                margin-bottom: 15px;
+           }
+           
            .project {
                width: 230px;
            }
