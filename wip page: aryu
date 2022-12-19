@@ -32,8 +32,8 @@ everything's labelled in case you want to change some things
             --clr-accent: #d7bcbc;
             --clr-background: #2b2b2b;
             --clr-border: #767676;
-            --clr-gradient-1: rgba(199,161,161); /* color 1 for the progress                                                  bar */
-            --clr-gradient-2: rgba(215,188,188); /* color 2 for the progress                                                  bar */
+           --clr-gradient-1: rgba(199,161,161); /* color 1 for the progress bar */
+            --clr-gradient-2: rgba(215,188,188); /* color 2 for the progress bar */
             --clr-progress: #565656;
             --clr-text: #ededed;
 
