@@ -1,286 +1,579 @@
-<!DOCTYPE html>
-<link rel="shortcut icon" href="{Favicon}">
+<!--
 
-<!-- 
 
-hongwon: about page by tumblr user pouthongwon
+hongwon: about page by pouthongwon [revamp]
 
-icons are from http://phosphoricons.com
+credits
+- day/night script by @altindie (tutorial: https://altindie.tumblr.com/plugins/darkmode)
+- tippy js tooltips by atomiks (site: https://atomiks.github.io/tippyjs/), tutorial by @eossa (tutorial: https://eossa.studio/post/190447242880/tutorial-tippyjs-tooltips-a-tutorial-on-how-to)
+- icons by tabler icons (site: https://tabler-icons.io/)
 
 -->
 
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about page: hongwon</title>
 
-<html>
-    <head>
-    <title>about me</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,700;1,700&family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
-        <script src="https://unpkg.com/phosphor-icons"></script>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- tabler icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
+
+    <!-- jquery script for tippy tooltips -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <!-- day/night toggle -->
+    <script>
+    const storedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "light");
+    if (storedTheme) document.documentElement.setAttribute("data-theme", storedTheme);
+    </script>
+
+    <style type="text/css">
+
+        :root {
+            --ff-main: 'Poppins', sans-serif;
+
+            --border: 1px solid;
+            
+            --fs-main: 0.8rem;
+            --fs-subheading: 0.9rem;
+            --fs-heading: 1rem;
+        }
+
+        :root, html[data-theme="light"] {
+            --light-on: block;
+            --light-off: none;
+            --clr-main: #000;
+            --clr-background: #fff;
+            --clr-border: #cdcdcd;
+            --clr-accent: #629b96;
+        }
+
+        :root, html[data-theme="night"] {
+            --light-on: none;
+            --light-off: block;
+            --clr-main: #fff;
+            --clr-background: #313131;
+            --clr-border: #767676;
+            --clr-accent: #F7CACD;
+        }
         
-        <style type="text/css">
+        .tmblr-iframe {
+            transform: scale(0.8);
+            opacity: 0.7;
+            transition: all 0.7s ease-in-out;
+        }
         
-       
-        /* customization options */
-            :root {
-                --text: 'Nunito', sans-serif; /* if you want to change this, change the font in the head, too, */
-                --title: 'Noto Serif', serif; /*if you want to change this, change the font in the head, too */
-                --text-size: 0.75rem;
-                --title-size: 0.8rem;
-                --accent: #d8a4a4;
-                --text-color: #fff;
-                --bg-color: #2b2b2b;
-                --link: #d3d3d3;
-                --link-hover: #aaa;
-            }
-            
-           ::-webkit-scrollbar {
-               display: hidden;
-           }
+        .tmblr-iframe:hover {
+            opacity: 1;
+        }
 
-            body {
-                padding: 0;
-                margin: 0;
-                box-sizing: border-box;
-                font-family: var(--text);
-                font-size: var(--text-size);
-                color: var(--text-color);
-                background: var(--bg-color);
-                line-height: 190%;
+        *, *::before, *::after, html {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: var(--clr-main);
+            font-family: var(--ff-main);
+            font-size: var(--fs-main);
+            background-color: var(--clr-background);
+            display: grid;
+            place-items: center;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            border-bottom: var(--border) var(--clr-accent);
+            transition: all 0.7s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--clr-accent);
+            border-color: var(--clr-border);
+        }
+
+        p, ul[class], ul[id] {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul[class], ul[id] {
+            list-style: none;
+        }
+
+        .clr-accent {
+            color: var(--clr-accent);
+        }
+
+        .tt-uppercase {
+            text-transform: uppercase;
+        }
+
+        .fw-700 {
+            font-weight: 700;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .gap-rem {
+            gap: 0.4rem;
+        }
+
+        .gap-px {
+            gap: 5px;
+        }
+
+        .ai-center {
+            align-items: center;
+        }
+
+        .ai-top {
+            align-items: top;
+        }
+
+        .js-start {
+            justify-content: flex-start;
+        }
+
+        .js-between {
+            justify-content: space-between;
+        }
+
+        button#toggle {
+            outline: 0;
+            background: transparent;
+            border: 0;
+            color: var(--clr-main);
+            cursor: pointer;
+        }
+
+        #toggle .ti {
+            font-size: var(--fs-heading);
+            border: 1px solid var(--clr-accent);
+            border-radius: 50%;
+            padding: 0.2rem;
+        }
+
+        #light {
+            display: var(--light-on);
+        }
+
+        #dark {
+            display: var(--light-off);
+        }
+
+        main {
+            max-width: 24rem;
+            margin: 5rem auto;
+            padding: 1rem;
+        }
+
+        header {
+            border-bottom: 1px solid var(--clr-border);
+            padding-bottom: 0.4rem;
+        }
+
+        #links a {
+            margin-left: 0.3rem;
+        }
+
+        .split {
+            margin-block: 0.4rem;
+        }
+
+        .info, .stats, .ults, .updates {
+            max-width: calc(24rem / 2);
+            border: 1px solid var(--clr-border);
+            padding: 0.4rem;
+            overflow: scroll;
+            max-height: 200px;
+        }
+
+        .stats, .updates {
+                max-width: calc((24rem / 2) - 3rem);
             }
 
-            a {
-                text-decoration: none;
-                color: var(--link);
-                transition: color 0.6s ease-in-out;
-            }
-            
-            a:hover {
-                color: var(--link-hover);
-            }
+        .list li, .ult {
+            border-bottom: var(--border) var(--clr-border);
+            padding-block: 0.5rem;
+        }
 
-            #header {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 100px auto 0px;
-            }
+        .list li:last-child, .ult:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border: 0;
+        }
 
-            #footer {
-                margin: 0px auto 0px;
-            }
+        .ult:first-child {
+            padding-top: 0;
+        }
 
-            #header, #footer, #info, #quote-box {
-                width: 330px; /* width of the boxes */
-                padding: 0.5rem;
-                border: 1px dashed var(--accent);
-            }
+        .list li:only-child, .ult:only-child {
+            padding: 0;
+            border: 0;
+        }
 
-            #header .ph {
-                font-size: 1rem;
-                border: 1px solid var(--accent);
-                padding: 0.3rem;
-                border-radius: 100%;
-                margin-right: 3px;
-            }
+        .list li .ti {
+            font-size: var(--fs-heading);
+            color: var(--clr-background);
+            background: var(--clr-accent);
+            padding: 0.2rem;
+            border-radius: 50%;
+        }
 
-            #header #title {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 0.2rem;
-            }
+        .ult img {
+            border-radius: 50%;
+            max-width: 4rem;
+            aspect-ratio: 1;
+        }
 
-            #header #phrase {
-                font-size: var(--title-size);
-                font-family: var(--title);
-                font-weight: bold;
-                padding-right: 5px;
-            }
-            
-            
-            #header #nav {
-                margin-left: auto;
-            }
+        .desc span {
+            border-bottom: var(--border) var(--clr-border);
+            padding-bottom: 0.2rem;
+        }
 
-            #info {
-                max-height: 180px;
-                overflow: scroll;
-                margin: 10px auto 10px;
-            }
-
-            #info p:last-child {
-                margin-bottom: 0;
-            }
-            
-            #misc-wrap {
-                width: 345px; /*width of the wrapper around the stats and currently. if you want to change this, then add 15px to whatever the width of the other boxes are. ex: 330px + 15px = 345px*/
-                margin: 0px auto 10px;
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                gap: 10px;
-            }
-            
-            #currently-box {
-                border: 1px dashed var(--accent);
-                padding: 0.5rem;
-                height: 130px;
-                overflow: scroll;
-                flex-basis: 55%;
-            }
-            
-            #stats-box .ph {
-                font-size: 0.9rem;
-                background: var(--accent);
-                border-radius: 100%;
-                padding: 0.25rem;
-                color: white;
-                margin-right: 5px;
+        .desc p {
+            padding-top: 0.2rem;
+            margin-top: 0.2rem;
+        }
+        
+        #footer {
+            padding-top: 0.4rem;
+            border-top: var(--border) var(--clr-border);
+        }
+        
+        #credit .ti {
+            border: var(--border) var(--clr-accent);
+            border-radius: 50%;
+            padding: 0.2rem;
+        }
+        
+        #credit a {
+            border: 0;
+        }
+        
+        /* media queries to make the page responsive */
+        
+        @media only screen and (min-width: 310px) and (max-width: 440px) {
+            main {
+                margin: 3rem auto;
+                max-width: 20rem;
             }
             
-            .currently {
-                padding:10px 0px 10px;
-                border-bottom: 1px dashed var(--accent);
+            .split > * {
+                max-width: 20rem;
             }
             
-            .currently b {
-                font-weight: 900;
-                text-transform: uppercase;
-            }
-            
-            .currently:first-of-type {
-                padding-top: 0;
-            }
-            
-            .currently:last-of-type {
-                margin-bottom: 0!important;
-                padding-bottom: 0!important;
-                border: 0;
-            }
-            
-            #stats-box {
-                flex-basis: 45%;
-                border: 1px dashed var(--accent);
-                padding: 0.5rem;
-                text-align: left;
-                height: 130px;
-                overflow: scroll;
+            .split {
+                flex-direction: column;
             }
             
             .stats {
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                margin-bottom: 10px;
+                column-count: 2;
+                column-gap: 0.5rem;
             }
             
-            .stats:last-of-type {
-                margin-bottom: 0;
-                padding-bottom: 0;
+            .stats > * {
+                break-inside: avoid;
+                margin-bottom: 0.5rem;
             }
             
-            #quote-box {
-                margin: 0px auto 10px;
+           .stats .list li:last-child {
+                border-bottom: var(--border) var(--clr-border);
+                padding-bottom: 0.4rem;
             }
-            
-            #quote-box .ph {
-                border-radius: 100%;
-                background: var(--accent);
-                color: white;
-                padding: 0.25rem;
-                font-size: 0.9rem;
-                margin-right: 5px;
+        }
+
+        @media only screen and (min-width: 450px) {
+            main {
+                max-width: 30rem;
             }
 
-            #footer #links {
-                font-size: var(--text-size);
-                font-family: var(--text);
-                text-align: center;
+            .info, .stats, .ults, .updates {
+                max-width: calc(30rem / 2);
             }
 
-            #footer a {
-                transition: color 0.6s ease-in-out;
-                margin: 5px;
+            .stats, .updates {
+                max-width: calc((30rem / 2) - 3rem);
             }
-            
-            #credit .ph {
-                float: right;
-                border-radius: 100%;
-                border: 1px solid var(--accent);
-                padding: 0.3rem;
-                margin-right: 5px;
-                margin-top: 60px;
-            }
-            
-        </style>
-    </head>
+        }
 
-    <body>
-        <div id="header">
-            <div id="title">
-            <span class="ph ph-user"></span> <span id="phrase">about me</span>
-            </div>
-            <span id="nav"><a href="/">home</a> <a href="/ask">mssg</a> <a href="http://tumblr.com/dashboard">dash</a></span>
-        </div>
-        
-        <!-- biography section, put as much as you want, since it scrolls -->
+        /* tooltips styling */
+        .tippy-tooltip.custom-theme {
+        color: var(--clr-main);
+        background-color: var(--clr-background);
+        border: var(--border) var(--clr-accent);
+        padding: 0.1rem;
+        border-radius: 0.6rem;
+        text-align: center;
+        font-size: var(--fs-main);
+        }
 
-        <div id="info">
-            <a href="/">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</a> Vulputate odio ut enim blandit volutpat maecenas volutpat. Phasellus faucibus scelerisque eleifend donec pretium. Quam viverra orci sagittis eu volutpat odio facilisis mauris sit. Suspendisse interdum consectetur libero id faucibus nisl tincidunt. Mauris in aliquam sem fringilla ut. Porta lorem mollis aliquam ut porttitor leo. Sed augue lacus viverra vitae. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Eleifend mi in nulla posuere. Imperdiet proin fermentum leo vel orci porta non pulvinar neque. A cras semper auctor neque vitae tempus quam pellentesque. Lacinia at quis risus sed vulputate. Habitant morbi tristique senectus et. Consequat nisl vel pretium lectus. Tortor aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque.
+    </style>
+</head>
+<body>
 
-            <p>Nulla facilisi etiam dignissim diam quis. Dis parturient montes nascetur ridiculus mus mauris vitae. Dignissim suspendisse in est ante in nibh mauris cursus. Bibendum at varius vel pharetra vel turpis. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Ac felis donec et odio pellentesque diam volutpat commodo sed. Dictumst vestibulum rhoncus est pellentesque elit. Pretium nibh ipsum consequat nisl vel pretium lectus quam. Netus et malesuada fames ac turpis egestas. Purus non enim praesent elementum facilisis leo vel. Tincidunt ornare massa eget egestas purus viverra accumsan.</p>
-        </div>
-        
-        <!-- biography section ends -->
-        
-      <div id="misc-wrap">
-      
-      <!-- stats start, feel free to add/get rid of things -->
-       <div id="stats-box">
-            <div class="stats"> <span class="ph ph-info"></span> <b>name</b></div>
-            <div class="stats"> <span class="ph ph-gender-neuter"></span> <b>gender, sexuality</b></div>
-            <div class="stats"> <span class="ph ph-cake"></span> <b>birth year, age</b></div>
-            <div class="stats"><span class="ph ph-flag"></span> <b>timezone</b></div>
-            <div class="stats"><span class="ph ph-laptop"></span> <b>status</b></div>
-            <div class="stats"><span class="ph ph-smiley"></span> <b>mood</b></div>
-            <div class="stats"><span class="ph ph-thumbs-up"></span> <b>misc.</b></div>
-             
-          </div>
-          <!--stats end-->
-          
-          
-          <!-- currently starts-->
-          <div id="currently-box">
-             <div class="currently"> <b>watching</b> street man fighter (+ be mbitious), the golden spoon, writes something else just to see what'll happen</div>
-              <div class="currently"><b>reading</b> <a href="/fic">link to fic recs</a></div>
-             <div class="currently"> <b>listening to</b> music i'm listening to</div>
-              <div class="currently"><b>writing</b> choose your own adventure fic, look at how this overflows</div>
-              <div class="currently"><b>waiting for</b> put something that you're waiting for. whether it's a movie or a show or something else entirely</div>
-          </div>
-      </div>
-      <!--currently ends -->
-      
-      <!-- quote starts, keep it a line, please -->
-      <div id="quote-box">
-          <span class="ph ph-quotes"></span>you begin to adore a god that no one bows down to.
-      </div>
-      <!-- quote ends -->
+    <!-- tippy tooltips libraries -->
 
-        <!--footer starts -->
-        <div id="footer">
-            <div id="links">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/svg-arrow.css" />
+
+
+    <!-- html starts -->
+    
+    <main>
+        <header id="header" class="flex ai-center js-between gap-rem">
+
+            <section id="title" class="flex ai-center js-start gap-px">
+                <button id="toggle" aria-label="day/night toggle">
+                    <span id="light" title="toggle light mode"><span class="ti ti-sun-high"></span></span>
+                    <span id="dark" title="toggle dark mode"><span class="ti ti-moon"></span></span>
+                </button>
+                <span class="tt-uppercase clr-accent fw-700">about me</span>
+            </section>    
+
+            <section id="links">
+                <a href="/">home</a>
+                <a href="/ask">message</a>
+                <a href="http://tumblr.com/">dash</a>
                 <a href="/">link 1</a>
-                <a href="/">link 2</a>
-                <a href="/">link 3</a>
+            </section>
+
+        </header>
+
+        <section class="split flex ai-top gap-rem">
+            <article class="stats">
+                <ul class="list">
+                    <li><span class="ti ti-user"></span> asian</li>
+                    <li><span class="ti ti-gender-neutrois"></span> pronouns</li>
+                    <li><span class="ti ti-cake"></span> over 20</li>
+                    <li><span class="ti ti-flag"></span> taking a nap</li>
+                    <li><span class="ti ti-devices"></span> semi-hiatus</li>
+                    <li><span class="ti ti-heart-plus"></span> hongwon, <i>street man fighter,</i> fanfiction, rpf</li>
+                    <li><span class="ti ti-heart-minus"></span> a blank google doc, writer's block</li>
+                </ul>
+            </article>
+
+            <article class="info">
+                <span class="tt-uppercase clr-accent fw-700">info.</span>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, quia? Nemo dicta excepturi perferendis, eos facere similique possimus hic aliquid dolor neque cupiditate mollitia deleniti suscipit ipsa nesciunt deserunt, magnam veritatis quia cum velit eum tenetur. Vitae ducimus illo impedit, sed molestias asperiores nostrum illum reprehenderit accusamus? Beatae ipsa sit odio suscipit distinctio, earum iure culpa delectus, maxime, dicta architecto.</p>
+            </article>
+        </section>
+
+        <section class="split flex ai-top gap-rem">
+
+            <article id="ults" class="ults">
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/0wUJrn0.jpg"/>
+                    <div class="desc">
+                    <span class="fw-700">yang hongwon</span>
+                    <p>k-hiphop artist</p>
+                    </div>
+                </div>
+            
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/rS9AUQO.jpg"/>
+                    <div class="desc">
+                    <span class="fw-700">lee howon</span>
+                    <p>mbitious, soloist</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/9hZPEq5.jpg"/>
+                    <div class="desc">
+                    <span class="fw-700">jang dongwoo</span>
+                    <p>infinite, soloist</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/hgC7lGq.png"/>
+                    <div class="desc">
+                    <span class="fw-700">kim taehyun</span>
+                    <p>we dem boyz</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/Z3QQBlm.jpg"/>
+                    <div class="desc">
+                    <span class="fw-700">shin seunghoon</span>
+                    <p>mbitious, bitgoeul dancers</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/LMcODBi.png"/>
+                    <div class="desc">
+                    <span class="fw-700">lee haesung</span>
+                    <p>we dem boyz</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/9rujoEg.jpg"/>
+                    <div class="desc">
+                    <span class="fw-700">lee giseok</span>
+                    <p>bank2brothers</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/E2lf8C8.png"/>
+                    <div class="desc">
+                    <span class="fw-700">kim youngdae</span>
+                    <p>k-hiphop artist</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/yBqsU8u.jpg"/>
+                    <div class="desc">
+                    <span class="fw-700">choi wooshik</span>
+                    <p>k-hiphop artist</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/VdJFKug.png"/>
+                    <div class="desc">
+                    <span class="fw-700">lee dohyun</span>
+                    <p>k-hiphop artist</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/8gOKrCz.jpg"/>
+                    <div class="desc">
+                    <span class="fw-700">lee sohee</span>
+                    <p>k-hiphop artist</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/nJO7VPN.png"/>
+                    <div class="desc">
+                    <span class="fw-700">kim hyeyoon</span>
+                    <p>k-hiphop artist</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/feWLZhB.png"/>
+                    <div class="desc">
+                    <span class="fw-700">kim bora</span>
+                    <p>k-hiphop artist</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/3LJOl5C.png"/>
+                    <div class="desc">
+                    <span class="fw-700">kim kangmin</span>
+                    <p>k-hiphop artist</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/6BysyoK.png"/>
+                    <div class="desc">
+                    <span class="fw-700">lee jongwon</span>
+                    <p>k-hiphop artist</p>
+                    </div>
+                </div>
+
+                <div class="ult flex ai-center js-start gap-px">
+                    <img src="https://i.imgur.com/Nc3zlEm.png"/>
+                    <div class="desc">
+                    <span class="fw-700">lee jaewook</span>
+                    <p>k-hiphop artist</p>
+                    </div>
+                </div>
+            
+            </article>
+
+            <article class="updates" id="updates">
+                <ul class="list">
+                    <li><span class="ti ti-device-tv"></span> street man fighter (rewatch), the forbidden marriage, alchemy of souls</li>
+                    <li><span class="ti ti-music"></span> yang hongwon's unreleased/unofficial songs</li>
+                    <li><span class="ti ti-pencil"></span> omegaverse + royalty au, dark academia + bookstore + fantasy fic, royalty + model au, model au, uni/hs au</li>
+                    <li><span class="ti ti-alert-circle"></span> first part of <i>the glory</i></li>
+                </ul>
+            </article>
+
+        </section>
+
+        <footer id="footer" class="flex ai-center js-between gap-rem">
+            <div id="links">
+            <a href="http:/">link 2</a>
+            <a href="http:/">link 3</a>
+            <a href="http:/">link 4</a>
             </div>
-        </div>
-        <!-- footer ends -->
-        
-        <!-- credit to pouthongwon, please don't touch -->
-        
-        <div id="credit">
-           <a href="http://pouthongwon.tumblr.com"><span class="ph ph-copyright"></span></a>
-        </div>
-    </body>
+            
+            <!-- credit, don't touch this -->
+            <div id="credit">
+               <a href="http://pouthongwon.tumblr.com" title="made by pouthongwon"><span class="ti ti-code"></span></a>
+    </div>
+            
+        </footer>
+    </main>
+
+    <!-- html ends -->
+
+    <!-- libraries for tippy tooltips -->
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+
+    <!-- scripts for tippy tooltips and day/night shift -->
+    <script>
+        tippy('[title]', {
+        theme: 'custom',
+        followCursor: true,
+        arrow: false,
+        zIndex: 9999999999,
+        maxWidth: 300,
+
+        content(reference) {
+        const title = reference.getAttribute('title');
+        reference.removeAttribute('title');
+        return title;
+        },
+        });
+
+        const toggle = document.getElementById("toggle");
+
+        toggle.onclick = function () {
+        document.documentElement.classList.add('transition');
+
+        let currentTheme = document.documentElement.getAttribute('data-theme');
+        let targetTheme = 'light';
+
+        if(currentTheme === 'light') {
+        targetTheme = 'night';
+        }
+
+        window.setTimeout(function () {
+        document.documentElement.classList.remove('transition');
+        }, 50);
+
+        document.documentElement.setAttribute("data-theme", targetTheme);
+        localStorage.setItem("theme", targetTheme);
+        }
+    </script>
+</body>
 </html>
