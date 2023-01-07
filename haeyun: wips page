@@ -23,12 +23,12 @@ don't take out the credit in either the sidebar or the bottom right corner.
         :root {
             --ff-text: 'Poppins', sans-serif;
 
-            --clr-accent: #fec89a;
-            --clr-background: #2b2b2b;
-            --clr-border: #767676;
-            --clr-box: #fff;
-            --clr-box-text: #000;
-            --clr-text: #fff;
+            --clr-accent: #0077b6;
+            --clr-background: #fff;
+            --clr-border: #d3d3d3;
+            --clr-box: #000;
+            --clr-box-text: #fff;
+            --clr-text: #000;
 
             --fs-text: 0.8rem;
             --fs-subheading: 0.9rem;
@@ -156,7 +156,7 @@ don't take out the credit in either the sidebar or the bottom right corner.
         }
 
         main {
-            --max-width: 26rem;
+            --max-width: 28rem;
             margin-right: auto;
             max-width: var(--max-width);
             grid-area: content;
@@ -227,6 +227,7 @@ don't take out the credit in either the sidebar or the bottom right corner.
         .tags {
             padding-block: 0.3rem;
             display: inline-block;
+            font-size: calc(var(--fs-text) - 0.1rem);
         }
         
         .tags span {
