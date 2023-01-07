@@ -43,6 +43,16 @@ don't take out the credit in either the sidebar or the bottom right corner.
         html {
             height: 100%;
         }
+        
+        .tmblr-iframe {
+            transform: scale(0.7);
+            opacity: 0.7;
+            transition: all 0.7s ease-in-out;
+        }
+        
+        .tmblr-iframe {
+            opacity: 1;
+        }
 
         body {
             background: var(--clr-background);
@@ -159,12 +169,12 @@ don't take out the credit in either the sidebar or the bottom right corner.
 
         #section {
             column-count: 2;
-            column-gap: 0.6rem;
+            column-gap: 0.5rem;
         }
 
         #section > * {
             break-inside: avoid;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
         }
 
         .box {
@@ -219,17 +229,13 @@ don't take out the credit in either the sidebar or the bottom right corner.
             padding-block: 0.3rem;
             display: inline-block;
         }
+        
+        .tags span {
+            margin-right: 5px;
+        }
 
         .tags span::before {
             content: '#';
-        }
-
-        .tags span::after {
-            content: ','
-        }
-
-        .tags span:last-child::after {
-            content: '';
         }
 
         #credit {
@@ -316,7 +322,7 @@ don't take out the credit in either the sidebar or the bottom right corner.
             <div class="box">
                 <span class="title fw-700 tt-uppercase fs-subheading">title of your project</span>
                 <div class="tags">
-                    <span>alternate universe - canon divergence</span>
+                    <span>canon divergence</span>
                     <span>fandom: street man fighter</span>
                     <span>here's a tag</span>
                     <span>another tag</span>
@@ -336,7 +342,7 @@ don't take out the credit in either the sidebar or the bottom right corner.
             <div class="box">
                 <span class="title fw-700 tt-uppercase fs-subheading">title of your project</span>
                 <div class="tags">
-                    <span>alternate universe - canon divergence</span>
+                    <span>canon divergence</span>
                     <span>fandom: street man fighter</span>
                     <span>here's a tag</span>
                     <span>another tag</span>
@@ -358,7 +364,7 @@ don't take out the credit in either the sidebar or the bottom right corner.
                     <p>put a description here...</p>
                 </div>
                 <div class="tags">
-                    <span>alternate universe - canon divergence</span>
+                    <span>this is a very long tag</span>
                     <span>fandom: street man fighter</span>
                     <span>here's a tag</span>
                     <span>another tag</span>
