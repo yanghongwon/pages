@@ -50,7 +50,7 @@ don't take out the credit in either the sidebar or the bottom right corner.
             transition: all 0.7s ease-in-out;
         }
         
-        .tmblr-iframe {
+        .tmblr-iframe:hover {
             opacity: 1;
         }
 
@@ -157,7 +157,7 @@ don't take out the credit in either the sidebar or the bottom right corner.
         }
 
         main {
-            --max-width: 24rem;
+            --max-width: 26rem;
             margin-right: auto;
             max-width: var(--max-width);
             grid-area: content;
