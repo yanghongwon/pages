@@ -240,7 +240,7 @@ don't remove the credit in either the sidebar or bottom right corner
             <a href="/">home</a>
             <a href="/ask">ask</a>
             <a href="http://tumblr.com/">dashboard</a>
-            <a href="http://yangthms.tumblr.com">theme</a>
+            <a href="http://pouthongwon.tumblr.com">theme</a>
         </div>
     </aside>
     <main>
@@ -346,6 +346,6 @@ don't remove the credit in either the sidebar or bottom right corner
         </section>
     </main>
 
-    <a href="http://yangthms.tumblr.com" id="credit">theme</a>
+    <a href="http://pouthongwon.tumblr.com" id="credit">theme</a>
 </body>
 </html>
