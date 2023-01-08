@@ -169,14 +169,16 @@ don't remove the credit in either the sidebar or bottom right corner
         }
 
        span.title {
-            display: inline-block;
+            display: block;
             font-weight: 700;
             font-size: var(--fs-heading);
             text-transform: uppercase;
+            width: fit-content;
         }
         
         .project span.title {
             font-size: var(--fs-subheading);
+            overflow-wrap: anywhere;
         }
 
         .project .title a {
