@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<!--
+
+haeyun: wips page
+by pouthongwon
+
+don't remove the credit in either the sidebar or bottom right corner
+
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>haeyun: wips and fic rec page</title>
+    <link rel="shortcut icon" href="{Favicon}">
+
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+        :root {
+            --ff-font: 'Poppins', sans-serif;
+            
+            --clr-accent: #9d8189;
+            --clr-background: #fff;
+            --clr-border: #d3d3d3;
+            --clr-font: #000;
+
+            --fs-font: 0.8rem;
+            --fs-subheading: 0.9rem;
+            --fs-heading: 1rem;
+        }
+
+        *, *::before, *::after, html {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            height: 100%;
+        }
+        
+        .tmblr-iframe {
+            opacity: 0.8;
+            transform: scale(0.7);
+            filter: invert(100%); /* delete if your background's dark */
+            transition: all 0.7s ease-in-out;
+        }
+        
+        .tmblr-iframe:hover {
+            opacity: 1;
+            filter: invert(0); /* delete if your background's dark */
+        }
+
+        body {
+            color: var(--clr-font);
+            background: var(--clr-background);
+            font-family: var(--ff-font);
+            font-size: var(--fs-font);
+            display: grid;
+            grid-template-areas: "sidebar content";
+            place-items: center;
+            min-height: 100%;
+            line-height: 1.5;
+            column-gap: 0.6rem;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.7s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--clr-accent);
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .items-top {
+            align-items: flex-start;
+        }
+
+        .flex-start {
+            justify-content: flex-start;
+        }
+
+        .gap-px {
+            gap: 10px;
+        }
+
+        .gap-rem {
+            gap: 0.4rem;
+        }
+
+        aside {
+            --max-width: 14rem;
+            max-width: var(--max-width);
+            margin-left: auto;
+        }
+
+        aside img {
+            width: 4rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        aside div.title {
+            padding-bottom: 0.4rem;
+        }
+
+        aside .links {
+            border-top: 1px solid var(--clr-border);
+            padding-top: 0.4rem;
+            text-align: center;
+        }
+
+        aside .links a {
+            margin-right: 8px;
+        }
+
+        main {
+            --max-width: 26rem;
+            max-width: var(--max-width);
+            margin-right: auto;
+            overflow: scroll;
+            max-height: 400px;
+        }
+
+        .grid {
+            border-left: 1px solid var(--clr-border);
+            padding-left: 0.6rem;
+            column-count: 2;
+            column-gap: 1rem;
+        }
+
+        .grid > * {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+
+        .project {
+            max-width: calc(var(--max-width) / 2);
+        }
+        
+        .project a, aside a:not(.links a) {
+            border-bottom: 1px solid var(--clr-accent);
+        }
+        
+        .project a:hover, aside a:not(.links a):hover, #credit:hover {
+            border-color: var(--clr-border);
+        }
+
+        .project div.title {
+            padding-block: 0.4rem;
+            border-top: 1px solid var(--clr-border);
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .project .desc:only-of-type {
+            border-top: 1px solid var(--clr-border);
+        }
+
+       span.title {
+            display: inline-block;
+            font-weight: 700;
+            font-size: var(--fs-heading);
+            text-transform: uppercase;
+        }
+        
+        .project span.title {
+            font-size: var(--fs-subheading);
+        }
+
+        .project .title a {
+            display: block;
+        }
+
+        .stats {
+            border-left: 1px solid var(--clr-border);
+            padding-left: 0.4rem;
+        }
+        
+        .stats:only-of-type {
+            border: 0;
+            padding: 0;
+        }
+        
+        .title .links:only-of-type a {
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .title .links:only-of-type {
+            margin: 0 auto 0;
+        }
+
+        .stats span {
+            display: block;
+        }
+
+        .desc {
+            padding-top: 0.4rem;
+        }
+
+        .desc p:first-child, .desc p:only-child {
+            margin: 0;
+            padding: 0;
+        }
+
+        .desc p + p {
+            margin-top: 0.6rem;
+        }
+
+        #credit {
+            bottom: 10px;
+            right: 10px;
+            position: fixed;
+            border-bottom: 1px solid var(--clr-accent);
+        }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <div class="title flex items-top flex-start gap-px">
+            <img src="https://i.imgur.com/8gOKrCz.jpg"> <!-- replace this with an image url of your choice, or delete it. just make sure to get rid of everything after title -->
+            <div><span class="title">here's a title</span>
+                <p>icon is lee sohee, <a href="/">link example.</a> this page can also be used as a fic rec page, so the examples are a mix of wips and fic recs</p>
+            </div>
+        </div>
+        <div class="links">
+            <a href="/">home</a>
+            <a href="/ask">ask</a>
+            <a href="http://tumblr.com/">dashboard</a>
+            <a href="http://yangthms.tumblr.com">theme</a>
+        </div>
+    </aside>
+    <main>
+        <section class="grid">
+            <article class="project">
+                <span class="title">yeongwu/jangwoo fics</span>
+                <div class="desc">
+                    <p>a list of ideas for yeongwu/jangwoo. most of them are aus or canon divergent.</p>
+                </div>
+            </article>
+
+            <article class="project">
+                <span class="title">meta fic</span>
+                <div class="title flex items-top flex-start gap-rem">
+                    <div class="links">
+                        <a href="/">link #1</a> <a href="/">link #2</a> <a href="/">link #3</a>
+                    </div>
+                    <div class="stats">
+                        <span>200 words</span>
+                        <span>put a genre here...</span>
+                        <span>hoya/vata/ohcheon</span>
+                    </div>
+                </div>
+                <div class="desc">
+                    <p>taehyun finds out about shipping through haesung, and comes up with an absolutely insane idea.</p>
+                </div>
+            </article>
+
+            <article class="project">
+                <span class="title">edmund pevensie lives again</span>
+                <div class="title flex items-top flex-start gap-rem">
+                    <div class="links">
+                        <a href="https://archiveofourown.org/works/38026417/chapters/94979722#workskin">ao3</a>
+                    </div>
+                </div>
+                <div class="desc">
+                <p>There are whispers about Edmund Pevensie in the hallways: about how volatile he is, about his fierce loyalty to his siblings, about his disinterest in most things that don’t involve subtle politics or swordfighting. His teachers think he’ll make an excellent diplomat; his siblings know he already has. The Pevensies do not suddenly become children again, after Narnia, least of all Edmund. When they return to the ancient lands, they are something far older than the ghosts whose shoes they fill.</p>
+
+    <p>Or rather, try to fill. They’re smaller now, after all. It doesn’t matter. They’ll grow again.</p>
+
+                </div>
+            </article>
+
+            <article class="project">
+                <span class="title">we meet no ordinary people in our lives </span>
+                <div class="title flex items-top flex-start gap-rem">
+                    <div class="links">
+                        <a href="https://archiveofourown.org/works/43887337">ao3</a>
+                    </div>
+                    <div class="stats">
+                        <span>andthentheybow</span>
+                        <span>caspian/edmund</span>
+                    </div>
+                </div>
+                <div class="desc">
+                <p>The Pevensies were not chosen by Aslan; they were chosen by the deep magic itself. This magic runs through their veins, boils in their blood. It lingers at their fingertips and the back of their minds and on the very edges of their lips, always waiting to burst forth. (When they do let the deep magic go, you’d best be standing out of the way.)</p>
+
+    <p>Or, six moments where the Pevensies call on the deep magic, and one moment where it calls on them.</p>
+
+                </div>
+            </article>
+
+            <article class="project">
+                <span class="title">We Didn't Know We Were in Love </span>
+                <div class="title flex items-top flex-start gap-rem">
+                    <div class="links">
+                        <a href="https://archiveofourown.org/works/2427608">ao3</a>
+                    </div>
+                    <div class="stats">
+                        <span>riots</span>
+                        <span>hoya/dongwoo</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project">
+                <span class="title">youngdae/hongwon/jaewook</span>
+                <div class="title flex items-top flex-start gap-rem">
+                <div class="links">
+                    <a href="/">link #1</a>
+                </div>
+                    <div class="stats">
+                        <span>warnings...</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project">
+                <span class="title">dark academia + bookshop au</span>
+                <div class="desc">
+                    taehyun's used to seeing bookmarks in unsold books, but what's surprising is seeing two of them in the same one.
+                </div>
+                </div>
+            </article>
+
+            <article class="project">
+                <span class="title">project #1</span>
+                <div class="desc">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu dui vivamus arcu felis bibendum ut. Odio facilisis mauris sit amet massa vitae. Ut tortor pretium viverra suspendisse. Tempus imperdiet nulla malesuada pellentesque elit eget. Amet cursus sit amet dictum sit amet. Id aliquet risus feugiat in ante metus dictum at. Libero nunc consequat interdum varius sit amet.</p>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <a href="http://yangthms.tumblr.com" id="credit">theme</a>
+</body>
+</html>
