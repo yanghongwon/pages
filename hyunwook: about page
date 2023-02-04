@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<!--
+
+
+hyunwook: an about page
+made by pouthongwon
+
+please don't remove the credits in either of their places
+
+
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{Favicon}">
+    <title>hyunwook: about page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        
+        :root {
+            --ff-font: 'Poppins', sans-serif;
+            --ff-title: 'Nanum Myeongjo', serif;
+
+            --clr-accent: #f4acb7;
+            --clr-background: #101010;
+            --clr-border: #767676;
+            --clr-font: #fff;
+
+            --fs-font: 0.8rem;
+            --fs-subheading: 0.9rem;
+            --fs-heading: 1rem;
+        }
+
+        *, *::before, *::after, html {
+            padding: 0;
+            margin: 0;
+        }
+        
+        iframe.tmblr-iframe {
+            transform: scale(0.7);
+            /* filter: invert(100%); */ /*delete this or comment it out if you're using a dark background */
+            opacity: 0.8;
+            transition: opacity 0.7s ease-in-out;
+        }
+        
+        iframe.tmblr-iframe {
+            opacity: 1;
+        }
+
+        html { height: 100%; }
+
+        body {
+            font-family: var(--ff-font);
+            font-size: var(--fs-font);
+            background: var(--clr-background);
+            color: var(--clr-font);
+            display: grid;
+            place-items: center;
+            min-height: 100%;
+            line-height: 1.55;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid var(--clr-accent);
+            transition: all 0.7s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--clr-accent);
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        p, ul[class] {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul[class] {
+            list-style: none;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .items-top {
+            align-items: flex-start;
+        }
+
+        .flex-start {
+            justify-content: flex-start;
+        }
+
+        .flex-between {
+            justify-content: space-between;
+        }
+
+        .gap-px {
+            gap: 8px;
+        }
+
+        .gap-rem {
+            gap: 0.4rem;
+        }
+
+        .gap-point5rem {
+            gap: 0.5rem;
+        }
+
+        main {
+            --max-width: 22rem;
+            max-width: var(--max-width);
+            padding: 1rem;
+            display: grid;
+            grid-template-areas:
+            "header header"
+            "middle middle"
+            "middle middle"
+            "footer footer";
+            row-gap: 0.4rem;
+        }
+
+        header {
+            grid-area: header;
+        }
+
+        header img {
+            width: 4.5rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .title {
+            font-family: var(--ff-title);
+            font-size: var(--fs-heading);
+            font-weight: 800;
+        }
+
+        .middle {
+            border-top: 1px dashed var(--clr-border);
+            border-bottom: 1px dashed var(--clr-border);
+            grid-area: middle;
+            flex-wrap: wrap;
+            padding-block: 0.4rem;
+        }
+
+        .stats, .bio, .updates, .interests {
+            flex: 1;
+        }
+
+        .side {
+            border-bottom: 1px dashed var(--clr-border);
+            padding-bottom: 0.4rem;
+        }
+
+        .bio, .stats {
+            overflow: scroll;
+            max-height: 190px;
+        }
+        
+        .bio {
+            border-left: 1px solid var(--clr-border);
+            padding-left: 0.5rem;
+        }
+
+        .list li:first-child {
+            padding-bottom: 0.4rem;
+            border-bottom: 1px dashed var(--clr-border);
+        }
+
+        .list li:last-child {
+            padding-top: 0.4rem;
+        }
+
+        .list li:not(:first-child, :last-child, :only-child) {
+            border-bottom: 1px dashed var(--clr-border);
+            padding-block: 0.4rem;
+        }
+
+        .list li span {
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .list li span::after {
+            content: '—';
+            margin-inline: 5px;
+            font-weight: 400;
+        }
+
+        .bio p:not(:first-child, :only-child, :last-child) {
+            margin-block: 0.4rem;
+        }
+        
+        .bio p:last-child {
+            margin-top: 0.4rem;
+        }
+        
+        .interests {
+            border-left: 1px solid var(--clr-border);
+            padding-left: 0.5rem;
+        }
+        
+        .updates, .interests {
+            overflow: scroll;
+            max-height: 165px;
+        }
+        
+        .side2 {
+            padding-top: 0.4rem;
+        }
+
+        .footer {
+            grid-area: footer;
+        }
+
+        .footer a {
+            margin-right: 5px;
+        }
+        
+        #credit {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+    
+    </style>
+    <body>
+        <main>
+            
+            <header class="flex items-top gap-px flex-start">
+                <img src="https://i.imgur.com/K2D4gaJ.jpg"> <!-- replace the imgur link with your own image -->
+                <div class="right">
+                    <span class="title">choi hyunwook, my beloved</span>
+                    <p>here's a description, make it as long or short as you want. <a href="/">link example.</a> <b>Lorem ipsum dolor sit amet.</b> <i>Lorem ipsum dolor sit amet.</i></p>
+                </div>
+            </header>
+            
+            <section class="middle">
+                
+                <div class="flex flex-start items-top gap-point5rem side">
+                
+                <article class="stats">
+                    <ul class="list">
+                        <li><span>name</span> hyang, hina, and hiyu</li>
+                        <li><span>pronouns</span> shi/hie, hi/hin, iy/iyu, no pronouns, she/he/it</li>
+                        <li><span>gender</span> genderfluid</li>
+                        <li><span>sexuality</span> gay aroace</li>
+                        <li><span>link example</span> <a href="/">here's a link</a></li>
+                        <li><span>add something else</span> it can be anything you want</li>
+                    </ul>
+                </article>
+                
+                <article class="bio">
+                    <p><a href="/">Lorem ipsum dolor sit amet</a>, consectetur adipisicing elit. Officiis voluptates modi nesciunt sit vero. <b>Suscipit id maxime fugiat, itaque,</b> impedit voluptatibus voluptas exercitationem, consequuntur nemo voluptatum voluptates asperiores sit aperiam!</p>
+
+                    <p><i>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</i> Veniam dolores, maxime sint quos totam, exercitationem earum obcaecati eveniet omnis beatae repellat deleniti vel! Corporis blanditiis iure, molestiae sunt amet debitis inventore voluptatibus dolorem repellat dolor culpa maxime quas ea vero! Numquam consequuntur est aliquam nostrum nesciunt, rerum maiores ut recusandae?</p>
+
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam dolores, maxime sint quos totam, exercitationem earum obcaecati eveniet omnis beatae repellat deleniti vel! Corporis blanditiis iure, molestiae sunt amet debitis inventore voluptatibus dolorem repellat dolor culpa maxime quas ea vero! Numquam consequuntur est aliquam nostrum nesciunt, rerum maiores ut recusandae?</p>
+                    
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam dolores, maxime sint quos totam, exercitationem earum obcaecati eveniet omnis beatae repellat deleniti vel! Corporis blanditiis iure, molestiae sunt amet debitis inventore voluptatibus dolorem repellat dolor culpa maxime quas ea vero! Numquam consequuntur est aliquam nostrum nesciunt, rerum maiores ut recusandae?</p>
+                    
+                </article>
+                </div>
+                
+                <div class="flex flex-start items-top gap-point5rem side2">
+                <article class="updates">
+                    <ul class="list">
+                        <li><span>watching</span> pop-out boy!, revenge of others, heard it through the grapevine, the golden spoon</li>
+                        <li><span>listening to</span> yang hongwon</li>
+                        <li><span>writing</span> penthouse fics, uni/hs fics</li>
+                    </ul>
+                </article>
+                
+                <article class="interests">
+                    <ul class="list">
+                        <li><span>likes</span> an example of something you like, something else you like</li>
+                        <li><span>dislikes</span> winter, cold weather in general, writer's block</li>
+                        <li><span>interests</span> video games, coding, creating ocs, coming up with names for ocs</li>
+                    </ul>
+                </article>
+                </div>
+                
+            </section>
+            
+            <footer class="footer flex items-center flex-between gap-rem">
+                <div class="links">
+                    <a href="/">index</a>
+                    <a href="/ask">ask</a>
+                    <a href="http://tumblr.com/">dashboard</a>
+                   <!-- credit. do not delete! --> <a href="http://pouthongwon.tumblr.com">theme</a>
+                </div>
+
+                <div class="social">
+                    <a href="/">link 1</a>
+                    <a href="/">link 2</a>
+                    <a href="/">link 3</a>
+                </div>
+            </footer>
+            
+        </main>
+        
+        <!--
+        credit, do not delete!
+        
+        <a href="http://pouthongwon.tumblr.com" id="credit">theme</a>
+        
+        -->
+        
+    </body>
+</html>
