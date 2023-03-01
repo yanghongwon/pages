@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<!--
+
+youngdae: a character page by pouthongwon
+- don't delete the credit in both places
+- a template is provided in the html comments
+- i tried labelling everything, carefully, but let me know if i missed anything
+
+features:
+-sidebar with standard links and four custom ones
+- a character image and name
+- a three-image character gallery
+- character stats
+- biography
+- links
+
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>youngdae: a character page</title>
+    <link rel="shortcut icon" href="{Favicon}">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- tabler icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+    <!-- styling starts-->
+    <style type="text/css">
+
+        /* custom properties, edit from here */
+        :root {
+            --ff-text: 'Poppins';
+            --ff-heading: 'Playfair Display';
+
+            --fs-text: 0.8rem;
+            --fs-heading: 1.2rem;
+
+            --gap-rem-sm: 0.4rem;
+            --gap-rem-med: 0.8rem;
+            --gap-rem-lg: 1.2rem;
+
+            --padding: 0.5rem;
+            --max-width: 34rem;
+            --sidebar-width: 14rem;
+        }
+
+        body.dark /* dark mode */ {
+            --clr-background: #101010;
+            --clr-accent: #eecbcb;
+            --clr-text: #fff;
+            --clr-borders: #767676;
+        }
+
+        body.light /* light mode */ {
+            --clr-background: #fff;
+            --clr-accent: #b07979;
+            --clr-text: #000;
+            --clr-borders: #ababab;
+        }
+        /* to here */
+
+        .tmblr-iframe {
+            opacity: 0.8;
+            transform: scale(0.7);
+        }
+
+        *, *::before, *::after, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body { height: 100%; }
+
+        body {
+            font-family: var(--ff-text);
+            font-size: var(--fs-text);
+            background: var(--clr-background);
+            color: var(--clr-text);
+            display: grid;
+            grid-template-areas: 
+            "header"
+            "content";
+            padding: 1rem;
+            place-items: center;
+            min-height: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 1px dashed var(--clr-accent);
+            transition: border 0.7s ease-in-out, color 0.7s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--clr-accent);
+            border-color: var(--clr-borders);
+        }
+
+        h1, h2, h3, p, ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        h1, h2 {
+            font-family: var(--ff-heading);
+            font-weight: 700;
+        }
+
+        h1 { font-size: var(--fs-heading); }
+
+        h2 { font-size: calc(var(--fs-heading) - 0.2rem); }
+
+        p + p {
+            margin-top: var(--padding);
+        }
+
+        .ti {
+            font-size: calc(var(--fs-text) + 0.15rem);
+            color: var(--clr-text);
+            border: 1px dashed var(--clr-accent);
+            padding: 0.2rem;
+            border-radius: 50%;
+            margin-right: 3px;
+        }
+
+        .sidebar-header {
+            grid-area: header;
+            max-width: var(--max-width);
+            margin-top: 2rem;
+            text-align: left;
+            border-bottom: 1px dashed var(--clr-borders);
+            padding-bottom: var(--padding);
+        }
+
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: var(--gap-rem-med);
+        }
+
+        .top-links {
+            padding-left: var(--gap-rem-med);
+            border-left: 1px dashed var(--clr-borders);
+        }
+
+        main {
+            margin: 1rem auto 1rem;
+            max-width: var(--max-width);
+            grid-area: content;
+            display: columns;
+            column-count: 2;
+            column-gap: var(--gap-rem-lg);
+        }
+
+        main > * {
+            margin-bottom: var(--gap-rem-lg);
+            break-inside: avoid;
+        }
+
+        .character {
+            max-width: calc(var(--max-width) / 2);
+            padding: var(--padding);
+        }
+        
+        .char-top {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--gap-rem-med);
+            padding-bottom: var(--padding);
+        }
+        
+        .char-top img {
+            width: 2rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            object-fit: cover;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: var(--gap-rem-sm);
+            border-top: 1px dashed var(--clr-borders);
+            padding-block: var(--padding);
+        }
+
+        .info img {
+            width: 3.5rem;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 0.4rem;
+            overflow: hidden;
+        }
+
+        .info .stats {
+            flex: 2;
+        }
+
+        .images {
+            flex: 0.4;
+            flex-direction: column;
+        }
+
+        .info li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: calc(var(--fs-text) - 0.05rem);
+        }
+
+        .info li {
+            padding-block: var(--padding);
+            border-bottom: 1px dashed var(--clr-accent);
+        }
+
+        .info li:last-child {
+            border: 0;
+        }
+
+        .stats {
+            padding-left: var(--gap-rem-sm);
+            border-left: 1px dashed var(--clr-borders);
+        }
+
+        .biography, .links {
+            padding-top: var(--padding);
+            border-top: 1px dashed var(--clr-borders);
+        }
+
+        .biography {
+            padding-bottom: var(--padding);
+        }
+
+        .links, .top-links {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--gap-rem-med);
+            flex-wrap: wrap;
+            padding-block: var(--padding);
+        }
+
+        .links {
+            border-bottom: 1px dashed var(--clr-borders);
+        }
+
+        #credit {
+            position: fixed;
+            bottom: 0.4rem;
+            right: 0.8rem;
+        }
+
+        /* media queries to make this responsive, kind of */
+        @media only screen and (min-width: 800px) {
+            body {
+                display: flex;
+                align-items: end;
+                justify-content: flex-start;
+                gap: var(--gap-rem-med);
+                flex-wrap: wrap;
+            }
+
+            .sidebar-header {
+                position: fixed;
+                left: 13rem;
+                bottom: 3rem;
+                max-width: var(--sidebar-width);
+                border: 0;
+            }
+
+            .top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+            }
+            
+            .title {
+                padding-bottom: var(--padding);
+            }
+
+            .top-links {
+                border: 0;
+                border-bottom: 1px dashed var(--clr-borders);
+                border-top: 1px dashed var(--clr-borders);
+                padding-left: 0;
+            }
+
+            main {
+                margin: 1rem auto 1rem;
+            }
+        }
+
+    </style>
+    <!-- styling ends -->
+</head>
+<body class="dark"> <!-- change this to light if you want a light theme -->
+
+    <aside class="sidebar-header">
+        <div class="top">
+            <h1 class="title">insert a title here.</h1>
+            <div class="top-links">
+                <a href="/">index</a>
+                <a href="/ask">askbox</a>
+                <a href="http://tumblr.com">dash</a>
+                <a href="/">link #1</a>
+                <a href="/">link #2</a>
+                <a href="/">link #3</a>
+                <a href="/">link #4</a>
+                <a href="http://pouthongwon.tumblr.com">theme</a>
+            </div>
+        </div>
+    </aside>
+
+    <main>
+    
+    <!--
+    
+    basic template for a character, copy from here
+    <section class="character">
+        <div class="char-top">
+            <img src="IMG URL">
+            <h1 class="name">character name</h1>
+        </div>
+        <div class="info">
+        <div class="images">
+            <img src="IMG URL">
+            <img src="IMG URL">
+            <img src="IMG URL">
+        </div>
+        <div class="stats">
+            <li><i class="ti ti-user"></i> actor name</li>
+            <li><i class="ti ti-info-circle"></i> oc's age</li>
+            <li><i class="ti ti-cake"></i> oc's birthday</li>
+            <li><i class="ti ti-heart"></i> sexuality</li>
+            <li><i class="ti ti-gender-genderfluid"></i> gender</li>
+        </div>
+        </div>
+        <div class="biography">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus libero maiores explicabo, et magnam porro repudiandae, temporibus ut enim beatae saepe facilis atque iure at dolorem architecto corporis tenetur eius.</p>
+
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque, ipsa?</p>
+            </div>
+        <div class="links">
+            <a href="/">bio</a>
+            <a href="/">char tag</a>
+            <a href="/">link #3</a>
+        </div>
+    </div>
+    </section>
+    to here
+    
+     -->
+
+        <!-- first character start -->
+        <section class="character">
+            <div class="char-top"> <!-- character image and name -->
+                <img src="https://data.whicdn.com/images/346800877/original.jpg"/>
+                <h2 class="name">character name</h2>
+            </div>
+            <div class="info"> <!-- character gallery and stats -->
+               <div class="images"> 
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                </div>
+                <div class="stats">
+                    <li><i class="ti ti-user"></i> actor name</li>
+                    <li><i class="ti ti-info-circle"></i> oc's age</li>
+                    <li><i class="ti ti-cake"></i> oc's birthday</li>
+                    <li><i class="ti ti-heart"></i> sexuality</li>
+                    <li><i class="ti ti-gender-genderfluid"></i> gender</li>
+                </div>
+            </div>
+            <div class="biography"> <!-- character bio, it can be as long as you want -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus libero maiores explicabo, et magnam porro repudiandae, temporibus ut enim beatae saepe facilis atque iure at dolorem architecto corporis tenetur eius.</p>
+
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque, ipsa?</p>
+            </div>
+            <div class="links"> <!-- character links -->
+                <a href="/">bio</a>
+                <a href="/">char tag</a>
+                <a href="/">link #3</a>
+            </div>
+        </section>
+        <!-- first character ends -->
+
+        <!-- second character starts -->
+        <section class="character">
+            <div class="char-top"> <!-- character image and name -->
+                <img src="https://data.whicdn.com/images/346800877/original.jpg"/>
+                <h2 class="name">character name</h2>
+            </div>
+            <div class="info"> <!-- character gallery and stats -->
+               <div class="images"> 
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                </div>
+                <div class="stats">
+                    <li><i class="ti ti-user"></i> actor name</li>
+                    <li><i class="ti ti-info-circle"></i> oc's age</li>
+                    <li><i class="ti ti-cake"></i> oc's birthday</li>
+                    <li><i class="ti ti-heart"></i> sexuality</li>
+                    <li><i class="ti ti-gender-genderfluid"></i> gender</li>
+                </div>
+            </div>
+            <div class="biography"> <!-- character bio, it can be as long as you want -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus libero maiores explicabo, et magnam porro repudiandae, temporibus ut enim beatae saepe facilis atque iure at dolorem architecto corporis tenetur eius.</p>
+
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate dolorum quidem accusantium ab, dicta in molestias non nihil excepturi est deserunt! Enim, quisquam! Cumque voluptas autem assumenda odit facere molestias?</p>
+            </div>
+            <div class="links"> <!-- character links -->
+                <a href="/">bio</a>
+                <a href="/">char tag</a>
+                <a href="/">link #3</a>
+            </div>
+        </section>
+        <!-- second character ends -->
+
+        <!-- third character starts -->
+        <section class="character">
+            <div class="char-top"> <!-- character image and name -->
+                <img src="https://data.whicdn.com/images/346800877/original.jpg"/>
+                <h2 class="name">character name</h2>
+            </div>
+            <div class="info"> <!-- character gallery and stats -->
+               <div class="images">
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                </div>
+                <div class="stats">
+                    <li><i class="ti ti-user"></i> actor name</li>
+                    <li><i class="ti ti-info-circle"></i> oc's age</li>
+                    <li><i class="ti ti-cake"></i> oc's birthday</li>
+                    <li><i class="ti ti-heart"></i> sexuality</li>
+                    <li><i class="ti ti-gender-genderfluid"></i> gender</li>
+                </div>
+            </div>
+            <div class="biography"> <!-- character bio, it can be as long as you want -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus libero maiores explicabo, et magnam porro repudiandae, temporibus ut enim beatae saepe facilis atque iure at dolorem architecto corporis tenetur eius.</p>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, unde error iusto nam aliquid quasi tenetur quia rerum dolorem minima sit officia exercitationem quas repudiandae adipisci ex et labore ipsum.</p>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente neque illum ipsa optio dolorum perferendis vitae adipisci ullam, tempore doloribus!</p>
+            </div>
+            <div class="links"> <!-- character links -->
+                <a href="/">bio</a>
+                <a href="/">char tag</a>
+                <a href="/">link #3</a>
+            </div>
+        </section>
+        <!-- third character ends -->
+
+        <!-- fourth character starts -->
+        <section class="character">
+            <div class="char-top"> <!-- character image and name -->
+                <img src="https://data.whicdn.com/images/346800877/original.jpg"/>
+                <h2 class="name">character name</h2>
+            </div>
+            <div class="info"> <!-- character gallery and stats -->
+               <div class="images">
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                    <img src="https://data.whicdn.com/images/360615746/original.jpg"/> <!-- replace with your own image url -->
+                </div>
+                <div class="stats">
+                    <li><i class="ti ti-user"></i> actor name</li>
+                    <li><i class="ti ti-info-circle"></i> oc's age</li>
+                    <li><i class="ti ti-cake"></i> oc's birthday</li>
+                    <li><i class="ti ti-heart"></i> sexuality</li>
+                    <li><i class="ti ti-gender-genderfluid"></i> gender</li>
+                </div>
+            </div>
+            <div class="biography"> <!-- character bio, it can be as long as you want -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus libero maiores explicabo, et magnam porro repudiandae, temporibus ut enim beatae saepe facilis atque iure at dolorem architecto corporis tenetur eius.</p>
+            </div>
+            <div class="links"> <!-- character links -->
+                <a href="/">bio</a>
+                <a href="/">char tag</a>
+                <a href="/">link #3</a>
+            </div>
+        </section>
+        <!-- fourth character ends -->
+        
+        <!-- fifth character starts -->
+           <section class="character">
+        <div class="char-top"> <!-- character image and name -->
+            <img src="https://data.whicdn.com/images/346800877/original.jpg">
+            <h1 class="name">character name</h1>
+        </div>
+        <div class="info"> <!-- character gallery and stats -->
+        <div class="images">
+            <img src="https://data.whicdn.com/images/346800877/original.jpg">
+            <img src="https://data.whicdn.com/images/346800877/original.jpg">
+            <img src="https://data.whicdn.com/images/346800877/original.jpg">
+        </div>
+        <div class="stats">
+            <li><i class="ti ti-user"></i> actor name</li>
+            <li><i class="ti ti-info-circle"></i> oc's age</li>
+            <li><i class="ti ti-cake"></i> oc's birthday</li>
+            <li><i class="ti ti-heart"></i> sexuality</li>
+            <li><i class="ti ti-gender-genderfluid"></i> gender</li>
+        </div>
+        </div>
+        <div class="biography"> <!-- character bio, it can be as long as you want -->
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus libero maiores explicabo, et magnam porro repudiandae, temporibus ut enim beatae saepe facilis atque iure at dolorem architecto corporis tenetur eius.</p>
+
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque, ipsa?</p>
+            </div>
+        <div class="links"> <!-- character links -->
+            <a href="/">bio</a>
+            <a href="/">char tag</a>
+            <a href="/">link #3</a>
+        </div>
+    </div>
+    </section>
+        <!-- fifth character ends -->
+
+    </main>
+
+    <a href="http://pouthongwon.tumblr.com" id="credit">theme</a>
+
+</body>
+</html>
