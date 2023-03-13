@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<!--
+
+    wooshik: about page
+    by pouthongwon
+
+    don't get rid of the credit, please
+
+    icons are from http://phosphoricons.com
+
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wooshik: about page</title>
+    <link rel="shortcut icon" href="{Favicon}">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">   
+
+    <!-- phosphor icons -->
+    <script src="https://unpkg.com/phosphor-icons"></script>
+
+    <style type="text/css">
+        :root {
+            --ff-font: 'Poppins', sans-serif;
+            --ff-heading: 'Playfair Display', serif;
+
+            --fs-font: 0.8rem;
+            --fs-heading: 1.4rem;
+
+            --gap-rem-sm: 0.4rem;
+            --gap-rem-med: 0.8rem;
+            --gap-rem-lg: 1.2rem;
+
+            --padding: 0.6rem;
+            --max-width: 30rem;
+        }
+
+        .tmblr-iframe {
+            opacity: 0.8;
+            transform: scale(0.7);
+            transition: all 0.7s ease-in-out;
+            /*filter: invert(100%); uncomment this if you have a light background*/
+        }
+
+        .tmblr-iframe:hover {
+            opacity: 1;
+        }
+
+        *, *::before, *::after, html, body {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            min-height: 100%;
+        }
+
+        body {
+            background: var(--clr-background);
+            color: var(--clr-font);
+            font-family: var(--ff-font);
+            font-size: var(--fs-font);
+            line-height: 1.5;
+            display: grid;
+            grid-template-areas: '. header .'
+            '. content .';
+            grid-template-columns: 0.5fr 1fr 0.5fr;
+            place-items: center;
+        }
+
+        body.dark {
+            --clr-background: #101010;
+            --clr-box: #000;
+            --clr-font: #fff;
+            --clr-borders: #767676;
+            --clr-accent:#eac1c1;
+        }
+
+        body.light {
+            --clr-background: #fefefe;
+            --clr-font: #121212;
+            --clr-borders: #a4a4a4;
+            --clr-accent: #767676;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 1px dashed var(--clr-accent);
+            transition: all 0.7s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--clr-accent);
+            border-color: var(--clr-borders);
+        }
+
+        .ph {
+            font-size: calc(var(--fs-heading) - 0.3rem);
+            color: var(--clr-accent);
+        }
+
+        h1, p, ul, ol {
+            padding: 0;
+            margin: 0;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--ff-heading);
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: var(--fs-heading);
+        }
+
+        h2 {
+            font-size: calc(var(--fs-heading) - 0.2rem);
+        }
+
+        hr {
+            margin-block: var(--padding);
+            border: 0;
+            border-top: 1px solid var(--clr-borders);
+        }
+
+        p + p {
+            margin-top: var(--gap-rem-sm);
+        }
+
+        header {
+            grid-area: header;
+        }
+
+        main {
+            grid-area: content;
+            max-width: var(--max-width);
+        }
+
+        .top {
+            margin: 2rem 0 0;
+            padding: var(--padding);
+            border: 1px dashed var(--clr-accent);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--gap-rem-lg);
+        }
+
+        .top a:not(:last-child), .bottom a:not(:last-child) {
+            margin-right: 0.4rem;
+        }
+
+        .info {
+            margin-block: 1rem;
+            max-width: var(--max-width);
+            max-height: 30rem;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            counter-reset: title;
+            border: 1px dashed var(--clr-accent);
+            padding: calc(var(--padding) + 0.3rem);
+        }
+
+       .section .heading {
+            text-align: center;
+            padding-bottom: var(--padding);
+        }
+
+       .section .heading::before {
+            counter-increment: title;
+            content: counter(title) ". ";
+        }
+
+        .section {
+            max-width: calc(var(--max-width) - 1rem);
+        }
+
+        .section + .section {
+            border-top: 1px dashed var(--clr-borders);
+            padding-block: var(--padding);
+        }
+
+        .section:first-child {
+            padding-bottom: var(--padding);
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap-rem-med);
+        }
+
+        .read ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            counter-reset: number;
+            display: inline-grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap-rem-med);
+        }
+
+        .read ul li::before {
+            counter-increment: number;
+            content: counter(number) ". ";
+        }
+
+        .read .span {
+            grid-column: 1 / -1;
+            padding-top: var(--gap-rem-med);
+        }
+
+        .project {
+            padding: 0 var(--padding) 0;
+            border-left: 1px dashed var(--clr-accent);
+        }
+
+        .title {
+            font-size: calc(var(--fs-heading) - 0.5rem);
+        }
+
+        .bottom {
+            max-width: var(--max-width);
+            padding: var(--padding);
+            text-align: center;
+            border: 1px dashed var(--clr-accent);
+        }
+
+        #credit {
+            position: fixed;
+            bottom: 0.4rem;
+            right: 0.4rem;
+        }
+    </style>
+</head>
+<body class="dark">
+
+  <main>
+
+    <div class="top">
+        <h2>about me</h2>
+        <div class="links">
+            <a href="/">home</a>
+            <a href="/ask">askbox</a>
+            <a href="http://tumblr.com/">dash</a>
+        </div>
+    </div>
+
+
+    <div class="info">
+    
+        <div class="inner">
+
+            <div class="section">
+                <h2 class="heading">stats and updates</h2>
+                <div class="columns">
+                <div class="column"> <!-- stats -->
+                    <p><span class="ph ph-info"></span> hyang, hina, hiyu</p>
+                    <p><span class="ph ph-gender-nonbinary"></span> she/he/it and no pronouns</p>
+                    <p><span class="ph ph-heart"></span> gay, genderfluid</p>
+                    <p><span class="ph ph-thumbs-up"></span> writing, fanfiction, rpf</p>
+                    <p><span class="ph ph-thumbs-down"></span> staring at a blank doc</p>
+                </div>
+
+                <div class="column"> <!-- updates -->
+                    <p><span class="ph ph-television"></span> the glory part 2, class of lies, my dating sim, pandora: beneath the paradise</p>
+                    <p><span class="ph ph-pencil"></span> too much fanfiction</p>
+                    <p><span class="ph ph-monitor"></span> queue is on and posting ten times a day</p>
+                </div>
+                </div>
+            </div>
+
+            <div class="section biography"> <!-- biography -->
+                <h2 class="heading">biography</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum perspiciatis numquam natus facilis ea deleniti vitae veniam ratione sequi nisi.</p>
+            </div>
+
+            <div class="section read"> <!-- before you follow -->
+                <h2 class="heading">before you follow</h2>
+                <ul> <!-- put your criteria here -->
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, quae!</li>
+                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor cupiditate doloribus nobis.</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. A autem aliquid ut!</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officia eveniet explicabo aperiam cumque numquam!</li>
+                </ul>
+                <div class="span"> <!-- an extra space to go on or clarify things -->
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni error reprehenderit quaerat repudiandae deserunt ut quas in asperiores nihil rerum.</p>
+                </div>
+            </div>
+
+            <div class="section"> <!-- works in progress or projects -->
+                <h2 class="heading">works in progress</h2>
+                <div class="project">
+                    <h2 class="title"><a href="/">Lorem ipsum dolor sit amet.</a></h2>
+                    <div class="desc">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nesciunt beatae nihil unde dolore, praesentium quisquam adipisci labore id molestias.</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="project">
+                    <h2 class="title">Lorem ipsum dolor sit amet.</h2>
+                    <div class="desc">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nesciunt beatae nihil unde dolore, praesentium quisquam adipisci labore id molestias.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+    </div>
+
+    <div class="bottom">
+        <a href="/">link #1</a>
+        <a href="/">link #2</a>
+        <a href="/">link #3</a>
+    </div>
+
+  </main>
+
+  <a href="http://youngdaeing.tumblr.com" id="credit">theme</a>
+</body>
+</html>
