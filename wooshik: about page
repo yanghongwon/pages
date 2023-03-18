@@ -198,6 +198,12 @@
             grid-template-columns: 1fr 1fr;
             gap: var(--gap-rem-med);
         }
+        
+        .stat {
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px;
+        }
 
         .read ul {
             list-style-type: none;
@@ -242,7 +248,7 @@
         }
     </style>
 </head>
-<body class="light">
+<body class="dark">
 
   <main>
 
@@ -252,7 +258,7 @@
             <a href="/">home</a>
             <a href="/ask">askbox</a>
             <a href="http://tumblr.com/">dash</a>
-            <a href="http://youngdaeing.tumblr.com">theme</a>
+            <a href="http://youngdaeing.tumblr.com">theme</a> <!-- do not delete, move, or edit -->
         </div>
     </div>
 
@@ -265,17 +271,17 @@
                 <h2 class="heading">stats and updates</h2>
                 <div class="columns">
                 <div class="column"> <!-- stats -->
-                    <p><span class="ph ph-info"></span> hyang, hina, hiyu</p>
-                    <p><span class="ph ph-gender-nonbinary"></span> she/he/it and no pronouns</p>
-                    <p><span class="ph ph-heart"></span> gay, genderfluid</p>
-                    <p><span class="ph ph-thumbs-up"></span> writing, fanfiction, rpf</p>
-                    <p><span class="ph ph-thumbs-down"></span> staring at a blank doc</p>
+                    <p class="stat"><span class="ph ph-info"></span> hyang, hina, hiyu</p>
+                    <p class="stat"><span class="ph ph-gender-nonbinary"></span> she/he/it and no pronouns</p>
+                    <p class="stat"><span class="ph ph-heart"></span> gay, genderfluid</p>
+                    <p class="stat"><span class="ph ph-thumbs-up"></span> writing, fanfiction, rpf</p>
+                    <p class="stat"><span class="ph ph-thumbs-down"></span> staring at a blank doc</p>
                 </div>
 
                 <div class="column"> <!-- updates -->
-                    <p><span class="ph ph-television"></span> the glory part 2, class of lies, my dating sim, pandora: beneath the paradise</p>
-                    <p><span class="ph ph-pencil"></span> too much fanfiction</p>
-                    <p><span class="ph ph-monitor"></span> queue is on and posting ten times a day</p>
+                    <p class="stat"><span class="ph ph-television"></span> the glory part 2, class of lies, my dating sim, pandora: beneath the paradise</p>
+                    <p class="stat"><span class="ph ph-pencil"></span> too much fanfiction</p>
+                    <p class="stat"><span class="ph ph-monitor"></span> queue is on and posting ten times a day</p>
                 </div>
                 </div>
             </div>
@@ -294,7 +300,8 @@
                     <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi officia eveniet explicabo aperiam cumque numquam!</li>
                 </ul>
                 <div class="span"> <!-- an extra space to go on or clarify things -->
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni error reprehenderit quaerat repudiandae deserunt ut quas in asperiores nihil rerum.</p>
+                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nesciunt beatae nihil unde dolore, praesentium quisquam adipisci labore id molestias.</p>
+                   <p class="stat"><span class="ph ph-prohibit"></span> put triggers here, if you want</p>
                 </div>
             </div>
 
@@ -329,6 +336,6 @@
 
   </main>
 
-  <a href="http://youngdaeing.tumblr.com" id="credit">theme</a>
+  <!-- do not delete, move, or edit --> <a href="http://youngdaeing.tumblr.com" id="credit">theme</a>
 </body>
 </html>
