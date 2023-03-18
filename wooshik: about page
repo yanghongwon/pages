@@ -242,7 +242,7 @@
         }
     </style>
 </head>
-<body class="dark">
+<body class="light">
 
   <main>
 
@@ -252,6 +252,7 @@
             <a href="/">home</a>
             <a href="/ask">askbox</a>
             <a href="http://tumblr.com/">dash</a>
+            <a href="http://youngdaeing.tumblr.com">theme</a>
         </div>
     </div>
 
