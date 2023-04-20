@@ -40,6 +40,11 @@
             margin: 0;
             box-sizing: border-box;
         }
+        
+        iframe.tmblr-iframe {
+            transform: scale(0.7);
+            invert: filter(100%); /* delete this line if you have a dark bg */
+        }
 
         body {
             background: var(--clr-background);
@@ -78,20 +83,6 @@
             margin-top: 0.2rem;
         }
 
-        .box {
-                max-width: 12rem;
-                padding: 0.5rem;
-                border: 1px solid var(--clr-borders);
-                position: fixed;
-                top: 0.3rem;
-                left: 0.3rem;
-                text-align: center;
-            }
-
-        .box .title {
-            border-bottom: 1px solid var(--clr-accent);
-        }
-
         .ph {
             font-size: calc(var(--fs-font) + 0.2rem);
             color: var(--clr-accent);
@@ -100,10 +91,10 @@
         main {
             width: 35rem;
             padding: 0.7rem;
-            margin: auto;
+            margin: 0.5rem auto;
         }
 
-        .header, .footer {
+        .header {
             padding: 0.5rem;
             display: flex;
             align-items: center;
@@ -113,6 +104,10 @@
         .header {
             justify-content: space-between;
             gap: var(--gap-rem-lg);
+        }
+        
+        .header a:not(:last-child) {
+            margin-right: 0.3rem;
         }
 
         .header, .grid {
@@ -213,21 +208,6 @@
             grid-column: 1 / -1;
         }
 
-        .footer {
-            justify-content: center;
-            gap: var(--gap-rem-med);
-        }
-
-        .footer a:not(:last-child) {
-            margin-right: 0.3rem;
-        }
-
-        .footer img {
-            border-radius: 50%;
-            padding: 0.3rem;
-            border: 1px solid var(--clr-accent);
-        }
-
         .theme {
             position: fixed;
             bottom: 0.3rem;
@@ -241,10 +221,6 @@
     <!-- styling ends -->
 </head>
 <body>
-    <div class="box">
-        <div class="title">multi. version</div>
-        <a href="/kunwari-v2">link</a>
-    </div>
 
     <main>
     <div class="header">
