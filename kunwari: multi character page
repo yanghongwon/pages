@@ -1,0 +1,327 @@
+<!--
+
+kunwari (multi character version) by pouthongwon
+
+- don't delete the theme credit, please
+- enjoy
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kunwari: multi-characters page</title>
+    <link rel="shortcut icon" href="{Favicon}">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <!-- phosphor icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- styling starts -->
+    <style type="text/css">
+        /* custom styling starts */
+            :root {
+                --ff-font: 'Noto Sans', sans-serif;
+                --ff-secondary: 'Playfair Display', serif;
+
+                --fs-font: 0.9rem;
+
+                --clr-accent: #eebaca;
+                --clr-background: #fff;
+                --clr-box: #ededed;
+                --clr-borders: #acacac;
+                --clr-font: #000;
+                --clr-link: #212121;
+
+                --gap-rem-sm: 0.4rem;
+                --gap-rem-med: 0.5rem;
+                --gap-rem-lg: 0.8rem;
+            }
+            /* custom styling ends */
+
+            *, *:before, *:after, html {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            
+            iframe.tmblr-iframe {
+            transform: scale(0.7);
+            filter: invert(100%); /* delete this if you're using a dark bg */
+        }
+
+            body {
+                background: var(--clr-background);
+                font-family: var(--ff-font);
+                font-size: var(--fs-font);
+                color: var(--clr-font);
+                line-height: 1.5;
+            }
+
+            body.dark {
+                --clr-accent: #eebaca;
+                --clr-background: #2b2b2b;
+                --clr-box: #000;
+                --clr-borders: #767676;
+                --clr-font: #fff;
+                --clr-link: #d3d3d3;
+            }
+
+            a {
+                color: var(--clr-link);
+                text-decoration: none;
+                transition: 0.7s ease-in-out;
+            }
+
+            a:hover {
+                color: var(--clr-accent);
+            }
+
+            h1, h2, h3, p {
+                margin: 0;
+                padding: 0;
+            }
+
+            p + p {
+                margin-top: 0.2rem;
+            }
+
+            main {
+                max-width: 40rem;
+                margin: 3rem auto;
+                padding: 0.7rem;
+            }
+
+            .header {
+                background: var(--clr-box);
+                padding: 0.6rem;
+                display: flex;
+                align-items: center;
+                gap: var(--gap-rem-med);
+                justify-content: space-between;
+                margin-bottom: 1rem;
+                border-radius: 0.6rem;
+            }
+
+            .title {
+                font-family: var(--ff-secondary);
+                font-weight: 700;
+            }
+
+            .header .title {
+                font-size: calc(var(--fs-font) + 0.2rem);
+            }
+
+            .header p {
+                margin-left: auto;
+            }
+
+            .header a:not(:last-child) {
+                margin-right: 0.3rem;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .character {
+                max-width: calc(40rem / 3);
+            }
+
+            .info img {
+                width: 3.5rem;
+                height: 3.5rem;
+                object-fit: cover;
+                border: 4px solid var(--clr-background);
+                border-radius: 50%;
+                position: absolute;
+                left: -6%;
+                top: -4%;
+            }
+
+            .info {
+                position: relative;
+            }
+
+            .info .title {
+                padding: 0.6rem;
+                text-align: right;
+                border-bottom-right-radius: 100vw;
+                border-top-right-radius: 100vw;
+                font-size: calc(var(--fs-font) + 0.1rem);
+                margin-bottom: 0.5rem;
+            }
+
+            .info .title, .info .desc, .info .icons {
+                background: var(--clr-box);
+            }
+
+            .info .icons {
+                padding: 0.4rem;
+                margin-bottom: 0.5rem;
+                border-radius: 100vw;
+                text-align: center;
+            }
+
+            .info .icon {
+                max-width: calc((40rem / 3) / 3);
+                display: inline;
+                padding-inline: 0.3rem;
+            }
+
+            .info .icon:not(:last-child) {
+                border-right: 1px solid var(--clr-borders);
+            }
+
+            .info .icon:first-child {
+                padding-left: 0rem;
+            }
+            
+            .info .info:last-child {
+                padding-right: 0;
+            }
+
+            .info .desc {
+                border-radius: 0.6rem;
+                max-height: 150px;
+                overflow-y: scroll;
+                padding: 0.4rem;
+            }
+
+            .theme {
+                position: fixed;
+                bottom: 0.3rem;
+                right: 0.3rem;
+            }
+
+            .theme a {
+                border-bottom: 1px solid var(--clr-accent);
+            }
+    </style>
+    <!-- styling ends -->
+</head>
+<body> <!-- add 'class="dark" if you want a dark color scheme -->
+    
+    <main>
+        <div class="header">
+            <span class="title">kunwari: multi-character version</span>
+            <p>
+                <a href="/">index</a>
+                <a href="/ask">askbox</a>
+                <a href="http://tumblr.com">dash</a>
+                <a href="/">link #1</a>
+                <a href="/">link #2</a>
+            </p>
+        </div>
+
+        <div class="container">
+            <div class="grid">
+
+                <div class="character">
+                    <div class="info">
+                        <img src="https://i.imgur.com/2DcfE8I.jpg">
+                        <div class="title">ji seoyun</div>
+                        <div class="icons">
+                            <span class="icon"><span class="ph ph-user"></span> <a href="#">bio</a></span>
+                            <span class="icon"><span class="ph ph-hash"></span> <a href="#">tag</a></span>
+                            <span class="icon"><span class="ph ph-instagram-logo"></span> <a href="#">link</a></span>
+                        </div>
+                        <div class="desc">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, facere illo odio nulla corporis molestiae. Eveniet libero alias maiores minima.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character">
+                    <div class="info">
+                        <img src="https://i.imgur.com/2DcfE8I.jpg">
+                        <div class="title">seo yijun</div>
+                        <div class="icons">
+                            <span class="icon"><span class="ph ph-user"></span> <a href="#">bio</a></span>
+                            <span class="icon"><span class="ph ph-hash"></span> <a href="#">tag</a></span>
+                            <span class="icon"><span class="ph ph-instagram-logo"></span> <a href="#">link</a></span>
+                        </div>
+                        <div class="desc">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, facere illo odio nulla corporis molestiae. Eveniet libero alias maiores minima.</p>
+
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sunt quidem tempora ullam dicta autem facere soluta magnam natus nemo rerum quibusdam, consectetur totam eaque maiores atque nobis officia corrupti optio harum! Obcaecati consequuntur laborum dolore doloremque quo laudantium animi!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character">
+                    <div class="info">
+                        <img src="https://i.imgur.com/2DcfE8I.jpg">
+                        <div class="title">yang wonhyang</div>
+                        <div class="icons">
+                            <span class="icon"><span class="ph ph-user"></span> <a href="#">bio</a></span>
+                            <span class="icon"><span class="ph ph-hash"></span> <a href="#">tag</a></span>
+                            <span class="icon"><span class="ph ph-instagram-logo"></span> <a href="#">link</a></span>
+                        </div>
+                        <div class="desc">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, facere illo odio nulla corporis molestiae. Eveniet libero alias maiores minima.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character">
+                    <div class="info">
+                        <img src="https://i.imgur.com/2DcfE8I.jpg">
+                        <div class="title">yi areumbyeol</div>
+                        <div class="icons">
+                            <span class="icon"><span class="ph ph-user"></span> <a href="#">bio</a></span>
+                            <span class="icon"><span class="ph ph-hash"></span> <a href="#">tag</a></span>
+                            <span class="icon"><span class="ph ph-instagram-logo"></span> <a href="#">link</a></span>
+                        </div>
+                        <div class="desc">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, facere illo odio nulla corporis molestiae. Eveniet libero alias maiores minima.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character">
+                    <div class="info">
+                        <img src="https://i.imgur.com/2DcfE8I.jpg">
+                        <div class="title">ji seoyun</div>
+                        <div class="icons">
+                            <span class="icon"><span class="ph ph-user"></span> <a href="#">bio</a></span>
+                            <span class="icon"><span class="ph ph-hash"></span> <a href="#">tag</a></span>
+                            <span class="icon"><span class="ph ph-instagram-logo"></span> <a href="#">link</a></span>
+                        </div>
+                        <div class="desc">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, facere illo odio nulla corporis molestiae. Eveniet libero alias maiores minima.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character">
+                    <div class="info">
+                        <img src="https://i.imgur.com/2DcfE8I.jpg">
+                        <div class="title">ji seoyun</div>
+                        <div class="icons">
+                            <span class="icon"><span class="ph ph-user"></span> <a href="#">bio</a></span>
+                            <span class="icon"><span class="ph ph-hash"></span> <a href="#">tag</a></span>
+                            <span class="icon"><span class="ph ph-instagram-logo"></span> <a href="#">link</a></span>
+                        </div>
+                        <div class="desc">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, facere illo odio nulla corporis molestiae. Eveniet libero alias maiores minima.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="theme"><a href="http://pouthongwon.tumblr.com">theme</a></div>
+</body>
+</html>
