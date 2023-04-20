@@ -1,0 +1,367 @@
+<!--
+
+kunwari (single character version) by pouthongwon
+
+- don't delete the theme credit, please
+- enjoy
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kunwari: single character page</title>
+    <link rel="shortcut icon" href="{Favicon}">
+
+    <!-- google docs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- phosphor icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- styling starts -->
+    <style type="text/css">
+        :root {
+            --ff-font: 'Noto Sans', sans-serif;
+            --ff-secondary: 'Playfair Display', serif;
+
+            --fs-font: 0.9rem;
+
+            --clr-accent: #a86c6c;
+            --clr-background: #fff;
+            --clr-box: #ededed;
+            --clr-borders: #acacac;
+            --clr-font: #000;
+            --clr-link: #313131;
+
+            --gap-rem-sm: 0.4rem;
+            --gap-rem-med: 0.5rem;
+            --gap-rem-lg: 0.8rem;
+        }
+
+        *, *:before, *:after, html {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        iframe.tmblr-iframe {
+            transform: scale(0.7);
+            filter: invert(100%); /* delete this if you're using a dark bg */
+        }
+
+        body {
+            background: var(--clr-background);
+            font-family: var(--ff-font);
+            font-size: var(--fs-font);
+            color: var(--clr-font);
+            line-height: 1.5;
+        }
+
+        body.dark {
+            --clr-accent: #eebaca;
+            --clr-background: #313131;
+            --clr-box: #000;
+            --clr-borders: #767676;
+            --clr-font: #fff;
+            --clr-link: #d3d3d3;
+        }
+
+        a {
+            color: var(--clr-link);
+            text-decoration: none;
+            transition: 0.7s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--clr-accent);
+            border-color: var(--clr-borders);
+        }
+
+        h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        p + p {
+            margin-top: 0.2rem;
+        }
+
+        .ph {
+            font-size: calc(var(--fs-font) + 0.2rem);
+            color: var(--clr-accent);
+        }
+
+        main {
+            width: 35rem;
+            padding: 0.7rem;
+            margin: 2rem auto;
+        }
+
+        .header, .footer {
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            background: var(--clr-box);
+        }
+
+        .header {
+            justify-content: space-between;
+            gap: var(--gap-rem-lg);
+        }
+
+        .header, .grid {
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            font-family: var(--ff-secondary);
+            font-weight: 700;
+        }
+
+        .title {
+            font-size: calc(var(--fs-font) + 0.2rem);
+        }
+        
+        .column .title {
+            font-size: var(--fs-font);
+        }
+
+        .description {
+            text-align: right;
+            justify-content: flex-end;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--gap-rem-med);
+        }
+
+        .column {
+            padding: 0.6rem;
+            background: var(--clr-box);
+            max-height: 200px;
+            overflow: scroll;
+        }
+
+        .intro {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: var(--gap-rem-sm);
+        }
+
+        .intro img, .footer img, .connect img {
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            object-fit: cover;
+        }
+
+        .connect {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: var(--gap-rem-sm);
+        }
+
+        .connect p {
+            margin-left: auto;
+        }
+
+        .desc {
+            border-left: 1px solid var(--clr-borders);
+            padding-left: 0.4rem;
+            margin-top: 0.4rem;
+            margin-left: 1.3rem;
+            text-align: left;
+        }
+
+        .group, .stats {
+            padding-block: 0.4rem;
+        }
+
+        .group:first-of-type, .stats:first-of-type {
+            padding-top: 0rem;
+        }
+
+        .group:last-of-type, .stats:last-of-type {
+            padding-bottom: 0rem;
+        }
+
+        .group + .group, .stats + .stats {
+            border-top: 1px solid var(--clr-borders);
+        }
+
+        .span {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--gap-rem-lg);
+        }
+        
+        .span .links {
+            text-align: center;
+        }
+        
+        .span .links a {
+            border-bottom: 1px solid var(--clr-accent);
+        }
+        
+        .span .links a:not(:last-child) {
+            margin-right: 0.4rem;
+        }
+
+        .footer {
+            justify-content: center;
+            gap: var(--gap-rem-med);
+        }
+
+        .footer a:not(:last-child) {
+            margin-right: 0.3rem;
+        }
+
+        .footer img {
+            border-radius: 50%;
+            padding: 0.3rem;
+            border: 1px solid var(--clr-accent);
+        }
+
+        .theme {
+            position: fixed;
+            bottom: 0.3rem;
+            right: 0.3rem;
+        }
+
+        .theme a {
+            border-bottom: 1px solid var(--clr-accent);
+        }
+    </style>
+    <!-- styling ends -->
+</head>
+<body> <!-- add 'class="dark"' if you want a dark color scheme -->
+
+    <main>
+    <div class="header">
+        <span class="title">kunwari: single character</span>
+        <p class="description">keep the description short.</p>
+    </div>
+    
+    <div class="container">
+        <div class="grid">
+            
+            <div class="column"> <!-- intro and description -->
+                <div class="intro">
+                    <img src="https://i.imgur.com/V5o7Q5O.jpg">
+                    <span class="title">nam siwan</span>
+                </div>
+                <div class="desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates alias porro rem voluptatem deleniti cumque excepturi reiciendis odit cupiditate corporis.
+                </div>
+            </div>
+            
+            <div class="column"> <!-- stats -->
+                <div class="stats">
+                    <span class="ph ph-heart"></span> <span class="title">sexuality</span>
+                    <p>bisexual</p>
+                </div>
+                <div class="stats">
+                    <span class="ph ph-users"></span> <span class="title">gender</span>
+                    <p>cis guy</p>
+                </div>
+                <div class="stats">
+                    <span class="ph ph-thumbs-up"></span> <span class="title">likes</span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, consequatur.</p>
+                </div>
+                <div class="stats">
+                    <span class="ph ph-thumbs-down"></span> <span class="title">dislikes</span>
+                    <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem, excepturi debitis velit beatae dolore officia?</p>
+                </div>
+            </div>
+            
+            <div class="column"> <!-- verses -->
+                <div class="group">
+                    <span class="title">verse #1</span>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere nobis dignissimos voluptatum, debitis maxime explicabo quae quia officia nesciunt tempore?</p>
+                </div>
+                
+                <div class="group">
+                    <span class="title">verse #1</span>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere nobis dignissimos voluptatum, debitis maxime explicabo quae quia officia nesciunt tempore?</p>
+                </div>
+                
+                <div class="group">
+                    <span class="title">verse #1</span>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere nobis dignissimos voluptatum, debitis maxime explicabo quae quia officia nesciunt tempore?</p>
+                </div>
+            </div>
+            
+            <div class="column"> <!-- connections -->
+                    <div class="group">
+                        <div class="connect">
+                        <img src="https://i.imgur.com/40KGj1i.jpg">
+                        <span class="name sm">janguk</span>
+                        <p>boyfriend</p>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="connect">
+                            <img src="https://i.imgur.com/40KGj1i.jpg">
+                            <span class="name sm">janguk</span>
+                            <p>best friend</p>
+                            </div>
+                    </div>
+                    <div class="group">
+                        <div class="connect">
+                            <img src="https://i.imgur.com/40KGj1i.jpg">
+                            <span class="name sm">janguk</span>
+                            <p>enemy</p>
+                            </div>
+                    </div>
+                    <div class="group">
+                        <div class="connect">
+                            <img src="https://i.imgur.com/40KGj1i.jpg">
+                            <span class="name sm">janguk</span>
+                            <p>annoying neighbour</p>
+                            </div>
+                    </div>
+            </div>
+            
+            <div class="column span"> <!-- links -->
+            <div class="title">links</div>
+               <div class="links">
+                   <a href="#">biography</a>
+                   <a href="#">tag</a>
+                   <a href="#">aesthetics</a>
+                   <a href="#">faceclaim's instagram</a>
+               </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="footer">
+        <div class="links">
+            <a href="/">index</a>
+            <a href="/ask">askbox</a>
+            <a href="http://tumblr.com/">dashboard</a>
+        </div>
+        <img src="https://i.imgur.com/KkMlyfe.jpg">
+        <div class="links">
+            <a href="#">link #1</a>
+            <a href="#">link #2</a>
+            <a href="#">link #3</a>
+        </div>
+    </div>
+    </main>
+
+    <div class="theme"><a href="http://pouthongwon.tumblr.com">theme</a></div>
+</body>
+</html>
