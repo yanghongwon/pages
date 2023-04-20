@@ -1,3 +1,12 @@
+<!--
+
+kunwari (single character version) by pouthongwon
+
+- don't delete the theme credit, please
+- enjoy
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +52,7 @@
         
         iframe.tmblr-iframe {
             transform: scale(0.7);
-            invert: filter(100%); /* delete this line if you have a dark bg */
+            filter: invert(100%); /* delete this if you're using a dark bg */
         }
 
         body {
@@ -58,7 +67,7 @@
             --clr-accent: #eebaca;
             --clr-background: #313131;
             --clr-box: #000;
-            --clr-borders: #313131;
+            --clr-borders: #767676;
             --clr-font: #fff;
             --clr-link: #d3d3d3;
         }
@@ -91,10 +100,10 @@
         main {
             width: 35rem;
             padding: 0.7rem;
-            margin: 0.5rem auto;
+            margin: 4rem auto;
         }
 
-        .header {
+        .header, .footer {
             padding: 0.5rem;
             display: flex;
             align-items: center;
@@ -114,7 +123,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .title, .name {
+        .title {
             font-family: var(--ff-secondary);
             font-weight: 700;
         }
@@ -122,8 +131,8 @@
         .title {
             font-size: calc(var(--fs-font) + 0.2rem);
         }
-
-        .sm {
+        
+        .column .title {
             font-size: var(--fs-font);
         }
 
@@ -178,16 +187,6 @@
             text-align: left;
         }
 
-        .col {
-            margin-top: 0.4rem;
-            padding-top: 0.4rem;
-            border-top: 1px solid var(--clr-borders);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--gap-rem-med);
-        }
-
         .group, .stats {
             padding-block: 0.4rem;
         }
@@ -206,6 +205,22 @@
 
         .span {
             grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--gap-rem-lg);
+        }
+        
+        .span .links {
+            text-align: center;
+        }
+        
+        .span .links a {
+            border-bottom: 1px solid var(--clr-accent);
+        }
+        
+        .span .links a:not(:last-child) {
+            margin-right: 0.4rem;
         }
 
         .theme {
@@ -220,14 +235,14 @@
     </style>
     <!-- styling ends -->
 </head>
-<body>
+<body> <!-- add 'class="dark"' if you want a dark color scheme -->
 
     <main>
     <div class="header">
         <span class="title">kunwari: single character</span>
         <div class="links">
-            <a href="/">index</a>
-            <a href="/ask">askbox</a>
+            <a href="#">index</a>
+            <a href="/ask">inbox</a>
             <a href="http://tumblr.com/">dashboard</a>
             <a href="#">link #1</a>
             <a href="#">link #2</a>
@@ -236,55 +251,54 @@
     
     <div class="container">
         <div class="grid">
-            <div class="column c1">
+            
+            <div class="column"> <!-- intro and description -->
                 <div class="intro">
                     <img src="https://i.imgur.com/V5o7Q5O.jpg">
-                    <span class="name">ji seoyun</span>
+                    <span class="title">nam siwan</span>
                 </div>
                 <div class="desc">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates alias porro rem voluptatem deleniti cumque excepturi reiciendis odit cupiditate corporis.
                 </div>
-                <div class="links col">
-                    <a href="#">faceclaim</a>
-                    <a href="#">tag</a>
-                    <a href="#">biography</a>
-                </div>
             </div>
-            <div class="column c2">
-                <div class="group">
-                    <span class="title">verse #1</span>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere nobis dignissimos voluptatum, debitis maxime explicabo quae quia officia nesciunt tempore?</p>
-                </div>
-                
-                <div class="group">
-                    <span class="title">verse #1</span>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere nobis dignissimos voluptatum, debitis maxime explicabo quae quia officia nesciunt tempore?</p>
-                </div>
-                
-                <div class="group">
-                    <span class="title">verse #1</span>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere nobis dignissimos voluptatum, debitis maxime explicabo quae quia officia nesciunt tempore?</p>
-                </div>
-            </div>
-            <div class="column c3">
+            
+            <div class="column"> <!-- stats -->
                 <div class="stats">
-                    <span class="ph ph-heart"></span> <span class="title sm">sexuality</span>
+                    <span class="ph ph-heart"></span> <span class="title">sexuality</span>
                     <p>bisexual</p>
                 </div>
                 <div class="stats">
-                    <span class="ph ph-users"></span> <span class="title sm">gender</span>
+                    <span class="ph ph-users"></span> <span class="title">gender</span>
                     <p>cis guy</p>
                 </div>
                 <div class="stats">
-                    <span class="ph ph-thumbs-up"></span> <span class="title sm">likes</span>
+                    <span class="ph ph-thumbs-up"></span> <span class="title">likes</span>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, consequatur.</p>
                 </div>
                 <div class="stats">
-                    <span class="ph ph-thumbs-down"></span> <span class="title sm">dislikes</span>
+                    <span class="ph ph-thumbs-down"></span> <span class="title">dislikes</span>
                     <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem, excepturi debitis velit beatae dolore officia?</p>
                 </div>
             </div>
-            <div class="column c4">
+            
+            <div class="column"> <!-- verses -->
+                <div class="group">
+                    <span class="title">verse #1</span>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere nobis dignissimos voluptatum, debitis maxime explicabo quae quia officia nesciunt tempore?</p>
+                </div>
+                
+                <div class="group">
+                    <span class="title">verse #1</span>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere nobis dignissimos voluptatum, debitis maxime explicabo quae quia officia nesciunt tempore?</p>
+                </div>
+                
+                <div class="group">
+                    <span class="title">verse #1</span>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere nobis dignissimos voluptatum, debitis maxime explicabo quae quia officia nesciunt tempore?</p>
+                </div>
+            </div>
+            
+            <div class="column"> <!-- connections -->
                     <div class="group">
                         <div class="connect">
                         <img src="https://i.imgur.com/40KGj1i.jpg">
@@ -314,13 +328,20 @@
                             </div>
                     </div>
             </div>
-            <div class="column span">
-               <p><span class="ph ph-warning-circle"></span> put anything you want in this box. feel free to delete it if that's what you want to do. you can also put some warnings, or things that squick your character...</p>
+            
+            <div class="column span"> <!-- links -->
+            <div class="title">links</div>
+               <div class="links">
+                   <a href="#">biography</a>
+                   <a href="#">tag</a>
+                   <a href="#">aesthetics</a>
+                   <a href="#">faceclaim's instagram</a>
+               </div>
             </div>
         </div>
 
     </div>
-
+    
     </main>
 
     <div class="theme"><a href="http://pouthongwon.tumblr.com">theme</a></div>
