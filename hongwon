@@ -1,0 +1,479 @@
+<!--
+
+hongwon (revamp): an about page by pouthongwon
+
+- don't delete the theme credit, please
+- icons are from phosphor icons
+- carousel tutorial from yeoli themes
+- fonts are from google fonts
+- tippy tooltips tutorial by eossa
+
+note: if you want to make this javascript free, delete the parts that are labelled 'tooltips'
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hongwon (revamp)</title>
+    <link rel="shortcut icon" href="{Favicon}">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@600;700&family=Rethink+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- phosphor icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- tooltips script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
+
+    <style type="text/css">
+    
+        /* custom properties START */
+        :root {
+            --clr-background: #191919;
+            --clr-content: #212121;
+            --clr-text: #fff;
+            --clr-links: #eee;
+            --clr-accent: #f2d1d1;
+            --clr-borders: #505050;
+
+            --fs-400: 0.9rem;
+            --fs-500: 1.2rem;
+            --fs-600: 1.5rem;
+
+            --ff-text: 'Rethink Sans', sans-serif;
+            --ff-heading: 'DM Serif Display', serif;
+        }
+        /* custom properties END */
+        
+        .tmblr-iframe {
+            transform: scale(0.8);
+            -webkit-transform: scale(0.8);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        
+
+        body {
+            background: var(--clr-background);
+            color: var(--clr-text);
+            font-family: var(--ff-text);
+            font-size: var(--fs-400);
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1, h2, h3, p {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul[class], ul[id], ol[class], ol[id] {
+            list-style: none;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--ff-heading);
+        }
+
+        h1 {
+            font-size: var(--fs-600);
+        }
+
+        h2 {
+            font-size: var(--fs-500);
+        }
+
+        h3 {
+            font-size: var(--fs-400);
+        }
+
+        p + p {
+            margin-top: 0.6rem;
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #carousel, .navigation {
+            flex: initial;
+            display: block;
+        }
+
+        #carousel {
+            overflow: hidden;
+            width: 25rem;
+            height: 25rem;
+            background: var(--clr-content);
+            border-radius: 0.4rem;
+        }
+
+        .p-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        #button_a:checked ~ #carousel .p-wrapper {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        #button_b:checked ~ #carousel .p-wrapper {
+            -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+        }
+
+        [class^="panel_"] {
+            overflow: auto;
+            position: relative;
+            width: inherit;
+            height: inherit;
+            padding: 1rem;
+        }
+
+        .navigation {
+            margin-left: 2rem;
+        }
+
+        [class^="label_"], .navigation .nav_link {
+            margin: 0.4rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.3rem;
+            text-align: center;
+            border: 1px solid var(--clr-borders);
+            width: 2rem;
+            height: 2rem;
+            line-height: 2rem;
+        }
+
+        [class^="ph"] {
+            font-size: 1rem;
+        }
+
+        #button_a:checked ~ .navigation .label_a, 
+        #button_b:checked ~ .navigation .label_b {
+            background: var(--clr-text);
+            color: var(--clr-background);
+        }
+
+        .panel_a {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .a_top {
+            padding-bottom: 0.6rem;
+            border-bottom: 1px dashed var(--clr-borders);
+        }
+
+        .a_img {
+            width: 5rem;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+        }
+
+        .a_title, .b_title, .b_updates span {
+            font-family: var(--ff-heading);
+            font-size: var(--fs-500);
+        }
+
+        .a_title, .b_updates span {
+            box-shadow: 0 -6px 0 var(--clr-accent) inset;
+            -webkit-box-shadow: 0 -6px 0 var(--clr-accent) inset;
+        }
+
+        .a_stats {
+            padding-block: 0.5rem;
+            border-bottom: 1px dashed var(--clr-borders);
+            display: flex;
+            justify-content: center;
+            margin-inline: auto;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .a_stats li {
+            list-style: none;
+            text-align: center;
+        }
+
+        .a_stats li:not(:last-child) {
+            border-right: 1px dashed var(--clr-borders);
+            padding-right: 1rem;
+        }
+
+        .a_stats:last-of-type {
+            border-top: 1px dashed var(--clr-borders);
+        }
+
+        .b_col {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-block: 0.5rem;
+        }
+
+        .b_col:first-child {
+            padding-top: 0;
+        }
+
+        .b_col:last-child {
+            padding-bottom: 0;
+        }
+
+        .b_col + .b_col {
+            border-top: 1px solid var(--clr-borders);
+        }
+
+        .b_title {
+            transform: rotate(180deg);
+            writing-mode: vertical-rl;
+            box-shadow: inset 9px 0px 0 var(--clr-accent);
+            -webkit-box-shadow: inset 9px 0 0 0 var(--clr-accent);
+            padding: 0;
+        }
+
+        .b_block {
+            padding-left: 1rem;
+            border-left: 1px solid var(--clr-borders);
+        }
+
+        .b_block ul, .b_block ol {
+            padding-left: 1rem;
+        }
+
+        .b_updates {
+            border-top: 1px solid var(--clr-borders);
+            padding-top: 0.5rem;
+        }
+
+        .b_updates li {
+            list-style: none;
+            padding-block: 0.5rem;
+        }
+
+        .b_updates li:first-child {
+            padding-top: 0;
+        }
+
+        .b_updates li:not(:last-child) {
+            border-bottom: 1px solid var(--clr-borders);
+        }
+
+        .b_updates li:last-child {
+            padding-bottom: 0;
+        }
+
+        .navigation a {
+            color: var(--text);
+        }
+
+        a span.nav_link:hover, .nav_link:hover {
+            background: var(--clr-accent);
+            color: var(--clr-background);
+            transition: all 0.7s ease-in-out;
+            -webkit-transition: all 0.7s ease-in-out;
+        }
+
+        span.credit a {
+            color: var(--clr-links);
+            border: 1px solid var(--clr-borders);
+            padding: 5px;
+            border-radius: 0.3rem;
+            width: 2rem;
+            height: 2rem;
+            line-height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            bottom: 0.5rem;
+            right: 0.5rem;
+        }
+
+        /* tooltips css */
+        .tippy-tooltip.custom-theme {
+            background-color: var(--clr-text);
+            color: var(--clr-background);
+            text-align: center;
+            transition: all 0.7s ease-in-out;
+            -webkit-transition: all 0.7s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input hidden type="radio" name="carousel-control" id="button_a" checked/>
+        <input hidden type="radio" name="carousel-control" id="button_b"/>
+
+        <div id="carousel">
+
+            <div class="p-wrapper">
+
+                <section class="panel_a">
+                    
+                    <div class="a_top">
+                        <img src="https://i.pinimg.com/564x/7f/81/cf/7f81cfe37919ecc4e9700e14c535563b.jpg" class="a_img"/>
+                        <div class="top_info">
+                            <h1>put your name here.</h1>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aut.</p>
+                        </div>
+                    </div>
+
+                    <div class="a_stats">
+                        <li><i class="ph ph-user"></i> name(s)</li>
+                        <li><i class="ph ph-info"></i> pronouns</li>
+                        <li><i class="ph ph-flag"></i> timezone</li>
+                    </div>
+                    
+                    <div class="box_a">
+                        <span class="a_title">biography.</span>
+                        <div class="a_bio">
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos similique, tempora ullam accusamus magni modi eaque impedit! Reprehenderit quisquam, harum magni nisi soluta omnis expedita, est animi illo quaerat impedit.</p>
+
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, doloribus? Repellendus adipisci, numquam dignissimos possimus animi laboriosam natus molestias fuga porro ut. Exercitationem laboriosam, totam officia tempore perspiciatis libero. Laboriosam minus expedita obcaecati aspernatur maxime corporis ipsa maiores architecto enim.</p>
+                        </div>
+                    </div>
+
+                    <div class="a_stats">
+                        <li><i class="ph ph-heart"></i> sexuality</li>
+                        <li><i class="ph ph-cake"></i> birthday</li>
+                        <li><i class="ph ph-flag"></i> timezone</li>
+                    </div>
+
+                </section>
+
+                <section class="panel_b">
+                    
+                    <div class="box_b">
+
+                            <div class="b_col">
+                               <span class="b_title">before you follow</span>
+                                
+                                <div class="b_block">
+                                <p>real-person shipping, real-person fanfiction, poly ships, and i don't tag that often.</p>
+
+                                <p>reblog content: my favorite people, aesthetics, fic insp, kdramas and k-actors, and other things that i can't think of right now</p>
+                                </div>
+                            </div>
+
+                            <div class="b_col">
+                                <span class="b_title">don't follow if</span>
+                                
+                                <div class="b_block">
+                                    <p>
+                                        <ul>
+                                            <li>here's one criteria</li>
+                                            <li>another criteria</li>
+                                            <li>and one more</li>
+                                            </ul>
+                                            <ol>
+                                                <li>one</li>
+                                                <li>two</li>
+                                                <li>three</li>
+                                            </ol>
+                                    </p>
+                                    </div>
+                            </div>
+
+                        <div class="b_updates">
+                            <li><span>watching:</span> the worst of evil, given, doona!</li>
+                            <li><span>listening:</span> yang hongwon</li>
+                            <li><span>reading:</span> half a soul, neon gods </li>
+                        </div>
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+        <div class="navigation">
+            <a href="/" title="index">
+                <span class="nav_link"><i class="ph ph-house"></i></span>
+            </a>
+           
+            <a href="/ask" title="message">
+                <span class="nav_link"><i class="ph ph-envelope"></i></span>
+            </a>
+            
+            <span class="nav_link">
+            <label for="button_a" class="label_a">
+                <span><i class="ph ph-user"></i></span>
+            </label>
+        </span>
+           
+        <span class="nav_link">
+            <label for="button_b" class="label_b">
+                <span><i class="ph ph-list"></i></span>
+            </label>
+           </span>
+           
+           <a href="http://tumblr.com/" title="dashboard">
+                <span class="nav_link"><i class="ph ph-dots-three-circle"></i></span>
+           </a>
+            
+           <a href="/" title="link 1">
+                <span class="nav_link"><i class="ph ph-link"></i></span>
+            </a>
+
+            <a href="/" title="link 2">
+                <span class="nav_link"><i class="ph ph-link"></i></span>
+            </a>
+
+        </div>
+
+    </div>
+
+    <span class="credit">
+        <a href="http://pouthongwon.tumblr.com" title="theme by pouthongwon"><i class="ph ph-eyeglasses"></i></a>
+    </span>
+
+    <!-- tooltips script (cont.) -->
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+
+    <script>
+        tippy('[title]', {
+          theme: 'custom',
+          arrow: false,
+          placement: 'right',
+          zIndex: 9999999999,
+          maxWidth: 300,
+          duration: 700,
+      
+          content(reference) {
+            const title = reference.getAttribute('title');
+            reference.removeAttribute('title');
+            return title;
+          },
+        });
+      </script>
+</body>
+</html>
