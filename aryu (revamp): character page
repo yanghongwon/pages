@@ -1,0 +1,553 @@
+<!--
+
+aryu (revamp): character page by pouthongwon
+
+- don't delete the credit
+- send asks to http://pouthongwon.tumblr.com if you have any questions
+- icons are from iconsax
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>character page</title>
+    <link rel="shortcut icon" href="{Favicon}">
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- iconsax -->
+    <link href="https://iconsax.gitlab.io/i/icons.css" rel="stylesheet">
+
+    <!-- styles start -->
+    <style type="text/css">
+        /* custom editing start */ 
+        :root {
+            --clr-background: #212121;
+            --clr-content: #191919;
+            --clr-text: #fff;
+            --clr-borders: #505050;
+            --clr-accent: #7a9cb3;
+            --clr-links: #eee;
+
+            --ff-text: 'Rethink Sans', sans-serif;
+
+            --fs-text: 0.9rem;
+
+            --box-shadow: 21,21,21;
+        }
+        /* custom editing end */
+
+        .tmblr-iframe {
+            transform: scale(0.75);
+            /* (uncomment this if you have a light background)
+            filter: invert(100%);
+            */
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            background: var(--clr-background);
+            font-family: var(--ff-text);
+            font-size: var(--fs-text);
+            color: var(--clr-text);
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--clr-links);
+            transition: all 0.7s ease;
+        }
+
+        a:hover {
+            color: var(--clr-accent)
+        }
+
+        h1, h2, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: calc(var(--fs-text) + 0.4rem);
+        }
+
+        h2 {
+            font-size: calc(var(--fs-text) + 0.2rem)
+        }
+
+        p + p {
+            margin-top: 0.7rem;
+        }
+
+        .iconsax {
+            font-size: calc(var(--fs-text) + 0.2rem);
+        }
+
+        .wrapper {
+            padding-inline: 0.5rem;
+            padding-bottom: 0.5rem;
+            background: var(--clr-content);
+            width: 100vh;
+            display: grid;
+            grid-template-areas: 'header header'
+            'sidebar content';
+            grid-template-columns: 190px 1fr;
+            gap: 1rem;
+            margin: 6rem auto;
+            align-items: start;
+            box-shadow: 0 0 8px 8px rgba(var(--box-shadow), 0.7);
+        }
+
+        header {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 0.5rem;
+            border-bottom: 1px solid var(--clr-borders);
+        }
+
+        header h1 {
+            max-width: 60%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .header-links a:not(:last-child) {
+            margin-right: 0.6rem;
+        }
+
+        aside {
+            grid-area: sidebar;
+            position: sticky;
+            top: 0;
+            left: 0;
+            padding: 0.6rem 1rem 0;
+        }
+
+        .aside-icon {
+            width: 5rem;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .aside-links i, .char-icons i {
+            margin-right: 10px;
+        }
+
+        .aside-links a {
+            display: block;
+            padding-block: 0.7rem;
+        }
+
+        .aside-links a:not(:last-child), .char-stats li:not(:last-child) {
+            border-bottom: 1px solid var(--clr-borders);
+        }
+
+        .aside-links a:not(:last-child):hover {
+            border-color: var(--clr-text);
+        }
+
+        .aside-links a:last-child, .char-stats li:last-child {
+            padding-bottom: 0;
+        }
+
+        .grid {
+            border-left: 1px solid var(--clr-borders);
+            padding-inline: 1rem;
+            grid-area: content;
+        }
+
+        .char {
+            padding: 1rem;
+        }
+
+        .char + .char {
+            padding-top: 1rem;
+            border-top: 1px solid var(--clr-borders);
+        }
+
+        .char:first-of-type {
+            padding-top: 0;
+        }
+
+        .char:last-of-type {
+            padding-bottom: 0.5rem;
+        }
+
+        .char-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .char-name span {
+            font-size: var(--fs-text);
+            display: flex;
+            align-items: center;
+        }
+
+        .char-name::after {
+            content: '';
+            height: 1px;
+            background: var(--clr-accent);
+            flex: 1;
+            margin-left: 0.4rem;
+        }
+
+        .char-name span::before {
+            content: '';
+            width: 6px;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            background: var(--clr-accent);
+            margin-inline: 0.4rem;
+        }
+
+        .char-name span::after {
+            content: '.';
+        }
+
+        .char-info {
+            display: flex;
+            align-items: start;
+            justify-content: left;
+            gap: 0.6rem;
+            padding-block: 0.7rem;
+        }
+
+        .char-info > * {
+            flex: 1;
+        }
+
+        .char-stats, .char-bio {
+            overflow-y: scroll;
+            max-height: 150px;
+        }
+
+        .char-stats {
+            list-style: none;
+        }
+
+        .char-stats li {
+            padding-block: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: left;
+            gap: 10px;
+        }
+
+        .char-stats li:first-child {
+            padding-top: 0;
+        }
+
+        .char-stats li span {
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .char-icons {
+            padding-top: 0.6rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: space-between;
+        }
+        
+        .credit {
+            padding: 0.4rem;
+            border-radius: 0.3rem;
+            border: 1px solid var(--clr-borders);
+            position: sticky;
+            bottom: 0.6rem;
+            right: 0.6rem;
+            background: var(--clr-content);
+            float: right;
+        }
+        
+        .credit i {
+            margin-right: 10px;
+        }
+    </style>
+    <!-- styles end -->
+</head>
+<body>
+    <!-- wrapper starts -->
+    <div class="wrapper">
+        
+        <!-- header -->
+        <header>
+            <!-- header title -->
+            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, dicta?</h1>
+            
+            <!-- header navigation -->
+            <nav class="header-links">
+                <a href="/">link 1</a>
+                <a href="/">link 2</a>
+                <a href="/">link 3</a>
+            </nav>
+        </header>
+        <!-- header -->
+
+        <!-- sidebar -->
+        <aside>
+            <!-- sidebar title and image -->
+            <div class="aside-info">
+                <img src="https://i.pinimg.com/474x/ff/a2/3c/ffa23c0e63b7e1b0b976345ac6876941.jpg" class="aside-icon"> <!-- replace the image url with your own image -->
+                <h1>Lorem, ipsum.</h1>
+            </div>
+
+            <!-- sidebar navigation -->
+            <nav class="aside-links">
+                <a href="/"><i class="iconsax" icon-name="home-2"></i>index</a>
+                <a href="/ask"><i class="iconsax" icon-name="mail"></i>askbox</a>
+                <a href="/archive"><i class="iconsax" icon-name="archive-closed"></i>history</a>
+                <a href="http://tumblr.com"><i class="iconsax" icon-name="grid-apps"></i>dashboard</a>
+            </nav>
+        </aside>
+        <!-- sidebar -->
+
+        <!-- characters -->
+        <div class="grid">
+            
+           <!-- character one -->
+            <div class="char">
+                
+                <!-- character name and faceclaim -->
+                <h2 class="char-name">ji seoyun<span>faceclaim</span></h2>
+                
+                <!-- character information -->
+                <div class="char-info">
+                
+                    <!-- character biography -->
+                    <div class="char-bio">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
+                    </div>
+                    
+                    <!-- character stats-->
+                    <div class="char-stats">
+                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
+                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
+                    </div>
+                </div>
+                
+                <!-- character links -->
+                <div class="char-icons">
+                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
+                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
+                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                </div>
+            </div>
+            <!-- character one -->
+
+            <!-- character two -->
+            <div class="char">
+                
+                <!-- character name and faceclaim -->
+                <h2 class="char-name">seo yijun<span>faceclaim</span></h2>
+                
+                <!-- character information -->
+                <div class="char-info">
+                
+                    <!-- character biography -->
+                    <div class="char-bio">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
+                    </div>
+                    
+                    <!-- character stats-->
+                    <div class="char-stats">
+                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
+                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
+                    </div>
+                </div>
+                
+                <!-- character links -->
+                <div class="char-icons">
+                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
+                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
+                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                </div>
+            </div>
+            <!-- character two -->
+
+            <!-- character three -->
+            <div class="char">
+                
+                <!-- character name and faceclaim -->
+                <h2 class="char-name">seol hyokeun<span>faceclaim</span></h2>
+                
+                <!-- character information -->
+                <div class="char-info">
+                
+                    <!-- character biography -->
+                    <div class="char-bio">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
+                    </div>
+                    
+                    <!-- character stats-->
+                    <div class="char-stats">
+                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
+                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
+                    </div>
+                </div>
+                
+                <!-- character links -->
+                <div class="char-icons">
+                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
+                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
+                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                </div>
+            </div>
+            <!-- character three -->
+
+            <!-- character four -->
+            <div class="char">
+                
+                <!-- character name and faceclaim -->
+                <h2 class="char-name">seo ryun<span>faceclaim</span></h2>
+                
+                <!-- character information -->
+                <div class="char-info">
+                
+                    <!-- character biography -->
+                    <div class="char-bio">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
+                    </div>
+                    
+                    <!-- character stats-->
+                    <div class="char-stats">
+                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
+                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
+                    </div>
+                </div>
+                
+                <!-- character links -->
+                <div class="char-icons">
+                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
+                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
+                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                </div>
+            </div>
+            <!-- character four -->
+
+            <!-- character five -->
+            <div class="char">
+                
+                <!-- character name and faceclaim -->
+                <h2 class="char-name">yi daehwi<span>faceclaim</span></h2>
+                
+                <!-- character information -->
+                <div class="char-info">
+                
+                    <!-- character biography -->
+                    <div class="char-bio">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
+                    </div>
+                    
+                    <!-- character stats-->
+                    <div class="char-stats">
+                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
+                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
+                    </div>
+                </div>
+                
+                <!-- character links -->
+                <div class="char-icons">
+                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
+                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
+                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                </div>
+            </div>
+            <!-- character five -->
+
+            <!-- character six -->
+            <div class="char">
+                
+                <!-- character name and faceclaim -->
+                <h2 class="char-name">eo kyowon<span>faceclaim</span></h2>
+                
+                <!-- character information -->
+                <div class="char-info">
+                
+                    <!-- character biography -->
+                    <div class="char-bio">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
+                    </div>
+                    
+                    <!-- character stats-->
+                    <div class="char-stats">
+                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
+                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
+                    </div>
+                </div>
+                
+                <!-- character links -->
+                <div class="char-icons">
+                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
+                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
+                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                </div>
+            </div>
+            <!-- character six -->
+
+        </div>
+
+    </div>
+    <!-- wrapper ends -->
+    
+    <a href="http://pouthongwon.tumblr.com/" class="credit"><i class="iconsax" icon-name="glasses"></i><span>pouthongwon</span></a>
+</body>
+</html>
