@@ -234,7 +234,7 @@ aryu (revamp): character page by pouthongwon
             display: flex;
             align-items: start;
             justify-content: left;
-            gap: 0.6rem;
+            gap: 1rem;
             padding-block: 0.7rem;
         }
 
