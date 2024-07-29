@@ -111,6 +111,10 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             color: light-dark(var(--accent), var(--dark-accent));
         }
 
+        iframe.tmblr-iframe {
+            display: none;
+        }
+
         main {
             max-width: var(--container-size);
             margin: 4rem auto;
