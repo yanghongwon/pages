@@ -118,8 +118,8 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             object-fit: cover;
         }
 
-        .tmblr-iframe {
-            display: none!important;
+        iframe.tmblr-iframe {
+            display: none!;
         |
 
         main {
