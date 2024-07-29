@@ -118,24 +118,6 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             object-fit: cover;
         }
 
-        .preview {
-            position: fixed;
-            width: 200px;
-            background: light-dark(var(--container), var(--dark-container));
-            padding: 1rem;
-            border: 1px solid light-dark(var(--borders), var(--dark-borders));
-            top: 1rem;
-            left: 1rem;
-        }
-
-        .preview {
-            display: block;
-        }
-
-        .preview .ph-bold {
-            margin-right: 10px;
-        }
-
         main {
             max-width: var(--container-size);
             margin: 4rem auto;
@@ -339,12 +321,6 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
     </style>
 </head>
 <body class="light">
-
-    <div class="preview">
-        <span class="ph-bold ph-sun"></span><a href="/">light version</a>
-        <span class="ph-bold ph-info"></span><a href="/">about page</a>
-        <span class="ph-bold ph-tag-simple"></span><a href="/">tags page</a>
-    </div>
     
     <!-- main wrapper -->
     <main class="main">
