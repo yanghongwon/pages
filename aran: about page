@@ -118,26 +118,6 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
         p + p {
             margin-top: 0.5rem;
         }
-        
-        .preview {
-            width: 450px;
-            margin-inline: auto;
-            position: sticky;
-            top: 1rem;
-            left: 1rem;
-            border: 1px solid light-dark(var(--borders), var(--dark-borders));
-            padding: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            column-gap: 1rem;
-            justify-content: space-between;
-        }
-        
-        .prev-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
 
         main {
             max-width: var(--container-size);
@@ -379,18 +359,6 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
     </style>
 </head>
 <body class="light">
-
-<div class="preview">
-    <span class="prev-link">
-        <span class="ph-bold ph-sun"></span><a href="/aran%20about%20light">light version</a>
-    </span>
-    <span class="prev-link">
-        <span class="ph-bold ph-tag-simple"></span><a href="/aran%20nav%20dark">tags page</a>
-    </span>
-    <span class="prev-link">
-        <span class="ph-bold ph-circle-notch"></span><a href="/aran%20projects%20dark">projects page</a>
-    </span>
-</div>
 
     <!-- main wrapper -->
 
