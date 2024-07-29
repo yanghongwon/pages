@@ -191,6 +191,25 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             border-bottom: 1px solid light-dark(var(--borders), var(--dark-borders));
         }
 
+        .custom-link {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .link .ph-bold {
+            color: light-dark(var(--accent), var(--dark-accent));
+            font-size: calc(var(--fs-body) + 0.1rem);
+        }
+
         .content {
             grid-area: content;
             display: flex;
@@ -326,7 +345,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
 </head>
 <body class="light">
     
-    <!-- main wrapper -->
+   <!-- main wrapper -->
     <main class="main">
 
         <!-- sidebar -->
@@ -389,6 +408,33 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
 
             </div>
             <!-- sidebar: title and description -->
+
+            <!-- sidebar: custom links -->
+
+            <div class="custom-link">
+
+                <span class="link">
+                    <span class="ph-bold ph-user"></span>
+                    <a href="/">custom link 1</a>
+                </span>
+
+                <span class="link">
+                    <span class="ph-bold ph-notebook"></span>
+                    <a href="/">custom link 2</a>
+                </span>
+
+                <span class="link">
+                    <span class="ph-bold ph-users"></span>
+                    <a href="/">custom link 3</a>
+                </span>
+
+                <span class="link">
+                    <span class="ph-bold ph-heart"></span>
+                    <a href="/">custom link 4</a>
+                </span>
+            </div>
+
+            <!-- sidebar: custom links -->
 
         </aside>
         <!-- sidebar -->
