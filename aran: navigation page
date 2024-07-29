@@ -1,0 +1,766 @@
+<!--
+
+
+aran: navigation/tags page
+by pouthongwon
+
+credits:
+- icons by phosphor icons
+- fonts by google fonts
+
+please, please read: change the body tag from 'dark' to 'light' if you want to change the color scheme
+
+
+
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tags/navigation page</title>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- phosphor icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style type="text/css">
+        :root {
+            color-scheme: light dark;
+
+            --background: #f0f0f0;
+            --container: #fff;
+            --text: #000;
+            --links: #252525;
+            --borders: #d3d3d3;
+            --accent: #c785a6;
+
+            --dark-background: #101010;
+            --dark-container: #252525;
+            --dark-text: #fff;
+            --dark-links: #eee;
+            --dark-borders: #505050;
+            --dark-accent: #fceac4;
+
+            --ff-body: 'Poppins', sans-serif;
+            --ff-heading: 'DM Serif Text', serif;
+
+            --fs-body: 0.9rem;
+
+            --container-size: 800px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: light-dark(var(--background), var(--dark-background));
+            color: light-dark(var(--text), var(--dark-text));
+            font-family: var(--ff-body);
+            font-size: var(--fs-body);
+            line-height: 1.5;
+        }
+
+        .light {
+            color-scheme: light;
+        }
+
+        .dark {
+            color-scheme: dark;
+        }
+        
+         iframe.tmblr-iframe {
+           display: none;
+       }
+
+        h1, h2, h3, p, ul[class], ul[id] {
+            padding: 0;
+            margin: 0;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--ff-heading);
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: calc(var(--fs-body) + 0.5rem);
+        }
+
+        h2 {
+            font-size: calc(var(--fs-body) + 0.4rem);
+        }
+
+        h3 {
+            font-size: calc(var(--fs-body) + 0.3rem);
+        }
+
+        a {
+            text-decoration: none;
+            color: light-dark(var(--links), var(--dark-links));
+            transition: all 0.6s ease-in-out;
+        }
+
+        a:hover {
+            color: light-dark(var(--accent), var(--dark-accent));
+        }
+
+        main {
+            max-width: var(--container-size);
+            margin: 4rem auto;
+        }
+
+        .wrapper {
+            container: content-wrapper / inline-size;
+            display: grid;
+            grid-template-areas: 'header header'
+            'content content';
+            grid-template-columns: calc(var(--container-size) - 550px) 1fr;
+            gap: 1rem;
+            align-items: self-start;
+        }
+
+        .topbar {
+            grid-area: header;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid light-dark(var(--borders), var(--dark-borders));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .top-links {
+            margin-left: auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .top-links a {
+            display: flex;
+            align-items: center;
+            padding: 0.4rem;
+            border-radius: 50%;
+            background: light-dark(var(--accent), var(--dark-accent));
+            color: light-dark(var(--background), var(--dark-background));
+        }
+
+        .top-links a:hover {
+            background: light-dark(var(--background), var(--dark-background));
+            color: light-dark(var(--accent), var(--dark-accent));
+        }
+
+        .navigation-links {
+            padding: 1rem;
+            background: light-dark(var(--container), var(--dark-container));
+            border: 1px solid light-dark(var(--borders), var(--dark-borders));
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            gap: 0.5rem;
+            padding-block: 1rem;
+            border-bottom: 1px solid light-dark(var(--borders), var(--dark-borders));
+        }
+
+        .nav-link:first-of-type {
+            padding-top: 0;
+        }
+
+        .nav-link:last-of-type {
+            border: 0;
+            padding-bottom: 0;
+        }
+
+        .nav-link .ph-bold {
+            background: light-dark(var(--accent), var(--dark-accent));
+            color: light-dark(var(--background), var(--dark-background));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.4rem;
+            border-radius: 0.35rem;
+        }
+
+        .boxes-grid {
+            grid-area: content;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .left-side, .center, .right-side {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .box-wrapper {
+            background: light-dark(var(--container), var(--dark-container));
+            border: 1px solid light-dark(var(--borders), var(--dark-borders));
+            padding: 1rem;
+        }
+
+        .box-title {
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid light-dark(var(--borders), var(--dark-borders));
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .box-title .ph-bold {
+            display: flex;
+            align-items: center;
+            background: light-dark(var(--accent), var(--dark-accent));
+            color: light-dark(var(--background), var(--dark-background));
+            padding: 0.4rem;
+        }
+
+        .text {
+            font-family: var(--ff-heading);
+            font-size: calc(var(--fs-body) + 0.15rem);
+            font-weight: 600;
+            border-left: 1px solid light-dark(var(--borders), var(--dark-borders));
+            padding-left: 0.4rem;
+        }
+
+        .tags-list {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+        }
+
+        .credit-name {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            padding: 0.4rem;
+            background: light-dark(var(--text), var(--dark-text));
+            color: light-dark(var(--background), var(--dark-background));
+            border: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-radius: 0.5rem;
+        }
+
+        .credit-name:hover {
+            color: light-dark(var(--text), var(--dark-text));
+            background: light-dark(var(--container), var(--dark-container));
+        }
+
+        @media screen and (width >= 800px) {
+            #credit {
+                display: none;
+            }
+        }
+
+        @media screen and (width <= 800px) {
+            .wrapper {
+                padding: 1rem;
+            }
+
+            .credit-name {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="light">
+    
+     <main>
+
+        <!-- tags list/navigation wrapper -->
+       <div class="wrapper">
+
+        <!-- header: topbar -->
+        <header class="topbar">
+            <!-- header title -->
+            <h1>put a title here</h1>
+            <!-- header title -->
+    
+            <!-- header navigation -->
+            <div class="top-links">
+                <!-- home link -->
+                <a href="/">
+                    <!-- home link icon -->
+                    <span class="ph-bold ph-house"></span>
+                    <!-- home link icon -->
+                </a>
+                <!-- home link -->
+
+                <!-- ask link -->
+                <a href="/ask">
+                    <!-- ask link icon -->
+                    <span class="ph-bold ph-envelope"></span>
+                    <!-- ask link icon -->
+                </a>
+                <!-- ask link -->
+
+                <!-- archive link -->
+                <a href="/archive">
+                    <!-- archive link icon -->
+                    <span class="ph-bold ph-archive"></span>
+                    <!-- archive link icon -->
+                </a>
+                <!-- archive link -->
+
+                <!-- dashboard link -->
+                <a href="http://tumblr.com/">
+                    <!-- dashboard link icon -->
+                    <span class="ph-bold ph-sign-out"></span>
+                    <!-- dashboard link icon -->
+                </a>
+                <!-- dashboard link -->
+
+                <!-- credit link, only visible if your screen is < 800px -->
+                <a href="http://pouthongwon.tumblr.com" id="credit">
+                    <!-- credit link icon -->
+                    <span class="ph-bold ph-eyeglasses"></span>
+                    <!-- credit link icon -->
+                </a>
+                <!-- credit link, only visible if your screen is < 800px -->
+
+            </div>
+            <!-- header title -->
+
+           </header>
+           <!-- header: topbar -->
+
+
+          <!-- tags + navigation grid -->
+           <div class="boxes-grid">
+
+            <!-- left side -->
+            <div class="left-side">
+
+                <!-- navigation links -->
+                <nav class="navigation-links">
+
+                    <!-- navigation link 1 -->
+                    <div class="nav-link">
+                        <!-- navigation icon -->
+                        <span class="ph-bold ph-user"></span>
+                        <!-- navigation icon -->
+                        
+                        <!-- navigation url -->
+                        <div class="link-desc">
+                            <a href="/">custom link 1</a>
+                        </div>
+                        <!-- navigation url -->
+
+                    </div>
+                    <!-- navigation link 1 -->
+
+                    <!-- navigation link 2 -->
+                    <div class="nav-link">
+                        <!-- navigation icon -->
+                        <span class="ph-bold ph-notebook"></span>
+                        <!-- navigation icon -->
+                        
+                        <!-- navigation url -->
+                        <div class="link-desc">
+                            <a href="/">custom link 2</a>
+                        </div>
+                        <!-- navigation url -->
+
+                    </div>
+                    <!-- navigation link 2 -->
+
+                    <!-- navigation link 3 -->
+                    <div class="nav-link">
+                        <!-- navigation icon -->
+                        <span class="ph-bold ph-heart"></span>
+                        <!-- navigation icon -->
+                        
+                        <!-- navigation url -->
+                        <div class="link-desc">
+                            <a href="/">custom link 3</a>
+                        </div>
+                        <!-- navigation url -->
+
+                    </div>
+                    <!-- navigation link 3 -->
+
+                    <!-- navigation link 4 -->
+                    <div class="nav-link">
+                        <!-- navigation icon -->
+                        <span class="ph-bold ph-television-simple"></span>
+                        <!-- navigation icon -->
+                        
+                        <!-- navigation url -->
+                        <div class="link-desc">
+                            <a href="/">custom link 4</a>
+                        </div>
+                        <!-- navigation url -->
+
+                    </div>
+                    <!-- navigation link 4 -->
+
+                </nav>
+                <!-- navigation links -->
+
+               <!-- tag box 1 -->
+                <div class="box-wrapper">
+
+                    <!-- tag title -->
+                    <div class="box-title">
+                        <!-- tag title icon -->
+                        <span class="ph-bold ph-notification"></span> 
+                        <!-- tag title icon -->
+
+                        <!-- tag title text -->
+                        <span class="text">tags title number one</span>
+                        <!-- tag title text -->
+                    </div>
+                    <!-- tag title -->
+
+                    <!-- tags list -->
+                    <div class="tags-list">
+                        
+                        <!-- tag link 1 -->
+                        <a href="/tagged/">tag #1</a>
+                        <!-- tag link 1 -->
+
+                        <!-- tag link 2 -->
+                        <a href="/tagged/">tag #2</a>
+                        <!-- tag link 2 -->
+
+                        <!-- tag link 3 -->
+                        <a href="/tagged/">tag #3</a>
+                        <!-- tag link 3 -->
+
+                        <!-- tag link 4 -->
+                        <a href="/tagged/">tag #4</a>
+                        <!-- tag link 4 -->
+
+                    </div>
+                    <!-- tags list -->
+                </div>
+                <!-- tag box 1 -->
+
+            </div>
+            <!-- left side -->
+
+            <!-- center -->
+            <div class="center">
+                
+                <!-- tag box 2 -->
+                <div class="box-wrapper">
+
+                    <!-- tag title -->
+                    <div class="box-title">
+                        <!-- tag title icon -->
+                        <span class="ph-bold ph-notification"></span> 
+                        <!-- tag title icon -->
+
+                        <!-- tag title text -->
+                        <span class="text">tags title number one</span>
+                        <!-- tag title text -->
+                    </div>
+                    <!-- tag title -->
+
+                    <!-- tags list -->
+                    <div class="tags-list">
+                        
+                        <!-- tag link 1 -->
+                        <a href="/tagged/">tag #1</a>
+                        <!-- tag link 1 -->
+
+                        <!-- tag link 2 -->
+                        <a href="/tagged/">tag #2</a>
+                        <!-- tag link 2 -->
+
+                        <!-- tag link 3 -->
+                        <a href="/tagged/">tag #3</a>
+                        <!-- tag link 3 -->
+
+                        <!-- tag link 4 -->
+                        <a href="/tagged/">tag #4</a>
+                        <!-- tag link 4 -->
+
+                        <!-- tag link 5 -->
+                         <a href="/tagged/">tag number five</a>
+                        <!-- tag link 5 -->
+
+                    </div>
+                    <!-- tags list -->
+                </div>
+                <!-- tag box 2 -->
+
+                
+                <!-- tag box 3 -->
+                <div class="box-wrapper">
+
+                    <!-- tag title -->
+                    <div class="box-title">
+                        <!-- tag title icon -->
+                        <span class="ph-bold ph-notification"></span> 
+                        <!-- tag title icon -->
+
+                        <!-- tag title text -->
+                        <span class="text">tags title number one</span>
+                        <!-- tag title text -->
+                    </div>
+                    <!-- tag title -->
+
+                    <!-- tags list -->
+                    <div class="tags-list">
+                        
+                        <!-- tag link 1 -->
+                        <a href="/tagged/">tag #1</a>
+                        <!-- tag link 1 -->
+
+                        <!-- tag link 2 -->
+                        <a href="/tagged/">tag #2</a>
+                        <!-- tag link 2 -->
+
+                        <!-- tag link 3 -->
+                        <a href="/tagged/">tag #3</a>
+                        <!-- tag link 3 -->
+
+                        <!-- tag link 4 -->
+                        <a href="/tagged/">tag #4</a>
+                        <!-- tag link 4 -->
+
+                    </div>
+                    <!-- tags list -->
+                </div>
+                <!-- tag box 3 -->
+
+                
+                <!-- tag box 4 -->
+                <div class="box-wrapper">
+
+                    <!-- tag title -->
+                    <div class="box-title">
+                        <!-- tag title icon -->
+                        <span class="ph-bold ph-notification"></span> 
+                        <!-- tag title icon -->
+
+                        <!-- tag title text -->
+                        <span class="text">tags title number one</span>
+                        <!-- tag title text -->
+                    </div>
+                    <!-- tag title -->
+
+                    <!-- tags list -->
+                    <div class="tags-list">
+                        
+                        <!-- tag link 1 -->
+                        <a href="/tagged/">tag #1</a>
+                        <!-- tag link 1 -->
+
+                        <!-- tag link 2 -->
+                        <a href="/tagged/">tag #2</a>
+                        <!-- tag link 2 -->
+
+                        <!-- tag link 3 -->
+                        <a href="/tagged/">tag #3</a>
+                        <!-- tag link 3 -->
+
+                        <!-- tag link 4 -->
+                        <a href="/tagged/">tag #4</a>
+                        <!-- tag link 4 -->
+
+                    </div>
+                    <!-- tags list -->
+                </div>
+                <!-- tag box 4 -->
+            </div>
+            <!-- center -->
+
+            <!-- right side -->
+            <div class="right-side">
+                
+                <!-- tag box 4 -->
+                <div class="box-wrapper">
+
+                    <!-- tag title -->
+                    <div class="box-title">
+                        <!-- tag title icon -->
+                        <span class="ph-bold ph-notification"></span> 
+                        <!-- tag title icon -->
+
+                        <!-- tag title text -->
+                        <span class="text">tags title number one</span>
+                        <!-- tag title text -->
+                    </div>
+                    <!-- tag title -->
+
+                    <!-- tags list -->
+                    <div class="tags-list">
+                        
+                        <!-- tag link 1 -->
+                        <a href="/tagged/">tag #1</a>
+                        <!-- tag link 1 -->
+
+                        <!-- tag link 2 -->
+                        <a href="/tagged/">tag #2</a>
+                        <!-- tag link 2 -->
+
+                        <!-- tag link 3 -->
+                        <a href="/tagged/">tag #3</a>
+                        <!-- tag link 3 -->
+
+                        <!-- tag link 4 -->
+                        <a href="/tagged/">tag #4</a>
+                        <!-- tag link 4 -->
+
+                    </div>
+                    <!-- tags list -->
+                </div>
+                <!-- tag box 4 -->
+
+                
+                <!-- tag box 5 -->
+                <div class="box-wrapper">
+
+                    <!-- tag title -->
+                    <div class="box-title">
+                        <!-- tag title icon -->
+                        <span class="ph-bold ph-notification"></span> 
+                        <!-- tag title icon -->
+
+                        <!-- tag title text -->
+                        <span class="text">tags title number one</span>
+                        <!-- tag title text -->
+                    </div>
+                    <!-- tag title -->
+
+                    <!-- tags list -->
+                    <div class="tags-list">
+                        
+                        <!-- tag link 1 -->
+                        <a href="/tagged/">tag #1</a>
+                        <!-- tag link 1 -->
+
+                        <!-- tag link 2 -->
+                        <a href="/tagged/">tag #2</a>
+                        <!-- tag link 2 -->
+
+                        <!-- tag link 3 -->
+                        <a href="/tagged/">tag #3</a>
+                        <!-- tag link 3 -->
+
+                        <!-- tag link 4 -->
+                        <a href="/tagged/">tag #4</a>
+                        <!-- tag link 4 -->
+
+                    </div>
+                    <!-- tags list -->
+                </div>
+                <!-- tag box 5 -->
+
+                
+                <!-- tag box 6 -->
+                <div class="box-wrapper">
+
+                    <!-- tag title -->
+                    <div class="box-title">
+                        <!-- tag title icon -->
+                        <span class="ph-bold ph-notification"></span> 
+                        <!-- tag title icon -->
+
+                        <!-- tag title text -->
+                        <span class="text">tags title number one</span>
+                        <!-- tag title text -->
+                    </div>
+                    <!-- tag title -->
+
+                    <!-- tags list -->
+                    <div class="tags-list">
+                        
+                        <!-- tag link 1 -->
+                        <a href="/tagged/">tag #1</a>
+                        <!-- tag link 1 -->
+
+                        <!-- tag link 2 -->
+                        <a href="/tagged/">tag #2</a>
+                        <!-- tag link 2 -->
+
+                        <!-- tag link 3 -->
+                        <a href="/tagged/">tag #3</a>
+                        <!-- tag link 3 -->
+
+                        <!-- tag link 4 -->
+                        <a href="/tagged/">tag #4</a>
+                        <!-- tag link 4 -->
+
+                    </div>
+                    <!-- tags list -->
+                </div>
+                <!-- tag box 6 -->
+
+                <!-- tag box 7 -->
+                <div class="box-wrapper">
+
+                    <!-- tag title -->
+                    <div class="box-title">
+                        <!-- tag title icon -->
+                        <span class="ph-bold ph-notification"></span> 
+                        <!-- tag title icon -->
+
+                        <!-- tag title text -->
+                        <span class="text">tags title number one</span>
+                        <!-- tag title text -->
+                    </div>
+                    <!-- tag title -->
+
+                    <!-- tags list -->
+                    <div class="tags-list">
+                        
+                        <!-- tag link 1 -->
+                        <a href="/tagged/">tag #1</a>
+                        <!-- tag link 1 -->
+
+                        <!-- tag link 2 -->
+                        <a href="/tagged/">tag #2</a>
+                        <!-- tag link 2 -->
+
+                        <!-- tag link 3 -->
+                        <a href="/tagged/">tag #3</a>
+                        <!-- tag link 3 -->
+
+                        <!-- tag link 4 -->
+                        <a href="/tagged/">tag #4</a>
+                        <!-- tag link 4 -->
+
+                    </div>
+                    <!-- tags list -->
+                </div>
+                <!-- tag box 7 -->
+
+            </div>
+            <!-- right side -->
+
+          </div>
+          <!-- tags + navigation grid -->
+
+       </div>
+       <!-- tags list/navigation wrapper -->
+    </main>
+
+    <!-- credit. please don't touch, alter, or delete --> 
+    <a href="http://pouthongwon.tumblr.com" class="credit-name">
+        <i class="ph-bold ph-eyeglasses"></i>
+    </a>
+    <!-- credit. please don't touch, alter, or delete -->
+</body>
+</html>
