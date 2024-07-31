@@ -70,6 +70,11 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             color-scheme: dark;
         }
 
+        iframe.tmblr-iframe {
+            display: none!important;
+            transform: scale(0.75);
+        }
+
         body {
             background: light-dark(var(--background), var(--dark-background));
             color: light-dark(var(--text), var(--dark-text));
