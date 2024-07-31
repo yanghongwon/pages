@@ -175,6 +175,8 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             aspect-ratio: 1 / 1;
             border: 1px solid light-dark(var(--accent), var(--dark-accent));
             padding: 0.5rem;
+            border-radius: 0.6rem;
+            overflow: hidden;
         }
 
         .sidebar-title, .sidebar-desc, .custom-link {
