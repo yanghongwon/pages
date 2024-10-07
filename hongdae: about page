@@ -1,0 +1,2266 @@
+<!--
+
+hongdae: about page by pouthongwon
+
+please don't delete or alter the credit
+enjoy!
+
+credits:
+- fonts by google fonts
+- icons from tabler icons
+    - icons can be replaced at http://tabler.io/icons
+- tooltips script by atomiks
+    - tutorial by eossa (https://eossa.studio/post/190447242880/tutorial-tippyjs-tooltips-a-tutorial-on-how-to)
+- dark mode script by kevin powell
+    - additional tutorial by lushwave
+- tabs script by codeconcisely
+
+please search (ctrl/cmd + f) for 'NOTE:' for instructions on how to change the images, as well as add more tabs and panels
+
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hongdae: about page</title>
+
+    <!-- google font: poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- tabler icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+    <!-- tooltips script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/svg-arrow.css" />
+
+    <!-- external css sheet -->
+    <link rel="stylesheet" href="//yanghongwon.github.io/hongdae.css">
+
+    <!-- colors, fonts, and sizes can be edited here -->
+    <style type="text/css">
+
+        :root {
+        --light-mode: none;
+        --dark-mode: flex;
+
+        --clr-background: #f0f0f0;
+        --clr-container: #fff;
+        --clr-text: #000;
+        --clr-links: #252525;
+        --clr-borders: #d3d3d3;
+        --clr-accent: #588157;
+        --clr-accent-2: #84a98c;
+
+        --controls: invert(100%);
+
+        --ff-body: 'Poppins', sans-serif;
+
+        --fs-body: 0.9rem;
+
+        --fw-regular: 400;
+        --fw-semi-bold: 500;
+        --fw-bold: 600;
+
+        --sidebar-size: 5rem;
+        --container-size: 500px;
+        --gutter: 1rem;
+        --sidebar-image: 4rem;
+        }
+
+        .dark {
+        --light-mode: flex;
+        --dark-mode: none;
+
+        --clr-background: #101010;
+        --clr-container: #252525;
+        --clr-text: #fff;
+        --clr-links: #eee;
+        --clr-borders: #414141;
+        --clr-accent: #ffb4a2;
+        --clr-accent-2: #b9dcea;
+
+        --controls: invert(0);
+        }
+
+    </style>
+    <!-- colors, fonts, and sizes can be edited here -->
+
+</head>
+<body>
+
+    <!-- NOTE: HOW TO CHANGE THE IMAGES
+    step 1: find the image you want to change (sidebar, header, question/answer, character, or playlist)
+
+    step 2: delete everything in between quotation marks after <img src=""/> (DO NOT DELETE THE CLASS NAME)
+    
+    step 3: go to the image you want to replace it with
+
+    step 4: right-click on it
+    
+    step 5: there will be a prompt with a few options for you to click on, PLEASE click on the one that says 'copy image url'
+
+    step 6: the url will be copied onto your clipboard, so just paste it in between the quotation marks
+    
+    -->
+
+
+    <!-- sidebar: image, navigation, and light/dark mode -->
+    <aside class="sidebar">
+        <!-- sidebar image -->
+        <img src="https://i.pinimg.com/474x/25/51/78/2551786506bcd4966edd0f466c278d33.jpg" class="sidebar-img"/>
+        <!-- sidebar image -->
+
+        <!-- sidebar links -->
+        <nav class="sidebar-links">
+
+            <ul class="links-list" role="list">
+
+                <!-- link icon and text -->
+                <li class="links-item">
+                    <!-- home link -->
+                    <a href="/" title="home"> <!-- make sure the title matches the text -->
+                        <!-- icon -->
+                        <i class="ti ti-home-2"></i>
+                        <!-- icon -->
+
+                        <!-- text for screen-readers -->
+                        <span class="sr-only">home</span>
+                        <!-- text for screen-readers -->
+                    </a>
+                    <!-- home link -->
+                </li>
+                <!-- link icon and text -->
+
+                <!-- link icon and text -->
+                <li class="links-item">
+                    <!-- ask link -->
+                    <a href="/ask" title="message"> <!-- make sure the title matches the text -->
+                        <!-- link icon -->
+                        <i class="ti ti-mail"></i>
+                        <!-- link icon -->
+
+                        <!-- text for screen-readers -->
+                        <span class="sr-only">message</span>
+                        <!-- text for screen-readers -->
+                    </a>
+                    <!-- ask link -->
+                </li>
+                <!-- link icon and text -->
+
+                <!-- link icon and text -->
+                <li class="links-item">
+                    <!-- archive link -->
+                    <a href="/archive" title="archive"> <!-- make sure the title matches the text -->
+
+                        <!-- icon -->
+                        <i class="ti ti-archive"></i>
+                        <!-- icon -->
+
+                        <!-- text for screen-readers -->
+                        <span class="sr-only">archive</span>
+                        <!-- text for screen-readers -->
+                    </a>
+                    <!-- archive link -->
+                </li>
+                <!-- link icon and text -->
+
+                <!-- link icon and text -->
+                <li class="links-item">
+                    <!-- dashboard link -->
+                    <a href="http://tumblr.com" title="dashboard"> <!-- make sure the title matches the text -->
+                        <!-- icon -->
+                        <i class="ti ti-transfer-out"></i>
+                        <!-- icon -->
+
+                        <!-- text for screen-readers -->
+                        <span class="sr-only">dashboard</span>
+                        <!-- text for screen-readers -->
+                    </a>
+                    <!-- dashboard link -->
+                </li>
+                <!-- link icon and text -->
+
+            </ul>
+
+        </nav>
+        <!-- sidebar links -->
+
+       <!-- light/dark mode toggle -->
+        <button class="toggle">
+            <!-- turn on light mode -->
+            <span class="light-mode" title="turn on light mode">
+                <!-- icon -->
+                <i class="ti ti-sun"></i>
+                <!-- icon -->
+
+                <!-- text for screen-readers -->
+                <span class="sr-only">light mode</span>
+                <!-- text for screen-readers -->
+            </span>
+            <!-- turn on light mode -->
+
+            <!-- turn on dark mode -->
+            <span class="dark-mode" title="turn on dark mode">
+                <!-- icon -->
+                <i class="ti ti-moon"></i>
+                <!-- icon -->
+
+                <!-- text for screen-readers -->
+                <span class="sr-only">dark mode</span>
+                <!-- text for screen-readers -->
+            </span>
+            <!-- turn on dark mode -->
+        </button>
+        <!-- light/dark mode toggle -->
+        
+    </aside>
+    <!-- sidebar: image, navigation, and light/dark mode -->
+
+    <!-- container: topbar, content, and sidebar -->
+    <div class="container-wrapper">
+
+        <!-- container content: topbar and tab panels -->
+        <div class="container-content">
+
+            <!-- topbar -->
+            <header class="container-topbar">
+                
+                <!-- topbar info: image and title -->
+                <div class="topbar-info">
+                    <!-- topbar image -->
+                    <img src="https://i.pinimg.com/474x/3f/32/8e/3f328e05d09293f97fe7220b96775706.jpg" class="topbar-img"/>
+                    <!-- topbar image -->
+
+                    <!-- topbar title and links -->
+                    <div class="topbar-title">
+                        <!-- topbar title -->
+                        <h3>keep the title short</h3>
+                        <!-- topbar title -->
+
+                        <!-- topbar links -->
+                        <p class="topbar-links">
+                            <!-- custom link 1 -->
+                            <a href="/">link 1</a>
+                            <!-- custom link 1 -->
+
+                            <!-- custom link 2 -->
+                            <a href="/">link 2</a>
+                            <!-- custom link 2 -->
+
+                            <!-- custom link 3 -->
+                            <a href="/">link 3</a>
+                            <!-- custom link 3 -->
+                        </p>
+                        <!-- topbar links -->
+                    </div>
+                    <!-- topbar title and links -->
+                </div>
+                <!-- topbar info: image and title -->
+            </header>
+            <!-- topbar -->
+
+            <!-- NOTE: TEMPLATE TO ADD MORE TABS:
+
+            
+            <div class="tab" id="tab-panel-[#]" aria-labelledby="tab-[#]" role="tabpanel" tabindex="-1" hidden></div>
+            
+            - replace the [#] with a number, make sure this matches the button's tab-panel-[#] and tab-[#]
+
+
+            -->
+
+            <!-- tab list -->
+            <div class="tab-wrapper">
+
+                <!-- tab #1 -->
+                <div class="tab" id="tab-panel-1" aria-labelledby="tab-1" role="tabpanel" tabindex="0">
+
+                    <!-- block: bio title and bio text -->
+                    <div class="block">
+
+                        <!-- bio title -->
+                        <div class="title">
+                            <!-- bio title -->
+                            <h3 class="title-text">biography</h3>
+                            <!-- bio title -->
+
+                            <!-- bio icon -->
+                            <i class="ti ti-book"></i>
+                            <!-- bio icon -->
+                        </div>
+                        <!-- bio title -->
+
+                        <!-- bio text -->
+                        <div class="text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo porro qui corrupti corporis, dolore voluptas error harum beatae soluta minus dolorem. Quasi fugit praesentium, ab dolorum iste accusamus iusto velit, facere tempora consectetur quod, esse saepe deleniti numquam repellendus magni!</p>
+                        </div>
+                        <!-- bio text -->
+                    </div>
+                    <!-- block: title and text -->
+
+                    
+                    <!-- block: title and stats -->
+                    <div class="block">
+                        <!-- title -->
+                        <div class="title">
+                            <!-- title -->
+                            <h3 class="title-text">statistics</h3>
+                            <!-- title -->
+
+                            <!-- icon -->
+                            <i class="ti ti-list"></i>
+                            <!-- icon -->
+                        </div>
+                        <!-- title -->
+
+                        <!-- stat list -->
+                        <div class="text">
+                            <ul class="bio-stats" role="list">
+                                <!-- list item -->
+                                <li class="stat-item">
+                                    <b>name</b>
+                                    <p>name(s)</p>
+                                </li>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <li class="stat-item">
+                                    <b>pronouns</b>
+                                    <p>pronoun/pronoun</p>
+                                </li>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <li class="stat-item">
+                                    <b>age</b>
+                                    <p>age</p>
+                                </li>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <li class="stat-item">
+                                    <b>timezone</b>
+                                    <p>timezone</p>
+                                </li>
+                                <!-- list item -->
+                            </ul>
+                        </div>
+                        <!-- stat list -->
+
+                    </div>
+                    <!-- block: title and stats -->
+
+
+                    <!-- block: sideblogs -->
+                    <div class="block">
+                        <!-- title -->
+                        <div class="title">
+                            <!-- title -->
+                            <h3 class="title-text">sideblogs</h3>
+                            <!-- title -->
+
+                            <!-- icon -->
+                            <i class="ti ti-logs"></i>
+                            <!-- icon -->
+                        </div>
+                        <!-- title -->
+
+                        <!-- text: sideblogs -->
+                        <div class="text">
+                            <ul class="bio-links-list" role="list">
+
+                                <!-- sideblog: image, link, and description -->
+                                <li class="bio-item sideblog-item">
+                                    <!-- sideblog image -->
+                                    <img src="https://i.pinimg.com/474x/0b/1a/fe/0b1afeb5f8fd038f1f34675f41ce93e2.jpg" class="bio-img"/>
+                                    <!-- sideblog image -->
+
+                                    <!-- sideblog title: name and link -->
+                                    <div class="sideblog-title">
+
+                                        <!-- sideblog name -->
+                                        <h3>
+                                            <!-- sideblog link -->
+                                            <a href="/" class="sideblog-link">sideblog name</a>
+                                            <!-- sideblog link -->
+                                        </h3>
+
+                                        <!-- sideblog description -->
+                                        <p>blog description</p>
+                                        <!-- sideblog description -->
+                                    </div>
+                                    <!-- sideblog title: name and link -->
+                                </li>
+                                <!-- sideblog: image, link, and description -->
+
+                                <!-- sideblog: image, link, and description -->
+                                <li class="bio-item sideblog-item">
+                                    <!-- sideblog image -->
+                                    <img src="https://i.pinimg.com/474x/0b/1a/fe/0b1afeb5f8fd038f1f34675f41ce93e2.jpg" class="bio-img"/>
+                                    <!-- sideblog image -->
+
+                                    <!-- sideblog title: name and link -->
+                                    <div class="sideblog-title">
+
+                                        <!-- sideblog name -->
+                                        <h3>
+                                            <!-- sideblog link -->
+                                            <a href="/" class="sideblog-link">sideblog name</a>
+                                            <!-- sideblog link -->
+                                        </h3>
+
+                                        <!-- sideblog description -->
+                                        <p>blog description</p>
+                                        <!-- sideblog description -->
+                                    </div>
+                                    <!-- sideblog title: name and link -->
+                                </li>
+                                <!-- sideblog: image, link, and description -->
+
+
+                                <!-- sideblog: image, link, and description -->
+                                <li class="bio-item sideblog-item">
+                                    <!-- sideblog image -->
+                                    <img src="https://i.pinimg.com/474x/0b/1a/fe/0b1afeb5f8fd038f1f34675f41ce93e2.jpg" class="bio-img"/>
+                                    <!-- sideblog image -->
+
+                                    <!-- sideblog title: name and link -->
+                                    <div class="sideblog-title">
+
+                                        <!-- sideblog name -->
+                                        <h3>
+                                            <!-- sideblog link -->
+                                            <a href="/" class="sideblog-link">sideblog name</a>
+                                            <!-- sideblog link -->
+                                        </h3>
+
+                                        <!-- sideblog description -->
+                                        <p>blog description</p>
+                                        <!-- sideblog description -->
+                                    </div>
+                                    <!-- sideblog title: name and link -->
+                                </li>
+                                <!-- sideblog: image, link, and description -->
+                            </ul>
+                        </div>
+                        <!-- text: sideblogs-->
+
+                    </div>
+                    <!-- block: sideblogs -->
+
+
+                    <!-- block: links -->
+                    <div class="block">
+                        <!-- title: text and icon -->
+                        <div class="title">
+                            <h3 class="title-text">links</h3>
+                            <i class="ti ti-link"></i>
+                        </div>
+                        <!-- title: text and icon -->
+
+                        <!-- text: links -->
+                        <div class="text">
+                            <ul class="bio-links-list" role="list">
+                                <!-- list-item: link -->
+                                <li class="bio-item">
+                                    <a href="/">link 1</a>
+                                </li>
+                                <!-- list-item: link -->
+
+                                <!-- list-item: link -->
+                                <li class="bio-item">
+                                    <a href="/">link 2</a>
+                                </li>
+                                <!-- list-item: link -->
+
+                                <!-- list-item: link -->
+                                <li class="bio-item">
+                                    <a href="/">link 3</a>
+                                </li>
+                                <!-- list-item: link -->
+
+                                <!-- list-item: link -->
+                                <li class="bio-item">
+                                    <a href="/">link 4</a>
+                                </li>
+                                <!-- list-item: link -->
+                            </ul>
+                        </div>
+                        <!-- text: links -->
+
+                    </div>
+
+                </div>
+                <!-- tab #1 -->
+
+                
+                
+                <!-- tab #2: q & a and a 'before you ask/follow' -->
+                <div class="tab" id="tab-panel-2" aria-labelledby="tab-2" role="tabpanel" tabindex="-1" hidden>
+
+                    <!-- block: q & a -->
+                    <div class="block">
+                        <div class="qa-info">
+                            <img src="https://i.pinimg.com/474x/5f/3f/6a/5f3f6a1ae729aa58f47188e0a4023515.jpg" class="q-img"/>
+
+                            <h3 class="question">question</h3>
+                        </div>
+
+                        <div class="question-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque alias laudantium quibusdam qui! Molestiae excepturi omnis quia in, adipisci alias accusamus necessitatibus ipsam cum nostrum dolorem expedita optio enim cupiditate illum laboriosam dolore neque eius laborum? Explicabo corrupti ducimus officiis?</p>
+                        </div>
+
+                        <div class="qa-info">
+                            <h3 class="answer">answer</h3>
+
+                            <img src="https://i.pinimg.com/474x/5f/3f/6a/5f3f6a1ae729aa58f47188e0a4023515.jpg" class="q-img"/>
+
+                        </div>
+
+                        <div class="question-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatem, odio nulla maxime ratione harum, alias minima perspiciatis neque accusantium facilis. Atque amet voluptatum, est expedita velit a consequuntur consequatur.</p>
+                        </div>
+                    </div>
+                    <!-- block: q & a -->
+
+                    <!-- block: q & a -->
+                    <div class="block">
+
+                        <!-- question: image and title -->
+                        <div class="qa-info">
+                            <!-- image -->
+                            <img src="https://i.pinimg.com/474x/5f/3f/6a/5f3f6a1ae729aa58f47188e0a4023515.jpg" class="q-img"/>
+                            <!-- image -->
+
+                            <!-- question title -->
+                            <h3 class="question">question</h3>
+                            <!-- question title -->
+
+                        </div>
+                        <!-- question: image and title -->
+
+                        <!-- question text -->
+                        <div class="question-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque alias laudantium quibusdam qui! Molestiae excepturi omnis quia in, adipisci alias accusamus necessitatibus ipsam cum nostrum dolorem expedita optio enim cupiditate illum laboriosam dolore neque eius laborum? Explicabo corrupti ducimus officiis?</p>
+                        </div>
+                        <!-- question text -->
+
+                        <!-- answer: title and image -->
+                        <div class="qa-info">
+                            <!-- title -->
+                            <h3 class="answer">answer</h3>
+                            <!-- title -->
+
+                            <!-- image -->
+                            <img src="https://i.pinimg.com/474x/5f/3f/6a/5f3f6a1ae729aa58f47188e0a4023515.jpg" class="q-img"/>
+                            <!-- image -->
+                        </div>
+                        <!-- answer: title and image -->
+
+                        <!-- answer text -->
+                        <div class="question-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatem, odio nulla maxime ratione harum, alias minima perspiciatis neque accusantium facilis. Atque amet voluptatum, est expedita velit a consequuntur consequatur.</p>
+                        </div>
+                        <!-- answer text -->
+                    </div>
+                    <!-- block: q & a -->
+
+
+                    <div class="block">
+
+                        <!-- question: image and title -->
+                        <div class="qa-info">
+                            <!-- image -->
+                            <img src="https://i.pinimg.com/474x/5f/3f/6a/5f3f6a1ae729aa58f47188e0a4023515.jpg" class="q-img"/>
+                            <!-- image -->
+
+                            <!-- question title -->
+                            <h3 class="question">question</h3>
+                            <!-- question title -->
+
+                        </div>
+                        <!-- question: image and title -->
+
+                        <!-- question text -->
+                        <div class="question-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque alias laudantium quibusdam qui! Molestiae excepturi omnis quia in, adipisci alias accusamus necessitatibus ipsam cum nostrum dolorem expedita optio enim cupiditate illum laboriosam dolore neque eius laborum? Explicabo corrupti ducimus officiis?</p>
+                        </div>
+                        <!-- question text -->
+
+                        <!-- answer: title and image -->
+                        <div class="qa-info">
+                            <!-- title -->
+                            <h3 class="answer">answer</h3>
+                            <!-- title -->
+
+                            <!-- image -->
+                            <img src="https://i.pinimg.com/474x/5f/3f/6a/5f3f6a1ae729aa58f47188e0a4023515.jpg" class="q-img"/>
+                            <!-- image -->
+                        </div>
+                        <!-- answer: title and image -->
+
+                        <!-- answer text -->
+                        <div class="question-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatem, odio nulla maxime ratione harum, alias minima perspiciatis neque accusantium facilis. Atque amet voluptatum, est expedita velit a consequuntur consequatur.</p>
+                        </div>
+                        <!-- answer text -->
+                    </div>
+                    <!-- block: q & a -->
+
+
+                    <!-- block: q & a -->
+                    <div class="block">
+
+                        <!-- question: image and title -->
+                        <div class="qa-info">
+                            <!-- image -->
+                            <img src="https://i.pinimg.com/474x/5f/3f/6a/5f3f6a1ae729aa58f47188e0a4023515.jpg" class="q-img"/>
+                            <!-- image -->
+
+                            <!-- question title -->
+                            <h3 class="question">question</h3>
+                            <!-- question title -->
+
+                        </div>
+                        <!-- question: image and title -->
+
+                        <!-- question text -->
+                        <div class="question-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque alias laudantium quibusdam qui! Molestiae excepturi omnis quia in, adipisci alias accusamus necessitatibus ipsam cum nostrum dolorem expedita optio enim cupiditate illum laboriosam dolore neque eius laborum? Explicabo corrupti ducimus officiis?</p>
+                        </div>
+                        <!-- question text -->
+
+                        <!-- answer: title and image -->
+                        <div class="qa-info">
+                            <!-- title -->
+                            <h3 class="answer">answer</h3>
+                            <!-- title -->
+
+                            <!-- image -->
+                            <img src="https://i.pinimg.com/474x/5f/3f/6a/5f3f6a1ae729aa58f47188e0a4023515.jpg" class="q-img"/>
+                            <!-- image -->
+                        </div>
+                        <!-- answer: title and image -->
+
+                        <!-- answer text -->
+                        <div class="question-text">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatem, odio nulla maxime ratione harum, alias minima perspiciatis neque accusantium facilis. Atque amet voluptatum, est expedita velit a consequuntur consequatur.</p>
+                        </div>
+                        <!-- answer text -->
+                    </div>
+                    <!-- block: q & a -->
+
+
+                    <!-- block: before you ask/follow -->
+                    <div class="block">
+
+                        <!-- title -->
+                        <h3 class="q-title">before you ask anything</h3>
+                        <!-- title -->
+
+                        <!-- things you should you know -->
+                        <div class="qa-wrapper">
+
+                            <div class="read-wrapper">
+                                <ul class="qa-list" role="list">
+                                    <!-- something you should know -->
+                                    <li class="qa-item">here's one thing someone should know before they ask you anything</li>
+                                    <!-- something you should know -->
+
+                                    <!-- something you should know -->
+                                    <li class="qa-item">here's another thing someone should know before they ask you anything</li>
+                                    <!-- something you should know -->
+
+                                    <!-- something you should know -->
+                                    <li class="qa-item">here's a third thing someone should know before they ask you anything</li>
+                                    <!-- something you should know -->
+                                </ul>
+                            </div>
+
+                            <!-- example of a paragraph of something you should know -->
+                            <div class="read-text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates asperiores rerum iusto illum, dolor natus, quisquam ratione quibusdam deleniti odit dignissimos quia. Vero aperiam, reprehenderit quasi dolores consectetur voluptas sint, perferendis quos at temporibus optio, quia ipsum voluptatum itaque ullam.</p>
+                            </div>
+                            <!-- example of a paragraph of something you should know -->
+                        </div>
+                        <!-- things you should you know -->
+
+                    </div>
+                    <!-- block: before you ask/follow -->
+
+                    <!-- askbox -->
+                    <div class="ask-iframe">
+                        <iframe frameborder="0" height="150" id="ask_form" scrolling="no" width="100%" src="https://www.tumblr.com/ask_form/{Name}.tumblr.com"></iframe>
+                    </div>
+                    <!-- askbox -->
+
+                </div>
+                <!-- tab #2: q & a and a 'before you ask/follow' -->
+
+                
+                <!-- tab #3: likes, dislikes, and other favorites -->
+                <div class="tab" id="tab-panel-3" aria-labelledby="tab-3" role="tabpanel" tabindex="-1" hidden>
+
+                    <!-- block: likes -->
+                    <div class="block">
+                        <!-- likes: title and icon -->
+                        <div class="title">
+                            <!-- title -->
+                            <h3 class="title-text">likes</h3>
+                            <!-- title -->
+
+                            <!-- icon -->
+                            <i class="ti ti-thumb-up"></i>
+                            <!-- icon -->
+                        </div>
+                        <!-- likes: title and icon -->
+
+                        <!-- text: likes list -->
+                        <div class="text">
+                            <div class="likes-block">
+                                <!-- likes item -->
+                                <span class="likes">like #1</span>
+                                <!-- likes item -->
+
+                                <!-- likes item -->
+                                <span class="likes">like #2</span>
+                                <!-- likes item -->
+
+                                <!-- likes item -->
+                                <span class="likes">like #3</span>
+                                <!-- likes item -->
+
+                                <!-- likes item -->
+                                <span class="likes">like #4</span>
+                                <!-- likes item -->
+
+                                <!-- likes item -->
+                                <span class="likes">like #5</span>
+                                <!-- likes item -->
+
+                                <!-- likes item -->
+                                <span class="likes">like #6</span>
+                                <!-- likes item -->
+                            </div>
+                        </div>
+                        <!-- text: likes list -->
+                    </div>
+                    <!-- block: likes -->
+
+
+                    <!-- block: dislikes -->
+                    <div class="block">
+                        <!-- dislikes: title and icon -->
+                        <div class="title">
+                            <!-- title -->
+                            <h3 class="title-text">dislikes</h3>
+                            <!-- title -->
+
+                            <!-- icon -->
+                            <i class="ti ti-thumb-down"></i>
+                            <!-- icon -->
+                        </div>
+                        <!-- dislikes: title and icon -->
+
+                        <!-- text: dislikes -->
+                        <div class="text">
+                            <div class="likes-block">
+                                <!-- list item -->
+                                <span class="likes">dislike #1</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes">dislike #2</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes">dislike #3</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes">dislike #4</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes">dislike #5</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes">dislike #6</span>
+                                <!-- list item -->
+                            </div>
+                        </div>
+                        <!-- text: dislikes -->
+                    </div>
+                    <!-- block: dislikes -->
+
+                    <!-- block: favorite shows/movies -->
+                    <div class="block">
+                        <!-- shows/movies: title and icon -->
+                        <div class="title">
+                            <!-- title -->
+                            <h3 class="title-text">favorite shows/movies</h3>
+                            <!-- title -->
+
+                            <!-- icon -->
+                            <i class="ti ti-device-tv"></i>
+                            <!-- icon -->
+                        </div>
+                        <!-- shows/movies: title and icon -->
+
+                        <!-- text: favorite shows/movies -->
+                        <div class="text">
+                            <div class="likes-block">
+                                <!-- list item -->
+                                <span class="likes italics">show #1</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">show #2</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">show #3</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">show #4</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">show #5</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">show #6</span>
+                                <!-- list item -->
+                            </div>
+                        </div>
+                        <!-- text: favorite shows/movies -->
+                    </div>
+                    <!-- block: favorite shows/movies -->
+
+
+
+                    <!-- block: favorite books -->
+                    <div class="block">
+                        <!-- favorite books: title and icon -->
+                        <div class="title">
+                            <!-- title -->
+                            <h3 class="title-text">favorite books</h3>
+                            <!-- title -->
+
+                            <!-- icon -->
+                            <i class="ti ti-book"></i>
+                            <!-- icon -->
+                        </div>
+                        <!-- favorite books: title and icon -->
+
+                        <!-- favorite books: text -->
+                        <div class="text">
+                            <div class="likes-block">
+                                <!-- list item -->
+                                <span class="likes italics">book #1</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">book #2</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">book #3</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">book #4</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">book #5</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">book #6</span>
+                                <!-- list item -->
+                            </div>
+                        </div>
+                        <!-- favorite books: text -->
+                    </div>
+                    <!-- block: favorite books -->
+
+
+
+                    <!-- block: favorite songs/artists -->
+                    <div class="block">
+                        <!-- favorite songs/artists: title and icon -->
+                        <div class="title">
+                            <!-- title -->
+                            <h3 class="title-text">favorite songs/artists</h3>
+                            <!-- title -->
+
+                            <!-- icon -->
+                            <i class="ti ti-microphone"></i>
+                            <!-- icon -->
+                        </div>
+                        <!-- favorite songs/artists: title and icon -->
+
+                        <!-- favorite songs/artists: text -->
+                        <div class="text">
+                            <div class="likes-block">
+                                <!-- list item -->
+                                <span class="likes italics">song #1</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes">artist #2</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">song #3</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes">artist #4</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">song #5</span>
+                                <!-- list item -->
+
+                                <!-- list item -->
+                                <span class="likes italics">artist #6</span>
+                                <!-- list item -->
+                            </div>
+                        </div>
+                        <!-- favorite songs/artists: text -->
+                    </div>
+                    <!-- block: favorite songs/artists -->
+
+                </div>
+                <!-- tab #3: likes, dislikes, and other favorites -->
+
+                
+                
+                <!-- tab #4: original characters -->
+                <div class="tab" id="tab-panel-4" aria-labelledby="tab-4" role="tabpanel" tabindex="-1" hidden>
+                    
+                    <!-- block: character info, description, ships, and stats -->
+                    <div class="block">
+
+                        <!-- character wrapper -->
+                        <div class="character-wrapper">
+
+                            <!-- character info: image, name, and links -->
+                            <div class="character-info">
+                                <!-- character image -->
+                                <img src="https://i.pinimg.com/474x/5c/34/85/5c34852f560e659dc47dd9046181d0b8.jpg" class="character-img"/>
+                                <!-- character image -->
+
+                                <!-- character name and faceclaim -->
+                                <div class="character-title">
+                                    <!-- name -->
+                                    <h3>character name</h3>
+                                    <!-- name -->
+
+                                    <!-- faceclaim -->
+                                    <p class="italics">faceclaim</p>
+                                    <!-- faceclaim -->
+                                </div>
+                                <!-- character name and faceclaime -->
+
+                                <!-- character links -->
+                                <div class="character-links">
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #1"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #1</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #2"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #2</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #3"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #3</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+                                </div>
+                            </div>
+                            <!-- character info: image, name, and links -->
+
+                            <!-- character description -->
+                            <div class="character-desc">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ad veritatis nesciunt aliquam incidunt nisi, beatae est. Omnis esse molestias possimus dolorem, eos deserunt harum, quaerat recusandae fuga adipisci delectus incidunt porro nulla necessitatibus. Expedita sequi optio in obcaecati praesentium!</p>
+                            </div>
+                            <!-- character description -->
+
+                            <!-- character ships -->
+                            <div class="character-ships">
+
+                                <ul class="ship-list" role="list">
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                </ul>
+
+                            </div>
+                            <!-- character ships -->
+
+                            <!-- character stats -->
+                            <div class="character-stats">
+                                <ul class="char-stats" role="list">
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-user"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>info</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-cake"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>age</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-heart"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>sexuality</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+                                </ul>
+                            </div>
+                            <!-- character stats -->
+
+                        </div>
+                        <!-- character wrapper -->
+
+                    </div>
+                    <!-- block: character info, description, ships, and stats -->
+
+
+
+
+                    <!-- block: character info, description, ships, and stats -->
+                    <div class="block">
+
+                        <!-- character wrapper -->
+                        <div class="character-wrapper">
+
+                            <!-- character info: image, name, and links -->
+                            <div class="character-info">
+                                <!-- character image -->
+                                <img src="https://i.pinimg.com/474x/5c/34/85/5c34852f560e659dc47dd9046181d0b8.jpg" class="character-img"/>
+                                <!-- character image -->
+
+                                <!-- character name and faceclaim -->
+                                <div class="character-title">
+                                    <!-- name -->
+                                    <h3>character name</h3>
+                                    <!-- name -->
+
+                                    <!-- faceclaim -->
+                                    <p class="italics">faceclaim</p>
+                                    <!-- faceclaim -->
+                                </div>
+                                <!-- character name and faceclaime -->
+
+                                <!-- character links -->
+                                <div class="character-links">
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #1"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #1</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #2"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #2</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #3"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #3</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+                                </div>
+                            </div>
+                            <!-- character info: image, name, and links -->
+
+                            <!-- character description -->
+                            <div class="character-desc">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ad veritatis nesciunt aliquam incidunt nisi, beatae est. Omnis esse molestias possimus dolorem, eos deserunt harum, quaerat recusandae fuga adipisci delectus incidunt porro nulla necessitatibus. Expedita sequi optio in obcaecati praesentium!</p>
+                            </div>
+                            <!-- character description -->
+
+                            <!-- character ships -->
+                            <div class="character-ships">
+
+                                <ul class="ship-list" role="list">
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                </ul>
+
+                            </div>
+                            <!-- character ships -->
+
+                            <!-- character stats -->
+                            <div class="character-stats">
+                                <ul class="char-stats" role="list">
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-user"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>info</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-cake"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>age</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-heart"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>sexuality</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+                                </ul>
+                            </div>
+                            <!-- character stats -->
+
+                        </div>
+                        <!-- character wrapper -->
+
+                    </div>
+                    <!-- block: character info, description, ships, and stats -->
+
+
+
+
+
+                    <!-- block: character info, description, ships, and stats -->
+                    <div class="block">
+
+                        <!-- character wrapper -->
+                        <div class="character-wrapper">
+
+                            <!-- character info: image, name, and links -->
+                            <div class="character-info">
+                                <!-- character image -->
+                                <img src="https://i.pinimg.com/474x/5c/34/85/5c34852f560e659dc47dd9046181d0b8.jpg" class="character-img"/>
+                                <!-- character image -->
+
+                                <!-- character name and faceclaim -->
+                                <div class="character-title">
+                                    <!-- name -->
+                                    <h3>character name</h3>
+                                    <!-- name -->
+
+                                    <!-- faceclaim -->
+                                    <p class="italics">faceclaim</p>
+                                    <!-- faceclaim -->
+                                </div>
+                                <!-- character name and faceclaime -->
+
+                                <!-- character links -->
+                                <div class="character-links">
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #1"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #1</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #2"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #2</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #3"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #3</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+                                </div>
+                            </div>
+                            <!-- character info: image, name, and links -->
+
+                            <!-- character description -->
+                            <div class="character-desc">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ad veritatis nesciunt aliquam incidunt nisi, beatae est. Omnis esse molestias possimus dolorem, eos deserunt harum, quaerat recusandae fuga adipisci delectus incidunt porro nulla necessitatibus. Expedita sequi optio in obcaecati praesentium!</p>
+                            </div>
+                            <!-- character description -->
+
+                            <!-- character ships -->
+                            <div class="character-ships">
+
+                                <ul class="ship-list" role="list">
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                </ul>
+
+                            </div>
+                            <!-- character ships -->
+
+                            <!-- character stats -->
+                            <div class="character-stats">
+                                <ul class="char-stats" role="list">
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-user"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>info</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-cake"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>age</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-heart"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>sexuality</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+                                </ul>
+                            </div>
+                            <!-- character stats -->
+
+                        </div>
+                        <!-- character wrapper -->
+
+                    </div>
+                    <!-- block: character info, description, ships, and stats -->
+
+
+
+
+                    <!-- block: character info, description, ships, and stats -->
+                    <div class="block">
+
+                        <!-- character wrapper -->
+                        <div class="character-wrapper">
+
+                            <!-- character info: image, name, and links -->
+                            <div class="character-info">
+                                <!-- character image -->
+                                <img src="https://i.pinimg.com/474x/5c/34/85/5c34852f560e659dc47dd9046181d0b8.jpg" class="character-img"/>
+                                <!-- character image -->
+
+                                <!-- character name and faceclaim -->
+                                <div class="character-title">
+                                    <!-- name -->
+                                    <h3>character name</h3>
+                                    <!-- name -->
+
+                                    <!-- faceclaim -->
+                                    <p class="italics">faceclaim</p>
+                                    <!-- faceclaim -->
+                                </div>
+                                <!-- character name and faceclaime -->
+
+                                <!-- character links -->
+                                <div class="character-links">
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #1"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #1</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #2"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #2</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+
+                                    <!-- link: icon and text -->
+                                    <a href="/" title="tag #3"> <!-- make sure the title and text match -->
+                                        <!-- icon -->
+                                        <i class="ti ti-hash"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">tag #3</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link: icon and text -->
+                                </div>
+                            </div>
+                            <!-- character info: image, name, and links -->
+
+                            <!-- character description -->
+                            <div class="character-desc">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ad veritatis nesciunt aliquam incidunt nisi, beatae est. Omnis esse molestias possimus dolorem, eos deserunt harum, quaerat recusandae fuga adipisci delectus incidunt porro nulla necessitatibus. Expedita sequi optio in obcaecati praesentium!</p>
+                            </div>
+                            <!-- character description -->
+
+                            <!-- character ships -->
+                            <div class="character-ships">
+
+                                <ul class="ship-list" role="list">
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                    <!-- list item: ship name and ship description -->
+                                    <li class="ship">
+                                        <!-- ship name -->
+                                        <span class="ship-name">character/character</span>
+                                        <!-- ship name -->
+
+                                        <!-- ship description -->
+                                        <span class="ship-desc">description</span>
+                                        <!-- ship description -->
+                                    </li>
+                                    <!-- list item: ship name and ship description -->
+
+                                </ul>
+
+                            </div>
+                            <!-- character ships -->
+
+                            <!-- character stats -->
+                            <div class="character-stats">
+                                <ul class="char-stats" role="list">
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-user"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>info</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-cake"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>age</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+
+                                    <!-- stats: icon and text -->
+                                    <li class="char-item">
+                                        <!-- icon -->
+                                        <i class="ti ti-heart"></i>
+                                        <!-- icon -->
+
+                                        <!-- text -->
+                                        <p>sexuality</p>
+                                        <!-- text -->
+                                    </li>
+                                    <!-- stats: icon and text -->
+                                </ul>
+                            </div>
+                            <!-- character stats -->
+
+                        </div>
+                        <!-- character wrapper -->
+
+                    </div>
+                    <!-- block: character info, description, ships, and stats -->
+
+                </div>
+                <!-- tab #4: original characters -->
+
+                
+                <!-- tab #5: misc -->
+                <div class="tab" id="tab-panel-5" aria-labelledby="tab-5" role="tabpanel" tabindex="-1" hidden>
+                    
+                    <!-- block: tags list -->
+                    <div class="block">
+
+                        <div class="tags-wrapper">
+
+                            <div class="tags-list">
+
+                                <!-- tag item -->
+                                <a href="/">tag 1</a>
+                                <!-- tag item -->
+
+                                <!-- tag item -->
+                                <a href="/">tag 2</a>
+                                <!-- tag item -->
+
+                                <!-- tag item -->
+                                <a href="/">tag 3</a>
+                                <!-- tag item -->
+
+                                <!-- tag item -->
+                                <a href="/">tag 4</a>
+                                <!-- tag item -->
+
+                                <!-- tag item -->
+                                <a href="/">tag 5</a>
+                                <!-- tag item -->
+
+                                <!-- tag item -->
+                                <a href="/">tag 6</a>
+                                <!-- tag item -->
+
+                                <!-- tag item -->
+                                <a href="/">tag 7</a>
+                                <!-- tag item -->
+
+                                <!-- tag item -->
+                                <a href="/">tag 8</a>
+                                <!-- tag item -->
+
+                                <!-- tag item -->
+                                <a href="/">tag 9</a>
+                                <!-- tag item -->
+
+                                <!-- tag item -->
+                                <a href="/">tag 10</a>
+                                <!-- tag item -->
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- block: tags list -->
+
+                    <!-- block: updates list -->
+                    <div class="block">
+
+                        <div class="updates-wrapper">
+
+                            <ul class="updates-list" role="list">
+
+                                <!-- updates item: currently watching -->
+                                <li class="update-item">
+                                    <!-- update: title and icon -->
+                                    <div class="title">
+                                        <!-- title -->
+                                        <b class="title-text">watching</b>
+                                        <!-- title -->
+
+                                        <!-- icon -->
+                                        <i class="ti ti-device-tv"></i>
+                                        <!-- icon -->
+                                    </div>
+                                    <!-- update: title and icon -->
+
+                                    <!-- update-text -->
+                                    <div class="text">
+                                        <p>what you're currently watching</p>
+                                    </div>
+                                    <!-- update-text -->
+                                </li>
+                                <!-- updates item: currently watching -->
+
+
+                                <!-- updates item: currently reading -->
+                                <li class="update-item">
+                                    <!-- update: title and icon -->
+                                    <div class="title">
+                                        <!-- title -->
+                                        <b class="title-text">reading</b>
+                                        <!-- title -->
+
+                                        <!-- icon -->
+                                        <i class="ti ti-book"></i>
+                                        <!-- icon -->
+                                    </div>
+                                    <!-- update: title and icon -->
+
+                                    <!-- update-text -->
+                                    <div class="text">
+                                        <p>what you're currently reading</p>
+                                    </div>
+                                    <!-- update-text -->
+                                </li>
+                                <!-- updates item: currently reading -->
+
+                                <!-- updates item: currently working on -->
+                                <li class="update-item">
+                                    <!-- update: title and icon -->
+                                    <div class="title">
+                                        <!-- title -->
+                                        <b class="title-text">working on</b>
+                                        <!-- title -->
+
+                                        <!-- icon -->
+                                        <i class="ti ti-briefcase"></i>
+                                        <!-- icon -->
+                                    </div>
+                                    <!-- update: title and icon -->
+
+                                    <!-- update-text -->
+                                    <div class="text">
+                                        <p>what you're currently working on</p>
+                                    </div>
+                                    <!-- update-text -->
+                                </li>
+                                <!-- updates item: currently working on -->
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+                    <!-- block: updates list -->
+
+                    <!-- block: playlist -->
+                    <div class="block">
+                        <!-- playlist: title and icon -->
+                        <div class="title">
+                            <h3 class="title-text">current playlist</h3>
+                            <i class="ti ti-music"></i>
+                        </div>
+                        <!-- playlist: title and icon -->
+
+                        <ul class="playlist" role="list">
+
+                            <!-- playlist item: image, title and artist, and progress bar -->
+                            <li class="playlist-item">
+                                <!-- playlist: image and link -->
+                                <div class="playlist-image">
+                                    <!-- link -->
+                                    <a href="/" title="link">
+                                        <!-- icon -->
+                                        <i class="ti ti-player-play"></i>
+                                        <!-- icon -->
+
+                                        <!-- text for screen-readers -->
+                                        <span class="sr-only">song link</span>
+                                        <!-- text for screen-readers -->
+                                    </a>
+                                    <!-- link -->
+
+                                    <!-- image -->
+                                    <img src="https://i.pinimg.com/474x/96/0e/38/960e38335a72bbcc86858278911fca4c.jpg" class="playlist-img"/>
+                                    <!-- image -->
+                                </div>
+                                <!-- playlist: image and link -->
+
+                                <!-- playlist info: title and artist and progress bar -->
+                                <div class="playlist-info">
+                                    <!-- title and artist -->
+                                    <div class="playlist-title">
+                                        <!-- title -->
+                                        <h3>song name</h3>
+                                        <!-- title -->
+
+                                        <!-- artist -->
+                                        <p>artist</p>
+                                        <!-- artist -->
+                                    </div>
+                                    <!-- title and artist -->
+
+                                    <!-- progress bar -->
+                                    <div class="progress-block">
+                                        <!-- starting time -->
+                                        <span class="time">0:00</span>
+                                        <!-- starting time -->
+
+                                        <!-- progress bar
+                                        NOTE: change the width in the style to change the progress bar
+                                        -->
+                                        <div class="progress-bar">
+                                            <span class="progress" style="width: 40%"></span>
+                                        </div>
+                                        <!-- progress bar -->
+
+                                        <!-- ending time -->
+                                        <span class="time">2:00</span>
+                                        <!-- ending time -->
+                                    </div>
+                                    <!-- progress bar -->
+                                </div>
+                                <!-- playlist info: title and artist and progress bar -->
+
+                            </li>
+                            <!-- playlist item: image, title and artist, and progress bar -->
+
+
+
+                        <!-- playlist item: image, title and artist, and progress bar -->
+                        <li class="playlist-item">
+                            <!-- playlist: image and link -->
+                            <div class="playlist-image">
+                                <!-- link -->
+                                <a href="/" title="link">
+                                    <!-- icon -->
+                                    <i class="ti ti-player-play"></i>
+                                    <!-- icon -->
+
+                                    <!-- text for screen-readers -->
+                                    <span class="sr-only">song link</span>
+                                    <!-- text for screen-readers -->
+                                </a>
+                                <!-- link -->
+
+                                <!-- image -->
+                                <img src="https://i.pinimg.com/474x/96/0e/38/960e38335a72bbcc86858278911fca4c.jpg" class="playlist-img"/>
+                                <!-- image -->
+                            </div>
+                            <!-- playlist: image and link -->
+
+                            <!-- playlist info: title and artist and progress bar -->
+                            <div class="playlist-info">
+                                <!-- title and artist -->
+                                <div class="playlist-title">
+                                    <!-- title -->
+                                    <h3>song name</h3>
+                                    <!-- title -->
+
+                                    <!-- artist -->
+                                    <p>artist</p>
+                                    <!-- artist -->
+                                </div>
+                                <!-- title and artist -->
+
+                                <!-- progress bar -->
+                                <div class="progress-block">
+                                    <!-- starting time -->
+                                    <span class="time">0:00</span>
+                                    <!-- starting time -->
+
+                                    <!-- progress bar
+                                    NOTE: change the width in the style to change the progress bar
+                                    -->
+                                    <div class="progress-bar">
+                                        <span class="progress" style="width: 40%"></span>
+                                    </div>
+                                    <!-- progress bar -->
+
+                                    <!-- ending time -->
+                                    <span class="time">2:00</span>
+                                    <!-- ending time -->
+                                </div>
+                                <!-- progress bar -->
+                            </div>
+                            <!-- playlist info: title and artist and progress bar -->
+
+                        </li>
+                        <!-- playlist item: image, title and artist, and progress bar -->
+
+
+
+                        <!-- playlist item: image, title and artist, and progress bar -->
+                        <li class="playlist-item">
+                            <!-- playlist: image and link -->
+                            <div class="playlist-image">
+                                <!-- link -->
+                                <a href="/" title="link">
+                                    <!-- icon -->
+                                    <i class="ti ti-player-play"></i>
+                                    <!-- icon -->
+
+                                    <!-- text for screen-readers -->
+                                    <span class="sr-only">song link</span>
+                                    <!-- text for screen-readers -->
+                                </a>
+                                <!-- link -->
+
+                                <!-- image -->
+                                <img src="https://i.pinimg.com/474x/96/0e/38/960e38335a72bbcc86858278911fca4c.jpg" class="playlist-img"/>
+                                <!-- image -->
+                            </div>
+                            <!-- playlist: image and link -->
+
+                            <!-- playlist info: title and artist and progress bar -->
+                            <div class="playlist-info">
+                                <!-- title and artist -->
+                                <div class="playlist-title">
+                                    <!-- title -->
+                                    <h3>song name</h3>
+                                    <!-- title -->
+
+                                    <!-- artist -->
+                                    <p>artist</p>
+                                    <!-- artist -->
+                                </div>
+                                <!-- title and artist -->
+
+                                <!-- progress bar -->
+                                <div class="progress-block">
+                                    <!-- starting time -->
+                                    <span class="time">0:00</span>
+                                    <!-- starting time -->
+
+                                    <!-- progress bar
+                                    NOTE: change the width in the style to change the progress bar
+                                    -->
+                                    <div class="progress-bar">
+                                        <span class="progress" style="width: 40%"></span>
+                                    </div>
+                                    <!-- progress bar -->
+
+                                    <!-- ending time -->
+                                    <span class="time">2:00</span>
+                                    <!-- ending time -->
+                                </div>
+                                <!-- progress bar -->
+                            </div>
+                            <!-- playlist info: title and artist and progress bar -->
+
+                        </li>
+                        <!-- playlist item: image, title and artist, and progress bar -->
+
+                        </ul>
+                    </div>
+                    <!-- block: playlist -->
+                </div>
+                <!-- tab #5: misc -->
+
+            </div>
+            <!-- tab list -->
+
+        </div>
+        <!-- container content: topbar and tab panels -->
+
+
+        <!-- NOTE: TEMPLATE TO ADD MORE BUTTONS:
+
+            
+            <button class="tab-button" id="tab-[#]" aria-selected="false" aria-controls="tab-panel-[#]" role="tab" type="button" tabindex="-1">
+                <i class="ti ti-message-2"></i>
+                <span class="text">questions</span>
+            </button>
+            
+            - replace the [#] with a number, make sure this matches the tab's tab-panel-[#] and tab-[#]
+            - make sure the labels aren't too long
+
+            -->
+
+
+        <div class="container-sidebar">
+            <div class="tabs">
+
+                <div class="tablist">
+
+                    <button class="tab-button" id="tab-1" aria-selected="true" aria-controls="tab-panel-1" role="tab" type="button" tabindex="0">
+                        <i class="ti ti-user"></i>
+                        <span class="text">biography</span>
+                    </button>
+
+
+                    <button class="tab-button" id="tab-2" aria-selected="false" aria-controls="tab-panel-2" role="tab" type="button" tabindex="-1">
+                        <i class="ti ti-message-2"></i>
+                        <span class="text">questions</span>
+                    </button>
+
+                    <button class="tab-button" id="tab-3" aria-selected="false" aria-controls="tab-panel-3" role="tab" type="button" tabindex="-1">
+                        <i class="ti ti-heart"></i>
+                        <span class="text">favorites</span>
+                    </button>
+
+                    <button class="tab-button" id="tab-4" aria-selected="false" aria-controls="tab-panel-4" role="tab" type="button" tabindex="-1">
+                        <i class="ti ti-users"></i>
+                        <span class="text">characters</span>
+                    </button>
+
+                    <button class="tab-button" id="tab-5" aria-selected="false" aria-controls="tab-panel-5" role="tab" type="button" tabindex="-1">
+                        <i class="ti ti-disc"></i>
+                        <span class="text">misc.</span>
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- container: topbar, content, and sidebar -->
+
+    <div class="theme-credit">
+        <a href="http://pouthongwon.tumblr.com" title="hongdae by pouthongwon">
+            <i class="ti ti-mood-smile-beam"></i>
+            <span class="sr-only">theme credit</span>
+        </a>
+    </div>
+
+    <script>
+
+        // dark mode script by kevin powell
+        let darkMode = localStorage.getItem("darkMode");
+
+        const darkModeToggle = document.querySelector(".toggle");
+
+        const enableDarkMode = () => {
+            document.body.classList.add("dark");
+            
+            localStorage.setItem('darkMode', 'enabled');
+        }
+
+        const disableDarkMode = () => {
+            document.body.classList.remove("dark");
+            
+            localStorage.setItem('darkMode', null);
+        }
+
+        if (darkMode === 'enabled') {
+            enableDarkMode();
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            darkMode = localStorage.getItem("darkMode");
+
+            if(darkMode !== 'enabled') {
+                enableDarkMode();
+            } else {
+                disableDarkMode();
+            }
+        });
+        // dark mode script by kevin powell
+
+        // tabs script by codeconcisely
+            const tabElements = document.querySelectorAll('button[role="tab"]');
+            const panelElements = document.querySelectorAll('[role="tabpanel"]');
+            let activeIndex = 0;
+
+            tabElements.forEach(function (tab, index) {
+                tab.addEventListener('click', function(event) {
+                    setActiveTab(index);
+                });
+            });
+
+            function setActiveTab(index) {
+                tabElements[activeIndex].setAttribute("aria-selected", "false");
+                tabElements[activeIndex].tabIndex = -1;
+
+                tabElements[index].setAttribute("aria-selected", "true");
+                tabElements[index].tabIndex = 0;
+
+                setActivePanel(index);
+                activeIndex = index;
+            }
+
+            function setActivePanel(index) {
+                panelElements[activeIndex].setAttribute("hidden", "");
+                panelElements[activeIndex].tabIndex = -1;
+
+                panelElements[index].removeAttribute("hidden");
+                panelElements[index].tabIndex = 0;
+            }
+        // tabs script by codeconcisely
+
+        // tooltips script by atomiks
+        tippy('[title]', {
+        theme: 'custom',
+        arrow: false,
+        followCursor: true,
+        zIndex: 9999999999,
+        maxWidth: 300,
+
+        content(reference) {
+        const title = reference.getAttribute('title');
+        reference.removeAttribute('title');
+        return title;
+        },
+        });
+        // tooltips script by atomiks
+    </script>
+</body>
+</html>
