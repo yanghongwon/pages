@@ -101,7 +101,7 @@ please search (ctrl/cmd + f) for 'NOTE:' for instructions on how to change the i
     <!-- NOTE: HOW TO CHANGE THE IMAGES
     step 1: find the image you want to change (sidebar, header, question/answer, character, or playlist)
 
-    step 2: delete everything in between quotation marks after <img src=""/> (DO NOT DELETE THE CLASS NAME)
+    step 2: delete everything in between quotation marks after <img src=""/> (DO NOT DELETE THE CLASS)
     
     step 3: go to the image you want to replace it with
 
@@ -109,7 +109,7 @@ please search (ctrl/cmd + f) for 'NOTE:' for instructions on how to change the i
     
     step 5: there will be a prompt with a few options for you to click on, PLEASE click on the one that says 'copy image url'
 
-    step 6: the url will be copied onto your clipboard, so just paste it in between the quotation marks
+    step 6: the url will be copied onto your clipboard, so just paste it in between the quotation marks of the image you want to change
     
     -->
 
@@ -1964,7 +1964,7 @@ please search (ctrl/cmd + f) for 'NOTE:' for instructions on how to change the i
                                         <!-- starting time -->
 
                                         <!-- progress bar
-                                        NOTE: change the width in the style to change the progress bar
+                                        NOTE: change the width in the style to change the progress bar's amount
                                         -->
                                         <div class="progress-bar">
                                             <span class="progress" style="width: 40%"></span>
@@ -2027,7 +2027,7 @@ please search (ctrl/cmd + f) for 'NOTE:' for instructions on how to change the i
                                     <!-- starting time -->
 
                                     <!-- progress bar
-                                    NOTE: change the width in the style to change the progress bar
+                                    NOTE: change the width in the style to change the progress bar's amount
                                     -->
                                     <div class="progress-bar">
                                         <span class="progress" style="width: 40%"></span>
@@ -2090,7 +2090,7 @@ please search (ctrl/cmd + f) for 'NOTE:' for instructions on how to change the i
                                     <!-- starting time -->
 
                                     <!-- progress bar
-                                    NOTE: change the width in the style to change the progress bar
+                                    NOTE: change the width in the style to change the progress bar's amount
                                     -->
                                     <div class="progress-bar">
                                         <span class="progress" style="width: 40%"></span>
@@ -2174,12 +2174,14 @@ please search (ctrl/cmd + f) for 'NOTE:' for instructions on how to change the i
     </div>
     <!-- container: topbar, content, and sidebar -->
 
+    <!-- theme credit: DO NOT DELETE OR ALTER -->
     <div class="theme-credit">
         <a href="http://pouthongwon.tumblr.com" title="hongdae by pouthongwon">
             <i class="ti ti-mood-smile-beam"></i>
             <span class="sr-only">theme credit</span>
         </a>
     </div>
+    <!-- theme credit: DO NOT DELETE OR ALTER -->
 
     <script>
 
