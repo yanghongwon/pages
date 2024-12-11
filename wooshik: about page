@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">   
 
     <!-- phosphor icons -->
-    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
 
     <style type="text/css">
         :root {
