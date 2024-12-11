@@ -26,7 +26,7 @@ note: if you want to make this javascript free, delete the parts that are labell
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@600;700&family=Rethink+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- phosphor icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
 
     <!-- tooltips script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
