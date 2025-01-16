@@ -1,3 +1,44 @@
+<!--
+
+jaehuin: a character page
+by pouthongwon
+
+note: this page requires javascript, so please follow the directions on this post by glenthemes' if you get a javascript error: https://glenthemes.tumblr.com/post/683796810867900416/tumblr-javascript
+
+note #2: icons are from solar icons, please refer to this page to change them: https://solar-icons.gitlab.io/i/icons-list
+
+note #3: to change the images in the page, follow these steps:
+    1) locate the image you want to change, the code will always start with <img src=""/>
+
+    2) delete everything in between the quotation marks
+
+    3) find the picture you want to change it to
+
+    4) right click (or ctrl/cmd + click, if you can't right click) on said picture. there will be several options
+
+    5) click on 'copy image url' or some variation of it. the url is now copied onto your clipboard
+
+    6) go back to the code, paste the now-copied url in-between the empty quotation marks
+
+note #4: do not delete or alter the credit.
+
+note #5: colors, fonts, and layout sizes can be edited in the code
+
+
+credits
+- google fonts by google
+- icons by solar icons
+- light/dark toggle by kevin powell
+- expanding/collapsing sidebar by w3schools
+- tooltips by atomiks
+- multiple modals by george martsoukos
+- accessible tabs by codeconcisely
+
+
+-->
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
