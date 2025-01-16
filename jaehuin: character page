@@ -1,0 +1,2287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jaehuin: character page</title>
+<link rel="shortcut icon" href="{Favicon}">
+
+<!-- google fonts: poppins and dm serif display -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+<!-- solar icons -->
+<link href="https://solar-icons.gitlab.io/i/icons.css" rel="stylesheet" crossorigin>
+
+<!-- tooltips scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<!-- external styles -->
+<link rel="stylesheet" href="//yanghongwon.github.io/jaehuin-%20character page/style.css">
+
+<style type="text/css">
+
+:root {
+--light-mode: none;
+--dark-mode: flex;
+
+--clr-background: #f0f0f0;
+--clr-container: #fff;
+--clr-text: #000;
+--clr-links: #252525;
+--clr-borders: #d3d3d3;
+--clr-accent: #D47A6E;
+--clr-accent-2: #B06671;
+
+--ff-body: 'Poppins', sans-serif;
+--ff-heading: "DM Serif Display", serif;
+
+--fs-body: 0.9rem;
+
+--fw-body: 400;
+--fw-heading: 700;
+
+--container-size: 500px;
+--sidebar-size: 230px;
+--expanded-sidebar: 20rem;
+}
+
+.dark {
+--light-mode: flex;
+--dark-mode: none;
+
+--clr-background: #101010;
+--clr-container: #202020;
+--clr-text: #fff;
+--clr-links: #eee;
+--clr-borders: #444;
+--clr-accent: #fbc4ab;
+--clr-accent-2: #E9E6C1;
+}
+
+</style>
+</head>
+<body>
+
+<script src="https://unpkg.com/popper.js@1"></script>
+<script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/svg-arrow.css" />
+
+<!-- sidebar and container start -->
+<div class="sidebar-and-container">
+
+
+<!-- sidebar start -->
+<aside class="sidebar" id="open-sidebar">
+
+<!-- sidebar inner: image and navigation -->
+<div class="sidebar-inner">
+
+<!-- sidebar image -->
+<img src="https://i.pinimg.com/474x/32/dc/4d/32dc4dd7ca59140158cde7d8c53f512a.jpg" class="sidebar-img"/>
+<!-- sidebar image -->
+
+
+<!-- sidebar navigation -->
+<div class="sidebar-links">
+
+<!-- home link -->
+<a href="/" title="home">
+<i class="solar-icons" stroke="2" icon-name="home-2"></i>
+<span class="sr-only">home</span>
+</a>
+<!-- home link -->
+ 
+<!-- askbox link -->
+<a href="/ask" title="message">
+<i class="solar-icons" stroke="2" icon-name="chat-notif-1"></i>
+<span class="sr-only">message</span>
+</a>
+<!-- askbox link -->
+
+<!-- archive link -->
+<a href="/archive" title="archive">
+<i class="solar-icons" stroke="2" icon-name="archive"></i>
+<span class="sr-only">archive</span>
+</a>
+<!-- archive link -->
+
+<!-- dashboard link -->
+<a href="http://tumblr.com/" title="dashboard">
+<i class="solar-icons" stroke="2" icon-name="logout-1"></i>
+<span class="sr-only">dashboard</span>
+</a>
+<!-- archive link -->
+
+<!-- sidebar links -->
+<button class="expand-sidebar" title="more links" onclick="openSidebar()">
+<i class="solar-icons" stroke="2" icon-name="maximize"></i>
+<span class="sr-only">more links</span>
+</button>
+<!-- sidebar links -->
+
+<!-- light/dark mode toggle -->
+<button class="toggle">
+<span class="light-mode" title="light mode">
+<i class="solar-icons" stroke="2" icon-name="sun-2"></i>
+<span class="sr-only">light mode</span>
+</span>
+
+<span class="dark-mode" title="dark mode">
+<i class="solar-icons" stroke="2" icon-name="moon"></i>
+<span class="sr-only">dark mode</span>
+</span>
+</button>
+<!-- light/dark mode toggle -->
+
+
+</div>
+<!-- sidebar navigation -->
+
+
+
+</div>
+<!-- sidebar inner: image and navigation -->
+
+<div class="block sidebar-title">
+<h1 class="title">put a title here</h1>
+<p>@user</p>
+</div>
+
+<div class="sidebar-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ab autem totam corrupti magni repellendus placeat aspernatur quasi fugit ipsam.</p>
+</div>
+</aside>
+<!-- sidebar end -->
+
+
+<!-- expanded sidebar start -->
+<aside id="sidebar" class="open-sidebar">
+
+<!-- close sidebar -->
+<div class="close-sidebar">
+<a href="javascript:void[0]" onclick="closeSidebar()" title="close links">
+<i class="solar-icons" stroke="2" icon-name="minimize"></i>
+</a>
+</div>
+<!-- close sidebar -->
+
+<!-- sidebar header image -->
+<div class="block sidebar-header">
+<img src="https://i.pinimg.com/474x/1f/04/0f/1f040f627099a47f21766c1f1b4570a0.jpg" class="header-image"/>
+</div>
+<!-- sidebar header image -->
+
+<!-- sidebar links -->
+<div class="sidebar-nav">
+<a href="/">extra link 1</a>
+<a href="/">extra link 2</a>
+<a href="/">extra link 3</a>
+<a href="/">extra link 4</a>
+<a href="/">extra link 5</a>
+</div>
+<!-- sidebar links -->
+
+</aside>
+<!-- expanded sidebar end -->
+
+
+<!-- grid start -->
+<div class="container">
+<div class="container-grid">
+
+
+<!-- character 1. modal 1. tabs 1, 2 and 3 -->
+<div class="ch-wrapper">
+
+<!-- character image and modal icon -->
+<div class="ch-img">
+<img src="https://i.pinimg.com/736x/ae/7a/e6/ae7ae6f31eb5cd9077036212178fad53.jpg"/>
+
+<div class="ch-icon">
+<button class="open-modal ch-button" type="button" data-open="modal1" title="open popup info">
+<i class="solar-icons" stroke="2" icon-name="add"></i>
+<span class="sr-only">open popup info</span>
+</button>
+</div>
+</div>
+<!-- character image and modal icon -->
+
+<!-- character name and optional subtitle -->
+<div class="ch-name">
+
+<!-- character name -->
+<h2>character name</h2>
+<!-- character name -->
+
+<!-- character subtitle. could be a faceclaim, extra info, etc. -->
+<p>faceclaim</p>
+<!-- character subtitle. could be a faceclaim, extra info, etc. -->
+</div>
+<!-- character name and optional subtitle -->
+
+
+<!-- modal 1, contains tabs 1, 2, and 3 -->
+<div class="modal" id="modal1">
+
+<!-- modal container -->
+<div class="modal-dialog">
+
+<!-- close icon -->
+<div class="close-modal-icon">
+<button class="close-modal" data-close title="close popup info">
+<i class="solar-icons" stroke="2" icon-name="close"></i>
+<span class="sr-only">close popup info</span>
+</button>
+</div>
+<!-- close icon -->
+
+<!-- modal tab and buttons container -->
+<div class="modal-wrapper">
+
+<!-- button list for tabs 1, 2, and 3 -->
+<div class="tab-group">
+
+<!-- tab 1 button: information about the character -->
+<button id="tab-1" aria-selected="true" aria-controls="tab-panel-1" role="tab" type="button">
+
+<!-- tab 1 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<span class="button-name">information</span>
+</div>
+<!-- tab 1 button label -->
+
+</button>
+<!-- tab 1 button: information about the character -->
+
+
+<!-- tab 2 button: the character's relationships -->
+<button id="tab-2" aria-selected="false" aria-controls="tab-panel-2" role="tab" type="button">
+
+<!-- tab 2 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="heart-1"></i>
+<span class="button-name">relationships</span>
+</div>
+<!-- tab 2 button label -->
+
+</button>
+<!-- tab 2 button: the character's relationships -->
+
+
+<!-- tab 3 button: works the character is in -->
+<button id="tab-3" aria-selected="false" aria-controls="tab-panel-3" role="tab" type="button">
+
+<!-- tab 3 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+<span class="button-name">works in progress</span>
+</div>
+<!-- tab 3 button label -->
+
+</button>
+<!-- tab 3 button: works the character is in -->
+
+
+</div>
+<!-- buttons list for tabs 1, 2, and 3 -->
+
+<!-- tabs container: tabs 1, 2, and 3 -->
+<div class="modal-tabs">
+
+<!-- tab 1, controlled by button 1: information about the character -->
+<div id="tab-panel-1" aria-labelledby="tab-1" role="tabpanel" tabindex="0">
+
+<!-- the inside of tab 1 -->
+<div class="modal-text">
+
+<!-- block: the character's image and stats list -->
+<div class="block">
+
+<div class="image-and-stats">
+
+<!-- character's image -->
+<img src="https://i.pinimg.com/474x/8e/6d/26/8e6d2650e0408bcc632b29341e0eab00.jpg" class="img"/>
+<!-- character's image -->
+
+<!-- character's stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>faceclaim</b>
+<p>faceclaim</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>age</b>
+<p>age</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>birthday</b>
+<p>birthday</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>pronouns</b>
+<p>pronoun/pronoun</p>
+</li>
+<!-- fourth stat -->
+
+
+</ul>
+<!-- character's stats list -->
+
+
+</div>
+</div>
+<!-- block: the character's image and stats list -->
+
+
+<!-- block: the character's biography -->
+<div class="block">
+
+<!-- character heading, feel free to change this -->
+<h2 class="heading">information about your character</h2>
+<!-- character heading, feel free to change this -->
+
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque sunt ab fugiat quod eos voluptatibus aliquam. Eligendi, fugiat sint pariatur error temporibus exercitationem odio qui voluptatum asperiores corporis dolor quidem molestiae, laboriosam recusandae voluptates officia ut minima doloremque! Veniam, quas.</p>
+
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque sunt ab fugiat quod eos voluptatibus aliquam. Eligendi, fugiat sint pariatur error temporibus exercitationem odio qui voluptatum asperiores corporis dolor quidem molestiae, laboriosam recusandae voluptates officia ut minima doloremque! Veniam, quas.</p>
+</div>
+<!-- block: the character's biography -->
+
+
+<!-- the character's links -->
+<div class="links">
+<a href="/">link 1</a>
+<a href="/">link 2</a>
+<a href="/">link 3</a>
+<a href="/">link 4</a>
+<a href="/">link 5</a>
+<a href="/">link 6</a>
+<a href="/">link 7</a>
+<a href="/">link 8</a>
+</div>
+<!-- the character's links -->
+
+
+</div>
+<!-- the inside of tab 1 -->
+
+
+</div>
+<!-- tab 1, controlled by button 1: information about the character -->
+
+
+<!-- tab 2, controlled by button 2: character's relationships -->
+<div id="tab-panel-2" aria-labelledby="tab-2" role="tabpanel" tabindex="-1" hidden>
+<div class="modal-text">
+
+<!-- ship 1 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 1 -->
+
+
+
+<!-- ship 2 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 2 -->
+
+
+<!-- ship 3 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 3 -->
+
+
+</div>
+</div>
+<!-- tab 2, controlled by button 2: character's relationships -->
+
+
+
+<!-- tab 3, controlled by button 3: works the character's in -->
+<div id="tab-panel-3" aria-labelledby="tab-3" role="tabpanel" tabindex="-1" hidden>
+<div class="modal-text">
+
+
+<!-- fic 1 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 1 -->
+
+
+<!-- fic 2 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 2 -->
+
+
+<!-- fic 3 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 1 -->
+
+</div>
+</div>
+<!-- tab 3, controlled by button 3: works the character's in -->
+
+</div>
+<!-- tabs container: tabs 1, 2, and 3 -->
+
+
+</div>
+<!-- modal tab and buttons container -->
+
+
+</div>
+<!-- modal container -->
+
+
+</div>
+<!-- modal 1, contains tabs 1, 2, and 3 -->
+
+
+
+</div>
+<!-- character 1. modal 1. tabs 1, 2 and 3 -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- character 2. modal 2. tabs 4, 5, and 6 -->
+<div class="ch-wrapper">
+
+<!-- character image and modal icon -->
+<div class="ch-img">
+<img src="https://i.pinimg.com/474x/5d/8b/54/5d8b542936adc37a738ceb6c5e0d0d76.jpg"/>
+
+<div class="ch-icon">
+<button class="open-modal ch-button" type="button" data-open="modal2" title="open popup info">
+<i class="solar-icons" stroke="2" icon-name="add"></i>
+<span class="sr-only">open popup info</span>
+</button>
+</div>
+</div>
+<!-- character image and modal icon -->
+
+<!-- character name and optional subtitle -->
+<div class="ch-name">
+
+<!-- character name -->
+<h2>character name</h2>
+<!-- character name -->
+
+<!-- character subtitle. could be a faceclaim, extra info, etc. -->
+<p>faceclaim</p>
+<!-- character subtitle. could be a faceclaim, extra info, etc. -->
+</div>
+<!-- character name and optional subtitle -->
+
+
+<!-- modal 2, contains tabs 4, 5, and 6 -->
+<div class="modal" id="modal2">
+
+<!-- modal container -->
+<div class="modal-dialog">
+
+<!-- close icon -->
+<div class="close-modal-icon">
+<button class="close-modal" data-close title="close popup info">
+<i class="solar-icons" stroke="2" icon-name="close"></i>
+<span class="sr-only">close popup info</span>
+</button>
+</div>
+<!-- close icon -->
+
+<!-- modal tab and buttons container -->
+<div class="modal-wrapper">
+
+<!-- button list for tabs 4, 5, and 6 -->
+<div class="tab-group">
+
+<!-- tab 4 button: information about the character -->
+<button id="tab-4" aria-selected="true" aria-controls="tab-panel-4" role="tab" type="button">
+
+<!-- tab 4 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<span class="button-name">information</span>
+</div>
+<!-- tab 4 button label -->
+
+</button>
+<!-- tab 4 button: information about the character -->
+
+
+<!-- tab 5 button: the character's relationships -->
+<button id="tab-5" aria-selected="false" aria-controls="tab-panel-5" role="tab" type="button">
+
+<!-- tab 5 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="heart-1"></i>
+<span class="button-name">relationships</span>
+</div>
+<!-- tab 5 button label -->
+
+</button>
+<!-- tab 5 button: the character's relationships -->
+
+
+<!-- tab 6 button: works the character is in -->
+<button id="tab-6" aria-selected="false" aria-controls="tab-panel-6" role="tab" type="button">
+
+<!-- tab 6 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+<span class="button-name">works in progress</span>
+</div>
+<!-- tab 6 button label -->
+
+</button>
+<!-- tab 6 button: works the character is in -->
+
+
+</div>
+<!-- buttons list for tabs 4, 5, and 6 -->
+
+<!-- tabs container: tabs 4, 5, and 6 -->
+<div class="modal-tabs">
+
+<!-- tab 4, controlled by button 4: information about the character -->
+<div id="tab-panel-4" aria-labelledby="tab-4" role="tabpanel" tabindex="0">
+
+
+<div class="modal-text">
+
+<!-- block: the character's image and stats list -->
+<div class="block">
+
+<div class="image-and-stats">
+
+<!-- character's image -->
+<img src="https://i.pinimg.com/474x/8e/6d/26/8e6d2650e0408bcc632b29341e0eab00.jpg" class="img"/>
+<!-- character's image -->
+
+<!-- character's stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>faceclaim</b>
+<p>faceclaim</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>age</b>
+<p>age</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>birthday</b>
+<p>birthday</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>pronouns</b>
+<p>pronoun/pronoun</p>
+</li>
+<!-- fourth stat -->
+
+
+</ul>
+<!-- character's stats list -->
+
+
+</div>
+</div>
+<!-- block: the character's image and stats list -->
+
+
+<!-- block: the character's biography -->
+<div class="block">
+
+<!-- character heading, feel free to change this -->
+<h2 class="heading">information about your character</h2>
+<!-- character heading, feel free to change this -->
+
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque sunt ab fugiat quod eos voluptatibus aliquam. Eligendi, fugiat sint pariatur error temporibus exercitationem odio qui voluptatum asperiores corporis dolor quidem molestiae, laboriosam recusandae voluptates officia ut minima doloremque! Veniam, quas.</p>
+
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque sunt ab fugiat quod eos voluptatibus aliquam. Eligendi, fugiat sint pariatur error temporibus exercitationem odio qui voluptatum asperiores corporis dolor quidem molestiae, laboriosam recusandae voluptates officia ut minima doloremque! Veniam, quas.</p>
+</div>
+<!-- block: the character's biography -->
+
+
+<!-- the character's links -->
+<div class="links">
+<a href="/">link 1</a>
+<a href="/">link 2</a>
+<a href="/">link 3</a>
+<a href="/">link 4</a>
+<a href="/">link 5</a>
+<a href="/">link 6</a>
+<a href="/">link 7</a>
+<a href="/">link 8</a>
+</div>
+<!-- the character's links -->
+
+
+</div>
+
+
+</div>
+<!-- tab 4, controlled by button 4: information about the character -->
+
+
+<!-- tab 5, controlled by button 5: character's relationships -->
+<div id="tab-panel-5" aria-labelledby="tab-5" role="tabpanel" tabindex="-1" hidden>
+<div class="modal-text">
+
+<!-- ship 1 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 1 -->
+
+
+
+<!-- ship 2 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 2 -->
+
+
+<!-- ship 3 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 3 -->
+
+
+</div>
+</div>
+<!-- tab 5, controlled by button 5: character's relationships -->
+
+
+
+<!-- tab 6, controlled by button 6: works the character's in -->
+<div id="tab-panel-6" aria-labelledby="tab-6" role="tabpanel" tabindex="-1" hidden>
+<div class="modal-text">
+
+
+<!-- fic 1 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 1 -->
+
+
+<!-- fic 2 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 2 -->
+
+
+<!-- fic 3 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 1 -->
+
+</div>
+</div>
+<!-- tab 6, controlled by button 6: works the character's in -->
+
+</div>
+<!-- tabs container: tabs 4, 5, and 6 -->
+
+
+</div>
+<!-- modal tab and buttons container -->
+
+
+</div>
+<!-- modal container -->
+
+
+</div>
+<!-- modal 2, contains tabs 4, 5, and 6 -->
+
+
+
+</div>
+<!-- character 2. modal 2. tabs 4, 5, and 6 -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- character 3. modal 3. tabs 7, 8, and 9 -->
+<div class="ch-wrapper">
+
+<!-- character image and modal icon -->
+<div class="ch-img">
+<img src="https://i.pinimg.com/474x/32/dc/4d/32dc4dd7ca59140158cde7d8c53f512a.jpg"/>
+
+<div class="ch-icon">
+<button class="open-modal ch-button" type="button" data-open="modal3" title="open popup info">
+<i class="solar-icons" stroke="2" icon-name="add"></i>
+<span class="sr-only">open popup info</span>
+</button>
+</div>
+</div>
+<!-- character image and modal icon -->
+
+<!-- character name and optional subtitle -->
+<div class="ch-name">
+
+<!-- character name -->
+<h2>character name</h2>
+<!-- character name -->
+
+<!-- character subtitle. could be a faceclaim, extra info, etc. -->
+<p>faceclaim</p>
+<!-- character subtitle. could be a faceclaim, extra info, etc. -->
+</div>
+<!-- character name and optional subtitle -->
+
+
+<!-- modal 3, contains tabs 7, 8, and 9 -->
+<div class="modal" id="modal3">
+
+<!-- modal container -->
+<div class="modal-dialog">
+
+<!-- close icon -->
+<div class="close-modal-icon">
+<button class="close-modal" data-close title="close popup info">
+<i class="solar-icons" stroke="2" icon-name="close"></i>
+<span class="sr-only">close popup info</span>
+</button>
+</div>
+<!-- close icon -->
+
+<!-- modal tab and buttons container -->
+<div class="modal-wrapper">
+
+<!-- button list for tabs 7, 8 and 9 -->
+<div class="tab-group">
+
+<!-- tab 7 button: information about the character -->
+<button id="tab-7" aria-selected="true" aria-controls="tab-panel-7" role="tab" type="button">
+
+<!-- tab 7 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<span class="button-name">information</span>
+</div>
+<!-- tab 7 button label -->
+
+</button>
+<!-- tab 7 button: information about the character -->
+
+
+<!-- tab 8 button: the character's relationships -->
+<button id="tab-8" aria-selected="false" aria-controls="tab-panel-8" role="tab" type="button">
+
+<!-- tab 8 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="heart-1"></i>
+<span class="button-name">relationships</span>
+</div>
+<!-- tab 8 button label -->
+
+</button>
+<!-- tab 8 button: the character's relationships -->
+
+
+<!-- tab 9 button: works the character is in -->
+<button id="tab-9" aria-selected="false" aria-controls="tab-panel-9" role="tab" type="button">
+
+<!-- tab 9 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+<span class="button-name">works in progress</span>
+</div>
+<!-- tab 9 button label -->
+
+</button>
+<!-- tab 9 button: works the character is in -->
+
+
+</div>
+<!-- buttons list for tabs 7, 8 and 9 -->
+
+<!-- tabs container: tabs 7, 8 and 9 -->
+<div class="modal-tabs">
+
+<!-- tab 7, controlled by button 7: information about the character -->
+<div id="tab-panel-7" aria-labelledby="tab-7" role="tabpanel" tabindex="0">
+
+
+<div class="modal-text">
+
+<!-- block: the character's image and stats list -->
+<div class="block">
+
+<div class="image-and-stats">
+
+<!-- character's image -->
+<img src="https://i.pinimg.com/474x/8e/6d/26/8e6d2650e0408bcc632b29341e0eab00.jpg" class="img"/>
+<!-- character's image -->
+
+<!-- character's stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>faceclaim</b>
+<p>faceclaim</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>age</b>
+<p>age</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>birthday</b>
+<p>birthday</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>pronouns</b>
+<p>pronoun/pronoun</p>
+</li>
+<!-- fourth stat -->
+
+
+</ul>
+<!-- character's stats list -->
+
+
+</div>
+</div>
+<!-- block: the character's image and stats list -->
+
+
+<!-- block: the character's biography -->
+<div class="block">
+
+<!-- character heading, feel free to change this -->
+<h2 class="heading">information about your character</h2>
+<!-- character heading, feel free to change this -->
+
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque sunt ab fugiat quod eos voluptatibus aliquam. Eligendi, fugiat sint pariatur error temporibus exercitationem odio qui voluptatum asperiores corporis dolor quidem molestiae, laboriosam recusandae voluptates officia ut minima doloremque! Veniam, quas.</p>
+
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque sunt ab fugiat quod eos voluptatibus aliquam. Eligendi, fugiat sint pariatur error temporibus exercitationem odio qui voluptatum asperiores corporis dolor quidem molestiae, laboriosam recusandae voluptates officia ut minima doloremque! Veniam, quas.</p>
+</div>
+<!-- block: the character's biography -->
+
+
+<!-- the character's links -->
+<div class="links">
+<a href="/">link 1</a>
+<a href="/">link 2</a>
+<a href="/">link 3</a>
+<a href="/">link 4</a>
+<a href="/">link 5</a>
+<a href="/">link 6</a>
+<a href="/">link 7</a>
+<a href="/">link 8</a>
+</div>
+<!-- the character's links -->
+
+
+</div>
+
+
+</div>
+<!-- tab 7, controlled by button 7: information about the character -->
+
+
+<!-- tab 8, controlled by button 8: character's relationships -->
+<div id="tab-panel-8" aria-labelledby="tab-8" role="tabpanel" tabindex="-1" hidden>
+<div class="modal-text">
+
+<!-- ship 1 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 1 -->
+
+
+
+<!-- ship 2 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 2 -->
+
+
+<!-- ship 3 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 3 -->
+
+
+</div>
+</div>
+<!-- tab 8, controlled by button 8: character's relationships -->
+
+
+
+<!-- tab 9, controlled by button 9: works the character's in -->
+<div id="tab-panel-9" aria-labelledby="tab-9" role="tabpanel" tabindex="-1" hidden>
+<div class="modal-text">
+
+
+<!-- fic 1 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 1 -->
+
+
+<!-- fic 2 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 2 -->
+
+
+<!-- fic 3 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 1 -->
+
+</div>
+</div>
+<!-- tab 9, controlled by button 9: works the character's in -->
+
+</div>
+<!-- tabs container: tabs 7, 8, and 9 -->
+
+
+</div>
+<!-- modal tab and buttons container -->
+
+
+</div>
+<!-- modal container -->
+
+
+</div>
+<!-- modal 3, contains tabs 7, 8, and 9 -->
+
+
+
+</div>
+<!-- character 3. modal 3. tabs 7, 8, and 9 -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- character 4. modal 4. tabs 10, 11, and 12 -->
+<div class="ch-wrapper">
+
+<!-- character image and modal icon -->
+<div class="ch-img">
+<img src="https://i.pinimg.com/474x/62/aa/0a/62aa0a4445d79f9f617ba48f8e4f43bc.jpg"/>
+
+<div class="ch-icon">
+<button class="open-modal ch-button" type="button" data-open="modal4" title="open popup info">
+<i class="solar-icons" stroke="2" icon-name="add"></i>
+<span class="sr-only">open popup info</span>
+</button>
+</div>
+</div>
+<!-- character image and modal icon -->
+
+<!-- character name and optional subtitle -->
+<div class="ch-name">
+
+<!-- character name -->
+<h2>character name</h2>
+<!-- character name -->
+
+<!-- character subtitle. could be a faceclaim, extra info, etc. -->
+<p>faceclaim</p>
+<!-- character subtitle. could be a faceclaim, extra info, etc. -->
+</div>
+<!-- character name and optional subtitle -->
+
+
+<!-- modal 4, contains tabs 10, 11, 12 -->
+<div class="modal" id="modal4">
+
+<!-- modal container -->
+<div class="modal-dialog">
+
+<!-- close icon -->
+<div class="close-modal-icon">
+<button class="close-modal" data-close title="close popup info">
+<i class="solar-icons" stroke="2" icon-name="close"></i>
+<span class="sr-only">close popup info</span>
+</button>
+</div>
+<!-- close icon -->
+
+<!-- modal tab and buttons container -->
+<div class="modal-wrapper">
+
+<!-- button list for tabs 10, 11, and 12 -->
+<div class="tab-group">
+
+<!-- tab 10 button: information about the character -->
+<button id="tab-10" aria-selected="true" aria-controls="tab-panel-10" role="tab" type="button">
+
+<!-- tab 10 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<span class="button-name">information</span>
+</div>
+<!-- tab 10 button label -->
+
+</button>
+<!-- tab 10 button: information about the character -->
+
+
+<!-- tab 11 button: the character's relationships -->
+<button id="tab-11" aria-selected="false" aria-controls="tab-panel-11" role="tab" type="button">
+
+<!-- tab 11 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="heart-1"></i>
+<span class="button-name">relationships</span>
+</div>
+<!-- tab 11 button label -->
+
+</button>
+<!-- tab 11 button: the character's relationships -->
+
+
+<!-- tab 12 button: works the character is in -->
+<button id="tab-12" aria-selected="false" aria-controls="tab-panel-12" role="tab" type="button">
+
+<!-- tab 12 button label -->
+<div class="button-label">
+<i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+<span class="button-name">works in progress</span>
+</div>
+<!-- tab 12 button label -->
+
+</button>
+<!-- tab 12 button: works the character is in -->
+
+
+</div>
+<!-- button list for tabs 10, 11, and 12 -->
+
+<!-- tabs container: tabs 10, 11, and 12 -->
+<div class="modal-tabs">
+
+<!-- tab 10, controlled by button 10: information about the character -->
+<div id="tab-panel-10" aria-labelledby="tab-10" role="tabpanel" tabindex="0">
+
+
+<div class="modal-text">
+
+<!-- block: the character's image and stats list -->
+<div class="block">
+
+<div class="image-and-stats">
+
+<!-- character's image -->
+<img src="https://i.pinimg.com/474x/8e/6d/26/8e6d2650e0408bcc632b29341e0eab00.jpg" class="img"/>
+<!-- character's image -->
+
+<!-- character's stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>faceclaim</b>
+<p>faceclaim</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>age</b>
+<p>age</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>birthday</b>
+<p>birthday</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>pronouns</b>
+<p>pronoun/pronoun</p>
+</li>
+<!-- fourth stat -->
+
+
+</ul>
+<!-- character's stats list -->
+
+
+</div>
+</div>
+<!-- block: the character's image and stats list -->
+
+
+<!-- block: the character's biography -->
+<div class="block">
+
+<!-- character heading, feel free to change this -->
+<h2 class="heading">information about your character</h2>
+<!-- character heading, feel free to change this -->
+
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque sunt ab fugiat quod eos voluptatibus aliquam. Eligendi, fugiat sint pariatur error temporibus exercitationem odio qui voluptatum asperiores corporis dolor quidem molestiae, laboriosam recusandae voluptates officia ut minima doloremque! Veniam, quas.</p>
+
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque sunt ab fugiat quod eos voluptatibus aliquam. Eligendi, fugiat sint pariatur error temporibus exercitationem odio qui voluptatum asperiores corporis dolor quidem molestiae, laboriosam recusandae voluptates officia ut minima doloremque! Veniam, quas.</p>
+</div>
+<!-- block: the character's biography -->
+
+
+<!-- the character's links -->
+<div class="links">
+<a href="/">link 1</a>
+<a href="/">link 2</a>
+<a href="/">link 3</a>
+<a href="/">link 4</a>
+<a href="/">link 5</a>
+<a href="/">link 6</a>
+<a href="/">link 7</a>
+<a href="/">link 8</a>
+</div>
+<!-- the character's links -->
+
+
+</div>
+
+
+</div>
+<!-- tab 10, controlled by button 10: information about the character -->
+
+
+<!-- tab 11, controlled by button 11: character's relationships -->
+<div id="tab-panel-11" aria-labelledby="tab-11" role="tabpanel" tabindex="-1" hidden>
+<div class="modal-text">
+
+<!-- ship 1 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 1 -->
+
+
+
+<!-- ship 2 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 2 -->
+
+
+<!-- ship 3 -->
+
+<!-- ship image and name -->
+<div class="block">
+
+<div class="ship-and-name">
+
+<!-- ship image -->
+<img src="https://i.pinimg.com/474x/da/b6/f6/dab6f6c94643dbc2260e53bd48660822.jpg" class="ship-image"/>
+<!-- ship image -->
+
+<!-- ship name: love interest's name and optional subtitle -->
+<div class="ship-name">
+<h2>love interest's name</h2>
+<p>faceclaim</p>
+</div>
+<!-- ship name: love interest's name and optional subtitle -->
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship info, do not delete the extra div -->
+<div class="ship-info">
+<div>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita amet dolores suscipit est maiores dolor tempora ab nam aspernatur esse deleniti, vel, quaerat aperiam deserunt nulla perferendis! Optio, expedita ad.</p>
+</div>
+</div>
+<!-- ship info, do not delete the extra div -->
+
+
+</div>
+<!-- ship image and name -->
+
+<!-- ship 3 -->
+
+
+</div>
+</div>
+<!-- tab 11, controlled by button 11: character's relationships -->
+
+
+
+<!-- tab 12, controlled by button 12: works the character's in -->
+<div id="tab-panel-12" aria-labelledby="tab-12" role="tabpanel" tabindex="-1" hidden>
+<div class="modal-text">
+
+
+<!-- fic 1 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 1 -->
+
+
+<!-- fic 2 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 2 -->
+
+
+<!-- fic 3 -->
+<div class="block">
+
+<!-- work title -->
+<div class="work-title">
+<h2 class="title-text">work title</h2>
+<i class="solar-icons" stroke="2" icon-name="book-closed-3"></i>
+</div>
+<!-- work title -->
+
+<!-- stats list -->
+<ul class="stats-list" role="list">
+
+<!-- first stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- first stat -->
+
+<!-- second stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- second stat -->
+
+<!-- third stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- third stat -->
+
+<!-- fourth stat -->
+<li class="stat">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- fourth stat -->
+
+</ul>
+<!-- work title -->
+
+<!-- work description -->
+<div class="work-desc">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate delectus aliquam magni velit adipisci quam error omnis asperiores, quidem sunt rem nemo iste placeat. Ut sed esse laudantium animi nam.</p>
+</div>
+<!-- work description -->
+
+
+</div>
+<!-- fic 1 -->
+
+</div>
+</div>
+<!-- tab 12, controlled by button 12: works the character's in -->
+
+</div>
+<!-- tabs container: tabs 10, 11, and 12 -->
+
+
+</div>
+<!-- modal tab and buttons container -->
+
+
+</div>
+<!-- modal container -->
+
+
+</div>
+<!-- modal 4, contains tabs 10, 11, 12 -->
+
+
+
+</div>
+<!-- character 4. modal 4. tabs 10, 11, and 12 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+<!-- grid end -->
+
+
+
+
+</div>
+<!-- sidebar and container end -->
+
+<!-- credit start. do not delete or alter, save for the colors in the :root -->
+<div class="credit">
+<a href="http://pouthongwon.tumblr.com/" title="page by pouthongwon">
+<i class="solar-icons" stroke="2" icon-name="face-blep"></i>
+<span class="sr-only">page by pouthongwon</span>
+</a>
+</div>
+<!-- credit end. do not delete or alter, save for the colors in the :root -->
+
+<script src="//yanghongwon.github.io/jaehuin-%20character page/javascript.js"></script>
+</body>
+</html>
