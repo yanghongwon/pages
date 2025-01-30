@@ -239,8 +239,14 @@ flex: 1;
 }
 }
 
-.image-and-toggle {
+.image-and-links {
 margin-top: 10px;
+
+.custom-links {
+top: 0;
+left: 0;
+translate: calc(var(--sidebar-size) + 1rem) 1rem;
+}
 }
 
 .s-links {
@@ -249,11 +255,6 @@ gap: 10px;
 margin-bottom: 10px;
 position: relative;
 
-.custom-links {
-bottom: 0;
-left: 0;
-translate: 5rem 0;
-}
 }
 }
 
@@ -460,10 +461,10 @@ color: var(--clr-background);
 }
 
 .header-vers {
-    
+
 iframe.tmblr-iframe {
-top: calc(var(--sidebar-size) + 1rem);
-right: -2rem;
+    top: calc(var(--sidebar-size) + 1rem);
+    right: -2rem;
 }
 
 main {
@@ -499,17 +500,17 @@ flex: 1;
 }
 }
 
+.custom-links {
+top: 0;
+left: 0;
+translate: -0.5rem var(--sidebar-size);
+}
+
 .s-links {
 position: relative;
 margin-right: 10px;
 display: flex;
 gap: 10px;
-
-.custom-links {
-top: 0;
-left: 0;
-translate: -4rem 5rem;
-}
 }
 }
 
@@ -576,7 +577,7 @@ gap: 10px;
 align-items: center;
 justify-content: space-between;
 
-.image-and-toggle {
+.image-and-links {
 position: relative;
 
 .s-image {
@@ -585,7 +586,7 @@ aspect-ratio: 1;
 border-radius: 0.4rem;
 }
 
-#toggle {
+.custom-toggle {
 position: absolute;
 bottom: 0;
 right: 0;
@@ -639,7 +640,6 @@ opacity: 0;
 visibility: hidden;
 position: absolute;
 transition: all 0.7s ease-in-out;
-
 z-index: 10;
 }
 
@@ -724,57 +724,11 @@ text-align: center;
 <div class="sidebar">
 
 <!-- sidebar or header image and light/dark toggle -->
-<div class="image-and-toggle">
+<div class="image-and-links">
 
 <!-- image -->
 <img src="https://i.pinimg.com/474x/66/2d/af/662daf8ed78a379f5943dc11b5b70218.jpg" class="s-image"/>
 <!-- image -->
-
-<!-- light/dark toggle -->
-<button id="toggle">
-<span class="light-mode" title="turn on the lights">
-<i class="solar-icons" stroke="2" icon-name="sun-2"></i>
-</span>
-
-<span class="dark-mode" title="turn off the lights">
-<i class="solar-icons" stroke="2" icon-name="moon"></i>
-</span>
-</button>
-<!-- light/dark toggle -->
-
-</div>
-<!-- sidebar or header image and light/dark toggle -->
-
-<!-- sidebar or header title -->
-<h1 class="title">put a title here</h1>
-<!-- sidebar or header title -->
-
-<!-- links -->
-<div class="s-links">
-
-<!-- home link -->
-<a href="/" title="home">
-<i class="solar-icons" stroke="2" icon-name="home-2"></i>
-</a>
-<!-- home link -->
-
-<!-- askbox link -->
-<a href="/" title="message">
-<i class="solar-icons" stroke="2" icon-name="inbox-notif"></i>
-</a>
-<!-- askbox link -->
-
-<!-- archive link -->
-<a href="/" title="archive">
-<i class="solar-icons" stroke="2" icon-name="archive"></i>
-</a>
-<!-- archive link -->
-
-<!-- dashboard link -->
-<a href="/" title="dashboard">
-<i class="solar-icons" stroke="2" icon-name="logout-1"></i>
-</a>
-<!-- dashboard link -->
 
 <!-- custom links toggle -->
 <button class="custom-toggle">
@@ -837,6 +791,50 @@ text-align: center;
 </div>
 </div>
 <!-- custom links container -->
+
+</div>
+<!-- sidebar or header image and light/dark toggle -->
+
+<!-- sidebar or header title -->
+<h1 class="title">put a title here</h1>
+<!-- sidebar or header title -->
+
+<!-- links -->
+<div class="s-links">
+
+<!-- home link -->
+<a href="/" title="home">
+<i class="solar-icons" stroke="2" icon-name="home-2"></i>
+</a>
+<!-- home link -->
+
+<!-- askbox link -->
+<a href="/" title="message">
+<i class="solar-icons" stroke="2" icon-name="inbox-notif"></i>
+</a>
+<!-- askbox link -->
+
+<!-- archive link -->
+<a href="/" title="archive">
+<i class="solar-icons" stroke="2" icon-name="archive"></i>
+</a>
+<!-- archive link -->
+
+<!-- dashboard link -->
+<a href="/" title="dashboard">
+<i class="solar-icons" stroke="2" icon-name="logout-1"></i>
+</a>
+<!-- dashboard link -->
+
+<button id="toggle">
+    <span class="light-mode" title="turn on the lights">
+        <i class="solar-icons" stroke="2" icon-name="sun-2"></i>
+    </span>
+
+    <span class="dark-mode" title="turn off the lights">
+        <i class="solar-icons" stroke="2" icon-name="moon"></i>
+    </span>
+</button>
 
 </div>
 <!-- links -->
@@ -3248,4 +3246,3 @@ return title;
 </script>
 </body>
 </html>
-
