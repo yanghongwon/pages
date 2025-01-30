@@ -1,0 +1,3242 @@
+<!--
+
+macheon-dong: fic/project page by pouthongwon
+
+note: if you want to use this page, then you'll need to enable javascript for custom pages. please refer to this post by glenthemes to get permission: https://glenthemes.tumblr.com/post/683796810867900416/tumblr-javascript
+
+credits:
+fonts by google fonts
+icons by solar icons
+light/dark toggle by kevin powell
+modified menu on click by kevin powell
+tabs script by codeconcisely
+tooltips script by atomiks
+
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>macheon-dong (fic page)</title>
+<link rel="shortcut icon" href="{Favicon}">
+
+<!-- google fonts:
+main text: poppins
+titles: source serif 4
+tooltips and button labels: dm mono
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,500;1,400;1,500&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+
+<!-- solar icons -->
+<link href="https://solar-icons.gitlab.io/i/icons.css" rel="stylesheet" crossorigin>
+
+<!-- tooltips scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<style type="text/css">
+
+/*
+
+guide to the css variables:
+
+- clr-background: background color
+- clr-container: sidebar/header and timeline icon background color
+- clr-text: text color
+- clr-links: links color
+- clr-borders: border color
+- clr-accent: link hover color
+- clr-accent-gradient and clr-accent-2-gradient: gradient for timeline icon color and tab background color (both current and when they're hovered over)
+
+- ff-body: body font family
+- ff-heading: title font family
+- ff-accent: button label and tooltip font family
+
+- sidebar-size: size of the first sidebar
+- container-size: size of the timeline container
+- sidebar2-size: size of the second sidebar (when you're using 'sidebar-vers')
+
+*/
+
+
+
+:root {
+--light-mode: none;
+--dark-mode: flex;
+
+--clr-background: #f0f0f0;
+--clr-container: #fff;
+--clr-text: #000;
+--clr-links: #252525;
+--clr-borders: #d3d3d3;
+--clr-accent: #ada5dd;
+--clr-accent-gradient: #8c8ea1;
+--clr-accent-2-gradient: #56687c;
+
+--ff-body: 'Poppins', sans-serif;
+--ff-heading: 'Source Serif 4', serif;
+--ff-accent: 'DM Mono', monospace;
+
+--fs-body: 0.9rem;
+
+--sidebar-size: 6rem;
+--container-size: 500px;
+--sidebar2-size: 300px;
+}
+
+.dark {
+--light-mode: flex;
+--dark-mode: none;
+
+--clr-background: #101010;
+--clr-container: #202020;
+--clr-text: #fff;
+--clr-links: #eee;
+--clr-borders: #505050;
+--clr-accent: #d5d3f4;
+--clr-accent-gradient: #fdcbcb;
+--clr-accent-2-gradient: #f9b2d2;
+}
+
+*, *::before, *::after {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+html {
+min-height: 100%;
+}
+
+body {
+background: var(--clr-background);
+color: var(--clr-text);
+font-family: var(--ff-body);
+font-size: var(--fs-body);
+font-weight: 400;
+}
+
+a {
+color: var(--clr-links);
+text-decoration: none;
+transition: 0.7s ease-in-out;
+}
+
+a:hover {
+color: var(--clr-accent);
+}
+
+h1, h2, p, ul[class], ol[class] {
+margin: 0;
+padding: 0;
+}
+
+ul[class], ol[class] {
+list-style: none;
+}
+
+h1, h2, h3 {
+font-family: var(--ff-heading);
+font-weight: 600;
+line-height: 1.1;
+text-wrap: balance;
+}
+
+h1 {
+font-size: calc(var(--fs-body) + 0.4rem);
+}
+
+h2 {
+font-size: calc(var(--fs-body) + 0.2rem);
+}
+
+h3 {
+font-size: var(--fs-body);
+}
+
+p:not(:last-child, :only-child) {
+margin-bottom: 0.5rem;
+}
+
+b, strong {
+font-weight: 600;
+}
+
+i:not(.solar-icons), em {
+font-style: italic;
+}
+
+img {
+object-fit: cover;
+}
+
+button {
+background: inherit;
+font-family: inherit;
+color: inherit;
+font-size: inherit;
+cursor: pointer;
+
+padding: 0;
+border: 1px solid transparent;
+outline: 1px solid transparent;
+}
+
+.solar-icons {
+font-size: calc(var(--fs-body) + 0.2rem);
+}
+
+.light-mode {
+display: var(--light-mode);
+}
+
+.dark-mode {
+display: var(--dark-mode);
+}
+
+iframe.tmblr-iframe {
+transform: scale(0.75, 0.75);
+filter: invert(100%);
+}
+
+.dark iframe.tmblr-iframe {
+filter: invert(0);
+}
+
+.sidebar-vers {
+main {
+width: calc(var(--sidebar-size) + var(--container-size));
+display: grid;
+grid-template-areas: 'sidebar container';
+gap: 1rem;
+}
+
+.sidebar {
+width: var(--sidebar-size);
+height: 100svh;
+border-right: 1px solid var(--clr-borders);
+
+flex-direction: column;
+
+.title {
+rotate: 180deg;
+writing-mode: vertical-lr;
+display: flex;
+align-items: center;
+gap: 10px;
+flex: 1;
+
+&::before, &::after {
+content: '';
+width: 1px;
+background: var(--clr-borders);
+flex: 1;
+}
+}
+
+.image-and-toggle {
+margin-top: 10px;
+}
+
+.s-links {
+display: grid;
+gap: 10px;
+margin-bottom: 10px;
+position: relative;
+
+.custom-links {
+bottom: 0;
+left: 0;
+translate: 5rem 0;
+}
+}
+}
+
+.container {
+width: calc(var(--container-size) + var(--sidebar2-size));
+margin: 1rem 8rem;
+
+grid-template-areas: 'panels tabs';
+}
+
+.button-group {
+align-self: start;
+width: var(--sidebar2-size);
+}
+
+.button-list {
+display: flex;
+flex-direction: column;
+}
+
+.button-list button {
+display: flex;
+flex-direction: column;
+flex: 1;
+text-align: start;
+
+&:not(:last-child)::after {
+content: '';
+width: 100%;
+height: 1px;
+background: var(--clr-borders);
+display: block;
+margin-block: 0.2rem;
+}
+
+&:first-child {
+margin-top: 0;
+}
+
+&:last-child {
+margin-bottom: 0;
+}
+}
+
+.button-label {
+background: linear-gradient(to right, var(--clr-accent-gradient), var(--clr-accent-2-gradient));
+background-size: 0 100%;
+background-repeat: no-repeat;
+transition: all 0.7s ease-in-out;
+border-radius: 0.5rem;
+
+padding: 1rem;
+width: 100%;
+
+text-overflow: ellipsis;
+overflow: clip;
+white-space: nowrap;
+}
+
+button[role="tab"][aria-selected="true"] .button-label, button[role="tab"]:hover .button-label {
+background-size: 100% 100%;
+color: var(--clr-background);
+}
+}
+
+.panel-group {
+grid-area: panels;
+}
+
+.button-group {
+grid-area: tabs;
+
+.button-list {
+margin-top: 2rem;
+}
+}
+
+.timeline {
+background: transparent;
+margin: 2rem auto;
+position: relative;
+padding: 1rem;
+
+.tl-inner {
+border-left: 1px solid var(--clr-borders);
+}
+
+.project {
+position: relative;
+margin: 0 0 2rem 2rem;
+display: flex;
+align-items: start;
+gap: 1rem;
+
+.project-icon {
+position: absolute;
+top: 0;
+left: 0;
+translate: -3rem 0;
+
+background: var(--clr-container);
+border-radius: 0.4rem;
+border: 1px solid var(--clr-borders);
+padding: 0.4rem;
+
+& i {
+display: flex;
+align-items: center;
+justify-content: center;
+
+color: transparent;
+background: linear-gradient(to top, var(--clr-accent-gradient), var(--clr-accent-2-gradient));
+background-clip: text;
+-webkit-background-clip: text;
+}
+}
+
+.block {
+margin: 0;
+
+& h2 {
+margin-bottom: 0.3rem;
+}
+
+.project-title:first-of-type {
+background-image: linear-gradient(var(--clr-accent-gradient), var(--clr-accent-2-gradient));
+color: transparent;
+background-clip: text;
+-webkit-background-clip: text;
+translate: 0 0.4rem;
+font-size: calc(var(--fs-body) + 0.3rem);
+}
+
+.characters {
+margin-top: 0.4rem;
+}
+
+.s-list, .c-list {
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
+
+.s-item, .c-item {
+flex-basis: calc(50% - 0.5rem);
+}
+
+.s-item b {
+font-family: var(--ff-accent);
+}
+
+.c-item {
+display: flex;
+align-items: center;
+gap: 6px;
+}
+}
+
+.t-list {
+display: flex;
+flex-wrap: wrap;
+column-gap: 10px;
+
+.tag {
+display: flex;
+align-items: center;
+gap: 10px;
+
+&:not(:last-child)::after {
+content: '';
+width: 6px;
+aspect-ratio: 1;
+background: var(--clr-accent);
+border-radius: 50%;
+}
+
+&:not(.warning)::before {
+content: '#';
+margin-right: -10px;
+}
+}
+}
+}
+
+.links-wrapper {
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
+
+& a {
+background: linear-gradient(to bottom, var(--clr-accent-gradient), var(--clr-accent-2-gradient));
+border: 1px solid var(--clr-borders);
+padding: 0.5rem 1rem;
+background-size: 100% 0;
+background-repeat: no-repeat;
+border-radius: 0.4rem;
+
+&:hover {
+background-size: 100% 100%;
+color: var(--clr-background);
+}
+}
+}
+}
+}
+
+.header-vers {
+main {
+display: grid;
+grid-template-areas: 'sidebar'
+'container';
+gap: 3rem;
+}
+
+.sidebar {
+width: 100vw;
+flex-direction: row;
+padding: 1rem;
+border: 1px solid var(--clr-borders);
+
+position: static;
+
+.s-image {
+margin-left: 10px;
+}
+
+.title {
+display: flex;
+align-items: center;
+gap: 10px;
+flex: 1;
+
+&::before, &::after {
+content: '';
+height: 1px;
+background: var(--clr-borders);
+flex: 1;
+}
+}
+
+.s-links {
+position: relative;
+margin-right: 10px;
+display: flex;
+gap: 10px;
+
+.custom-links {
+top: 0;
+left: 0;
+translate: -4rem 5rem;
+}
+}
+}
+
+.container {
+margin: 1rem auto 1rem;
+grid-template-areas: 'tabs'
+'panels';
+gap: 0;
+width: var(--container-size);
+align-items: start;
+}
+
+.panel-group {
+padding: 1rem;
+}
+
+.button-list {
+display: inline-flex;
+flex-wrap: wrap;
+column-gap: 1rem;
+row-gap: 0.3rem;
+
+.button-label {
+display: inline;
+position: relative;
+isolation: isolate;
+
+&::before {
+content: '';
+width: 100%;
+height: 5px;
+background: linear-gradient(to right, var(--clr-accent-gradient), var(--clr-accent-2-gradient));
+
+transform: scaleX(0);
+transform-origin: right;
+transition: transform 0.7s ease-in-out;
+
+position: absolute;
+bottom: 0;
+left: 0;
+translate: 0 -0.2rem;
+z-index: -1;
+}
+}
+
+button[role="tab"][aria-selected="true"] .button-label::before, 
+button[role="tab"]:hover .button-label::before {
+transform: scaleX(1);
+transform-origin: left;
+}
+}
+}
+
+.sidebar {
+grid-area: sidebar;
+position: fixed;
+top: 0;
+left: 0;
+background: var(--clr-container);
+z-index: 10;
+
+display: flex;
+gap: 10px;
+align-items: center;
+justify-content: space-between;
+
+.image-and-toggle {
+position: relative;
+
+.s-image {
+width: calc(var(--sidebar-size) - 2rem);
+aspect-ratio: 1;
+border-radius: 0.4rem;
+}
+
+#toggle {
+position: absolute;
+bottom: 0;
+right: 0;
+translate: 0.3rem 0rem;
+
+i {
+display: flex;
+align-items: center;
+justify-content: center;
+
+padding: 0.3rem;
+border-radius: 0.4rem;
+background: linear-gradient(var(--clr-accent-gradient), var(--clr-accent-2-gradient));
+color: var(--clr-background);
+}
+}
+}
+
+}
+
+.container {
+grid-area: container;
+display: grid;
+gap: 1rem;
+}
+
+.button-group {
+margin-top: 1rem;
+position: relative;
+background: var(--clr-container);
+padding: 1rem;
+border: 1px solid var(--clr-borders);
+
+.button-title {
+width: fit-content;
+background: var(--clr-container);
+padding: 1rem;
+border: 1px solid var(--clr-borders);
+
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+margin-inline: auto;
+translate: 0 -1rem;
+}
+}
+
+.custom-links {
+opacity: 0;
+visibility: hidden;
+position: absolute;
+transition: all 0.7s ease-in-out;
+}
+
+.custom-list {
+background: var(--clr-container);
+padding: 1rem;
+width: 200px;
+border: 1px solid var(--clr-borders);
+
+display: flex;
+flex-direction: column;
+gap: 0.7rem;
+
+.custom-link {
+display: flex;
+gap: 0.5rem;
+align-items: center;
+justify-content: space-between;
+
+&:first-child {
+margin-top: 0;
+}
+
+&:last-child {
+margin-bottom: 0;
+}
+}
+}
+
+.custom-open .custom-links {
+opacity: 1;
+visibility: visible;
+}
+
+.open-links {
+display: flex;
+}
+
+.close-links {
+display: none;
+}
+
+.custom-open .open-links {
+display: none;
+}
+
+.custom-open .close-links {
+display: flex;
+}
+
+.button-group {
+position: sticky;
+top: 2rem;
+
+.button-label {
+font-size: calc(var(--fs-body) + 0.05rem);
+font-weight: 400;
+font-family: var(--ff-accent);
+}
+}
+
+.tippy-tooltip.custom-theme {
+background-color: var(--clr-text);
+color: var(--clr-background);
+font-family: var(--ff-accent);
+text-align: center;
+}
+</style>
+</head>
+
+
+<!-- two versions: sidebar version or header vers 
+- change the body class to either 'sidebar-vers' or 'header-vers' 
+-->
+
+<body class="header-vers">
+
+<!-- main container -->
+<main>
+
+<!-- sidebar or header -->
+<div class="sidebar">
+
+<!-- sidebar or header image and light/dark toggle -->
+<div class="image-and-toggle">
+
+<!-- image -->
+<img src="https://i.pinimg.com/474x/66/2d/af/662daf8ed78a379f5943dc11b5b70218.jpg" class="s-image"/>
+<!-- image -->
+
+<!-- light/dark toggle -->
+<button id="toggle">
+<span class="light-mode" title="turn on the lights">
+<i class="solar-icons" stroke="2" icon-name="sun-2"></i>
+</span>
+
+<span class="dark-mode" title="turn off the lights">
+<i class="solar-icons" stroke="2" icon-name="moon"></i>
+</span>
+</button>
+<!-- light/dark toggle -->
+
+</div>
+<!-- sidebar or header image and light/dark toggle -->
+
+<!-- sidebar or header title -->
+<h1 class="title">put a title here</h1>
+<!-- sidebar or header title -->
+
+<!-- links -->
+<div class="s-links">
+
+<!-- home link -->
+<a href="/" title="home">
+<i class="solar-icons" stroke="2" icon-name="home-2"></i>
+</a>
+<!-- home link -->
+
+<!-- askbox link -->
+<a href="/" title="message">
+<i class="solar-icons" stroke="2" icon-name="inbox-notif"></i>
+</a>
+<!-- askbox link -->
+
+<!-- archive link -->
+<a href="/" title="archive">
+<i class="solar-icons" stroke="2" icon-name="archive"></i>
+</a>
+<!-- archive link -->
+
+<!-- dashboard link -->
+<a href="/" title="dashboard">
+<i class="solar-icons" stroke="2" icon-name="logout-1"></i>
+</a>
+<!-- dashboard link -->
+
+<!-- custom links toggle -->
+<button class="custom-toggle">
+<span class="open-links" title="open custom links">
+<i class="solar-icons" stroke="2" icon-name="link-2"></i>
+</span>
+
+<span class="close-links" title="close custom links">
+<i class="solar-icons" stroke="2" icon-name="close"></i>
+</span>
+</button>
+<!-- custom links toggle -->
+
+<!-- custom links container -->
+<div class="custom-links">
+<div class="custom-list">
+
+<!-- custom link 1 -->
+<span class="custom-link">
+<a href="/">custom link 1</a>
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+</span>
+<!-- custom link 1 -->
+
+<!-- custom link 2 -->
+<span class="custom-link">
+<a href="/">custom link 2</a>
+<i class="solar-icons" stroke="2" icon-name="notebook"></i>
+</span>
+<!-- custom link 2 -->
+
+<!-- custom link 3 -->
+<span class="custom-link">
+<a href="/">custom link 3</a>
+<i class="solar-icons" stroke="2" icon-name="list-alphabet"></i>
+</span>
+<!-- custom link 3 -->
+
+<!-- custom link 4 -->
+<span class="custom-link">
+<a href="/">custom link 4</a>
+<i class="solar-icons" stroke="2" icon-name="bed-2"></i>
+</span>
+<!-- custom link 4 -->
+
+<!-- custom link 5 -->
+<span class="custom-link">
+<a href="/">custom link 5</a>
+<i class="solar-icons" stroke="2" icon-name="notes-2"></i>
+</span>
+<!-- custom link 5 -->
+
+<!-- custom link 6 -->
+<span class="custom-link">
+<a href="/">custom link 6</a>
+<i class="solar-icons" stroke="2" icon-name="folder-open"></i>
+</span>
+<!-- custom link 6 -->
+
+</div>
+</div>
+<!-- custom links container -->
+
+</div>
+<!-- links -->
+
+</div>
+<!-- sidebar or header -->
+
+<!-- container -->
+<div class="container">
+
+<!--
+
+how to add more tabs and buttons:
+
+adding more buttons:
+step 1) find <div class="buttons-list"></div>
+step 2) scroll all the way to <button id="tab-7"></button>
+step 3) copy and paste the button, replacing 'tab-7' and 'tab-panel-7' with 'tab-[#]' and 'tab-panel-[#]'
+- replace [#] with the number you want
+
+adding more tabs:
+step 1) find <div class="tab-group"></div>
+step 2) scroll all the way to <div id="tab-panel-7"></div>
+step 3) copy and paste the entire div, replacing 'tab-panel-7' and 'tab-7' with 'tab-panel-[#]' and 'tab-[#]'
+- replace [#] with the number you want
+
+-->
+
+<!-- tab panels -->
+<div class="panel-group">
+
+<!-- tab panel 1 -->
+<div id="tab-panel-1" aria-labelledby="tab-1" role="tabpanel" tabindex="0">
+
+<!-- timeline -->
+<div class="timeline">
+<div class="tl-inner">
+
+<!-- box number one, containing the project's title -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+</div>
+<!-- project icon -->
+
+<!-- project title -->
+<div class="block">
+<h2 class="project-title">here's an example of a long title</h2>
+</div>
+<!-- project title -->
+
+</div>
+<!-- box number one, containing the project's title -->
+
+
+
+<!-- box number two, containing the project's summary -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="text"></i>
+</div>
+<!-- project icon -->
+
+<!-- project summary -->
+<div class="block">
+<h2>summary</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, iste voluptate? Reiciendis mollitia placeat molestiae natus quia repudiandae, ullam architecto?</p>
+</div>
+<!-- project summary -->
+
+</div>
+<!-- box number two, containing the project's summary -->
+
+
+
+<!-- box number three, containing the project's statistics -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="list-dsc"></i>
+</div>
+<!-- project icon -->
+
+<!-- stats list -->
+<div class="block">
+<ul class="s-list">
+
+<!-- stat one -->
+<li class="s-item">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- stat one -->
+
+<!-- stat two -->
+<li class="s-item">
+<b>rating</b>
+<p>rating</p>
+</li>
+<!-- stat two -->
+
+<!-- stat three -->
+<li class="s-item">
+<b>date started</b>
+<p>year/month/day</p>
+</li>
+<!-- stat three -->
+
+<!-- stat four -->
+<li class="s-item">
+<b>date ended/last updated</b>
+<p>year/month/day</p>
+</li>
+<!-- stat four -->
+
+<!-- stat five -->
+<li class="s-item">
+<b>word count</b>
+<p>word count</p>
+</li>
+<!-- stat five -->
+
+<!-- stat six -->
+<li class="s-item">
+<b>length</b>
+<p>1/?</p>
+</li>
+<!-- stat six -->
+
+</ul>
+</div>
+<!-- stats list -->
+
+</div>
+<!-- box number three, containing the project's statistics -->
+
+
+
+<!-- box number four, containing the project's characters -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="users"></i>
+</div>
+<!-- project icon -->
+
+<!-- character list -->
+<div class="block">
+<div class="characters">
+<ul class="c-list">
+
+<!-- character one -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 1</b>
+</li>
+<!-- character one -->
+
+<!-- character two -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 2</b>
+</li>
+<!-- character two -->
+
+<!-- character three -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 3</b>
+</li>
+<!-- character three -->
+
+<!-- character four -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 4</b>
+</li>
+<!-- character four -->
+
+<!-- character five -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 5</b>
+</li>
+<!-- character five -->
+
+<!-- character six -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 6</b>
+</li>
+<!-- character six -->
+
+</ul>
+</div>
+
+</div>
+<!-- character list -->
+
+</div>
+<!-- box number four, containing the project's characters -->
+
+
+
+<!-- box number five, containing the project's tags -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+</div>
+<!-- project icon -->
+
+<!-- tags list -->
+<div class="block">
+<h2>tags</h2>
+
+<ul class="t-list">
+
+<!-- tag one -->
+<li class="tag">tag 1</li>
+<!-- tag one -->
+
+<!-- tag two -->
+<li class="tag">tag 2</li>
+<!-- tag two -->
+
+<!-- tag three -->
+<li class="tag">example of a really long tag</li>
+<!-- tag three -->
+
+<!-- tag four -->
+<li class="tag">tag 4</li>
+<!-- tag four -->
+
+<!-- tag five -->
+<li class="tag">tag 5</li>
+<!-- tag five -->
+
+<!-- tag six -->
+<li class="tag">another slightly long tag 6</li>
+<!-- tag six -->
+
+</ul>
+</div>
+<!-- tags list -->
+
+</div>
+<!-- box number five, containing the project's tags -->
+
+
+
+<!-- box number six, containing the project's warnings -->
+<div class="project">
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+</div>
+
+<!-- warnings list -->
+<div class="block">
+<h2>warnings</h2>
+
+<ul class="t-list">
+
+<!-- warning one -->
+<li class="tag warning">warning 1</li>
+<!-- warning one -->
+
+<!-- warning two -->
+<li class="tag warning">warning 2</li>
+<!-- warning two -->
+
+<!-- warning three -->
+<li class="tag warning">warning 3</li>
+<!-- warning three -->
+
+<!-- warning four -->
+<li class="tag warning">warning 4</li>
+<!-- warning four -->
+
+<!-- warning five -->
+<li class="tag warning">warning 5</li>
+<!-- warning five -->
+
+<!-- warning six -->
+<li class="tag warning">warning 6</li>
+<!-- warning six -->
+
+</ul>
+</div>
+<!-- tags list -->
+</div>
+<!-- box number six, containing the project's warnings -->
+
+
+
+<!-- box number seven, containing the project's links -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="link-3"></i>
+</div>
+<!-- project icon -->
+
+<!-- links -->
+<div class="block">
+<div class="links-wrapper">
+<!-- link one -->
+<a href="//ao3.org/">ao3 link</a>
+<!-- link one -->
+
+<!-- link two -->
+<a href="/tagged/">tag link</a>
+<!-- link two -->
+
+<!-- link three -->
+<a href="/">another link</a>
+<!-- link three -->
+
+</div>
+</div>
+<!-- links -->
+
+</div>
+<!-- box number seven, containing the project's links -->
+
+
+</div>
+</div>
+<!-- timeline -->
+
+</div>
+<!-- tab panel 1 -->
+
+
+
+<!-- tab panel 2 -->
+<div id="tab-panel-2" aria-labelledby="tab-2" role="tabpanel" tabindex="-1" hidden>
+
+<!-- timeline -->
+<div class="timeline">
+<div class="tl-inner">
+
+<!-- box number one, containing the project's title -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+</div>
+<!-- project icon -->
+
+<!-- project title -->
+<div class="block">
+<h2 class="project-title">tab #2</h2>
+</div>
+<!-- project title -->
+
+</div>
+<!-- box number one, containing the project's title -->
+
+
+
+<!-- box number two, containing the project's summary -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="text"></i>
+</div>
+<!-- project icon -->
+
+<!-- project summary -->
+<div class="block">
+<h2>summary</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, iste voluptate? Reiciendis mollitia placeat molestiae natus quia repudiandae, ullam architecto?</p>
+</div>
+<!-- project summary -->
+
+</div>
+<!-- box number two, containing the project's summary -->
+
+
+
+<!-- box number three, containing the project's statistics -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="list-dsc"></i>
+</div>
+<!-- project icon -->
+
+<!-- stats list -->
+<div class="block">
+<ul class="s-list">
+
+<!-- stat one -->
+<li class="s-item">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- stat one -->
+
+<!-- stat two -->
+<li class="s-item">
+<b>rating</b>
+<p>rating</p>
+</li>
+<!-- stat two -->
+
+<!-- stat three -->
+<li class="s-item">
+<b>date started</b>
+<p>year/month/day</p>
+</li>
+<!-- stat three -->
+
+<!-- stat four -->
+<li class="s-item">
+<b>date ended/last updated</b>
+<p>year/month/day</p>
+</li>
+<!-- stat four -->
+
+<!-- stat five -->
+<li class="s-item">
+<b>word count</b>
+<p>word count</p>
+</li>
+<!-- stat five -->
+
+<!-- stat six -->
+<li class="s-item">
+<b>length</b>
+<p>1/?</p>
+</li>
+<!-- stat six -->
+
+</ul>
+</div>
+<!-- stats list -->
+
+</div>
+<!-- box number three, containing the project's statistics -->
+
+
+
+<!-- box number four, containing the project's characters -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="users"></i>
+</div>
+<!-- project icon -->
+
+<!-- character list -->
+<div class="block">
+<div class="characters">
+<ul class="c-list">
+
+<!-- character one -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 1</b>
+</li>
+<!-- character one -->
+
+<!-- character two -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 2</b>
+</li>
+<!-- character two -->
+
+<!-- character three -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 3</b>
+</li>
+<!-- character three -->
+
+<!-- character four -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 4</b>
+</li>
+<!-- character four -->
+
+<!-- character five -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 5</b>
+</li>
+<!-- character five -->
+
+<!-- character six -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 6</b>
+</li>
+<!-- character six -->
+
+</ul>
+</div>
+
+</div>
+<!-- character list -->
+
+</div>
+<!-- box number four, containing the project's characters -->
+
+
+
+<!-- box number five, containing the project's tags -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+</div>
+<!-- project icon -->
+
+<!-- tags list -->
+<div class="block">
+<h2>tags</h2>
+
+<ul class="t-list">
+
+<!-- tag one -->
+<li class="tag">tag 1</li>
+<!-- tag one -->
+
+<!-- tag two -->
+<li class="tag">tag 2</li>
+<!-- tag two -->
+
+<!-- tag three -->
+<li class="tag">example of a really long tag</li>
+<!-- tag three -->
+
+<!-- tag four -->
+<li class="tag">tag 4</li>
+<!-- tag four -->
+
+<!-- tag five -->
+<li class="tag">tag 5</li>
+<!-- tag five -->
+
+<!-- tag six -->
+<li class="tag">another slightly long tag 6</li>
+<!-- tag six -->
+
+</ul>
+</div>
+<!-- tags list -->
+
+</div>
+<!-- box number five, containing the project's tags -->
+
+
+
+<!-- box number six, containing the project's warnings -->
+<div class="project">
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+</div>
+
+<!-- warnings list -->
+<div class="block">
+<h2>warnings</h2>
+
+<ul class="t-list">
+
+<!-- warning one -->
+<li class="tag warning">warning 1</li>
+<!-- warning one -->
+
+<!-- warning two -->
+<li class="tag warning">warning 2</li>
+<!-- warning two -->
+
+<!-- warning three -->
+<li class="tag warning">warning 3</li>
+<!-- warning three -->
+
+<!-- warning four -->
+<li class="tag warning">warning 4</li>
+<!-- warning four -->
+
+<!-- warning five -->
+<li class="tag warning">warning 5</li>
+<!-- warning five -->
+
+<!-- warning six -->
+<li class="tag warning">warning 6</li>
+<!-- warning six -->
+
+</ul>
+</div>
+<!-- tags list -->
+</div>
+<!-- box number six, containing the project's warnings -->
+
+
+
+<!-- box number seven, containing the project's links -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="link-3"></i>
+</div>
+<!-- project icon -->
+
+<!-- links -->
+<div class="block">
+<div class="links-wrapper">
+<!-- link one -->
+<a href="//ao3.org/">ao3 link</a>
+<!-- link one -->
+
+<!-- link two -->
+<a href="/tagged/">tag link</a>
+<!-- link two -->
+
+<!-- link three -->
+<a href="/">another link</a>
+<!-- link three -->
+
+</div>
+</div>
+<!-- links -->
+
+</div>
+<!-- box number seven, containing the project's links -->
+
+
+</div>
+</div>
+<!-- timeline -->
+
+</div>
+<!-- tab panel 2 -->
+
+
+
+<!-- tab panel 3 -->
+<div id="tab-panel-3" aria-labelledby="tab-3" role="tabpanel" tabindex="-1" hidden>
+
+<!-- timeline -->
+<div class="timeline">
+<div class="tl-inner">
+
+<!-- box number one, containing the project's title -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+</div>
+<!-- project icon -->
+
+<!-- project title -->
+<div class="block">
+<h2 class="project-title">tab #3</h2>
+</div>
+<!-- project title -->
+
+</div>
+<!-- box number one, containing the project's title -->
+
+
+
+<!-- box number two, containing the project's summary -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="text"></i>
+</div>
+<!-- project icon -->
+
+<!-- project summary -->
+<div class="block">
+<h2>summary</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, iste voluptate? Reiciendis mollitia placeat molestiae natus quia repudiandae, ullam architecto?</p>
+</div>
+<!-- project summary -->
+
+</div>
+<!-- box number two, containing the project's summary -->
+
+
+
+<!-- box number three, containing the project's statistics -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="list-dsc"></i>
+</div>
+<!-- project icon -->
+
+<!-- stats list -->
+<div class="block">
+<ul class="s-list">
+
+<!-- stat one -->
+<li class="s-item">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- stat one -->
+
+<!-- stat two -->
+<li class="s-item">
+<b>rating</b>
+<p>rating</p>
+</li>
+<!-- stat two -->
+
+<!-- stat three -->
+<li class="s-item">
+<b>date started</b>
+<p>year/month/day</p>
+</li>
+<!-- stat three -->
+
+<!-- stat four -->
+<li class="s-item">
+<b>date ended/last updated</b>
+<p>year/month/day</p>
+</li>
+<!-- stat four -->
+
+<!-- stat five -->
+<li class="s-item">
+<b>word count</b>
+<p>word count</p>
+</li>
+<!-- stat five -->
+
+<!-- stat six -->
+<li class="s-item">
+<b>length</b>
+<p>1/?</p>
+</li>
+<!-- stat six -->
+
+</ul>
+</div>
+<!-- stats list -->
+
+</div>
+<!-- box number three, containing the project's statistics -->
+
+
+
+<!-- box number four, containing the project's characters -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="users"></i>
+</div>
+<!-- project icon -->
+
+<!-- character list -->
+<div class="block">
+<div class="characters">
+<ul class="c-list">
+
+<!-- character one -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 1</b>
+</li>
+<!-- character one -->
+
+<!-- character two -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 2</b>
+</li>
+<!-- character two -->
+
+<!-- character three -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 3</b>
+</li>
+<!-- character three -->
+
+<!-- character four -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 4</b>
+</li>
+<!-- character four -->
+
+<!-- character five -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 5</b>
+</li>
+<!-- character five -->
+
+<!-- character six -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 6</b>
+</li>
+<!-- character six -->
+
+</ul>
+</div>
+
+</div>
+<!-- character list -->
+
+</div>
+<!-- box number four, containing the project's characters -->
+
+
+
+<!-- box number five, containing the project's tags -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+</div>
+<!-- project icon -->
+
+<!-- tags list -->
+<div class="block">
+<h2>tags</h2>
+
+<ul class="t-list">
+
+<!-- tag one -->
+<li class="tag">tag 1</li>
+<!-- tag one -->
+
+<!-- tag two -->
+<li class="tag">tag 2</li>
+<!-- tag two -->
+
+<!-- tag three -->
+<li class="tag">example of a really long tag</li>
+<!-- tag three -->
+
+<!-- tag four -->
+<li class="tag">tag 4</li>
+<!-- tag four -->
+
+<!-- tag five -->
+<li class="tag">tag 5</li>
+<!-- tag five -->
+
+<!-- tag six -->
+<li class="tag">another slightly long tag 6</li>
+<!-- tag six -->
+
+</ul>
+</div>
+<!-- tags list -->
+
+</div>
+<!-- box number five, containing the project's tags -->
+
+
+
+<!-- box number six, containing the project's warnings -->
+<div class="project">
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+</div>
+
+<!-- warnings list -->
+<div class="block">
+<h2>warnings</h2>
+
+<ul class="t-list">
+
+<!-- warning one -->
+<li class="tag warning">warning 1</li>
+<!-- warning one -->
+
+<!-- warning two -->
+<li class="tag warning">warning 2</li>
+<!-- warning two -->
+
+<!-- warning three -->
+<li class="tag warning">warning 3</li>
+<!-- warning three -->
+
+<!-- warning four -->
+<li class="tag warning">warning 4</li>
+<!-- warning four -->
+
+<!-- warning five -->
+<li class="tag warning">warning 5</li>
+<!-- warning five -->
+
+<!-- warning six -->
+<li class="tag warning">warning 6</li>
+<!-- warning six -->
+
+</ul>
+</div>
+<!-- tags list -->
+</div>
+<!-- box number six, containing the project's warnings -->
+
+
+
+<!-- box number seven, containing the project's links -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="link-3"></i>
+</div>
+<!-- project icon -->
+
+<!-- links -->
+<div class="block">
+<div class="links-wrapper">
+<!-- link one -->
+<a href="//ao3.org/">ao3 link</a>
+<!-- link one -->
+
+<!-- link two -->
+<a href="/tagged/">tag link</a>
+<!-- link two -->
+
+<!-- link three -->
+<a href="/">another link</a>
+<!-- link three -->
+
+</div>
+</div>
+<!-- links -->
+
+</div>
+<!-- box number seven, containing the project's links -->
+
+
+</div>
+</div>
+<!-- timeline -->
+
+</div>
+<!-- tab panel 3 -->
+
+
+
+<!-- tab panel 4 -->
+<div id="tab-panel-4" aria-labelledby="tab-4" role="tabpanel" tabindex="-1" hidden>
+
+<!-- timeline -->
+<div class="timeline">
+<div class="tl-inner">
+
+<!-- box number one, containing the project's title -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+</div>
+<!-- project icon -->
+
+<!-- project title -->
+<div class="block">
+<h2 class="project-title">tab #4</h2>
+</div>
+<!-- project title -->
+
+</div>
+<!-- box number one, containing the project's title -->
+
+
+
+<!-- box number two, containing the project's summary -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="text"></i>
+</div>
+<!-- project icon -->
+
+<!-- project summary -->
+<div class="block">
+<h2>summary</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, iste voluptate? Reiciendis mollitia placeat molestiae natus quia repudiandae, ullam architecto?</p>
+</div>
+<!-- project summary -->
+
+</div>
+<!-- box number two, containing the project's summary -->
+
+
+
+<!-- box number three, containing the project's statistics -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="list-dsc"></i>
+</div>
+<!-- project icon -->
+
+<!-- stats list -->
+<div class="block">
+<ul class="s-list">
+
+<!-- stat one -->
+<li class="s-item">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- stat one -->
+
+<!-- stat two -->
+<li class="s-item">
+<b>rating</b>
+<p>rating</p>
+</li>
+<!-- stat two -->
+
+<!-- stat three -->
+<li class="s-item">
+<b>date started</b>
+<p>year/month/day</p>
+</li>
+<!-- stat three -->
+
+<!-- stat four -->
+<li class="s-item">
+<b>date ended/last updated</b>
+<p>year/month/day</p>
+</li>
+<!-- stat four -->
+
+<!-- stat five -->
+<li class="s-item">
+<b>word count</b>
+<p>word count</p>
+</li>
+<!-- stat five -->
+
+<!-- stat six -->
+<li class="s-item">
+<b>length</b>
+<p>1/?</p>
+</li>
+<!-- stat six -->
+
+</ul>
+</div>
+<!-- stats list -->
+
+</div>
+<!-- box number three, containing the project's statistics -->
+
+
+
+<!-- box number four, containing the project's characters -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="users"></i>
+</div>
+<!-- project icon -->
+
+<!-- character list -->
+<div class="block">
+<div class="characters">
+<ul class="c-list">
+
+<!-- character one -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 1</b>
+</li>
+<!-- character one -->
+
+<!-- character two -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 2</b>
+</li>
+<!-- character two -->
+
+<!-- character three -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 3</b>
+</li>
+<!-- character three -->
+
+<!-- character four -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 4</b>
+</li>
+<!-- character four -->
+
+<!-- character five -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 5</b>
+</li>
+<!-- character five -->
+
+<!-- character six -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 6</b>
+</li>
+<!-- character six -->
+
+</ul>
+</div>
+
+</div>
+<!-- character list -->
+
+</div>
+<!-- box number four, containing the project's characters -->
+
+
+
+<!-- box number five, containing the project's tags -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+</div>
+<!-- project icon -->
+
+<!-- tags list -->
+<div class="block">
+<h2>tags</h2>
+
+<ul class="t-list">
+
+<!-- tag one -->
+<li class="tag">tag 1</li>
+<!-- tag one -->
+
+<!-- tag two -->
+<li class="tag">tag 2</li>
+<!-- tag two -->
+
+<!-- tag three -->
+<li class="tag">example of a really long tag</li>
+<!-- tag three -->
+
+<!-- tag four -->
+<li class="tag">tag 4</li>
+<!-- tag four -->
+
+<!-- tag five -->
+<li class="tag">tag 5</li>
+<!-- tag five -->
+
+<!-- tag six -->
+<li class="tag">another slightly long tag 6</li>
+<!-- tag six -->
+
+</ul>
+</div>
+<!-- tags list -->
+
+</div>
+<!-- box number five, containing the project's tags -->
+
+
+
+<!-- box number six, containing the project's warnings -->
+<div class="project">
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+</div>
+
+<!-- warnings list -->
+<div class="block">
+<h2>warnings</h2>
+
+<ul class="t-list">
+
+<!-- warning one -->
+<li class="tag warning">warning 1</li>
+<!-- warning one -->
+
+<!-- warning two -->
+<li class="tag warning">warning 2</li>
+<!-- warning two -->
+
+<!-- warning three -->
+<li class="tag warning">warning 3</li>
+<!-- warning three -->
+
+<!-- warning four -->
+<li class="tag warning">warning 4</li>
+<!-- warning four -->
+
+<!-- warning five -->
+<li class="tag warning">warning 5</li>
+<!-- warning five -->
+
+<!-- warning six -->
+<li class="tag warning">warning 6</li>
+<!-- warning six -->
+
+</ul>
+</div>
+<!-- tags list -->
+</div>
+<!-- box number six, containing the project's warnings -->
+
+
+
+<!-- box number seven, containing the project's links -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="link-3"></i>
+</div>
+<!-- project icon -->
+
+<!-- links -->
+<div class="block">
+<div class="links-wrapper">
+<!-- link one -->
+<a href="//ao3.org/">ao3 link</a>
+<!-- link one -->
+
+<!-- link two -->
+<a href="/tagged/">tag link</a>
+<!-- link two -->
+
+<!-- link three -->
+<a href="/">another link</a>
+<!-- link three -->
+
+</div>
+</div>
+<!-- links -->
+
+</div>
+<!-- box number seven, containing the project's links -->
+
+
+</div>
+</div>
+<!-- timeline -->
+
+</div>
+<!-- tab panel 4 -->
+
+
+
+<!-- tab panel 5 -->
+<div id="tab-panel-5" aria-labelledby="tab-5" role="tabpanel" tabindex="-1" hidden>
+
+<!-- timeline -->
+<div class="timeline">
+<div class="tl-inner">
+
+<!-- box number one, containing the project's title -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+</div>
+<!-- project icon -->
+
+<!-- project title -->
+<div class="block">
+<h2 class="project-title">tab #5</h2>
+</div>
+<!-- project title -->
+
+</div>
+<!-- box number one, containing the project's title -->
+
+
+
+<!-- box number two, containing the project's summary -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="text"></i>
+</div>
+<!-- project icon -->
+
+<!-- project summary -->
+<div class="block">
+<h2>summary</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, iste voluptate? Reiciendis mollitia placeat molestiae natus quia repudiandae, ullam architecto?</p>
+</div>
+<!-- project summary -->
+
+</div>
+<!-- box number two, containing the project's summary -->
+
+
+
+<!-- box number three, containing the project's statistics -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="list-dsc"></i>
+</div>
+<!-- project icon -->
+
+<!-- stats list -->
+<div class="block">
+<ul class="s-list">
+
+<!-- stat one -->
+<li class="s-item">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- stat one -->
+
+<!-- stat two -->
+<li class="s-item">
+<b>rating</b>
+<p>rating</p>
+</li>
+<!-- stat two -->
+
+<!-- stat three -->
+<li class="s-item">
+<b>date started</b>
+<p>year/month/day</p>
+</li>
+<!-- stat three -->
+
+<!-- stat four -->
+<li class="s-item">
+<b>date ended/last updated</b>
+<p>year/month/day</p>
+</li>
+<!-- stat four -->
+
+<!-- stat five -->
+<li class="s-item">
+<b>word count</b>
+<p>word count</p>
+</li>
+<!-- stat five -->
+
+<!-- stat six -->
+<li class="s-item">
+<b>length</b>
+<p>1/?</p>
+</li>
+<!-- stat six -->
+
+</ul>
+</div>
+<!-- stats list -->
+
+</div>
+<!-- box number three, containing the project's statistics -->
+
+
+
+<!-- box number four, containing the project's characters -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="users"></i>
+</div>
+<!-- project icon -->
+
+<!-- character list -->
+<div class="block">
+<div class="characters">
+<ul class="c-list">
+
+<!-- character one -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 1</b>
+</li>
+<!-- character one -->
+
+<!-- character two -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 2</b>
+</li>
+<!-- character two -->
+
+<!-- character three -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 3</b>
+</li>
+<!-- character three -->
+
+<!-- character four -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 4</b>
+</li>
+<!-- character four -->
+
+<!-- character five -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 5</b>
+</li>
+<!-- character five -->
+
+<!-- character six -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 6</b>
+</li>
+<!-- character six -->
+
+</ul>
+</div>
+
+</div>
+<!-- character list -->
+
+</div>
+<!-- box number four, containing the project's characters -->
+
+
+
+<!-- box number five, containing the project's tags -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+</div>
+<!-- project icon -->
+
+<!-- tags list -->
+<div class="block">
+<h2>tags</h2>
+
+<ul class="t-list">
+
+<!-- tag one -->
+<li class="tag">tag 1</li>
+<!-- tag one -->
+
+<!-- tag two -->
+<li class="tag">tag 2</li>
+<!-- tag two -->
+
+<!-- tag three -->
+<li class="tag">example of a really long tag</li>
+<!-- tag three -->
+
+<!-- tag four -->
+<li class="tag">tag 4</li>
+<!-- tag four -->
+
+<!-- tag five -->
+<li class="tag">tag 5</li>
+<!-- tag five -->
+
+<!-- tag six -->
+<li class="tag">another slightly long tag 6</li>
+<!-- tag six -->
+
+</ul>
+</div>
+<!-- tags list -->
+
+</div>
+<!-- box number five, containing the project's tags -->
+
+
+
+<!-- box number six, containing the project's warnings -->
+<div class="project">
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+</div>
+
+<!-- warnings list -->
+<div class="block">
+<h2>warnings</h2>
+
+<ul class="t-list">
+
+<!-- warning one -->
+<li class="tag warning">warning 1</li>
+<!-- warning one -->
+
+<!-- warning two -->
+<li class="tag warning">warning 2</li>
+<!-- warning two -->
+
+<!-- warning three -->
+<li class="tag warning">warning 3</li>
+<!-- warning three -->
+
+<!-- warning four -->
+<li class="tag warning">warning 4</li>
+<!-- warning four -->
+
+<!-- warning five -->
+<li class="tag warning">warning 5</li>
+<!-- warning five -->
+
+<!-- warning six -->
+<li class="tag warning">warning 6</li>
+<!-- warning six -->
+
+</ul>
+</div>
+<!-- tags list -->
+</div>
+<!-- box number six, containing the project's warnings -->
+
+
+
+<!-- box number seven, containing the project's links -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="link-3"></i>
+</div>
+<!-- project icon -->
+
+<!-- links -->
+<div class="block">
+<div class="links-wrapper">
+<!-- link one -->
+<a href="//ao3.org/">ao3 link</a>
+<!-- link one -->
+
+<!-- link two -->
+<a href="/tagged/">tag link</a>
+<!-- link two -->
+
+<!-- link three -->
+<a href="/">another link</a>
+<!-- link three -->
+
+</div>
+</div>
+<!-- links -->
+
+</div>
+<!-- box number seven, containing the project's links -->
+
+
+</div>
+</div>
+<!-- timeline -->
+
+</div>
+<!-- tab panel 5 -->
+
+
+
+<!-- tab panel 6 -->
+<div id="tab-panel-6" aria-labelledby="tab-6" role="tabpanel" tabindex="-1" hidden>
+
+<!-- timeline -->
+<div class="timeline">
+<div class="tl-inner">
+
+<!-- box number one, containing the project's title -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+</div>
+<!-- project icon -->
+
+<!-- project title -->
+<div class="block">
+<h2 class="project-title">tab #6</h2>
+</div>
+<!-- project title -->
+
+</div>
+<!-- box number one, containing the project's title -->
+
+
+
+<!-- box number two, containing the project's summary -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="text"></i>
+</div>
+<!-- project icon -->
+
+<!-- project summary -->
+<div class="block">
+<h2>summary</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, iste voluptate? Reiciendis mollitia placeat molestiae natus quia repudiandae, ullam architecto?</p>
+</div>
+<!-- project summary -->
+
+</div>
+<!-- box number two, containing the project's summary -->
+
+
+
+<!-- box number three, containing the project's statistics -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="list-dsc"></i>
+</div>
+<!-- project icon -->
+
+<!-- stats list -->
+<div class="block">
+<ul class="s-list">
+
+<!-- stat one -->
+<li class="s-item">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- stat one -->
+
+<!-- stat two -->
+<li class="s-item">
+<b>rating</b>
+<p>rating</p>
+</li>
+<!-- stat two -->
+
+<!-- stat three -->
+<li class="s-item">
+<b>date started</b>
+<p>year/month/day</p>
+</li>
+<!-- stat three -->
+
+<!-- stat four -->
+<li class="s-item">
+<b>date ended/last updated</b>
+<p>year/month/day</p>
+</li>
+<!-- stat four -->
+
+<!-- stat five -->
+<li class="s-item">
+<b>word count</b>
+<p>word count</p>
+</li>
+<!-- stat five -->
+
+<!-- stat six -->
+<li class="s-item">
+<b>length</b>
+<p>1/?</p>
+</li>
+<!-- stat six -->
+
+</ul>
+</div>
+<!-- stats list -->
+
+</div>
+<!-- box number three, containing the project's statistics -->
+
+
+
+<!-- box number four, containing the project's characters -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="users"></i>
+</div>
+<!-- project icon -->
+
+<!-- character list -->
+<div class="block">
+<div class="characters">
+<ul class="c-list">
+
+<!-- character one -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 1</b>
+</li>
+<!-- character one -->
+
+<!-- character two -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 2</b>
+</li>
+<!-- character two -->
+
+<!-- character three -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 3</b>
+</li>
+<!-- character three -->
+
+<!-- character four -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 4</b>
+</li>
+<!-- character four -->
+
+<!-- character five -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 5</b>
+</li>
+<!-- character five -->
+
+<!-- character six -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 6</b>
+</li>
+<!-- character six -->
+
+</ul>
+</div>
+
+</div>
+<!-- character list -->
+
+</div>
+<!-- box number four, containing the project's characters -->
+
+
+
+<!-- box number five, containing the project's tags -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+</div>
+<!-- project icon -->
+
+<!-- tags list -->
+<div class="block">
+<h2>tags</h2>
+
+<ul class="t-list">
+
+<!-- tag one -->
+<li class="tag">tag 1</li>
+<!-- tag one -->
+
+<!-- tag two -->
+<li class="tag">tag 2</li>
+<!-- tag two -->
+
+<!-- tag three -->
+<li class="tag">example of a really long tag</li>
+<!-- tag three -->
+
+<!-- tag four -->
+<li class="tag">tag 4</li>
+<!-- tag four -->
+
+<!-- tag five -->
+<li class="tag">tag 5</li>
+<!-- tag five -->
+
+<!-- tag six -->
+<li class="tag">another slightly long tag 6</li>
+<!-- tag six -->
+
+</ul>
+</div>
+<!-- tags list -->
+
+</div>
+<!-- box number five, containing the project's tags -->
+
+
+
+<!-- box number six, containing the project's warnings -->
+<div class="project">
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+</div>
+
+<!-- warnings list -->
+<div class="block">
+<h2>warnings</h2>
+
+<ul class="t-list">
+
+<!-- warning one -->
+<li class="tag warning">warning 1</li>
+<!-- warning one -->
+
+<!-- warning two -->
+<li class="tag warning">warning 2</li>
+<!-- warning two -->
+
+<!-- warning three -->
+<li class="tag warning">warning 3</li>
+<!-- warning three -->
+
+<!-- warning four -->
+<li class="tag warning">warning 4</li>
+<!-- warning four -->
+
+<!-- warning five -->
+<li class="tag warning">warning 5</li>
+<!-- warning five -->
+
+<!-- warning six -->
+<li class="tag warning">warning 6</li>
+<!-- warning six -->
+
+</ul>
+</div>
+<!-- tags list -->
+</div>
+<!-- box number six, containing the project's warnings -->
+
+
+
+<!-- box number seven, containing the project's links -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="link-3"></i>
+</div>
+<!-- project icon -->
+
+<!-- links -->
+<div class="block">
+<div class="links-wrapper">
+<!-- link one -->
+<a href="//ao3.org/">ao3 link</a>
+<!-- link one -->
+
+<!-- link two -->
+<a href="/tagged/">tag link</a>
+<!-- link two -->
+
+<!-- link three -->
+<a href="/">another link</a>
+<!-- link three -->
+
+</div>
+</div>
+<!-- links -->
+
+</div>
+<!-- box number seven, containing the project's links -->
+
+
+</div>
+</div>
+<!-- timeline -->
+
+</div>
+<!-- tab panel 6 -->
+
+
+
+<!-- tab panel 7 -->
+<div id="tab-panel-7" aria-labelledby="tab-7" role="tabpanel" tabindex="-1" hidden>
+
+<!-- timeline -->
+<div class="timeline">
+<div class="tl-inner">
+
+<!-- box number one, containing the project's title -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+</div>
+<!-- project icon -->
+
+<!-- project title -->
+<div class="block">
+<h2 class="project-title">tab #7</h2>
+</div>
+<!-- project title -->
+
+</div>
+<!-- box number one, containing the project's title -->
+
+
+
+<!-- box number two, containing the project's summary -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="text"></i>
+</div>
+<!-- project icon -->
+
+<!-- project summary -->
+<div class="block">
+<h2>summary</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, iste voluptate? Reiciendis mollitia placeat molestiae natus quia repudiandae, ullam architecto?</p>
+</div>
+<!-- project summary -->
+
+</div>
+<!-- box number two, containing the project's summary -->
+
+
+
+<!-- box number three, containing the project's statistics -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="list-dsc"></i>
+</div>
+<!-- project icon -->
+
+<!-- stats list -->
+<div class="block">
+<ul class="s-list">
+
+<!-- stat one -->
+<li class="s-item">
+<b>fandom</b>
+<p>fandom</p>
+</li>
+<!-- stat one -->
+
+<!-- stat two -->
+<li class="s-item">
+<b>rating</b>
+<p>rating</p>
+</li>
+<!-- stat two -->
+
+<!-- stat three -->
+<li class="s-item">
+<b>date started</b>
+<p>year/month/day</p>
+</li>
+<!-- stat three -->
+
+<!-- stat four -->
+<li class="s-item">
+<b>date ended/last updated</b>
+<p>year/month/day</p>
+</li>
+<!-- stat four -->
+
+<!-- stat five -->
+<li class="s-item">
+<b>word count</b>
+<p>word count</p>
+</li>
+<!-- stat five -->
+
+<!-- stat six -->
+<li class="s-item">
+<b>length</b>
+<p>1/?</p>
+</li>
+<!-- stat six -->
+
+</ul>
+</div>
+<!-- stats list -->
+
+</div>
+<!-- box number three, containing the project's statistics -->
+
+
+
+<!-- box number four, containing the project's characters -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="users"></i>
+</div>
+<!-- project icon -->
+
+<!-- character list -->
+<div class="block">
+<div class="characters">
+<ul class="c-list">
+
+<!-- character one -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 1</b>
+</li>
+<!-- character one -->
+
+<!-- character two -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 2</b>
+</li>
+<!-- character two -->
+
+<!-- character three -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 3</b>
+</li>
+<!-- character three -->
+
+<!-- character four -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 4</b>
+</li>
+<!-- character four -->
+
+<!-- character five -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 5</b>
+</li>
+<!-- character five -->
+
+<!-- character six -->
+<li class="c-item">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+<b>character 6</b>
+</li>
+<!-- character six -->
+
+</ul>
+</div>
+
+</div>
+<!-- character list -->
+
+</div>
+<!-- box number four, containing the project's characters -->
+
+
+
+<!-- box number five, containing the project's tags -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+</div>
+<!-- project icon -->
+
+<!-- tags list -->
+<div class="block">
+<h2>tags</h2>
+
+<ul class="t-list">
+
+<!-- tag one -->
+<li class="tag">tag 1</li>
+<!-- tag one -->
+
+<!-- tag two -->
+<li class="tag">tag 2</li>
+<!-- tag two -->
+
+<!-- tag three -->
+<li class="tag">example of a really long tag</li>
+<!-- tag three -->
+
+<!-- tag four -->
+<li class="tag">tag 4</li>
+<!-- tag four -->
+
+<!-- tag five -->
+<li class="tag">tag 5</li>
+<!-- tag five -->
+
+<!-- tag six -->
+<li class="tag">another slightly long tag 6</li>
+<!-- tag six -->
+
+</ul>
+</div>
+<!-- tags list -->
+
+</div>
+<!-- box number five, containing the project's tags -->
+
+
+
+<!-- box number six, containing the project's warnings -->
+<div class="project">
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+</div>
+
+<!-- warnings list -->
+<div class="block">
+<h2>warnings</h2>
+
+<ul class="t-list">
+
+<!-- warning one -->
+<li class="tag warning">warning 1</li>
+<!-- warning one -->
+
+<!-- warning two -->
+<li class="tag warning">warning 2</li>
+<!-- warning two -->
+
+<!-- warning three -->
+<li class="tag warning">warning 3</li>
+<!-- warning three -->
+
+<!-- warning four -->
+<li class="tag warning">warning 4</li>
+<!-- warning four -->
+
+<!-- warning five -->
+<li class="tag warning">warning 5</li>
+<!-- warning five -->
+
+<!-- warning six -->
+<li class="tag warning">warning 6</li>
+<!-- warning six -->
+
+</ul>
+</div>
+<!-- tags list -->
+</div>
+<!-- box number six, containing the project's warnings -->
+
+
+
+<!-- box number seven, containing the project's links -->
+<div class="project">
+
+<!-- project icon -->
+<div class="project-icon">
+<i class="solar-icons" stroke="2" icon-name="link-3"></i>
+</div>
+<!-- project icon -->
+
+<!-- links -->
+<div class="block">
+<div class="links-wrapper">
+<!-- link one -->
+<a href="//ao3.org/">ao3 link</a>
+<!-- link one -->
+
+<!-- link two -->
+<a href="/tagged/">tag link</a>
+<!-- link two -->
+
+<!-- link three -->
+<a href="/">another link</a>
+<!-- link three -->
+
+</div>
+</div>
+<!-- links -->
+
+</div>
+<!-- box number seven, containing the project's links -->
+
+
+</div>
+</div>
+<!-- timeline -->
+
+</div>
+<!-- tab panel 7 -->
+
+</div>
+<!-- tab panels -->
+
+<!-- tab buttons -->
+<div class="button-group">
+
+<!-- button title -->
+<h2 class="button-title">fic directory</h2>
+<!-- button title -->
+
+<!-- button list -->
+<div class="button-list">
+
+<!-- button one -->
+<button id="tab-1" aria-controls="tab-panel-1" aria-selected="true" role="tab" type="button" tabindex="0">
+
+<!-- button label -->
+<h2 class="button-label" title="here's an example of a long title">here's an example of a long title</h2>
+<!-- button label -->
+
+</button>
+<!-- button one -->
+
+<!-- button two -->
+<button id="tab-2" aria-controls="tab-panel-2" aria-selected="false" role="tab" type="button" tabindex="-1">
+
+<!-- button label -->
+<h2 class="button-label">tab label #2</h2>
+<!-- button label -->
+
+</button>
+<!-- button two -->
+
+<!-- button three -->
+<button id="tab-3" aria-controls="tab-panel-3" aria-selected="false" role="tab" type="button" tabindex="-1">
+
+<!-- button label -->
+<h2 class="button-label">tab label #3</h2>
+<!-- button label -->
+
+</button>
+<!-- button three -->
+
+<!-- button four -->
+<button id="tab-4" aria-controls="tab-panel-4" aria-selected="false" role="tab" type="button" tabindex="-1">
+
+<!-- button label -->
+<h2 class="button-label">tab label #4</h2>
+<!-- button label -->
+
+</button>
+<!-- button four -->
+
+<!-- button five -->
+<button id="tab-5" aria-controls="tab-panel-5" aria-selected="false" role="tab" type="button" tabindex="-1">
+
+<!-- button label -->
+<h2 class="button-label">tab label #5</h2>
+<!-- button label -->
+
+</button>
+<!-- button five -->
+
+<!-- button six -->
+<button id="tab-6" aria-controls="tab-panel-6" aria-selected="false" role="tab" type="button" tabindex="-1">
+
+<!-- button label -->
+<h2 class="button-label">tab label #6</h2>
+<!-- button label -->
+
+</button>
+<!-- button six -->
+
+<!-- button seven -->
+<button id="tab-7" aria-controls="tab-panel-7" aria-selected="false" role="tab" type="button" tabindex="-1">
+
+<!-- button label -->
+<h2 class="button-label">tab label #7</h2>
+<!-- button label -->
+
+</button>
+<!-- button seven -->
+
+</div>
+<!-- button list -->
+
+</div>
+<!-- tab buttons -->
+
+</div>
+<!-- container -->
+
+</main>
+<!-- main container -->
+
+
+
+<script src="https://unpkg.com/popper.js@1"></script>
+<script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/svg-arrow.css" />
+
+<script>
+// check for saved 'darkMode' in localStorage
+let darkMode = localStorage.getItem('darkMode'); 
+
+const darkModeToggle = document.querySelector('#toggle');
+
+const enableDarkMode = () => {
+// 1. Add the class to the body
+document.body.classList.add('dark');
+// 2. Update darkMode in localStorage
+localStorage.setItem('darkMode', 'enabled');
+}
+
+const disableDarkMode = () => {
+// 1. Remove the class from the body
+document.body.classList.remove('dark');
+// 2. Update darkMode in localStorage 
+localStorage.setItem('darkMode', null);
+}
+
+// If the user already visited and enabled darkMode
+// start things off with it on
+if (darkMode === 'enabled') {
+enableDarkMode();
+}
+
+// When someone clicks the button
+darkModeToggle.addEventListener('click', () => {
+// get their darkMode setting
+darkMode = localStorage.getItem('darkMode'); 
+
+// if it not current enabled, enable it
+if (darkMode !== 'enabled') {
+enableDarkMode();
+// if it has been enabled, turn it off  
+} else {  
+disableDarkMode(); 
+}
+});
+
+const tabElements = document.querySelectorAll('button[role="tab"]');
+const panelElements = document.querySelectorAll('[role="tabpanel"]');
+let activeIndex = 0;
+
+// Listen to clicks on tabs
+tabElements.forEach(function (tab, index) {
+tab.addEventListener("click", function (event) {
+setActiveTab(index);
+});
+});
+
+function setActiveTab(index) {
+// Make currently active tab inactive
+tabElements[activeIndex].setAttribute("aria-selected", "false");
+tabElements[activeIndex].tabIndex = -1;
+
+// Set the new tab as active
+tabElements[index].setAttribute("aria-selected", "true");
+tabElements[index].tabIndex = 0;
+
+setActivePanel(index);
+activeIndex = index;
+}
+
+function setActivePanel(index) {
+// Hide currently active panel
+panelElements[activeIndex].setAttribute("hidden", "");
+panelElements[activeIndex].tabIndex = -1;
+
+// Show the new active panel
+panelElements[index].removeAttribute("hidden");
+panelElements[index].tabIndex = 0;
+}
+
+const navToggle = document.querySelector('.custom-toggle');
+
+navToggle.addEventListener('click', () => {
+document.body.classList.toggle('custom-open');
+});
+
+
+tippy('[title]', {
+theme: 'custom',
+arrow: false,
+followCursor: true,
+zIndex: 9999999999,
+maxWidth: 300,
+
+content(reference) {
+const title = reference.getAttribute('title');
+reference.removeAttribute('title');
+return title;
+},
+});
+</script>
+</body>
+</html>
