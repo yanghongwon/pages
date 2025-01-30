@@ -11,6 +11,7 @@ light/dark toggle by kevin powell
 modified menu on click by kevin powell
 tabs script by codeconcisely
 tooltips script by atomiks
+show/hide settings tutorial by seyche
 
 -->
 
@@ -37,7 +38,7 @@ tooltips and button labels: dm mono
 <link href="https://solar-icons.gitlab.io/i/icons.css" rel="stylesheet" crossorigin>
 
 <!-- tooltips scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 
 <style type="text/css">
 
@@ -208,7 +209,53 @@ filter: invert(100%);
 filter: invert(0);
 }
 
+.tmblr-iframe-compact .tmblr-iframe--unified-controls {
+z-index: 999999999!important;
+opacity: 0;
+visibility: hidden;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-ms-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+}
+
+body.controls-click .tmblr-iframe {
+    visibility: visible;
+    opacity: 1;
+}
+
+.controls-button {
+    position: fixed;
+    margin: 1rem;
+    top: 0;
+    right: 0;
+    
+    background: var(--clr-text);
+    color: var(--clr-container);
+    padding: 0.4rem;
+    border: 1px solid var(--clr-borders);
+    border-radius: 0.4rem;
+    
+    transition: all 0.7s ease-in-out;
+    
+    i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    &:hover {
+        background: var(--clr-container);
+        color: var(--clr-accent);
+    }
+}
+
 .sidebar-vers {
+iframe.tmblr-iframe {
+    translate: -0.3rem 0.3rem;
+}
+
 main {
 width: calc(var(--sidebar-size) + var(--container-size));
 display: grid;
@@ -461,10 +508,12 @@ color: var(--clr-background);
 }
 
 .header-vers {
+.controls-button {
+    translate: 0 calc(var(--sidebar-size) + 1rem);
+}
 
 iframe.tmblr-iframe {
-    top: calc(var(--sidebar-size) + 1rem);
-    right: -2rem;
+    translate: -0.3rem calc(var(--sidebar-size) + 1.3rem);
 }
 
 main {
@@ -479,7 +528,6 @@ width: 100vw;
 flex-direction: row;
 padding: 1rem;
 border: 1px solid var(--clr-borders);
-
 position: static;
 
 .s-image {
@@ -715,7 +763,11 @@ text-align: center;
 - change the body class to either 'sidebar-vers' or 'header-vers' 
 -->
 
-<body class="header-vers">
+<body class="sidebar-vers">
+
+<button type="button" class="controls-button" title="tumblr controls">
+    <i class="solar-icons" stroke="2" icon-name="sliders-horizontal"></i>
+</button>
 
 <!-- main container -->
 <main>
@@ -3229,6 +3281,12 @@ navToggle.addEventListener('click', () => {
 document.body.classList.toggle('custom-open');
 });
 
+$(document).ready(function(){
+   $('.controls-button').click(function(){
+       $('body').toggleClass('controls-click');
+   });
+});
+
 
 tippy('[title]', {
 theme: 'custom',
@@ -3246,3 +3304,4 @@ return title;
 </script>
 </body>
 </html>
+
