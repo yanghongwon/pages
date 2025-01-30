@@ -460,6 +460,12 @@ color: var(--clr-background);
 }
 
 .header-vers {
+    
+iframe.tmblr-iframe {
+top: calc(var(--sidebar-size) + 1rem);
+right: -2rem;
+}
+
 main {
 display: grid;
 grid-template-areas: 'sidebar'
@@ -3240,3 +3246,4 @@ return title;
 </script>
 </body>
 </html>
+
