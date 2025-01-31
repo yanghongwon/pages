@@ -22,7 +22,7 @@ show/hide settings tutorial by seyche
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>macheon-dong (fic page)</title>
+<title>projects page</title>
 <link rel="shortcut icon" href="{Favicon}">
 
 <!-- google fonts:
@@ -512,7 +512,7 @@ color: var(--clr-background);
     translate: 0 calc(var(--sidebar-size) + 1rem);
 }
 
-iframe.tmblr-iframe {
+.tmblr-iframe {
     translate: -0.3rem calc(var(--sidebar-size) + 1.3rem);
 }
 
@@ -528,7 +528,7 @@ width: 100vw;
 flex-direction: row;
 padding: 1rem;
 border: 1px solid var(--clr-borders);
-position: static;
+position: fixed;
 
 .s-image {
 margin-left: 10px;
@@ -563,7 +563,7 @@ gap: 10px;
 }
 
 .container {
-margin: 1rem auto 1rem;
+margin: 6rem auto 1rem;
 grid-template-areas: 'tabs'
 'panels';
 gap: 0;
@@ -573,6 +573,9 @@ align-items: start;
 
 .panel-group {
 padding: 1rem;
+}
+
+.button-group {
 }
 
 .button-list {
@@ -614,7 +617,7 @@ transform-origin: left;
 
 .sidebar {
 grid-area: sidebar;
-position: fixed;
+position: sticky;
 top: 0;
 left: 0;
 background: var(--clr-container);
@@ -738,15 +741,10 @@ display: none;
 display: flex;
 }
 
-.button-group {
-position: sticky;
-top: 2rem;
-
 .button-label {
 font-size: calc(var(--fs-body) + 0.05rem);
 font-weight: 400;
 font-family: var(--ff-accent);
-}
 }
 
 .tippy-tooltip.custom-theme {
@@ -763,7 +761,7 @@ text-align: center;
 - change the body class to either 'sidebar-vers' or 'header-vers' 
 -->
 
-<body class="sidebar-vers">
+<body class="header-vers">
 
 <button type="button" class="controls-button" title="tumblr controls">
     <i class="solar-icons" stroke="2" icon-name="sliders-horizontal"></i>
@@ -3195,7 +3193,7 @@ step 3) copy and paste the entire div, replacing 'tab-panel-7' and 'tab-7' with 
 </main>
 <!-- main container -->
 
-
+<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
 
 <script src="https://unpkg.com/popper.js@1"></script>
 <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
@@ -3286,6 +3284,7 @@ $(document).ready(function(){
        $('body').toggleClass('controls-click');
    });
 });
+
 
 
 tippy('[title]', {
