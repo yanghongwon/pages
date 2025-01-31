@@ -744,6 +744,31 @@ font-weight: 400;
 font-family: var(--ff-accent);
 }
 
+.credit {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.credit a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--clr-text);
+    color: var(--clr-background);
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+    border-radius: 0.4rem;
+
+    transition: all 0.7s ease-in-out;
+}
+
+.credit a:hover {
+    background: var(--clr-container);
+    color: var(--clr-accent);
+}
+
 .tippy-tooltip.custom-theme {
 background-color: var(--clr-text);
 color: var(--clr-background);
@@ -3190,7 +3215,11 @@ step 3) copy and paste the entire div, replacing 'tab-panel-7' and 'tab-7' with 
 </main>
 <!-- main container -->
 
-<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
+<div class="credit">
+    <a href="http://pouthongwon.tumblr.com/" title="page by pouthongwon">
+        <i class="solar-icons" stroke="2" icon-name="face-blep"></i>
+    </a>
+</div>
 
 <script src="https://unpkg.com/popper.js@1"></script>
 <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
@@ -3300,4 +3329,3 @@ return title;
 </script>
 </body>
 </html>
-
