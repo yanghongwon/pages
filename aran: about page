@@ -5,17 +5,18 @@ aran: about page
 by pouthongwon
 
 credits:
-- icons by phosphor icons
+- icons by solar icons
 - fonts by google fonts
-
-please, please read: change the body tag from 'dark' to 'light' if you want to change the color scheme
+- light/dark toggle by @mournstera
+- toggle tumblr controls by @seyche
+- tooltips by atomiks
 
 
 
 -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,28 +28,23 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <!-- phosphor icons -->
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css"/>
+    <!-- solar icons -->
+    <link href="https://solar-icons.gitlab.io/i/icons.css" rel="stylesheet" crossorigin>
+
+    <!-- jquery for tooltips -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <!-- light/dark toggle by @mournstera -->
+    <script>
+        const storedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        if (storedTheme) {
+            document.documentElement.setAttribute("data-theme", storedTheme);
+        }
+    </script>
 
     <style type="text/css">
 
         :root {
-            color-scheme: light dark;
-
-            --background: #fff;
-            --container: #f0f0f0;
-            --text: #000;
-            --links: #252525;
-            --borders: #d3d3d3;
-            --accent: #5b6db8;
-
-            --dark-background: #101010;
-            --dark-container: #252525;
-            --dark-text: #fff;
-            --dark-links: #eee;
-            --dark-borders: #505050;
-            --dark-accent: #c7b3d1;
-
             --ff-body: 'Poppins', sans-serif;
             --ff-heading: 'DM Serif Text', serif;
 
@@ -57,40 +53,60 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             --container-size: 700px;
         }
 
+        :root, html[data-theme="light"] {
+            --light-mode: none;
+            --dark-mode: flex;
+
+            --background: #f0f0f0;
+            --container: #fff;
+            --text: #000;
+            --links: #252525;
+            --borders: #d3d3d3;
+            --accent: #5b6db8;
+        }
+
+        html[data-theme="dark"] {
+            --light-mode: flex;
+            --dark-mode: none;
+
+            --background: #101010;
+            --container: #252525;
+            --text: #fff;
+            --links: #eee;
+            --borders: #505050;
+            --accent: #c7b3d1;
+        }
+
         *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        .light {
-            color-scheme: light;
+        html.theme-transition,
+        html.theme-transition *,
+        html.theme-transition *:before,
+        html.theme-transition *:after {
+        transition: 0s !important;
+        transition-delay: 0 !important;
         }
-
-        .dark {
-            color-scheme: dark;
-        }
-        
-         iframe.tmblr-iframe {
-           display: none;
-       }
 
         body {
-            background: light-dark(var(--background), var(--dark-background));
-            color: light-dark(var(--text), var(--dark-text));
+            background: var(--background);
+            color: var(--text);
             font-family: var(--ff-body);
             font-size: var(--fs-body);
             line-height: 1.5;
         }
 
         a {
-            color: light-dark(var(--links), var(--dark-links));
+            color: var(--links);
             text-decoration: none;
             transition: all 0.7s ease-in-out;
         }
 
         a:hover {
-            color: light-dark(var(--accent), var(--dark-accent));
+            color: var(--accent);
         }
 
         h1, h2, h3, p, ul[class], ul[id] {
@@ -119,6 +135,94 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             margin-top: 0.5rem;
         }
 
+        button {
+            background: inherit;
+            color: inherit;
+            font-size: inherit;
+            font-family: inherit;
+            cursor: pointer;
+
+            border: 1px solid transparent;
+        }
+
+        .light-mode {
+            display: var(--light-mode);
+        }
+
+        .dark-mode {
+            display: var(--dark-mode);
+        }
+
+        .solar-icons {
+            font-size: calc(var(--fs-body) + 0.1rem);
+        }
+
+        iframe.tmblr-iframe {
+            transform: scale(0.75, 0.75);
+            filter: invert(100%);
+            translate: -1.4rem 0.3rem;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        html[data-theme="dark"] {
+            filter: invert(0);
+        }
+
+        iframe.tmblr-iframe.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .controls {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            background: var(--text);
+            color: var(--background);
+            padding: 0.4rem;
+            border: 1px solid var(--borders);
+            border-radius: 0.4rem;
+        }
+        
+        .preview {
+            width: 450px;
+            margin-inline: auto;
+            position: sticky;
+            top: 1rem;
+            left: 1rem;
+            border: 1px solid var(--borders);
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            background: var(--container);
+            z-index: 7;
+        }
+        
+        .prev-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prev-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--background);
+            color: var(--accent);
+            padding: 0.4rem;
+            border: 1px solid var(--borders);
+            border-radius: 0.4rem;
+        }
+
         main {
             max-width: var(--container-size);
             margin: 4rem auto;
@@ -133,7 +237,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             align-items: center;
             justify-content: space-between;
             gap: 0.5rem;
-            border-bottom: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-bottom: 1px solid var(--borders);
             padding-bottom: 0.5rem;
         }
 
@@ -153,23 +257,28 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            border: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border: 1px solid var(--borders);
             padding-right: 0.5rem;
+            background: var(--container);
         }
 
-        .nav-links .ph-bold, .sidebar-title .ph-bold, .sidebar-desc .ph-bold, .sidebar-nav .ph-bold {
+        .nav-icon, .sidebar-icon {
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 0.5rem;
-            background: light-dark(var(--accent), var(--dark-accent));
-            color: light-dark(var(--background), var(--dark-background));
+            background: var(--accent);
+            color: var(--background);
             transition: all 0.7s ease-in-out;
         }
 
-        .nav-links a:hover .ph-bold {
-            background: light-dark(var(--text), var(--dark-text));
-            color: light-dark(var(--background), var(--dark-background));
+        .nav-links a:hover {
+            background: var(--background);
+        }
+
+        .nav-links a:hover .nav-icon {
+            background: var(--text);
+            color: var(--background);
         }
 
         .sidebar-content {
@@ -197,17 +306,17 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
         }
 
         .sidebar-desc {
-            border-top: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-top: 1px solid var(--borders);
             flex-direction: row-reverse;
         }
 
         .sidebar-text {
-            border-right: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-right: 1px solid var(--borders);
             padding-right: 0.5rem;
         }
 
         .sidebar-nav {
-            border-top: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-top: 1px solid var(--borders);
             padding-top: 0.5rem;
             padding-inline: 0.5rem;
             display: flex;
@@ -216,7 +325,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
         }
 
         .sidebar-links {
-            border-left: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-left: 1px solid var(--borders);
             padding-left: 0.5rem;
         }
 
@@ -238,47 +347,61 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
         }
 
         .box-list {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
             align-items: start;
-            justify-content: space-between;
-            column-gap: 1rem;
-            row-gap: 0.6rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
         }
 
         .stat {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-right: 0.5rem;
-            border: 1px solid light-dark(var(--borders), var(--dark-borders));
+            display: grid;
+            place-items: start;
+            gap: 7px;
         }
 
-        .stat .ph-bold {
-            background: light-dark(var(--accent), var(--dark-accent));
-            color: light-dark(var(--background),var(--dark-background));
+        .stat-title {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 10px;
+            padding-right: 1rem;
+            background: var(--container);
+            border: 1px solid var(--borders);
+        }
+
+        .stat-icon {
+            background: var(--accent);
+            color: var(--background);
             padding: 0.5rem;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
 
         .box-title {
-            padding-right: 0.8rem;
-            background: light-dark(var(--accent), var(--dark-accent));
-            color: light-dark(var(--background), var(--dark-background));
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-family: var(--ff-heading);
-            font-size: calc(var(--fs-body) + 0.2rem);
             font-weight: 600;
+
+            background: var(--accent);
+            color: var(--background);
         }
 
-        .box-title .ph-bold {
-            background: light-dark(var(--container), var(--dark-container));
-            color: light-dark(var(--accent), var(--dark-accent));
+        .box-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--container);
+            color: var(--accent);
             padding: 0.8rem;
+            z-index: 5;
+        }
+
+        .box-icon i {
+            font-size: calc(var(--fs-body) + 0.3rem);
         }
 
         .box-flex {
@@ -297,7 +420,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
 
         .line {
             padding-block: 0.5rem;
-            border-bottom: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-bottom: 1px solid var(--borders);
         }
 
         .line:first-of-type {
@@ -311,7 +434,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
 
         .line .ph-bold {
             margin-right: 10px;
-            color: light-dark(var(--accent), var(--dark-accent));
+            color: var(--accent);
             font-size: calc(var(--fs-body) + 0.15rem);
         }
 
@@ -334,7 +457,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
 
         .footer {
             padding-top: 0.5rem;
-            border-top: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-top: 1px solid var(--borders);
         }
 
         .credit {
@@ -343,24 +466,80 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             right: 1rem;
             display: flex;
             align-items: center;
+            gap: 10px;
+            flex-direction: row-reverse;
+        }
+
+        .credit a {
+            display: flex;
+            align-items: center;
             justify-content: center;
-            background: light-dark(var(--text), var(--dark-text));
-            color: light-dark(var(--background), var(--dark-background));
-            border: 1px solid light-dark(var(--borders), var(--dark-borders));
+            background: var(--text);
+            color: var(--background);
+            border: 1px solid var(--borders);
             padding: 0.4rem;
             border-radius: 0.4rem;
         }
 
-        .credit:hover {
-            background: light-dark(var(--background), var(--dark-background));
-            color: light-dark(var(--text), var(--dark-text));
+        .theme-name {
+            opacity: 0;
+            transition: all 0.7s ease-in-out;
+            background: var(--text);
+            color: var(--background);
+            padding-block: 0.2rem;
+            padding-inline: 0.4rem;
+            border-radius: 0.4rem;
+            pointer-events: none;
+        }
+
+        .credit a:hover + .theme-name {
+            opacity: 1;
+        }
+
+        .credit a:hover {
+            background: var(--container);
+            color: var(--text);
+        }
+
+        .tippy-tooltip.custom-theme {
+            background-color: var(--text);
+            color: var(--background);
+            font-family: inherit;
+            font-size: inherit;
+            margin-block: 0.75rem;
+            text-align: center;
+        }
+
+        .tippy-tooltip.custom-theme .tippy-svg-arrow {
+            fill: var(--text);
         }
 
     </style>
 </head>
-<body class="light">
+<body>
 
-   <!-- main wrapper -->
+<button class="controls" title="tumblr controls">
+    <i class="solar-icons" stroke="2" icon-name="settings-1"></i>
+</button>
+
+<div class="preview">
+    <span class="prev-link">
+        <span class="prev-icon">
+            <i class="solar-icons" stroke="2" icon-name="tag-1"></i>
+        </span>
+
+        <a href="/aran%20nav">tags page</a>
+    </span>
+    <span class="prev-link">
+        <span class="prev-icon">
+            <i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+        </span>
+
+        <a href="/aran%20projects">projects page</a>
+    </span>
+</div>
+
+    <!-- main wrapper -->
 
     <main class="main">
 
@@ -391,7 +570,17 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                 <!-- sidebar title -->
                 <div class="sidebar-title">
                     <!-- sidebar title: icon -->
-                    <span class="ph-bold ph-user"></span>
+                    <span class="sidebar-icon">
+                        <button class="toggle">
+                            <span class="light-mode" title="turn on the lights">
+                                <i class="solar-icons" stroke="2" icon-name="sun-2"></i>
+                            </span>
+
+                            <span class="dark-mode" title="turn off the lights">
+                                <i class="solar-icons" stroke="2" icon-name="moon-stars"></i>
+                            </span>
+                        </button>
+                    </span>
                     <!-- sidebar title: icon -->
 
                     <!-- sidebar title: title -->
@@ -403,7 +592,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                 <!-- sidebar description -->
                 <div class="sidebar-desc">
                     <!-- sidebar description: icon -->
-                    <span class="ph-bold ph-info"></span>
+                    <span class="sidebar-icon">
+                        <i class="solar-icons" stroke="2" icon-name="text"></i>
+                    </span>
                     <!-- sidebar description: icon -->
 
                     <!-- sidebar description: description -->
@@ -419,7 +610,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                 <nav class="sidebar-nav">
 
                     <!-- sidebar navigation: icon -->
-                    <span class="ph-bold ph-list"></span>
+                    <span class="sidebar-icon">
+                        <i class="solar-icons" stroke="2" icon-name="list-down-2"></i>
+                    </span>
                     <!-- sidebar navigation: icon -->
 
                     <!-- sidebar navigation: custom links -->
@@ -453,75 +646,124 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                     <div class="box-list">
 
                         <!-- statistic 1 -->
-                        <span class="stat">
-                            <!-- statistic: icon -->
-                            <span class="ph-bold ph-user"></span>
-                            <!-- statistic: icon -->
+                        <div class="stat">
+                            <!-- statistic: title -->
+                            <div class="stat-title">
+                                <span class="stat-icon">
+                                    <i class="solar-icons" stroke="2" icon-name="user-1"></i>
+                                </span>
+
+                                <b>pronoun(s)</b>
+                            </div>
+                            <!-- statistic: title -->
                             
                             <!-- statistic: text -->
-                            put your name(s) here
+                            <div class="stat-text">
+                                <p>pronoun/pronoun</p>
+                            </div>
                             <!-- statistic: text -->
-                        </span>
+                        </div>
                         <!-- statistic 1 -->
 
                         <!-- statistic 2 -->
-                        <span class="stat">
-                            <!-- statistic: icon -->
-                            <span class="ph-bold ph-clock"></span>
-                            <!-- statistic: icon -->
+                        <div class="stat">
+                            <!-- statistic: title -->
+                            <div class="stat-title">
+                                <span class="stat-icon">
+                                    <i class="solar-icons" stroke="2" icon-name="heart-1"></i>
+                                </span>
+
+                                <b>gender, sexuality</b>
+                            </div>
+                            <!-- statistic: title -->
                             
                             <!-- statistic: text -->
-                            your timezone
+                            <div class="stat-text">
+                                <p>gender, sexuality</p>
+                            </div>
                             <!-- statistic: text -->
-                        </span>
+                        </div>
                         <!-- statistic 2 -->
 
                         <!-- statistic 3 -->
-                        <span class="stat">
-                            <!-- statistic: icon -->
-                            <span class="ph-bold ph-heart"></span>
-                            <!-- statistic: icon -->
+                        <div class="stat">
+                            <!-- statistic: title -->
+                            <div class="stat-title">
+                                <span class="stat-icon">
+                                    <i class="solar-icons" stroke="2" icon-name="bar-chart-1"></i>
+                                </span>
+
+                                <b>status</b>
+                            </div>
+                            <!-- statistic: title -->
                             
                             <!-- statistic: text -->
-                            gender, sexuality
+                            <div class="stat-text">
+                                <p>status</p>
+                            </div>
                             <!-- statistic: text -->
-                        </span>
+                        </div>
                         <!-- statistic 3 -->
 
+
                         <!-- statistic 4 -->
-                        <span class="stat">
-                            <!-- statistic: icon -->
-                            <span class="ph-bold ph-info"></span>
-                            <!-- statistic: icon -->
+                        <div class="stat">
+                            <!-- statistic: title -->
+                            <div class="stat-title">
+                                <span class="stat-icon">
+                                    <i class="solar-icons" stroke="2" icon-name="map-pin-2"></i>
+                                </span>
+
+                                <b>location</b>
+                            </div>
+                            <!-- statistic: title -->
                             
                             <!-- statistic: text -->
-                            your pronouns
+                            <div class="stat-text">
+                                <p>where you are</p>
+                            </div>
                             <!-- statistic: text -->
-                        </span>
+                        </div>
                         <!-- statistic 4 -->
 
                         <!-- statistic 5 -->
-                        <span class="stat">
-                            <!-- statistic: icon -->
-                            <span class="ph-bold ph-circle-notch"></span>
-                            <!-- statistic: icon -->
+                        <div class="stat">
+                            <!-- statistic: title -->
+                            <div class="stat-title">
+                                <span class="stat-icon">
+                                    <i class="solar-icons" stroke="2" icon-name="balloon"></i>
+                                </span>
+
+                                <b>age</b>
+                            </div>
+                            <!-- statistic: title -->
                             
                             <!-- statistic: text -->
-                            your status
+                            <div class="stat-text">
+                                <p>age</p>
+                            </div>
                             <!-- statistic: text -->
-                        </span>
+                        </div>
                         <!-- statistic 5 -->
 
                         <!-- statistic 6 -->
-                        <span class="stat">
-                            <!-- statistic: icon -->
-                            <span class="ph-bold ph-cake"></span>
-                            <!-- statistic: icon -->
+                        <div class="stat">
+                            <!-- statistic: title -->
+                            <div class="stat-title">
+                                <span class="stat-icon">
+                                    <i class="solar-icons" stroke="2" icon-name="user-1"></i>
+                                </span>
+
+                                <b>something else</b>
+                            </div>
+                            <!-- statistic: title -->
                             
                             <!-- statistic: text -->
-                            your age here
+                            <div class="stat-text">
+                                <p>something else</p>
+                            </div>
                             <!-- statistic: text -->
-                        </span>
+                        </div>
                         <!-- statistic 6 -->
                     </div>
                     <!-- about statistics -->
@@ -535,11 +777,13 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                     <!-- box title -->
                     <div class="box-title">
                         <!-- box title: icon -->
-                        <span class="ph-bold ph-book"></span>
+                        <span class="box-icon">
+                            <i class="solar-icons" stroke="2" icon-name="book-closed-bookmark-1"></i>
+                        </span>
                         <!-- box title: icon -->
                         
                         <!-- box title: title -->
-                        here's a biography
+                        <h2>here's a biography</h2>
                         <!-- box title: title -->
                     </div>
                     <!-- box title -->
@@ -564,11 +808,13 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- box title -->
                         <div class="box-title">
                             <!-- box title: icon -->
-                            <span class="ph-bold ph-notification"></span>
+                            <span class="box-icon">
+                                <i class="solar-icons" stroke="2" icon-name="tv"></i>
+                            </span>
                             <!-- box title: icon -->
                             
                             <!-- box title: text -->
-                            updates
+                            <h2>updates</h2>
                             <!-- box title: text -->
 
                         </div>
@@ -582,7 +828,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                                 <!-- update 1 -->
                                 <li class="line">
                                     <!-- update: icon -->
-                                    <span class="ph-bold ph-bell"></span>
+                                    <i class="solar-icons" stroke="2" icon-name="bell-1"></i>
                                     <!-- update: icon -->
                                      
                                     <!-- update: text -->
@@ -594,7 +840,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                                 <!-- update 2 -->
                                 <li class="line">
                                     <!-- update: icon -->
-                                    <span class="ph-bold ph-television"></span> 
+                                    <i class="solar-icons" stroke="2" icon-name="tv"></i>
                                     <!-- update: icon -->
 
                                     <!-- update: text -->
@@ -606,7 +852,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                                 <!-- update 3 -->
                                 <li class="line">
                                     <!-- update: icon -->
-                                    <span class="ph-bold ph-books"></span> 
+                                    <i class="solar-icons" stroke="2" icon-name="book-closed-3"></i> 
                                     <!-- update: icon -->
 
                                     <!-- update: text -->
@@ -618,7 +864,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                                 <!-- update 4 -->
                                 <li class="line">
                                     <!-- update: icon -->
-                                    <span class="ph-bold ph-headphones"></span> 
+                                    <i class="solar-icons" stroke="2" icon-name="headphones-1"></i> 
                                     <!-- update: icon -->
                                      
                                     <!-- update: text -->
@@ -630,7 +876,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                                 <!-- update 5 -->
                                 <li class="line">
                                     <!-- update: icon -->
-                                    <span class="ph-bold ph-warning-circle"></span>
+                                    <i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
                                     <!-- update: icon -->
                                     
                                     <!-- update: text -->
@@ -653,12 +899,14 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- box title -->
                     <div class="box-title">
                         <!-- box title: icon -->
-                        <span class="ph-bold ph-users"></span>
+                        <span class="box-icon">
+                            <i class="solar-icons" stroke="2" icon-name="link-5"></i>
+                        </span>
                         <!-- box title: icon -->
                         
-                        <!-- box title: title -->
-                        sideblogs
-                        <!-- box title: title -->
+                        <!-- box title: text -->
+                        <h2>sideblogs</h2>
+                        <!-- box title: text -->
                     </div>
                     <!-- box title -->
     
@@ -744,11 +992,13 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                     <!-- box title -->
                     <div class="box-title">
                         <!-- box title: icon -->
-                        <span class="ph-bold ph-quotes"></span>
+                        <span class="box-icon">
+                            <i class="solar-icons" stroke="2" icon-name="chat-2"></i>
+                        </span>
                         <!-- box title: icon -->
                         
                         <!-- box title: source -->
-                        <span class="source">source</span>
+                        <h2 class="source">source</h2>
                         <!-- box title: source -->
 
                     </div>
@@ -777,7 +1027,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                 <!-- home link -->
                 <a href="/">
                     <!-- home link: icon -->
-                    <span class="ph-bold ph-house"></span>
+                    <span class="nav-icon">
+                        <i class="solar-icons" stroke="2" icon-name="home-2"></i>
+                    </span>
                     <!-- home link: icon -->
                     
                     <!-- home link: text -->
@@ -789,7 +1041,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                 <!-- ask link -->
                 <a href="/">
                     <!-- ask link: icon -->
-                    <span class="ph-bold ph-envelope"></span>
+                    <span class="nav-icon">
+                        <i class="solar-icons" stroke="2" icon-name="mail"></i>
+                    </span>
                     <!-- ask link: icon -->
                     
                     <!-- ask link: text -->
@@ -801,7 +1055,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                 <!-- archive link -->
                 <a href="/">
                     <!-- archive link: icon -->
-                    <span class="ph-bold ph-archive"></span>
+                    <span class="nav-icon">
+                        <i class="solar-icons" stroke="2" icon-name="archive"></i>
+                    </span>
                     <!-- archive link: icon -->
                     
                     <!-- archive link: text -->
@@ -813,11 +1069,13 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                 <!-- dashboard link -->
                 <a href="/">
                     <!-- dashboard link: icon -->
-                    <span class="ph-bold ph-sign-out"></span>
+                    <span class="nav-icon">
+                        <i class="solar-icons" stroke="2" icon-name="exit-door"></i>
+                    </span>
                     <!-- dashboard link: icon -->
                     
                     <!-- dashboard link: text -->
-                    home
+                    dashboard
                     <!-- dashboard link: text -->
                 </a>
                 <!-- dashboard link -->
@@ -832,9 +1090,63 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
     <!-- main wrapper -->
 
    <!-- credit. please don't touch, alter, or delete --> 
-    <a href="http://pouthongwon.tumblr.com" class="credit">
-        <i class="ph-bold ph-eyeglasses"></i>
+   <div class="credit">
+    <a href="http://pouthongwon.tumblr.com">
+        <i class="solar-icons" stroke="2" icon-name="face-blep"></i>
     </a>
+
+    <span class="theme-name">theme by pouthongwon</span>
+    </div>
     <!-- credit. please don't touch, alter, or delete -->
+
+    <!-- scripts for tooltips -->
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/svg-arrow.css" />
+
+    <script>
+        const themeToggleButtons = document.querySelectorAll(".toggle");
+
+themeToggleButtons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+
+        // Add theme-transition class for smooth transitions
+        document.documentElement.classList.add("theme-transition");
+
+        // Retrieve the current theme and determine the target theme
+        let currentTheme = document.documentElement.getAttribute("data-theme");
+        let targetTheme = (currentTheme === "light") ? "dark" : "light";
+
+        // Remove theme-transition class after a short delay
+        window.setTimeout(function () {
+            document.documentElement.classList.remove("theme-transition");
+        }, 50);
+
+        // Set the data-theme attribute and store in local storage
+        document.documentElement.setAttribute("data-theme", targetTheme);
+        localStorage.setItem("theme", targetTheme);
+    });
+});
+
+$(document).ready(function(){
+   $('.controls').click(function(){
+       $('iframe.tmblr-iframe').toggleClass('active');
+   });
+});
+
+  tippy('[title]', {
+    theme: 'custom',
+    arrow: tippy.roundArrow,
+    followCursor: true,
+    zIndex: 9999999999,
+    maxWidth: 300,
+
+    content(reference) {
+      const title = reference.getAttribute('title');
+      reference.removeAttribute('title');
+      return title;
+    },
+  });
+    </script>
 </body>
 </html>
