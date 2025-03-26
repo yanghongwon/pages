@@ -5,10 +5,11 @@ aran: project/wips page
 by pouthongwon
 
 credits:
-- icons by phosphor icons
+- icons by solar icons
 - fonts by google fonts
-
-please, please read: change the body tag from 'dark' to 'light' if you want to change the color scheme
+- light/dark toggle by @mournstera
+- toggle tumblr controls by @seyche
+- tooltips by atomiks
 
 
 
@@ -16,7 +17,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,12 +29,33 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <!-- phosphor icons -->
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css"/>
+    <!-- solar icons -->
+    <link href="https://solar-icons.gitlab.io/i/icons.css" rel="stylesheet" crossorigin>
+
+    <!-- jquery for tooltips -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <!-- light/dark by @mournstera -->
+    <script>
+        const storedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        if (storedTheme) {
+            document.documentElement.setAttribute("data-theme", storedTheme);
+        }
+    </script>
+    
 
     <style type="text/css">
         :root {
-            color-scheme: light dark;
+            --ff-body: 'Poppins', sans-serif;
+
+            --fs-body: 0.9rem;
+
+            --container-size: 700px;
+        }
+
+        :root, html[data-theme="light"] {
+            --light-mode: none;
+            --dark-mode: flex;
 
             --background: #fff;
             --container: #fff;
@@ -41,19 +63,18 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             --links: #252525;
             --borders: #d3d3d3;
             --accent: #ad566c;
+        }
 
-            --dark-background: #101010;
-            --dark-container: #252525;
-            --dark-text: #fff;
-            --dark-links: #eee;
-            --dark-borders: #505050;
-            --dark-accent: #e3c2d2;
+        html[data-theme="dark"] {
+            --light-mode: flex;
+            --dark-mode: none;
 
-            --ff-body: 'Poppins', sans-serif;
-
-            --fs-body: 0.9rem;
-
-            --container-size: 700px;
+            --background: #101010;
+            --container: #252525;
+            --text: #fff;
+            --links: #eee;
+            --borders: #505050;
+            --accent: #e3c2d2;
         }
 
         *, *::before, *::after {
@@ -62,36 +83,23 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             box-sizing: border-box;
         }
 
-        .light {
-            color-scheme: light;
-        }
-
-        .dark {
-            color-scheme: dark;
-        }
-
-        iframe.tmblr-iframe {
-            display: none!important;
-            transform: scale(0.75);
-        }
-
         body {
-            background: light-dark(var(--background), var(--dark-background));
-            color: light-dark(var(--text), var(--dark-text));
+            background: var(--background);
+            color: var(--text);
             font-family: var(--ff-body);
             font-size: var(--fs-body);
             line-height: 1.5;
-            text-align: left;
+            text-align: start;
         }
 
         a {
-            color: light-dark(var(--links), var(--dark-links));
+            color: var(--links);
             text-decoration: none;
             transition: 0.7s ease-in-out;
         }
 
         a:hover {
-            color: light-dark(var(--accent), var(--dark-accent));
+            color: var(--accent);
         }
 
         h1, h2, h3, p {
@@ -123,6 +131,74 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             object-fit: cover;
         }
 
+        button {
+            background: inherit;
+            color: inherit;
+            font-size: inherit;
+            font-family: inherit;
+            cursor: pointer;
+
+            border: 1px solid transparent;
+        }
+
+        .light-mode {
+            display: var(--light-mode);
+        }
+
+        .dark-mode {
+            display: var(--dark-mode);
+        }
+
+        .solar-icons {
+            font-size: calc(var(--fs-body) + 0.1rem);
+        }
+
+        .buttons-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+
+            display: grid;
+            gap: 10px;
+        }
+
+        .controls, .toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0.4rem;
+            border: 1px solid var(--borders);
+            border-radius: 0.4rem;
+        }
+
+        iframe.tmblr-iframe {
+            translate: scale(0.75, 0.75);
+            filter: invert(100%);
+            translate: -1.4rem 0.3rem;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        html[data-theme="dark"] iframe.tmblr-iframe {
+            filter: invert(0);
+        }
+
+        iframe.tmblr-iframe.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .controls {
+            background: var(--text);
+            color: var(--background);
+        }
+
+        .toggle {
+            background: var(--accent);
+            color: var(--background);
+        }
+
         main {
             max-width: var(--container-size);
             margin: 4rem auto;
@@ -130,7 +206,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             align-items: self-start;
             grid-template-areas: 'sidebar content'
             'footer footer';
-            grid-template-columns: calc(var(--container-size) -500px) 1fr;
+            grid-template-columns: calc(var(--container-size) - 500px) 1fr;
             gap: 2rem;
         }
 
@@ -164,37 +240,35 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             display: flex;
             align-items: center;
             justify-content: center;
-            background: light-dark(var(--accent), var(--dark-accent));
-            color: light-dark(var(--background), var(--dark-background));
+            background: var(--accent);
+            color: var(--background);
             padding: 0.5rem;
             border-radius: 50%;
         }
 
         .sidebar-links a:hover {
-            background: light-dark(var(--background), var(--dark-background));
-            color: light-dark(var(--accent), var(--dark-accent));
+            background: var(--background);
+            color: var(--accent);
         }
 
         .sidebar-img {
             width: 10rem;
             aspect-ratio: 1 / 1;
-            border: 1px solid light-dark(var(--accent), var(--dark-accent));
+            border: 1px solid var(--accent);
             padding: 0.5rem;
-            border-radius: 0.6rem;
-            overflow: hidden;
         }
 
         .sidebar-title, .sidebar-desc, .custom-link {
-            padding: 0.5rem;
+            padding: 0.5rem 0;
         }
 
         .sidebar-title {
             padding-top: 0;
-            border-bottom: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-bottom: 1px solid var(--borders);
         }
 
         .sidebar-desc {
-            border-bottom: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-bottom: 1px solid var(--borders);
         }
 
         .custom-link {
@@ -212,8 +286,8 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             gap: 0.5rem;
         }
 
-        .link .ph-bold {
-            color: light-dark(var(--accent), var(--dark-accent));
+        .link-icon {
+            color: var(--accent);
             font-size: calc(var(--fs-body) + 0.1rem);
         }
 
@@ -240,7 +314,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             justify-content: space-between;
             gap: 1rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-bottom: 1px solid var(--borders);
         }
 
         .project-title {
@@ -252,8 +326,16 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             margin-left: auto;
         }
 
-        .project-links a:not(:last-child) {
-            margin-right: 0.5rem;
+        .project-links a:not(:last-child)::after {
+            content: '';
+            width: 6px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: var(--accent);
+
+            display: inline-block;
+            vertical-align: middle;
+            margin-inline: 5px;
         }
 
         .project-desc {
@@ -261,7 +343,7 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
         }
 
         .project-stats {
-            border-top: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-top: 1px solid var(--borders);
             padding-top: 1rem;
         }
 
@@ -276,23 +358,27 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
         }
 
         .line {
-            border: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border: 1px solid var(--borders);
             display: flex;
             align-items: center;
             gap: 0.5rem;
             padding-right: 0.5rem;
         }
 
-        .line .ph-bold {
+        .line-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
             padding: 0.5rem;
-            background: light-dark(var(--accent), var(--dark-accent));
-            color: light-dark(var(--background), var(--dark-background));
+            background: var(--accent);
+            color: var(--background);
         }
 
         .footer {
             margin-bottom: auto;
             grid-area: footer;
-            border-top: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-top: 1px solid var(--borders);
             padding: 1rem;
             display: flex;
             align-items: start;
@@ -309,25 +395,35 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             align-items: start;
             flex-wrap: wrap;
             gap: 0.8rem;
-            border-left: 1px solid light-dark(var(--borders), var(--dark-borders));
+            border-left: 1px solid var(--borders);
             padding-left: 0.5rem;
         }
 
         .divider-wrapper {
+            margin-inline: auto;
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
         }
 
-        .p-divider {
-            height: 2px;
-            width: 50%;
-            background: light-dark(var(--borders), var(--dark-borders));
+        .divider-circle {
+            margin-inline: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            width: 10px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: var(--accent);
         }
 
-        .divider-wrapper .ph-circle {
-            color: light-dark(var(--accent), var(--dark-accent));
+        .divider-wrapper::before, .divider-wrapper::after {
+            content: '';
+            width: 100%;
+            height: 1px;
+            background: var(--borders);
+            flex: 1;
         }
 
         .credit {
@@ -336,21 +432,72 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             right: 1rem;
             display: flex;
             align-items: center;
+            gap: 10px;
+            flex-direction: row-reverse;
+        }
+
+        .credit a {
+            display: flex;
+            align-items: center;
             justify-content: center;
-            background: light-dark(var(--text), var(--dark-text));
-            color: light-dark(var(--background), var(--dark-background));
-            border: 1px solid light-dark(var(--borders), var(--dark-borders));
+            background: var(--text);
+            color: var(--background);
+            border: 1px solid var(--borders);
             padding: 0.4rem;
             border-radius: 0.4rem;
         }
 
-        .credit:hover {
-            background: light-dark(var(--background), var(--dark-background));
-            color: light-dark(var(--text), var(--dark-text));
+        .theme-name {
+            opacity: 0;
+            transition: all 0.9s ease-in-out;
+            background: var(--text);
+            color: var(--background);
+            padding-block: 0.2rem;
+            padding-inline: 0.4rem;
+            border-radius: 0.4rem;
+            pointer-events: none;
+            transform: translateX(5vh);
+        }
+
+        .credit a:hover + .theme-name {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .credit a:hover {
+            background: var(--container);
+            color: var(--text);
+        }
+
+        .tippy-tooltip.custom-theme {
+            background-color: var(--text);
+            color: var(--background);
+            text-align: center;
+            margin-block: 0.75rem;
+        }
+
+        .tippy-tooltip.custom-theme .tippy-svg-arrow {
+            fill: var(--text);
         }
     </style>
 </head>
-<body class="light">
+<body>
+
+    <div class="buttons-container">
+        <button class="controls" title="tumblr controls">
+            <i class="solar-icons" stroke="2" icon-name="settings-1"></i>
+        </button>
+
+        <button class="toggle">
+            <span class="light-mode" title="turn on the lights">
+                <i class="solar-icons" stroke="2" icon-name="sun-2"></i>
+            </span>
+
+            <span class="dark-mode" title="turn off the lights">
+                <i class="solar-icons" stroke="2" icon-name="moon-stars"></i>
+            </span>
+        </button>
+    </div>
     
     <!-- main wrapper -->
     <main class="main">
@@ -367,33 +514,33 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             <!-- sidebar navigation -->
             <nav class="sidebar-links">
                 <!-- home link -->
-                <a href="/">
+                <a href="/" title="home">
                     <!-- home link: icon -->
-                    <span class="ph-bold ph-house"></span>
+                    <i class="solar-icons" stroke="2" icon-name="home-2"></i>
                     <!-- home link: icon -->
                 </a>
                 <!-- home link -->
 
                 <!-- askbox link -->
-                <a href="/ask">
+                <a href="/ask" title="askbox">
                     <!-- askbox link: icon -->
-                    <span class="ph-bold ph-envelope"></span>
+                    <i class="solar-icons" stroke="2" icon-name="mail"></i>
                     <!-- askbox link: icon -->
                 </a>
                 <!-- askbox link -->
 
                 <!-- archive link -->
-                <a href="/archive">
+                <a href="/archive" title="archive">
                     <!-- archive link: icon -->
-                    <span class="ph-bold ph-archive"></span>
+                    <i class="solar-icons" stroke="2" icon-name="archive"></i>
                     <!-- archive link: icon -->
                 </a>
                 <!-- archive link -->
 
                 <!-- dashboard link -->
-                <a href="http://tumblr.com/">
+                <a href="http://tumblr.com/" title="dashboard">
                     <!-- dashboard link: icon -->
-                    <span class="ph-bold ph-sign-out"></span>
+                    <i class="solar-icons" stroke="2" icon-name="exit-door"></i>
                     <!-- dashboard link: icon -->
                 </a>
                 <!-- dashboard link -->
@@ -421,22 +568,22 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             <div class="custom-link">
 
                 <span class="link">
-                    <span class="ph-bold ph-user"></span>
+                    <i class="solar-icons" stroke="2" icon-name="user-1"></i>
                     <a href="/">custom link 1</a>
                 </span>
 
                 <span class="link">
-                    <span class="ph-bold ph-notebook"></span>
+                    <i class="solar-icons" stroke="2" icon-name="bed-2"></i>
                     <a href="/">custom link 2</a>
                 </span>
 
                 <span class="link">
-                    <span class="ph-bold ph-users"></span>
+                    <i class="solar-icons" stroke="2" icon-name="planet-1"></i>
                     <a href="/">custom link 3</a>
                 </span>
 
                 <span class="link">
-                    <span class="ph-bold ph-heart"></span>
+                    <i class="solar-icons" stroke="2" icon-name="heart-1"></i>
                     <a href="/">custom link 4</a>
                 </span>
             </div>
@@ -485,7 +632,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 1 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-chart-line"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="bar-chart-1"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -497,7 +646,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 2 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-heart"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="heart-1"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -509,7 +660,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 3 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-pencil"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="edit-2"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -521,7 +674,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 4 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-globe"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="globe"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -533,7 +688,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 5 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-warning-circle"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -545,7 +702,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 6 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-book"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="book-closed-1"></i>
+                            </span> 
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -564,17 +723,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             <!-- divider wrapper -->
             <div class="divider-wrapper">
 
-                <!-- divider -->
-                <div class="p-divider"></div>
-                <!-- divider -->
-
                 <!-- divider icon -->
-                <span class="ph-fill ph-circle"></span>
+                <span class="divider-circle"></span>
                 <!-- divider icon -->
-
-                <!-- divider -->
-                <div class="p-divider"></div>
-                <!-- divider -->
 
             </div>
             <!-- divider wrapper -->
@@ -616,7 +767,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project tag 1 -->
                         <li class="line">
                             <!-- tag icon -->
-                            <span class="ph-bold ph-globe"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="globe"></i>
+                            </span>
                             <!-- tag icon -->
                             
                             <!-- tag text -->
@@ -628,7 +781,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project tag 2 -->
                         <li class="line">
                             <!-- tag icon -->
-                            <span class="ph-bold ph-warning-circle"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+                            </span>
                             <!-- tag icon -->
                             
                             <!-- tag text -->
@@ -640,7 +795,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project tag 3 -->
                         <li class="line">
                             <!-- tag icon -->
-                            <span class="ph-bold ph-hash"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+                            </span>
                             <!-- tag icon -->
                             
                             <!-- tag text -->
@@ -652,7 +809,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 4 -->
                         <li class="line">
                             <!-- tag icon -->
-                            <span class="ph-bold ph-hash"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+                            </span>
                             <!-- tag icon -->
                             
                             <!-- tag text -->
@@ -664,7 +823,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 5 -->
                         <li class="line">
                             <!-- tag icon -->
-                            <span class="ph-bold ph-hash"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+                            </span>
                             <!-- tag icon -->
                             
                             <!-- tag text -->
@@ -676,7 +837,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 6 -->
                         <li class="line">
                             <!-- tag icon -->
-                            <span class="ph-bold ph-hash"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+                            </span>
                             <!-- tag icon -->
                             
                             <!-- tag text -->
@@ -696,17 +859,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             <!-- divider wrapper -->
             <div class="divider-wrapper">
 
-                <!-- divider -->
-                <div class="p-divider"></div>
-                <!-- divider -->
-
                 <!-- divider icon -->
-                <span class="ph-fill ph-circle"></span>
+                <span class="divider-circle"></span>
                 <!-- divider icon -->
-
-                <!-- divider -->
-                <div class="p-divider"></div>
-                <!-- divider -->
 
             </div>
             <!-- divider wrapper -->
@@ -749,7 +904,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 1 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-chart-line"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="bar-chart-1"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -761,7 +918,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 2 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-heart"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="heart-1"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -773,7 +932,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 3 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-pencil"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="edit-2"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -785,7 +946,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 4 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-globe"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="globe"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -797,7 +960,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 5 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-warning-circle"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -809,7 +974,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 6 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-book"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="book-closed-1"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -828,17 +995,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             <!-- divider wrapper -->
             <div class="divider-wrapper">
 
-                <!-- divider -->
-                <div class="p-divider"></div>
-                <!-- divider -->
-
                 <!-- divider icon -->
-                <span class="ph-fill ph-circle"></span>
+                <span class="divider-circle"></span>
                 <!-- divider icon -->
-
-                <!-- divider -->
-                <div class="p-divider"></div>
-                <!-- divider -->
 
             </div>
             <!-- divider wrapper -->
@@ -880,7 +1039,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                     <!-- project tag 1 -->
                     <li class="line">
                         <!-- tag icon -->
-                        <span class="ph-bold ph-globe"></span> 
+                        <span class="line-icon">
+                            <i class="solar-icons" stroke="2" icon-name="globe"></i>
+                        </span>
                         <!-- tag icon -->
                         
                         <!-- tag text -->
@@ -892,7 +1053,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                     <!-- project tag 2 -->
                     <li class="line">
                         <!-- tag icon -->
-                        <span class="ph-bold ph-warning-circle"></span> 
+                        <span class="line-icon">
+                            <i class="solar-icons" stroke="2" icon-name="edit-2"></i>
+                        </span>
                         <!-- tag icon -->
                         
                         <!-- tag text -->
@@ -904,7 +1067,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                     <!-- project tag 3 -->
                     <li class="line">
                         <!-- tag icon -->
-                        <span class="ph-bold ph-heart"></span> 
+                        <span class="sline-icon">
+                            <i class="solar-icons" stroke="2" icon-name="heart-1"></i>
+                        </span>
                         <!-- tag icon -->
                         
                         <!-- tag text -->
@@ -916,7 +1081,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                     <!-- project statistic 4 -->
                     <li class="line">
                         <!-- tag icon -->
-                        <span class="ph-bold ph-hash"></span> 
+                        <span class="line-icon">
+                            <i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+                        </span>
                         <!-- tag icon -->
                         
                         <!-- tag text -->
@@ -928,7 +1095,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                     <!-- project statistic 5 -->
                     <li class="line">
                         <!-- tag icon -->
-                        <span class="ph-bold ph-hash"></span> 
+                        <span class="line-icon">
+                            <i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+                        </span>
                         <!-- tag icon -->
                         
                         <!-- tag text -->
@@ -940,7 +1109,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                     <!-- project statistic 6 -->
                     <li class="line">
                         <!-- tag icon -->
-                        <span class="ph-bold ph-hash"></span> 
+                        <span class="line-icon">
+                            <i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+                        </span>
                         <!-- tag icon -->
                         
                         <!-- tag text -->
@@ -952,7 +1123,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                     <!-- project statistic 7 -->
                     <li class="line">
                         <!-- tag icon -->
-                        <span class="ph-bold ph-hash"></span> 
+                        <span class="line-icon">
+                            <i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+                        </span>
                         <!-- tag icon -->
                         
                         <!-- tag text -->
@@ -972,17 +1145,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
             <!-- divider wrapper -->
             <div class="divider-wrapper">
 
-                <!-- divider -->
-                <div class="p-divider"></div>
-                <!-- divider -->
-
                 <!-- divider icon -->
-                <span class="ph-fill ph-circle"></span>
+                <span class="divider-circle"></span>
                 <!-- divider icon -->
-
-                <!-- divider -->
-                <div class="p-divider"></div>
-                <!-- divider -->
 
             </div>
             <!-- divider wrapper -->
@@ -1024,7 +1189,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 1 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-chart-line"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="bar-chart-1"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -1036,7 +1203,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 2 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-heart"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="heart-1"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -1048,7 +1217,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 3 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-pencil"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="edit-1"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -1060,7 +1231,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 4 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-globe"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="globe"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -1072,7 +1245,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 5 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-warning-circle"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -1084,7 +1259,9 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
                         <!-- project statistic 6 -->
                         <li class="line">
                             <!-- stat icon -->
-                            <span class="ph-bold ph-book"></span> 
+                            <span class="line-icon">
+                                <i class="solar-icons" stroke="2" icon-name="book-closed-1"></i>
+                            </span>
                             <!-- stat icon -->
                             
                             <!-- stat text -->
@@ -1115,22 +1292,33 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
 
             <div class="more-links">
                 <span class="link">
-                    <span class="ph-bold ph-bookmark-simple"></span>
+                    <span class="link-icon">
+                        <i class="solar-icons" stroke="2" icon-name="bookmark"></i>
+                    </span>
+                    
                     <a href="/">ao3</a>
                 </span>
 
                 <span class="link">
-                    <span class="ph-bold ph-goodreads-logo"></span>
+                    <span class="link-icon">
+                        <i class="solar-icons" stroke="2" icon-name="book-open-2"></i>
+                    </span>
+
                     <a href="/">goodreads</a>
                 </span>
 
                 <span class="link">
-                    <span class="ph-bold ph-pinterest-logo"></span>
+                    <span class="link-icon">
+                        <i class="solar-icons" stroke="2" icon-name="file-5"></i>
+                    </span>
+
                     <a href="/">pinterest</a>
                 </span>
 
                 <span class="link">
-                    <span class="ph-bold ph-tag"></span>
+                    <span class="link-icon">
+                        <i class="solar-icons" stroke="2" icon-name="tag-1"></i>
+                    </span>
                     <a href="/">tag list</a>
                 </span>
             </div>
@@ -1141,10 +1329,66 @@ please, please read: change the body tag from 'dark' to 'light' if you want to c
     <!-- main wrapper -->
 
     <!-- credit. please don't touch, alter, or delete --> 
-    <a href="http://pouthongwon.tumblr.com" class="credit">
-        <i class="ph-bold ph-eyeglasses"></i>
-    </a>
+    <div class="credit">
+        <a href="http://pouthongwon.tumblr.com">
+            <i class="solar-icons" stroke="2" icon-name="face-blep"></i>
+        </a>
+
+        <span class="theme-name">page by pouthongwon</span>
+    </div>
     <!-- credit. please don't touch, alter, or delete -->
+
+    <!-- scripts for tooltips by atomiks -->
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/svg-arrow.css" />
+
+    <script>
+        const themeToggleButtons = document.querySelectorAll(".toggle");
+
+themeToggleButtons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+
+        // Add theme-transition class for smooth transitions
+        document.documentElement.classList.add("theme-transition");
+
+        // Retrieve the current theme and determine the target theme
+        let currentTheme = document.documentElement.getAttribute("data-theme");
+        let targetTheme = (currentTheme === "light") ? "dark" : "light";
+
+        // Remove theme-transition class after a short delay
+        window.setTimeout(function () {
+            document.documentElement.classList.remove("theme-transition");
+        }, 50);
+
+        // Set the data-theme attribute and store in local storage
+        document.documentElement.setAttribute("data-theme", targetTheme);
+        localStorage.setItem("theme", targetTheme);
+    });
+});
+
+$(document).ready(function(){
+   $('.controls').click(function(){
+       $('iframe.tmblr-iframe').toggleClass('active');
+   });
+});
+
+tippy('[title]', {
+    theme: 'custom',
+    arrow: tippy.roundArrow,
+    followCursor: true,
+    zIndex: 9999999999,
+    maxWidth: 300,
+
+    content(reference) {
+      const title = reference.getAttribute('title');
+      reference.removeAttribute('title');
+      return title;
+    },
+});
+
+
+    </script>
 
 </body>
 </html>
