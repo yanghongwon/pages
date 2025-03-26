@@ -5,11 +5,14 @@ aryu (revamp): character page by pouthongwon
 - don't delete the credit
 - send asks to http://pouthongwon.tumblr.com if you have any questions
 - icons are from iconsax
+- tumblr controls on click by @seyche
+- light/dark toggle by @mournstera
+- tooltips by atomiks
 -->
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,30 +27,70 @@ aryu (revamp): character page by pouthongwon
     <!-- iconsax -->
     <link href="https://iconsax.gitlab.io/i/icons.css" rel="stylesheet">
 
+    <!-- jquery for tooltips -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <!-- light/dark by @mournstera -->
+    <script>
+        const storedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        if (storedTheme) {
+            document.documentElement.setAttribute("data-theme", storedTheme);
+        }
+    </script>
+
     <!-- styles start -->
     <style type="text/css">
         /* custom editing start */ 
         :root {
-            --clr-background: #212121;
-            --clr-content: #191919;
-            --clr-text: #fff;
-            --clr-borders: #505050;
-            --clr-accent: #7a9cb3;
-            --clr-links: #eee;
-
             --ff-text: 'Rethink Sans', sans-serif;
 
             --fs-text: 0.9rem;
-
-            --box-shadow: 21,21,21;
         }
         /* custom editing end */
 
+        :root, html[data-theme="light"] {
+            --light-mode: none;
+            --dark-mode: flex;
+
+            --clr-background: #f0f0f0;
+            --clr-content: #fff;
+            --clr-text: #000;
+            --clr-borders: #d3d3d3;
+            --clr-accent: #7a9cb3;
+            --clr-links: #191919;
+
+            --box-shadow: #d3d3d3;
+        }
+
+        html[data-theme="dark"] {
+            --light-mode: flex;
+            --dark-mode: none;
+
+            --clr-background: #101010;
+            --clr-content: #202020;
+            --clr-text: #fff;
+            --clr-borders: #505050;
+            --clr-accent: #a8b0d1;
+            --clr-links: #eee;
+
+            --box-shadow: #2f2f2f;
+        }
+
         .tmblr-iframe {
             transform: scale(0.75);
-            /* (uncomment this if you have a light background)
+            translate: -1.4rem 0.3rem;
             filter: invert(100%);
-            */
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        html[data-theme="dark"] iframe.tmblr-iframe {
+            filter: invert(0);
+        }
+
+        iframe.tmblr-iframe.active {
+            visibility: visible;
+            opacity: 1;
         }
 
         *, *::before, *::after {
@@ -99,8 +142,61 @@ aryu (revamp): character page by pouthongwon
             margin-top: 0.7rem;
         }
 
+        button {
+            background: inherit;
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            cursor: pointer;
+
+            border: 1px solid transparent;
+        }
+
+        .light-mode {
+            display: var(--light-mode);
+        }
+
+        .dark-mode {
+            display: var(--dark-mode);
+        }
+
         .iconsax {
             font-size: calc(var(--fs-text) + 0.2rem);
+        }
+
+        .button-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+
+            display: grid;
+            gap: 10px;
+        }
+
+        .button-container button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0.4rem;
+            border: 1px solid var(--clr-borders);
+            border-radius: 0.4rem;
+        }
+
+        .controls {
+            background: var(--clr-text);
+            color: var(--clr-background);
+            transition: 0.7s ease-in-out;
+        }
+
+        .controls:hover {
+            background: var(--clr-content);
+            color: var(--clr-accent);
+        }
+
+        .toggle {
+            background: var(--clr-accent);
+            color: var(--clr-background);
         }
 
         .wrapper {
@@ -115,7 +211,7 @@ aryu (revamp): character page by pouthongwon
             gap: 1rem;
             margin: 6rem auto;
             align-items: start;
-            box-shadow: 0 0 8px 8px rgba(var(--box-shadow), 0.7);
+            box-shadow: 0 0 8px 8px rgba(from var(--box-shadow) r g b / 0.7);
         }
 
         header {
@@ -234,7 +330,7 @@ aryu (revamp): character page by pouthongwon
             display: flex;
             align-items: start;
             justify-content: left;
-            gap: 1rem;
+            gap: 0.6rem;
             padding-block: 0.7rem;
         }
 
@@ -276,25 +372,59 @@ aryu (revamp): character page by pouthongwon
             gap: 0.5rem;
             justify-content: space-between;
         }
-        
+
         .credit {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            border-radius: 0.4rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             padding: 0.4rem;
-            border-radius: 0.3rem;
             border: 1px solid var(--clr-borders);
-            position: sticky;
-            bottom: 0.6rem;
-            right: 0.6rem;
-            background: var(--clr-content);
-            float: right;
+            background: var(--clr-text);
+            color: var(--clr-background);
+            transition: 0.7s ease-in-out;
         }
-        
-        .credit i {
-            margin-right: 10px;
+
+        .credit:hover {
+            background: var(--clr-container);
+            color: var(--clr-accent);
+        }
+
+        .tippy-tooltip.custom-theme {
+            background-color: var(--clr-text);
+            color: var(--clr-background);
+            text-align: center;
+            margin-block: 0.75rem;
+        }
+
+        .tippy-tooltip.custom-theme .tippy-svg-arrow {
+            fill: var(--clr-text);
         }
     </style>
     <!-- styles end -->
 </head>
 <body>
+    <div class="button-container">
+        <button class="controls" title="tumblr controls">
+            <i class="iconsax" icon-name="setting-3"></i>
+        </button>
+
+        <button class="toggle">
+            <span class="light-mode" title="turn on the lights">
+                <i class="iconsax" icon-name="sun"></i>
+            </span>
+
+            <span class="dark-mode" title="turn off the lights">
+                <i class="iconsax" icon-name="moon"></i>
+            </span>
+        </button>
+    </div>
+
     <!-- wrapper starts -->
     <div class="wrapper">
         
@@ -316,9 +446,10 @@ aryu (revamp): character page by pouthongwon
         <aside>
             <!-- sidebar title and image -->
             <div class="aside-info">
-                <img src="https://i.pinimg.com/474x/ff/a2/3c/ffa23c0e63b7e1b0b976345ac6876941.jpg" class="aside-icon"> <!-- replace the image url with your own image -->
+                <img src="https://i.pinimg.com/474x/ff/a2/3c/ffa23c0e63b7e1b0b976345ac6876941.jpg" class="aside-icon">
                 <h1>Lorem, ipsum.</h1>
             </div>
+            <!-- sidebar title and image -->
 
             <!-- sidebar navigation -->
             <nav class="aside-links">
@@ -327,6 +458,7 @@ aryu (revamp): character page by pouthongwon
                 <a href="/archive"><i class="iconsax" icon-name="archive-closed"></i>history</a>
                 <a href="http://tumblr.com"><i class="iconsax" icon-name="grid-apps"></i>dashboard</a>
             </nav>
+            <!-- sidebar navigation -->
         </aside>
         <!-- sidebar -->
 
@@ -335,19 +467,11 @@ aryu (revamp): character page by pouthongwon
             
            <!-- character one -->
             <div class="char">
-                
-                <!-- character name and faceclaim -->
                 <h2 class="char-name">ji seoyun<span>faceclaim</span></h2>
-                
-                <!-- character information -->
                 <div class="char-info">
-                
-                    <!-- character biography -->
                     <div class="char-bio">
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
-                    
-                    <!-- character stats-->
                     <div class="char-stats">
                         <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
                         <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
@@ -356,8 +480,6 @@ aryu (revamp): character page by pouthongwon
                         <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
-                
-                <!-- character links -->
                 <div class="char-icons">
                     <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
                     <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
@@ -368,31 +490,19 @@ aryu (revamp): character page by pouthongwon
             </div>
             <!-- character one -->
 
-            <!-- character two -->
             <div class="char">
-                
-                <!-- character name and faceclaim -->
-                <h2 class="char-name">seo yijun<span>faceclaim</span></h2>
-                
-                <!-- character information -->
+                <h2 class="char-name">yi areumbyeol<span>faceclaim</span></h2>
                 <div class="char-info">
-                
-                    <!-- character biography -->
                     <div class="char-bio">
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
-                    
-                    <!-- character stats-->
                     <div class="char-stats">
                         <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
-                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="iconsax" icon-name="info-circle"></i><span>age</span></li>
                         <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
                         <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
-                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
-                
-                <!-- character links -->
                 <div class="char-icons">
                     <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
                     <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
@@ -401,33 +511,20 @@ aryu (revamp): character page by pouthongwon
                     <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
                 </div>
             </div>
-            <!-- character two -->
 
-            <!-- character three -->
             <div class="char">
-                
-                <!-- character name and faceclaim -->
-                <h2 class="char-name">seol hyokeun<span>faceclaim</span></h2>
-                
-                <!-- character information -->
+                <h2 class="char-name">yi areumbyeol<span>faceclaim</span></h2>
                 <div class="char-info">
-                
-                    <!-- character biography -->
                     <div class="char-bio">
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
-                    
-                    <!-- character stats-->
                     <div class="char-stats">
                         <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
-                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="iconsax" icon-name="info-circle"></i><span>age</span></li>
                         <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
                         <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
-                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
-                
-                <!-- character links -->
                 <div class="char-icons">
                     <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
                     <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
@@ -436,33 +533,20 @@ aryu (revamp): character page by pouthongwon
                     <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
                 </div>
             </div>
-            <!-- character three -->
 
-            <!-- character four -->
             <div class="char">
-                
-                <!-- character name and faceclaim -->
-                <h2 class="char-name">seo ryun<span>faceclaim</span></h2>
-                
-                <!-- character information -->
+                <h2 class="char-name">yi areumbyeol<span>faceclaim</span></h2>
                 <div class="char-info">
-                
-                    <!-- character biography -->
                     <div class="char-bio">
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
-                    
-                    <!-- character stats-->
                     <div class="char-stats">
                         <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
-                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="iconsax" icon-name="info-circle"></i><span>age</span></li>
                         <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
                         <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
-                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
-                
-                <!-- character links -->
                 <div class="char-icons">
                     <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
                     <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
@@ -471,33 +555,20 @@ aryu (revamp): character page by pouthongwon
                     <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
                 </div>
             </div>
-            <!-- character four -->
 
-            <!-- character five -->
             <div class="char">
-                
-                <!-- character name and faceclaim -->
-                <h2 class="char-name">yi daehwi<span>faceclaim</span></h2>
-                
-                <!-- character information -->
+                <h2 class="char-name">yi areumbyeol<span>faceclaim</span></h2>
                 <div class="char-info">
-                
-                    <!-- character biography -->
                     <div class="char-bio">
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
-                    
-                    <!-- character stats-->
                     <div class="char-stats">
                         <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
-                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="iconsax" icon-name="info-circle"></i><span>age</span></li>
                         <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
                         <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
-                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
-                
-                <!-- character links -->
                 <div class="char-icons">
                     <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
                     <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
@@ -506,33 +577,20 @@ aryu (revamp): character page by pouthongwon
                     <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
                 </div>
             </div>
-            <!-- character five -->
 
-            <!-- character six -->
             <div class="char">
-                
-                <!-- character name and faceclaim -->
-                <h2 class="char-name">eo kyowon<span>faceclaim</span></h2>
-                
-                <!-- character information -->
+                <h2 class="char-name">yi areumbyeol<span>faceclaim</span></h2>
                 <div class="char-info">
-                
-                    <!-- character biography -->
                     <div class="char-bio">
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
-                    
-                    <!-- character stats-->
                     <div class="char-stats">
                         <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
-                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="iconsax" icon-name="info-circle"></i><span>age</span></li>
                         <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
                         <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
-                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
-                
-                <!-- character links -->
                 <div class="char-icons">
                     <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
                     <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
@@ -541,13 +599,64 @@ aryu (revamp): character page by pouthongwon
                     <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
                 </div>
             </div>
-            <!-- character six -->
 
         </div>
 
     </div>
     <!-- wrapper ends -->
-    
-    <a href="http://pouthongwon.tumblr.com/" class="credit"><i class="iconsax" icon-name="glasses"></i><span>pouthongwon</span></a>
+
+    <a href="http://pouthongwon.tumblr.com/" class="credit" title="page by pouthongwon">
+        <i class="iconsax" icon-name="emoji-happy"></i>
+    </a>
+
+    <!-- scripts for tooltips by atomiks -->
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/svg-arrow.css" />
+
+    <script>
+        const themeToggleButtons = document.querySelectorAll(".toggle");
+
+themeToggleButtons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+
+        // Add theme-transition class for smooth transitions
+        document.documentElement.classList.add("theme-transition");
+
+        // Retrieve the current theme and determine the target theme
+        let currentTheme = document.documentElement.getAttribute("data-theme");
+        let targetTheme = (currentTheme === "light") ? "dark" : "light";
+
+        // Remove theme-transition class after a short delay
+        window.setTimeout(function () {
+            document.documentElement.classList.remove("theme-transition");
+        }, 50);
+
+        // Set the data-theme attribute and store in local storage
+        document.documentElement.setAttribute("data-theme", targetTheme);
+        localStorage.setItem("theme", targetTheme);
+    });
+});
+
+$(document).ready(function(){
+   $('.controls').click(function(){
+       $('iframe.tmblr-iframe').toggleClass('active');
+   });
+});
+
+tippy('[title]', {
+    theme: 'custom',
+    arrow: tippy.roundArrow,
+    followCursor: true,
+    zIndex: 9999999999,
+    maxWidth: 300,
+
+    content(reference) {
+      const title = reference.getAttribute('title');
+      reference.removeAttribute('title');
+      return title;
+    },
+});
+</script>
 </body>
 </html>
