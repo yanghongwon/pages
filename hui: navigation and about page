@@ -5,11 +5,10 @@
 
 hui: a flexible navigation and about page by pouthongwon
 - don't modify, delete, or move the credit
-- icons are from tabler icons (find more icons at https://tabler.io/icons)
 - enjoy!
 
 credits:
-- icons from tabler icons
+- icons from solar icons (find more at https://solar-icons.gitlab.io/i/icons-list)
 - light/dark toggle by @mournstera
 - tumblr controls on click by @seyche
 - tooltips by atomiks
@@ -33,7 +32,7 @@ credits:
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
 
     <!-- icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <link href="https://solar-icons.gitlab.io/i/icons.css" rel="stylesheet" crossorigin>
 
     <!-- jquery for tooltips -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -289,8 +288,8 @@ credits:
             margin-bottom: 0;
         }
 
-        .tags-title .ti {
-            margin-right: 10px;
+        .tags-title .solar-icons {
+            margin-right: 7px;
         }
 
         .tags-inner {
@@ -332,7 +331,7 @@ credits:
             flex: 1;
         }
 
-        .stat .ti {
+        .stat .solar-icons {
             font-size: calc(var(--fs-400) + 0.1rem);
         }
 
@@ -408,16 +407,16 @@ credits:
 
     <div class="button-container">
         <button class="controls" title="tumblr controls">
-            <i class="ti ti-adjustments-horizontal"></i>
+            <i class="solar-icons" stroke="2" icon-name="sliders-horizontal"></i>
         </button>
 
         <button class="toggle">
             <span class="light-mode" title="turn on the lights">
-                <i class="ti ti-sun-high"></i>
+                <i class="solar-icons" stroke="2" icon-name="sun-2"></i>
             </span>
 
             <span class="dark-mode" title="turn off the lights">
-                <i class="ti ti-moon"></i>
+                <i class="solar-icons" stroke="2" icon-name="moon-stars"></i>
             </span>
         </button>
     </div>
@@ -445,7 +444,7 @@ credits:
             
             <!-- tags title -->
             <div class="tags-title">
-                <h2><span class="ti ti-cake"></span> stats</h2>
+                <h2><span class="solar-icons" stroke="2" icon-name="notif-unread-2"></span> stats</h2>
             </div>
             <!-- tags title -->
 
@@ -459,17 +458,26 @@ credits:
                     <!-- column -->
                     <div class="col">
                     <li class="stat">
-                        <span class="ti ti-user"></span>
+                        <span class="stat-icon">
+                            <i class="solar-icons" stroke="2" icon-name="user-1"></i>
+                        </span>
+
                         <text>hui, shua, hyang, kyung</text>
                     </li>
 
                     <li class="stat">
-                        <span class="ti ti-user-question"></span>
+                        <span class="stat-icon">
+                            <i class="solar-icons" stroke="2" icon-name="question-circle"></i>
+                        </span>
+
                         <text>age, pronouns</text>
                     </li>
 
                     <li class="stat">
-                        <span class="ti ti-heart"></span>
+                        <span class="stat-icon">
+                            <i class="solar-icons" stroke="2" icon-name="heart-1"></i>
+                        </span>
+
                         <text>sexuality, gender</text>
                     </li>
                     </div>
@@ -478,12 +486,18 @@ credits:
                     <!-- column -->
                     <div class="col">
                     <li class="stat">
-                        <span class="ti ti-thumb-up"></span>
+                        <span class="stat-icon">
+                            <i class="solar-icons" stroke="2" icon-name="thumbs-up"></i>
+                        </span>
+
                         <text>like 1, like 2, like 3, like 4, like 5, like 6, like 7, like 8, like 9, like 10</text>
                     </li>
 
                     <li class="stat">
-                        <span class="ti ti-thumb-down"></span>
+                        <span class="stat-icon">
+                            <i class="solar-icons" stroke="2" icon-name="thumbs-down"></i>
+                        </span>
+
                         <text>dislike 1, dislike 2, dislike 3</text>
                     </li>
                     
@@ -504,7 +518,10 @@ credits:
 
             <!-- tags title -->
             <div class="tags-title">
-                <h2><span class="ti ti-info-circle"></span> biography</h2>
+                <h2>
+                    <i class="solar-icons" stroke="2" icon-name="info-circle"></i>
+                    biography
+                </h2>
             </div>
             <!-- tags title -->
 
@@ -526,7 +543,10 @@ credits:
 
             <!-- tags title -->
             <div class="tags-title">
-                <h2><span class="ti ti-notification"></span> updates</h2>
+                <h2>
+                    <i class="solar-icons" stroke="2" icon-name="bell-1"></i>
+                    updates
+                </h2>
             </div>
             <!-- tags title -->
 
@@ -539,12 +559,18 @@ credits:
                     <!-- column -->
                     <div class="col">
                     <li class="stat">
-                        <span class="ti ti-device-tv"></span>
+                        <span class="stat-icon">
+                            <i class="solar-icons" stroke="2" icon-name="tv"></i>
+                        </span>
+
                         <text>physical:100 seasons 1 and 2, beautiful world, rap cup</text>
                     </li>
 
                     <li class="stat">
-                        <span class="ti ti-book"></span>
+                        <span class="stat-icon">
+                            <i class="solar-icons" stroke="2" icon-name="book-closed-2"></i>
+                        </span>
+
                         <text>if i stay, love in the big city, miss kim knows and other stories</text>
                     </li>
                     </div>
@@ -553,12 +579,18 @@ credits:
                     <!-- column -->
                     <div class="col">
                     <li class="stat">
-                        <span class="ti ti-headphones"></span>
+                        <span class="stat-icon">
+                            <i class="solar-icons" stroke="2" icon-name="headphones-1"></i>
+                        </span>
+
                         <text>yang hongwon</text>
                     </li>
 
                     <li class="stat">
-                        <span class="ti ti-bell"></span>
+                        <span class="stat-icon">
+                            <i class="solar-icons" stroke="2" icon-name="bell-1"></i>
+                        </span>
+
                         <text>reblogs are queued and posting four times a day</text>
                     </li>
                     </div>
@@ -580,7 +612,11 @@ credits:
 
             <!-- tags title -->
             <div class="tags-title">
-                <h2><span class="ti ti-headphones"></span> tags title</h2>
+                <h2>
+                    <i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+
+                    tags title
+                </h2>
             </div>
             <!-- tags title -->
 
@@ -611,7 +647,11 @@ credits:
 
             <!-- tags title -->
             <div class="tags-title">
-                <h2><span class="ti ti-headphones"></span> tags title</h2>
+                <h2>
+                    <i class="solar-icons" stroke="2" icon-name="hashtag"></i>
+
+                    tags title
+                </h2>
             </div>
             <!-- tags title -->
 
@@ -665,7 +705,7 @@ credits:
    <!-- credit. please don't touch or delete -->
    <div class="credit">
    <a href="http://pouthongwon.tumblr.com" title="page by pouthongwon">
-    <i class="ti ti-mood-happy"></i>
+    <i class="solar-icons" stroke="2" icon-name="face-blep"></i>
    </a>
    </div>
    <!-- credit. please don't touch or delete -->
@@ -719,528 +759,5 @@ tippy('[title]', {
    },
 });
 </script>
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hui: navigation page</title>
-
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-
-    <!-- icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-
-    <!-- styles -->
-    <style type="text/css">
-        :root {
-            --clr-background: #101010;
-            --clr-content: #212121;
-            --clr-text: #fff;
-            --clr-links: #eee;
-            --clr-accent: #767676;
-            --clr-borders: #313131;
-            --rgba-shadow: 10, 10, 10, 0.8;
-
-            --ff-text: 'Rethink Sans', sans-serif;
-            --ff-heading: 'Poppins', sans-serif;
-
-            --fs-400: 0.9rem;
-
-            --sidebar: 14rem;
-        }
-        
-        iframe.tmblr-iframe {
-            transform: scale(0.7);
-            /* filter: invert(100%); */ /* uncomment this if you have a light thwmw */
-        }
-
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: var(--clr-background);
-            font-size: var(--fs-400);
-            color: var(--clr-text);
-            font-family: var(--ff-text);
-            line-height: 1.5;
-        }
-
-        a {
-            color: var(--clr-links);
-            text-decoration: none;
-            transition: 0.5s ease-in-out;
-        }
-
-        a:hover {
-            color: var(--clr-accent);
-        }
-
-        h1, h2, p {
-            margin: 0;
-            padding: 0;
-        }
-
-        h1, h2 {
-            font-family: var(--ff-heading);
-        }
-
-        h1 {
-            font-size: calc(var(--fs-400) + 0.4rem);
-        }
-
-        h2 {
-            font-size: calc(var(--fs-400) + 0.2rem);
-        }
-
-        p + p {
-            margin-top: 0.6rem;
-        }
-
-        .wrapper {
-            max-width: 800px;
-            padding: 2rem;
-            background: var(--clr-content);
-            margin: 1rem auto;
-            display: grid;
-            grid-template-areas: 'sidebar content'
-            'links links';
-            grid-template-columns: var(--sidebar) 1fr;
-            gap: 1rem;
-            align-items: start;
-            box-shadow: 0px 0px 8px 8px rgba(var(--rgba-shadow));
-        }
-
-        aside {
-            padding-block: 1rem;
-            grid-area: sidebar;
-            max-width: var(--sidebar);
-            top: 0;
-            left: 0;
-            position: sticky;
-        }
-
-        aside .desc {
-            margin-top: 0.5rem;
-        }
-
-        aside .desc p {
-            padding: 1rem;
-            border: 1px solid var(--clr-borders);
-            background: var(--clr-background);
-            border-radius: 0.4rem;
-        }
-
-        aside .side-img {
-            width: 5rem;
-            height: 5rem;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .timeline {
-            position: relative;
-            grid-area: content;
-            padding: 1rem;
-        }
-
-        .timeline::after {
-            content: '';
-            width: 4px;
-            background: var(--clr-borders);
-            top: 0;
-            bottom: 0;
-            position: absolute;
-        }
-
-        .tags-container {
-            background: var(--clr-background);
-            border: 1px solid var(--clr-borders);
-            position: relative;
-            left: 2rem;
-            padding: 1rem;
-        }
-
-        .tags-container::before {
-            content: '';
-            width: 15px;
-            height: 15px;
-            background: var(--clr-accent);
-            border-radius: 50%;
-            position: absolute;
-            left: -2.4rem;
-            margin-top: 0.3rem;
-            z-index: 1;
-        }
-
-        .tags-title {
-            padding-bottom: 0.5rem;
-        }
-
-        .tags-container {
-            margin-bottom: 2rem;
-        }
-        
-        .tags-container:last-of-type {
-            margin-bottom: 0;
-        }
-
-        .tags-title .ti {
-            margin-right: 10px;
-        }
-
-        .tags-inner {
-            border-top: 1px solid var(--clr-borders);
-            padding-top: 0.5rem;
-        }
-
-        .tags-inner p:first-child {
-            padding-top: 0.5rem;
-        }
-
-        .tags-grid {
-            padding-top: 0.5rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-
-        .tags-grid .stat {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            list-style: none;
-            border-bottom: 1px solid var(--clr-borders);
-            padding-block: 0.5rem;
-        }
-
-        .tags-grid .stat:first-child {
-            padding-top: 0;
-        }
-
-        .tags-grid .stat:last-child {
-            padding-bottom: 0;
-            border: 0;
-        }
-
-        .tags-grid .col {
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .stat .ti {
-            font-size: calc(var(--fs-400) + 0.1rem);
-        }
-
-        .tags-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
-        }
-
-        .tags-links a {
-            border-bottom: 1px solid var(--clr-borders);
-            padding: 0.5rem;
-            transition: 0.5s ease-in-out;
-        }
-
-        .tags-links a:hover {
-            border-bottom: 1px solid var(--clr-accent);
-            color: var(--clr-accent)
-        }
-
-        .links {
-            bottom: 0;
-            position: sticky;
-            background: var(--clr-content);
-            grid-area: links;
-            padding-top: 1rem;
-            border-top: 1px solid var(--clr-borders);
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-
-        .links a {
-            margin-right: 0.8rem;
-        }
-
-        .credit {
-            position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-        }
-
-        .credit .ti {
-            width: 2rem;
-            height: 2rem;
-            padding: 0.3rem;
-            border-radius: 0.3rem;
-            background: var(--clr-borders);
-            outline: 1px solid var(--clr-borders);
-            outline-offset: 3px;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- wrapper -->
-   <main class="wrapper">
-
-    <!-- sidebar -->
-    <aside>
-        <img src="https://i.pinimg.com/564x/3d/ab/1e/3dab1e1bdb243f6a3fad2378de070ecb.jpg" class="side-img"/>
-        <h1>put a title here...</h1>
-        <div class="desc">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore quam ad accusantium quos, beatae praesentium!</p>
-        </div>
-    </aside>
-    <!-- sidebar -->
-
-   
-   <!-- timeline -->
-    <div class="timeline">
-    
-        
-        <!-- box 1 -->
-        <div class="tags-container">
-            
-            <!-- tags title -->
-            <div class="tags-title">
-                <h2><span class="ti ti-cake"></span> stats</h2>
-            </div>
-            <!-- tags title -->
-
-
-            <!-- tags inside -->
-             <div class="tags-inner">
-
-                    <!-- tags grid -->
-                    <div class="tags-grid">
-
-                    <!-- column -->
-                    <div class="col">
-                    <li class="stat">
-                        <span class="ti ti-user"></span>
-                        <text>hui, shua, hyang, kyung</text>
-                    </li>
-
-                    <li class="stat">
-                        <span class="ti ti-user-question"></span>
-                        <text>age, pronouns</text>
-                    </li>
-
-                    <li class="stat">
-                        <span class="ti ti-heart"></span>
-                        <text>sexuality, gender</text>
-                    </li>
-                    </div>
-                    <!-- column -->
-
-                    <!-- column -->
-                    <div class="col">
-                    <li class="stat">
-                        <span class="ti ti-thumb-up"></span>
-                        <text>like 1, like 2, like 3, like 4, like 5, like 6, like 7, like 8, like 9, like 10</text>
-                    </li>
-
-                    <li class="stat">
-                        <span class="ti ti-thumb-down"></span>
-                        <text>dislike 1, dislike 2, dislike 3</text>
-                    </li>
-                    
-                    </div>
-                    <!-- column -->
-                    
-                    </div>
-                    <!--tags grid -->
-
-                </div>
-                <!-- tags inside -->
-        </div>
-        <!-- box 1 -->
-
-
-        <!-- box 2 -->
-        <div class="tags-container">
-
-            <!-- tags title -->
-            <div class="tags-title">
-                <h2><span class="ti ti-info-circle"></span> biography</h2>
-            </div>
-            <!-- tags title -->
-
-            <!-- tags inside: biography -->
-            <div class="tags-inner">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, perspiciatis ipsum culpa hic dolorum quibusdam?</p>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio assumenda neque in iure asperiores natus corrupti illum, ipsa odit incidunt?</p>
-            </div>
-            <!-- tags inside: biography -->
-
-        </div>
-        <!-- box 2 -->
-
-
-
-        <!-- box 3 -->
-        <div class="tags-container">
-
-            <!-- tags title -->
-            <div class="tags-title">
-                <h2><span class="ti ti-notification"></span> updates</h2>
-            </div>
-            <!-- tags title -->
-
-            <!-- tags inside: updates -->
-            <div class="tags-inner">
-
-                <!-- tags grid -->
-                <div class="tags-grid">
-
-                    <!-- column -->
-                    <div class="col">
-                    <li class="stat">
-                        <span class="ti ti-device-tv"></span>
-                        <text>physical:100 seasons 1 and 2, beautiful world, rap cup</text>
-                    </li>
-
-                    <li class="stat">
-                        <span class="ti ti-book"></span>
-                        <text>if i stay, love in the big city, miss kim knows and other stories</text>
-                    </li>
-                    </div>
-                    <!-- column -->
-
-                    <!-- column -->
-                    <div class="col">
-                    <li class="stat">
-                        <span class="ti ti-headphones"></span>
-                        <text>yang hongwon</text>
-                    </li>
-
-                    <li class="stat">
-                        <span class="ti ti-bell"></span>
-                        <text>reblogs are queued and posting four times a day</text>
-                    </li>
-                    </div>
-                    <!-- column -->
-
-                    </div>
-                    <!-- tags grid -->
-
-            </div>
-            <!-- tags inside: updates -->
-
-        </div>
-        <!-- box 3 -->
-
-
-
-        <!-- box 4 -->
-        <div class="tags-container">
-
-            <!-- tags title -->
-            <div class="tags-title">
-                <h2><span class="ti ti-headphones"></span> tags title</h2>
-            </div>
-            <!-- tags title -->
-
-           <!-- tags inside: tags list -->
-            <div class="tags-inner">
-
-            <!-- tags list -->   
-            <div class="tags-links">
-                <a href="/">tag #1</a>
-                <a href="/">tag #2</a>
-                <a href="/">tag #3</a>
-                <a href="/">tag #4</a>
-                <a href="/">tag #5</a>
-                <a href="/">very long tag #6</a>
-            </div>
-            <!-- tags list -->
-
-            </div>
-            <!-- tags inside: tags list -->
-            
-        </div>
-        <!-- box 4 -->
-
-
-
-         <!-- box 5 -->
-         <div class="tags-container">
-
-            <!-- tags title -->
-            <div class="tags-title">
-                <h2><span class="ti ti-headphones"></span> tags title</h2>
-            </div>
-            <!-- tags title -->
-
-           <!-- tags inside: tags list -->
-            <div class="tags-inner">
-
-            <!-- tags list -->   
-            <div class="tags-links">
-                <a href="/">tag #1</a>
-                <a href="/">tag #2</a>
-                <a href="/">tag #3</a>
-                <a href="/">tag #4</a>
-                <a href="/">tag #5</a>
-                <a href="/">very long tag #6</a>
-            </div>
-            <!-- tags list -->
-
-            </div>
-            <!-- tags inside: tags list -->
-            
-        </div>
-        <!-- box 5 -->
-
-
-    </div>
-    <!-- timeline -->
-
-    
-    
-    <!-- links -->
-    <div class="links">
-        <div class="left-l">
-            <a href="/">index</a>
-            <a href="/ask">askbox</a>
-            <a href="/archive">archive</a>
-            <a href="http://tumblr.com/">dashboard</a>
-        </div>
-
-        <div class="right-l">
-            <a href="/">link 1</a>
-            <a href="/">link 2</a>
-            <a href="/">link 3</a>
-        </div>
-    </div>
-    <!-- links -->
-
-
-   </main>
-   <!-- wrapper -->
-
-   <!-- credit. please don't touch or delete -->
-   <div class="credit">
-   <a href="http://pouthongwon.tumblr.com">
-    <span class="ti ti-eyeglass"></span>
-   </a>
-   </div>
-   <!-- credit. please don't touch or delete -->
 </body>
 </html>
