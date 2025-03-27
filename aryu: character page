@@ -4,7 +4,7 @@ aryu (revamp): character page by pouthongwon
 
 - don't delete the credit
 - send asks to http://pouthongwon.tumblr.com if you have any questions
-- icons are from iconsax
+- icons are from solar icons
 - tumblr controls on click by @seyche
 - light/dark toggle by @mournstera
 - tooltips by atomiks
@@ -24,8 +24,8 @@ aryu (revamp): character page by pouthongwon
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <!-- iconsax -->
-    <link href="https://iconsax.gitlab.io/i/icons.css" rel="stylesheet">
+    <!-- solar icons -->
+    <link href="https://solar-icons.gitlab.io/i/icons.css" rel="stylesheet" crossorigin>
 
     <!-- jquery for tooltips -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -160,7 +160,7 @@ aryu (revamp): character page by pouthongwon
             display: var(--dark-mode);
         }
 
-        .iconsax {
+        .solar-icons {
             font-size: calc(var(--fs-text) + 0.2rem);
         }
 
@@ -411,16 +411,16 @@ aryu (revamp): character page by pouthongwon
 <body>
     <div class="button-container">
         <button class="controls" title="tumblr controls">
-            <i class="iconsax" icon-name="setting-3"></i>
+            <i class="solar-icons" stroke="2" icon-name="sliders-horizontal"></i>
         </button>
 
         <button class="toggle">
             <span class="light-mode" title="turn on the lights">
-                <i class="iconsax" icon-name="sun"></i>
+                <i class="solar-icons" stroke="2" icon-name="sun-2"></i>
             </span>
 
             <span class="dark-mode" title="turn off the lights">
-                <i class="iconsax" icon-name="moon"></i>
+                <i class="solar-icons" stroke="2" icon-name="moon-stars"></i>
             </span>
         </button>
     </div>
@@ -453,10 +453,10 @@ aryu (revamp): character page by pouthongwon
 
             <!-- sidebar navigation -->
             <nav class="aside-links">
-                <a href="/"><i class="iconsax" icon-name="home-2"></i>index</a>
-                <a href="/ask"><i class="iconsax" icon-name="mail"></i>askbox</a>
-                <a href="/archive"><i class="iconsax" icon-name="archive-closed"></i>history</a>
-                <a href="http://tumblr.com"><i class="iconsax" icon-name="grid-apps"></i>dashboard</a>
+                <a href="/"><i class="solar-icons" stroke="2" icon-name="home-2"></i>index</a>
+                <a href="/ask"><i class="solar-icons"  stroke="2" icon-name="notif-unread-2"></i>askbox</a>
+                <a href="/archive"><i class="solar-icons"  stroke="2" icon-name="archive"></i>history</a>
+                <a href="http://tumblr.com"><i class="solar-icons" stroke="2"  icon-name="apps-grid-1"></i>dashboard</a>
             </nav>
             <!-- sidebar navigation -->
         </aside>
@@ -473,19 +473,19 @@ aryu (revamp): character page by pouthongwon
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
                     <div class="char-stats">
-                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
-                        <li><i class="iconsax" icon-name="calendar-2"></i><span>age</span></li>
-                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
-                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
-                        <li><i class="iconsax" icon-name="info-circle"></i><span>things to know about the character</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="heart-1"></i><span>sexuality</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
                 <div class="char-icons">
-                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
-                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
-                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
-                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
-                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-open-1"></i>biography</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-closed-1"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="cloud-1"></i>another link</a>
                 </div>
             </div>
             <!-- character one -->
@@ -497,18 +497,19 @@ aryu (revamp): character page by pouthongwon
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
                     <div class="char-stats">
-                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
-                        <li><i class="iconsax" icon-name="info-circle"></i><span>age</span></li>
-                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
-                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="heart-1"></i><span>sexuality</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
                 <div class="char-icons">
-                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
-                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
-                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
-                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
-                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-open-1"></i>biography</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-closed-1"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="cloud-1"></i>another link</a>
                 </div>
             </div>
 
@@ -519,18 +520,19 @@ aryu (revamp): character page by pouthongwon
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
                     <div class="char-stats">
-                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
-                        <li><i class="iconsax" icon-name="info-circle"></i><span>age</span></li>
-                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
-                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="heart-1"></i><span>sexuality</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
                 <div class="char-icons">
-                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
-                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
-                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
-                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
-                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-open-1"></i>biography</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-closed-1"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="cloud-1"></i>another link</a>
                 </div>
             </div>
 
@@ -541,18 +543,19 @@ aryu (revamp): character page by pouthongwon
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
                     <div class="char-stats">
-                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
-                        <li><i class="iconsax" icon-name="info-circle"></i><span>age</span></li>
-                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
-                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="heart-1"></i><span>sexuality</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
                 <div class="char-icons">
-                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
-                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
-                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
-                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
-                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-open-1"></i>biography</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-closed-1"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="cloud-1"></i>another link</a>
                 </div>
             </div>
 
@@ -563,18 +566,19 @@ aryu (revamp): character page by pouthongwon
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
                     <div class="char-stats">
-                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
-                        <li><i class="iconsax" icon-name="info-circle"></i><span>age</span></li>
-                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
-                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="heart-1"></i><span>sexuality</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
                 <div class="char-icons">
-                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
-                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
-                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
-                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
-                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-open-1"></i>biography</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-closed-1"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="cloud-1"></i>another link</a>
                 </div>
             </div>
 
@@ -585,18 +589,19 @@ aryu (revamp): character page by pouthongwon
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut libero vero incidunt exercitationem sed ut ea neque, ipsa possimus, rerum ad et sunt corrupti omnis voluptatibus consequuntur nulla. Tempora cumque natus illum eaque eos quas perferendis, et officiis sed enim, provident ea tenetur iure adipisci facilis. Dicta amet blanditiis voluptatem dolorum iusto consequatur fugit ex sequi, ab officiis quibusdam omnis!</p>
                     </div>
                     <div class="char-stats">
-                        <li><i class="iconsax" icon-name="user-2"></i><span>full name</span></li>
-                        <li><i class="iconsax" icon-name="info-circle"></i><span>age</span></li>
-                        <li><i class="iconsax" icon-name="globe"></i><span>location</span></li>
-                        <li><i class="iconsax" icon-name="heart"></i><span>sexuality</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="user-2"></i><span>full name</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="calendar-2"></i><span>age</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="globe"></i><span>location</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="heart-1"></i><span>sexuality</span></li>
+                        <li><i class="solar-icons"  stroke="2" icon-name="info-circle"></i><span>things to know about the character</span></li>
                     </div>
                 </div>
                 <div class="char-icons">
-                    <a href="/"><i class="iconsax" icon-name="book-open"></i>biography</a>
-                    <a href="/"><i class="iconsax" icon-name="user-1"></i>faceclaim</a>
-                    <a href="/"><i class="iconsax" icon-name="tag-1"></i>char tag</a>
-                    <a href="/"><i class="iconsax" icon-name="book-closed"></i>another link</a>
-                    <a href="/"><i class="iconsax" icon-name="cloud"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-open-1"></i>biography</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="user-1"></i>faceclaim</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="tag-1"></i>char tag</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="book-closed-1"></i>another link</a>
+                    <a href="/"><i class="solar-icons"  stroke="2" icon-name="cloud-1"></i>another link</a>
                 </div>
             </div>
 
@@ -606,7 +611,7 @@ aryu (revamp): character page by pouthongwon
     <!-- wrapper ends -->
 
     <a href="http://pouthongwon.tumblr.com/" class="credit" title="page by pouthongwon">
-        <i class="iconsax" icon-name="emoji-happy"></i>
+        <i class="solar-icons" stroke="2" icon-name="face-blep"></i>
     </a>
 
     <!-- scripts for tooltips by atomiks -->
