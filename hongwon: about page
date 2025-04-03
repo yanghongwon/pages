@@ -2,18 +2,33 @@
 
 hongwon (revamp): an about page by pouthongwon
 
-- don't delete the theme credit, please
-- icons are from phosphor icons
-- carousel tutorial from yeoli themes
-- fonts are from google fonts
-- tippy tooltips tutorial by eossa
+note #1: don't delete, alter, or move the theme credit
 
-note: if you want to make this javascript free, delete the parts that are labelled 'tooltips'
+note #2: if you want to change the about image, follow these steps:
+    step 1: find the image you want to change, with the code starting with '<img src="".../>
+    step 2: delete everything in between the quotation marks
+    step 3: find another picture you want to use, then right click it (shift + click as a keyboard shortcut), there'll be a few options there
+    step 4: find one that says 'copy image url' or something along those lines
+    step 5: click on that and go back to your code
+    step 6: find the empty <img src="".../>, then paste the image url in-between the quotation marks
+
+note #3: go to this post by @glenthemes for instructions on how to enable javascript: https://glenthemes.tumblr.com/post/683796810867900416/tumblr-javascript
+
+note #4: find more icons at https://solar-icons.gitlab.io/i/icons-list
+
+credits:
+- fonts by google fonts
+- icons by solar icons
+- light/dark toggle by @mournstera
+- css carousel tutorial by yeolithm
+- (modified) controls on click by @seyche
+- (modified) scroll to top by w3schools
+- tooltips by atomiks
 
 -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,30 +40,55 @@ note: if you want to make this javascript free, delete the parts that are labell
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@600;700&family=Rethink+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <!-- phosphor icons -->
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+    <!-- icons by solar icons -->
+    <link href="https://solar-icons.gitlab.io/i/icons.css" rel="stylesheet" crossorigin>
 
     <!-- tooltips script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    
+
+    <!-- light/dark toggle by @mournstera -->
+    <script>
+        const storedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+        if (storedTheme) {
+            document.documentElement.setAttribute("data-theme", storedTheme);
+        }
+    </script>
 
     <style type="text/css">
     
         /* custom properties START */
         :root {
-            --clr-background: #191919;
-            --clr-content: #212121;
-            --clr-text: #fff;
-            --clr-links: #eee;
-            --clr-accent: #f2d1d1;
-            --clr-borders: #505050;
-
             --fs-400: 0.9rem;
             --fs-500: 1.2rem;
             --fs-600: 1.5rem;
 
             --ff-text: 'Rethink Sans', sans-serif;
             --ff-heading: 'DM Serif Display', serif;
+        }
+
+        :root, html[data-theme="light"] {
+            --light-mode: none;
+            --dark-mode: flex;
+
+            --clr-background: #f0f0f0;
+            --clr-content: #fff;
+            --clr-text: #000;
+            --clr-links: #202020;
+            --clr-accent: #5e929f;
+            --clr-borders: #d3d3d3;
+        }
+
+        html[data-theme="dark"] {
+            --light-mode: flex;
+            --dark-mode: none;
+
+            --clr-background: #191919;
+            --clr-content: #212121;
+            --clr-text: #fff;
+            --clr-links: #eee;
+            --clr-accent: #aac9ba;
+            --clr-borders: #505050;
         }
         /* custom properties END */
         
@@ -105,6 +145,79 @@ note: if you want to make this javascript free, delete the parts that are labell
             margin-top: 0.6rem;
         }
 
+        button {
+            background: inherit;
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            cursor: pointer;
+            padding: 0;
+
+            border: 1px solid transparent;
+        }
+
+        .light-mode {
+            display: var(--light-mode);
+        }
+
+        .dark-mode {
+            display: var(--dark-mode);
+        }
+
+        iframe.tmblr-iframe {
+            transform: scale(0.75, 0.75);
+            filter: invert(100%);
+            translate: -1.4rem 0.3rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.7s ease-in-out, visibility 0.7s ease-in-out;
+        }
+
+        iframe.tmblr-iframe.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        html[data-theme="dark"] iframe.tmblr-iframe {
+            filter: invert(0);
+        }
+
+        .buttons-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+
+            display: grid;
+            gap: 10px;
+        }
+
+        .controls, .toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0.4rem;
+            border: 1px solid var(--clr-borders);
+            border-radius: 0.4rem;
+            
+            transition: background 0.8s ease-in-out, color 0.8s ease-in-out;
+        }
+
+        .controls {
+            background: var(--clr-text);
+            color: var(--clr-background);
+        }
+
+        .controls:hover {
+            background: var(--clr-container);
+            color: var(--clr-accent);
+        }
+
+        .toggle {
+            background: var(--clr-accent);
+            color: var(--clr-background);
+        }
+
         #container {
             display: flex;
             justify-content: center;
@@ -123,6 +236,7 @@ note: if you want to make this javascript free, delete the parts that are labell
             height: 25rem;
             background: var(--clr-content);
             border-radius: 0.4rem;
+            border: 1px solid var(--clr-borders);
         }
 
         .p-wrapper {
@@ -148,27 +262,39 @@ note: if you want to make this javascript free, delete the parts that are labell
             width: inherit;
             height: inherit;
             padding: 1rem;
+            overscroll-behavior: contain;
         }
 
         .navigation {
             margin-left: 2rem;
-        }
-
-        [class^="label_"], .navigation .nav_link {
-            margin: 0.4rem 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 0.3rem;
-            text-align: center;
-            border: 1px solid var(--clr-borders);
-            width: 2rem;
-            height: 2rem;
-            line-height: 2rem;
+            gap: 0.5rem;
         }
 
-        [class^="ph"] {
+        [class^="label_"], .navigation a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            border-radius: 0.3rem;
+            background: var(--clr-content);
+            border: 1px solid var(--clr-borders);
+            padding: 0.4rem;
+
+            transition: background 0.8s ease-in-out, color 0.8s ease-in-out;
+        }
+
+        [class^="label_"] {
+            cursor: pointer;
+        }
+
+        [class^="label_"]:hover, .navigation a:hover {
+            background: var(--clr-text);
+            color: var(--clr-background);
+        }
+
+        [class^="solar-icons"] {
             font-size: 1rem;
         }
 
@@ -196,14 +322,27 @@ note: if you want to make this javascript free, delete the parts that are labell
             border-radius: 50%;
         }
 
-        .a_title, .b_title, .b_updates span {
+        .a_title, .b_updates span, .b_title {
             font-family: var(--ff-heading);
             font-size: var(--fs-500);
+            position: relative;
+            isolation: isolate;
+
+            &::before {
+                content: '';
+                position: absolute;
+                z-index: -1;
+            }
         }
 
         .a_title, .b_updates span {
-            box-shadow: 0 -6px 0 var(--clr-accent) inset;
-            -webkit-box-shadow: 0 -6px 0 var(--clr-accent) inset;
+            &::before {
+                width: 100%;
+                height: 5px;
+                background: var(--clr-accent);
+                bottom: 0;
+                translate: 0 -0.2rem;
+            }
         }
 
         .a_stats {
@@ -252,9 +391,16 @@ note: if you want to make this javascript free, delete the parts that are labell
         .b_title {
             transform: rotate(180deg);
             writing-mode: vertical-rl;
-            box-shadow: inset 9px 0px 0 var(--clr-accent);
-            -webkit-box-shadow: inset 9px 0 0 0 var(--clr-accent);
             padding: 0;
+
+            &::before {
+                content: '';
+                width: 6px;
+                height: 100%;
+                left: 0;
+                translate: 0.5rem 0;
+                background: var(--clr-accent);
+            }
         }
 
         .b_block {
@@ -299,34 +445,61 @@ note: if you want to make this javascript free, delete the parts that are labell
             -webkit-transition: all 0.7s ease-in-out;
         }
 
-        span.credit a {
-            color: var(--clr-links);
-            border: 1px solid var(--clr-borders);
-            padding: 5px;
-            border-radius: 0.3rem;
-            width: 2rem;
-            height: 2rem;
-            line-height: 2rem;
+        .credit {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+        }
+
+        .credit a {
             display: flex;
             align-items: center;
             justify-content: center;
-            position: fixed;
-            bottom: 0.5rem;
-            right: 0.5rem;
+
+            background: var(--clr-text);
+            color: var(--clr-background);
+            padding: 0.4rem;
+            border: 1px solid var(--clr-borders);
+            border-radius: 0.4rem;
+            transition: background 0.8s ease-in-out, color 0.8s ease-in-out;
         }
 
-        /* tooltips css */
+        .credit a:hover {
+            background: var(--clr-container);
+            color: var(--clr-accent);
+        }
+
         .tippy-tooltip.custom-theme {
             background-color: var(--clr-text);
             color: var(--clr-background);
+            font-weight: 500;
+            margin-block: 0.75rem;
             text-align: center;
-            transition: all 0.7s ease-in-out;
-            -webkit-transition: all 0.7s ease-in-out;
+        }
+
+        .tippy-tooltip.custom-theme .tippy-svg-arrow {
+            fill: var(--clr-text);
         }
 
     </style>
 </head>
 <body>
+    <div class="buttons-container">
+        <button class="controls" title="tumblr controls">
+            <i class="solar-icons" stroke="2" icon-name="sliders-1-horizontal"></i>
+        </button>
+
+        <button class="toggle">
+            <span class="light-mode" title="turn on the lights">
+                <i class="solar-icons" stroke="2" icon-name="sun-2"></i>
+            </span>
+
+            <span class="dark-mode" title="turn off the lights">
+                <i class="solar-icons" stroke="2" icon-name="moon-stars"></i>
+            </span>
+        </button>
+    </div>
+
     <div id="container">
         <input hidden type="radio" name="carousel-control" id="button_a" checked/>
         <input hidden type="radio" name="carousel-control" id="button_b"/>
@@ -346,9 +519,20 @@ note: if you want to make this javascript free, delete the parts that are labell
                     </div>
 
                     <div class="a_stats">
-                        <li><i class="ph ph-user"></i> name(s)</li>
-                        <li><i class="ph ph-info"></i> pronouns</li>
-                        <li><i class="ph ph-flag"></i> timezone</li>
+                        <li>
+                            <i class="solar-icons" stroke="2" icon-name="user-1"></i>
+                            pronoun(s)
+                        </li>
+                        
+                        <li>
+                            <i class="solar-icons" stroke="2" icon-name="info-circle"></i>
+                            gender
+                        </li>
+
+                        <li>
+                            <i class="solar-icons" stroke="2" icon-name="map-pin-2"></i>
+                            location
+                        </li>
                     </div>
                     
                     <div class="box_a">
@@ -356,14 +540,25 @@ note: if you want to make this javascript free, delete the parts that are labell
                         <div class="a_bio">
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos similique, tempora ullam accusamus magni modi eaque impedit! Reprehenderit quisquam, harum magni nisi soluta omnis expedita, est animi illo quaerat impedit.</p>
 
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, doloribus? Repellendus adipisci, numquam dignissimos possimus animi laboriosam natus molestias fuga porro ut. Exercitationem laboriosam, totam officia tempore perspiciatis libero. Laboriosam minus expedita obcaecati aspernatur maxime corporis ipsa maiores architecto enim.</p>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, doloribus? Repellendus adipisci, numquam dignissimos possimus animi laboriosam natus molestias fuga porro ut. Exercitationem laboriosam, totam officia tempore perspiciatis libero. Laboriosam minus expedita obcaecati aspernatur maxime corporis ipsa maiores architecto enim.</p>
                         </div>
                     </div>
 
                     <div class="a_stats">
-                        <li><i class="ph ph-heart"></i> sexuality</li>
-                        <li><i class="ph ph-cake"></i> birthday</li>
-                        <li><i class="ph ph-flag"></i> timezone</li>
+                        <li>
+                            <i class="solar-icons" stroke="2" icon-name="heart-1"></i>
+                            sexuality
+                        </li>
+
+                        <li>
+                            <i class="solar-icons" stroke="2" icon-name="bar-chart-1"></i>
+                            status
+                        </li>
+
+                        <li>
+                            <i class="solar-icons" stroke="2" icon-name="face-neutral"></i>
+                            mood
+                        </li>
                     </div>
 
                 </section>
@@ -416,64 +611,98 @@ note: if you want to make this javascript free, delete the parts that are labell
 
         <div class="navigation">
             <a href="/" title="index">
-                <span class="nav_link"><i class="ph ph-house"></i></span>
+                <i class="solar-icons" stroke="2" icon-name="home-2"></i>
             </a>
            
             <a href="/ask" title="message">
-                <span class="nav_link"><i class="ph ph-envelope"></i></span>
+                <i class="solar-icons" stroke="2" icon-name="mail"></i>
             </a>
             
-            <span class="nav_link">
-            <label for="button_a" class="label_a">
-                <span><i class="ph ph-user"></i></span>
+            <label for="button_a" class="label_a" title="about">
+                <i class="solar-icons" stroke="2" icon-name="user-1"></i>
             </label>
-        </span>
            
-        <span class="nav_link">
-            <label for="button_b" class="label_b">
-                <span><i class="ph ph-list"></i></span>
+            <label for="button_b" class="label_b" title="misc">
+                <i class="solar-icons" stroke="2" icon-name="text"></i>
             </label>
-           </span>
            
            <a href="http://tumblr.com/" title="dashboard">
-                <span class="nav_link"><i class="ph ph-dots-three-circle"></i></span>
+                <i class="solar-icons" stroke="2" icon-name="exit-door"></i>
            </a>
             
            <a href="/" title="link 1">
-                <span class="nav_link"><i class="ph ph-link"></i></span>
+                <i class="solar-icons" stroke="2" icon-name="link-1"></i>
             </a>
 
             <a href="/" title="link 2">
-                <span class="nav_link"><i class="ph ph-link"></i></span>
+                <i class="solar-icons" stroke="2" icon-name="link-2"></i>
             </a>
 
         </div>
 
     </div>
 
-    <span class="credit">
-        <a href="http://pouthongwon.tumblr.com" title="theme by pouthongwon"><i class="ph ph-eyeglasses"></i></a>
-    </span>
+    <div class="scroll-and-credit">
+        <button class="scroll-to-top">
+            <i class="solar-icons" stroke="2" icon-name="chevron-up"></i>
+        </button>
 
-    <!-- tooltips script (cont.) -->
+        <div class="credit">
+            <a href="http://pouthongwon.tumblr.com" title="theme by pouthongwon">
+                <i class="solar-icons" stroke="2" icon-name="face-blep"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- scripts for tooltips -->
     <script src="https://unpkg.com/popper.js@1"></script>
     <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/svg-arrow.css" />
 
     <script>
-        tippy('[title]', {
-          theme: 'custom',
-          arrow: false,
-          placement: 'right',
-          zIndex: 9999999999,
-          maxWidth: 300,
-          duration: 700,
-      
-          content(reference) {
-            const title = reference.getAttribute('title');
-            reference.removeAttribute('title');
-            return title;
-          },
-        });
-      </script>
+        const themeToggleButtons = document.querySelectorAll(".toggle");
+
+themeToggleButtons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+
+        // Add theme-transition class for smooth transitions
+        document.documentElement.classList.add("theme-transition");
+
+        // Retrieve the current theme and determine the target theme
+        let currentTheme = document.documentElement.getAttribute("data-theme");
+        let targetTheme = (currentTheme === "light") ? "dark" : "light";
+
+        // Remove theme-transition class after a short delay
+        window.setTimeout(function () {
+            document.documentElement.classList.remove("theme-transition");
+        }, 50);
+
+        // Set the data-theme attribute and store in local storage
+        document.documentElement.setAttribute("data-theme", targetTheme);
+        localStorage.setItem("theme", targetTheme);
+    });
+});
+
+$(document).ready(function(){
+  $('.controls').click(function(){
+      $('iframe.tmblr-iframe').toggleClass('active');
+  });
+});
+
+tippy('[title]', {
+    theme: 'custom',
+    arrow: tippy.roundArrow,
+    followCursor: true,
+    zIndex: 9999999999,
+    maxWidth: 300,
+
+    content(reference) {
+      const title = reference.getAttribute('title');
+      reference.removeAttribute('title');
+      return title;
+    },
+});
+</script>
 </body>
 </html>
+
