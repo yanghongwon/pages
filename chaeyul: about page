@@ -1,0 +1,1311 @@
+<!--
+
+chaeyul: about page by pouthongwon
+
+note #1: don't touch, alter, or move the credit
+
+note #2: the only styles that can be adjusted are the colors, everything else is in an external stylesheet
+
+note #3: if you want to change the images, follow these steps:
+step 1: find the image you want to change, with the code starting with '<img src="".../>
+step 2: delete everything in between the quotation marks
+step 3: find another picture you want to use, then right click it (shift + click as a keyboard shortcut), there'll be a few options there
+step 4: find one that says 'copy image url' or something along those lines
+step 5: click on that and go back to your code
+step 6: find the empty <img src="".../>, then paste the image url in-between the quotation marks
+
+note #4: for the tasklist, make sure you mark the tasklist item as either 'done', 'almost-done', or 'not-done'
+template: 
+<li class="tasklist-item not-done">
+<span class="checkbox"></span>
+
+<p>task #1</p>
+</li>
+
+note #5: since this is a tabbed page, you'll need to enable javascript on your blog —if you haven't already. go to this post by @glenthemes for instructions on how: https://glenthemes.tumblr.com/post/683796810867900416/tumblr-javascript
+
+note #6: find more icons at https://solar-icons.gitlab.io/i/icons-list
+
+
+credits:
+- fonts by google fonts
+- icons by solar icons
+- light/dark toggle by @mournstera
+- modified tumblr controls on click by @seyche
+- tabs tutorial by code concisely
+- checkbox clip-path by shaw on codepen 
+- modified scroll to top tutorial by w3schools
+- links on click by kevin powell
+- tooltips by atomiks
+
+
+
+
+-->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>chaeyul: about page</title>
+
+<!-- google fonts: poppins and dm mono -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+<!-- solar icons -->
+<link href="https://solar-icons.gitlab.io/i/icons.css" rel="stylesheet" crossorigin>
+
+<!-- jquery for tooltips -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<!-- light/dark toggle by @mournstera -->
+<script>
+const storedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+if (storedTheme) {
+document.documentElement.setAttribute("data-theme", storedTheme);
+}
+</script>
+
+<style type="text/css">
+:root {
+--ff-body: 'Poppins', sans-serif;
+--ff-accent: 'DM Mono', monospace;
+
+--fs-body: 0.9rem;
+--fs-h3: calc(var(--fs-body) + 0.2rem);
+--fs-h2: calc(var(--fs-body) + 0.4rem);
+--fs-h1: calc(var(--fs-body) + 0.6rem);
+
+--radius-sm: 0.4rem;
+--radius-round: 50%;
+
+--container-size: 500px;
+--sidebar-size: 290px;
+--links-sidebar-size: calc(var(--sidebar-size) - 30px);
+}
+
+:root, html[data-theme="light"] {
+--light-mode: none;
+--dark-mode: flex;
+
+--clr-background: #f0f0f0;
+--clr-container: #fff;
+--clr-text: #000;
+--clr-links: #202020;
+--clr-borders: #d3d3d3;
+--clr-accent: #DF9FB2;
+--clr-accent-2: #B55B6F;
+--clr-accent-gradient: #90BEB7;
+--clr-accent-2-gradient: #5B958F;
+}
+
+html[data-theme="dark"] {
+--light-mode: flex;
+--dark-mode: none;
+
+--clr-background: #101010;
+--clr-container: #202020;
+--clr-text: #fff;
+--clr-links: #eee;
+--clr-borders: #505050;
+--clr-accent: #D2BDDD;
+--clr-accent-2: #CF8EB1;
+--clr-accent-gradient: #D7AAF5;
+--clr-accent-2-gradient: #AA98DE;
+}
+</style>
+
+<!-- external css -->
+<link rel="stylesheet" href="//yanghongwon.github.io/chaeyul (about page)/style.css">
+</head>
+<body>
+
+<!-- tumblr controls -->
+<button class="controls" title="tumblr controls">
+<i class="solar-icons" stroke="2" icon-name="sliders-horizontal"></i>
+</button>
+<!-- tumblr controls -->
+
+
+
+<!-- main wrapper: containing the sidebar, tab buttons, and panels -->
+<main>
+
+<!-- sidebar -->
+<aside class="sidebar">
+
+<!-- sidebar top -->
+<div class="sidebar-top">
+
+<!-- sidebar image and title -->
+<div class="image-and-title">
+
+<!-- sidebar image, read note #3 to see how to change it -->
+<img src="https://i.pinimg.com/474x/58/54/48/5854486712a5b9c56b2b14ea21c600e0.jpg" class="s-image"/>
+<!-- sidebar image, read note #3 to see how to change it -->
+
+<!-- sidebar title, if it's too long, then it'll be cut off -->
+<div class="s-title">
+<h1>about @pouthongwon</h1>
+</div>
+<!-- sidebar title, if it's too long, then it'll be cut off -->
+
+<!-- light/dark toggle -->
+<button class="toggle">
+<span class="light-mode" title="light mode">
+<i class="solar-icons" stroke="2" icon-name="sun-2"></i>
+</span>
+
+<span class="dark-mode" title="dark mode"> 
+<i class="solar-icons" stroke="2" icon-name="moon-stars"></i>
+</span>
+</button>
+<!-- light/dark toggle -->
+
+</div>
+<!-- sidebar image and title -->
+
+</div>
+<!-- sidebar top -->
+
+
+<!-- tablist wrapper -->
+<div class="tablist-wrapper">
+
+<!-- tablist -->
+<ul class="tablist" role="tablist">
+
+<!-- tab #1 -->
+<li class="tab">
+
+<!-- button #1, controlling the 'about' panel -->
+<button id="tab-1" aria-controls="about" aria-selected="true" role="tab" tabindex="0">
+
+<!-- tab label -->
+<span class="tab-label" title="about the user">
+
+<!-- tab icon, read note #6 if you want to change it -->
+<span class="tab-icon">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+</span>
+<!-- tab icon, read note #6 if you want to change it -->
+
+<!-- text -->
+<h3>about the user</h3>
+<!-- text -->
+
+</span>
+<!-- tab label -->
+
+</button>
+<!-- button #1, controlling the 'about' panel -->
+
+</li>
+<!-- tab #1 -->
+
+<!-- tab #1 -->
+<li class="tab">
+
+<!-- button #1, controlling the 'about' panel -->
+<button id="tab-2" aria-controls="misc" aria-selected="false" role="tab" tabindex="-1">
+
+<!-- tab label -->
+<span class="tab-label" title="misc. (byf, dni, and updates)">
+
+<!-- tab icon, read note #6 if you want to change it -->
+<span class="tab-icon">
+<i class="solar-icons" stroke="2" icon-name="text"></i>
+</span>
+<!-- tab icon, read note #6 if you want to change it -->
+
+<!-- text -->
+<h3>misc. (byf, dni, updates, etc.)</h3>
+<!-- text -->
+
+</span>
+<!-- tab label -->
+
+</button>
+<!-- button #2, controlling the 'misc' panel -->
+
+</li>
+<!-- tab #2 -->
+
+</ul>
+<!-- tablist -->
+
+</div>
+<!-- tablist wrapper -->
+
+</aside>
+<!-- sidebar -->
+
+
+<!-- main content -->
+<div class="main-content">
+
+<!-- about panel, controlled by tab button 1 -->
+<div id="about" aria-labelledby="tab-1" role="tabpanel" tabindex="0">
+
+<!-- block: image and stats -->
+<div class="block">
+
+<!-- image and stats wrapper -->
+<div class="image-and-stats">
+
+<!-- about image, read note #3 if you want to change it -->
+<img src="https://i.pinimg.com/474x/93/8a/6a/938a6a11c6e4a6d0e805f6aed3183d31.jpg" class="about-image"/>
+<!-- about image, read note #3 if you want to change it -->
+
+<!-- stats list -->
+<ul class="stats-list">
+
+<!-- stat item #1 -->
+<li class="stat-item">
+
+<!-- stat icon, read note #6 if you want to change it -->
+<span class="stat-icon">
+<i class="solar-icons" stroke="2" icon-name="info-circle"></i>
+</span>
+<!-- stat icon, read note #6 if you want to change it -->
+
+<!-- stat text -->
+<p>pronoun/pronoun</p>
+<!-- stat text -->
+
+</li>
+<!-- stat item #1 -->
+
+
+<!-- stat item #2 -->
+<li class="stat-item">
+
+<!-- stat icon, read note #6 if you want to change it -->
+<span class="stat-icon">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+</span>
+<!-- stat icon, read note #6 if you want to change it -->
+
+<!-- stat text -->
+<p>gender, sexuality</p>
+<!-- stat text -->
+
+</li>
+<!-- stat item #2 -->
+
+
+<!-- stat item #3 -->
+<li class="stat-item">
+
+<!-- stat icon, read note #6 if you want to change it -->
+<span class="stat-icon">
+<i class="solar-icons" stroke="2" icon-name="map-pin-2"></i>
+</span>
+<!-- stat icon, read note #6 if you want to change it -->
+
+<!-- stat text -->
+<p>location</p>
+<!-- stat text -->
+
+</li>
+<!-- stat item #3 -->
+
+
+<!-- stat item #4 -->
+<li class="stat-item">
+
+<!-- stat icon, read note #6 if you want to change it -->
+<span class="stat-icon">
+<i class="solar-icons" stroke="2" icon-name="balloon"></i>
+</span>
+<!-- stat icon, read note #6 if you want to change it -->
+
+<!-- stat text -->
+<p>age</p>
+<!-- stat text -->
+
+</li>
+<!-- stat item #4 -->
+
+
+<!-- stat item #5 -->
+<li class="stat-item">
+
+<!-- stat icon, read note #6 if you want to change it -->
+<span class="stat-icon">
+<i class="solar-icons" stroke="2" icon-name="bar-chart-1"></i>
+</span>
+<!-- stat icon, read note #6 if you want to change it -->
+
+<!-- stat text -->
+<p>status (online, hiatus, semi-hiatus...)</p>
+<!-- stat text -->
+
+</li>
+<!-- stat item #5 -->
+
+
+<!-- stat item #6 -->
+<li class="stat-item">
+
+<!-- stat icon, read note #6 if you want to change it -->
+<span class="stat-icon">
+<i class="solar-icons" stroke="2" icon-name="face-neutral"></i>
+</span>
+<!-- stat icon, read note #6 if you want to change it -->
+
+<!-- stat text -->
+<p>mood</p>
+<!-- stat text -->
+
+</li>
+<!-- stat item #6 -->
+
+</ul>
+<!-- stats list -->
+
+</div>
+<!-- image and stats wrapper -->
+
+</div>
+<!-- block: image and stats -->
+
+
+<!-- block: title and biography -->
+<div class="block">
+
+<!-- block title -->
+<div class="block-title">
+
+<!-- text -->
+<h3>
+<span>about @username</span>
+</h3>
+<!-- text -->
+
+<!-- icon, read note #6 if you want to change it -->
+<span class="block-icon">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+</span>
+<!-- icon, read note #6 if you want to change it -->
+
+</div>
+<!-- block title -->
+
+
+<!-- block text -->
+<div class="block-text">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati laborum nulla sit nemo vitae necessitatibus in cupiditate quisquam quae a!</p>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus harum quibusdam sit iste ipsum quisquam vitae perferendis consequuntur officia omnis? Accusamus beatae harum possimus totam, cupiditate in omnis assumenda quaerat esse sint debitis officiis distinctio ratione qui? Autem, dolorem incidunt cum necessitatibus accusantium quo nobis ea corporis, ipsam sit maxime!</p>
+
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam expedita assumenda praesentium quia aut distinctio harum suscipit quod, dolorum, in ullam maxime placeat eos voluptas similique tempore quae, fuga dolor eaque. Maxime, provident accusantium hic repellat facilis deleniti ipsam tempora.</p>
+</div>
+<!-- block text -->
+
+</div>
+<!-- block: title and biography -->
+
+
+
+<!-- block: likes and dislikes -->
+<div class="block">
+
+<!-- likes and dislikes list wrapper -->
+<ul class="ld-list">
+
+<!-- likes -->
+<li class="ld-item">
+<div class="likes-title">
+<span class="likes-icon">
+<i class="solar-icons" stroke="2" icon-name="face-smile"></i>
+</span>
+
+<h3>
+<span>things i like</span>
+</h3>
+</div>
+
+<div class="likes-text">
+<ul class="likes-list">
+<li class="like-item">like #1</li>
+<li class="like-item">like #2</li>
+<li class="like-item">like #3</li>
+<li class="like-item">like #4</li>
+<li class="like-item">like #5</li>
+<li class="like-item">like #6</li>
+<li class="like-item">like #7</li>
+<li class="like-item">like #8</li>
+<li class="like-item">like #9</li>
+<li class="like-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, repudiandae earum? Ab tenetur, quas voluptatem quia modi aliquid quasi beatae?</li>
+</ul>
+</div>
+</li>
+<!-- likes -->
+
+
+
+<li class="ld-item dislikes-item">
+<div class="likes-title">
+<span class="likes-icon">
+<i class="solar-icons" stroke="2" icon-name="face-sad"></i>
+</span>
+
+<h3>
+<span>things i don't like</span>
+</h3>
+</div>
+
+<div class="likes-text">
+<ul class="likes-list">
+<li class="like-item">dislike #1</li>
+<li class="like-item">dislike #2</li>
+<li class="like-item">dislike #3</li>
+<li class="like-item">dislike #4</li>
+<li class="like-item">dislike #5</li>
+<li class="like-item">dislike #6</li>
+<li class="like-item">dislike #7</li>
+<li class="like-item">dislike #8</li>
+<li class="like-item">dislike #9</li>
+<li class="like-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, repudiandae earum? Ab tenetur, quas voluptatem quia modi aliquid quasi beatae?</li>
+</ul>
+</div>
+</li>
+</ul>
+<!-- likes and dislikes list wrapper -->
+
+</div>
+<!-- block: likes and dislikes -->
+
+
+<!-- block: sideblogs -->
+<div class="block">
+
+<!-- sideblogs list -->
+<ul class="sideblogs-list">
+
+<!-- sideblog #1 -->
+<li class="sideblog-item">
+
+<!-- sideblog image, read note #3 on how to change it -->
+<img src="https://i.pinimg.com/474x/2e/65/66/2e6566d7d4787e03940d9ec3e9802f33.jpg" class="sideblog-image"/>
+<!-- sideblog image, read note #3 on how to change it -->
+
+<!-- sideblog link -->
+<div class="sideblog-link">
+<a href="/">
+@sideblogone
+</a>
+</div>
+<!-- sideblog link -->
+
+</li>
+<!-- sideblog #1 -->
+
+
+<!-- sideblog #2 -->
+<li class="sideblog-item">
+
+<!-- sideblog image, read note #3 on how to change it -->
+<img src="https://i.pinimg.com/474x/2e/65/66/2e6566d7d4787e03940d9ec3e9802f33.jpg" class="sideblog-image"/>
+<!-- sideblog image, read note #3 on how to change it -->
+
+<!-- sideblog link -->
+<div class="sideblog-link">
+<a href="/">
+@thisisalongusername
+</a>
+</div>
+<!-- sideblog link -->
+
+</li>
+<!-- sideblog #2 -->
+
+
+<!-- sideblog #3 -->
+<li class="sideblog-item">
+
+<!-- sideblog image, read note #3 on how to change it -->
+<img src="https://i.pinimg.com/474x/2e/65/66/2e6566d7d4787e03940d9ec3e9802f33.jpg" class="sideblog-image"/>
+<!-- sideblog image, read note #3 on how to change it -->
+
+<!-- sideblog link -->
+<div class="sideblog-link">
+<a href="/">
+@sideblog 3
+</a>
+</div>
+<!-- sideblog link -->
+
+</li>
+<!-- sideblog #3 -->
+
+
+<!-- sideblog #4 -->
+<li class="sideblog-item">
+
+<!-- sideblog image, read note #3 on how to change it -->
+<img src="https://i.pinimg.com/474x/2e/65/66/2e6566d7d4787e03940d9ec3e9802f33.jpg" class="sideblog-image"/>
+<!-- sideblog image, read note #3 on how to change it -->
+
+<!-- sideblog link -->
+<div class="sideblog-link">
+<a href="/">
+@sideblog 4
+</a>
+</div>
+<!-- sideblog link -->
+
+</li>
+<!-- sideblog #4 -->
+
+</ul>
+<!-- sideblogs list -->
+
+</div>
+<!-- block: sideblogs -->
+
+</div>
+<!-- about panel, controlled by tab button 1 -->
+
+
+
+
+
+<!-- misc panel, controlled by tab button 2 -->
+<div id="misc" aria-labelledby="tab-2" role="tabpanel" tabindex="-1" hidden>
+
+<!-- block: before you follow and don't follow if lists -->
+<div class="block">
+
+<!-- wrapper -->
+<div class="interact-wrapper">
+
+<!-- list -->
+<ul class="interact-list">
+
+<!-- before you follow -->
+<li class="interact-item before-item">
+
+<!-- item title -->
+<div class="interact-title">
+
+<!-- title -->
+<h3>
+<span>before you follow</span>
+</h3>
+<!-- title -->
+
+<!-- icon, read note #3 if you want to change it -->
+<span class="interact-icon">
+<i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+</span>
+<!-- icon, read note #3 if you want to change it -->
+
+</div>
+<!-- item title -->
+
+<!-- item text -->
+<div class="interact-text">
+<ul class="before-list">
+<li class="interact">criteria #1</li>
+<li class="interact">criteria #2</li>
+<li class="interact">criteria #3</li>
+<li class="interact">criteria #4</li>
+<li class="interact">criteria #5</li>
+<li class="interact">criteria #6</li>
+<li class="interact">criteria #7</li>
+<li class="interact">criteria #8</li>
+<li class="interact">criteria #9</li>
+<li class="interact">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit quia fugit natus perferendis soluta numquam molestiae, itaque cupiditate repellat impedit?</li>
+</ul>
+</div>
+<!-- item text -->
+
+</li>
+<!-- before you follow -->
+
+
+
+<!-- don't follow if -->
+<li class="interact-item">
+
+<!-- item title -->
+<div class="interact-title">
+
+<!-- title -->
+<h3>
+<span>don't follow if</span>
+</h3>
+<!-- title -->
+
+<!-- icon, read note #3 if you want to change it -->
+<span class="interact-icon">
+<i class="solar-icons" stroke="2" icon-name="block-1"></i>
+</span>
+<!-- icon, read note #3 if you want to change it -->
+
+</div>
+<!-- item title -->
+
+<!-- item text -->
+<div class="interact-text">
+<ul class="before-list">
+<li class="interact">criteria #1</li>
+<li class="interact">criteria #2</li>
+<li class="interact">criteria #3</li>
+<li class="interact">criteria #4</li>
+<li class="interact">criteria #5</li>
+<li class="interact">criteria #6</li>
+<li class="interact">criteria #7</li>
+<li class="interact">criteria #8</li>
+<li class="interact">criteria #9</li>
+<li class="interact">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit quia fugit natus perferendis soluta numquam molestiae, itaque cupiditate repellat impedit?</li>
+</ul>
+</div>
+<!-- item text -->
+
+</li>
+<!-- don't follow if -->
+
+</ul>
+<!-- list -->
+
+</div>
+<!-- wrapper -->
+
+</div>
+<!-- block: before you follow and don't follow if lists -->
+
+
+
+<!-- block: updates list -->
+<div class="block">
+
+<!-- updates list wrapper -->
+<div class="updates-list-wrapper">
+<ul class="updates-list">
+
+<!-- update #1 -->
+<li class="update-item">
+
+<!-- update title -->
+<div class="update-title">
+
+<!-- update icon, read note #3 if you want to change it -->
+<span class="update-icon">
+<i class="solar-icons" stroke="2" icon-name="tv"></i>
+</span>
+<!-- update icon, read note #3 if you want to change it -->
+
+<!-- text -->
+<h3>
+<span>watching</span>
+</h3>
+<!-- text -->
+
+</div>
+<!-- update title -->
+
+<!-- update text -->
+<div class="update-text">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo accusantium ad dolores.</p>
+</div>
+<!-- update text -->
+
+</li>
+<!-- update #1 -->
+
+
+<!-- update #2 -->
+<li class="update-item">
+
+<!-- update title -->
+<div class="update-title">
+
+<!-- update icon, read note #3 if you want to change it -->
+<span class="update-icon">
+<i class="solar-icons" stroke="2" icon-name="earphones"></i>
+</span>
+<!-- update icon, read note #3 if you want to change it -->
+
+<!-- text -->
+<h3>
+<span>listening to</span>
+</h3>
+<!-- text -->
+
+</div>
+<!-- update title -->
+
+<!-- update text -->
+<div class="update-text">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo accusantium ad dolores.</p>
+</div>
+<!-- update text -->
+
+</li>
+<!-- update #2 -->
+
+
+<!-- update #3 -->
+<li class="update-item">
+
+<!-- update title -->
+<div class="update-title">
+
+<!-- update icon, read note #3 if you want to change it -->
+<span class="update-icon">
+<i class="solar-icons" stroke="2" icon-name="book-closed-2"></i>
+</span>
+<!-- update icon, read note #3 if you want to change it -->
+
+<!-- text -->
+<h3>
+<span>reading</span>
+</h3>
+<!-- text -->
+
+</div>
+<!-- update title -->
+
+<!-- update text -->
+<div class="update-text">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo accusantium ad dolores.</p>
+</div>
+<!-- update text -->
+
+</li>
+<!-- update #3 -->
+
+
+<!-- update #4 -->
+<li class="update-item">
+
+<!-- update title -->
+<div class="update-title">
+
+<!-- update icon, read note #3 if you want to change it -->
+<span class="update-icon">
+<i class="solar-icons" stroke="2" icon-name="briefcase-2"></i>
+</span>
+<!-- update icon, read note #3 if you want to change it -->
+
+<!-- text -->
+<h3>
+<span>working on</span>
+</h3>
+<!-- text -->
+
+</div>
+<!-- update title -->
+
+<!-- update text -->
+<div class="update-text">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo accusantium ad dolores.</p>
+</div>
+<!-- update text -->
+
+</li>
+<!-- update #4 -->
+
+
+<!-- update #5 -->
+<li class="update-item">
+
+<!-- update title -->
+<div class="update-title">
+
+<!-- update icon, read note #3 if you want to change it -->
+<span class="update-icon">
+<i class="solar-icons" stroke="2" icon-name="warning-circle"></i>
+</span>
+<!-- update icon, read note #3 if you want to change it -->
+
+<!-- text -->
+<h3>
+<span>waiting for</span>
+</h3>
+<!-- text -->
+
+</div>
+<!-- update title -->
+
+<!-- update text -->
+<div class="update-text">
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo accusantium ad dolores.</p>
+</div>
+<!-- update text -->
+
+</li>
+<!-- update #5 -->
+
+</ul>
+</div>
+<!-- updates list wrapper -->
+
+</div>
+<!-- block: updates list -->
+
+
+
+<!-- block: tasklist -->
+<div class="block">
+
+<!-- tasklist wrapper -->
+<div class="tasklist-wrapper">
+
+<!-- tasklist -->
+<ul class="tasklist">
+
+<!-- task #1 -->
+<li class="tasklist-item done">
+<span class="checkbox"></span>
+
+<p>task #1</p>
+</li>
+<!-- task #1 -->
+
+<!-- task #2 -->
+<li class="tasklist-item not-done">
+<span class="checkbox"></span>
+
+<p>task #2</p>
+</li>
+<!-- task #2 -->
+
+<!-- task #3 -->
+<li class="tasklist-item almost-done">
+<span class="checkbox"></span>
+
+<p>task #3</p>
+</li>
+<!-- task #3 -->
+
+<!-- task #4 -->
+<li class="tasklist-item done">
+<span class="checkbox"></span>
+
+<p>task #4</p>
+</li>
+<!-- task #4 -->
+
+<!-- task #5 -->
+<li class="tasklist-item almost-done">
+<span class="checkbox"></span>
+
+<p>task #5</p>
+</li>
+<!-- task #5 -->
+
+<!-- task #6 -->
+<li class="tasklist-item done">
+<span class="checkbox"></span>
+
+<p>task #6</p>
+</li>
+<!-- task #6 -->
+
+<!-- task #7 -->
+<li class="tasklist-item not-done">
+<span class="checkbox"></span>
+
+<p>task #7</p>
+</li>
+<!-- task #7 -->
+
+<!-- task #8 -->
+<li class="tasklist-item done">
+<span class="checkbox"></span>
+
+<p>task #8</p>
+</li>
+<!-- task #8 -->
+
+<!-- task #9 -->
+<li class="tasklist-item not-done">
+<span class="checkbox"></span>
+
+<p>task #9</p>
+</li>
+<!-- task #9 -->
+
+<!-- task #10 -->
+<li class="tasklist-item done">
+<span class="checkbox"></span>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit voluptatum nemo in sit voluptatibus saepe.</p>
+</li>
+<!-- task #10 -->
+
+</ul>
+<!-- tasklist -->
+
+</div>
+<!-- tasklist wrapper -->
+
+</div>
+<!-- block: tasklist -->
+
+
+
+</div>
+<!-- misc panel, controlled by tab button 2 -->
+
+
+</div>
+<!-- main content -->
+
+
+
+<!-- standard and custom links container -->
+<aside class="links-list">
+
+<!-- standard links wrapper -->
+<div class="standard-links-wrapper">
+
+<!-- standard links list -->
+<ul class="standard-links">
+
+<!-- home link -->
+<li class="standard-item">
+<a href="/" title="home">
+<i class="solar-icons" stroke="2" icon-name="home-2"></i>
+</a>
+</li>
+<!-- home link -->
+
+<!-- askbox link -->
+<li class="standard-item">
+<a href="/ask" title="askbox">
+<i class="solar-icons" stroke="2" icon-name="notif-unread-2"></i>
+</a>
+</li>
+<!-- askbox link -->
+
+<!-- archive link -->
+<li class="standard-item">
+<a href="/archive" title="archive">
+<i class="solar-icons" stroke="2" icon-name="archive"></i>
+</a>
+</li>
+<!-- archive link -->
+
+<!-- dashboard link -->
+<li class="standard-item">
+<a href="http://tumblr.com/" title="dashboard">
+<i class="solar-icons" stroke="2" icon-name="exit-door"></i>
+</a>
+</li>
+<!-- dashboard link -->
+
+<!-- custom links button -->
+<li class="standard-item">
+<button class="links-trigger">
+<span class="links-open" title="open custom links">
+<i class="solar-icons" stroke="2" icon-name="chevron-down"></i>
+</span>
+
+<span class="links-close" title="close custom links">
+<i class="solar-icons" stroke="2" icon-name="close"></i>
+</span>
+</button>
+</li>
+<!-- custom links button -->
+
+</ul>
+<!-- standard links list -->
+
+</div>
+<!-- standard links wrapper -->
+
+
+
+<!-- custom links wrapper -->
+<div class="custom-links-wrapper">
+
+<!-- custom links list -->
+<ul class="custom-links-list">
+<div class="list-wrapper">
+
+<!-- custom link #1 -->
+<li class="custom-item">
+
+<!-- custom link icon, read note #3 if you want to change it -->
+<span class="custom-icon">
+<i class="solar-icons" stroke="2" icon-name="user-1"></i>
+</span>
+<!-- custom link icon, read note #3 if you want to change it -->
+
+<!-- link -->
+<a href="/">custom link 1</a>
+<!-- link -->
+
+</li>
+<!-- custom link #1 -->
+
+<!-- custom link #2 -->
+<li class="custom-item">
+
+<!-- custom link icon, read note #3 if you want to change it -->
+<span class="custom-icon">
+<i class="solar-icons" stroke="2" icon-name="bed-2"></i>
+</span>
+<!-- custom link icon, read note #3 if you want to change it -->
+
+<!-- link -->
+<a href="/">custom link 2</a>
+<!-- link -->
+
+</li>
+<!-- custom link #2 -->
+
+<!-- custom link #3 -->
+<li class="custom-item">
+
+<!-- custom link icon, read note #3 if you want to change it -->
+<span class="custom-icon">
+<i class="solar-icons" stroke="2" icon-name="planet-1"></i>
+</span>
+<!-- custom link icon, read note #3 if you want to change it -->
+
+<!-- link -->
+<a href="/">custom link 3</a>
+<!-- link -->
+
+</li>
+<!-- custom link #3 -->
+
+<!-- custom link #4 -->
+<li class="custom-item">
+
+<!-- custom link icon, read note #3 if you want to change it -->
+<span class="custom-icon">
+<i class="solar-icons" stroke="2" icon-name="star-3d"></i>
+</span>
+<!-- custom link icon, read note #3 if you want to change it -->
+
+<!-- link -->
+<a href="/">custom link 4</a>
+<!-- link -->
+
+</li>
+<!-- custom link #4 -->
+
+<!-- custom link #5 -->
+<li class="custom-item">
+
+<!-- custom link icon, read note #3 if you want to change it -->
+<span class="custom-icon">
+<i class="solar-icons" stroke="2" icon-name="fire-3"></i>
+</span>
+<!-- custom link icon, read note #3 if you want to change it -->
+
+<!-- link -->
+<a href="/">custom link 5</a>
+<!-- link -->
+
+</li>
+<!-- custom link #5 -->
+
+<!-- custom link #6 -->
+<li class="custom-item">
+
+<!-- custom link icon, read note #3 if you want to change it -->
+<span class="custom-icon">
+<i class="solar-icons" stroke="2" icon-name="bonfire"></i>
+</span>
+<!-- custom link icon, read note #3 if you want to change it -->
+
+<!-- link -->
+<a href="/">custom link 6</a>
+<!-- link -->
+
+</li>
+<!-- custom link #6 -->
+
+</div>
+</ul>
+<!-- custom links list -->
+
+</div>
+<!-- custom links wrapper -->
+
+</aside>
+<!-- standard and custom links container -->
+
+
+</main>
+<!-- main wrapper: containing the sidebar, tab buttons, and panels -->
+
+
+<!-- scroll to top and credit wrapper -->
+<div class="scroll-and-credit">
+
+<!-- scroll to top -->
+<button class="scroll-to-top" title="scroll to top">
+<i class="solar-icons" stroke="2" icon-name="chevron-up"></i>
+</button>
+<!-- scroll to top -->
+
+<!-- credit. don't touch, alter, or delete -->
+<a href="http://pouthongwon" class="credit" title="page by pouthongwon">
+<i class="solar-icons" stroke="2" icon-name="face-blep"></i>
+</a>
+<!-- credit. don't touch, alter, or delete -->
+
+</div>
+<!-- scroll to top and credit wrapper -->
+
+<!-- scripts for tooltips -->
+<script src="https://unpkg.com/popper.js@1"></script>
+<script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/svg-arrow.css" />
+
+<script>
+const themeToggleButtons = document.querySelectorAll(".toggle");
+
+themeToggleButtons.forEach((btn) => {
+btn.addEventListener("click", function () {
+
+// Add theme-transition class for smooth transitions
+document.documentElement.classList.add("theme-transition");
+
+// Retrieve the current theme and determine the target theme
+let currentTheme = document.documentElement.getAttribute("data-theme");
+let targetTheme = (currentTheme === "light") ? "dark" : "light";
+
+// Remove theme-transition class after a short delay
+window.setTimeout(function () {
+document.documentElement.classList.remove("theme-transition");
+}, 50);
+
+// Set the data-theme attribute and store in local storage
+document.documentElement.setAttribute("data-theme", targetTheme);
+localStorage.setItem("theme", targetTheme);
+});
+});
+
+const tabElements = document.querySelectorAll('button[role="tab"]');
+const panelElements = document.querySelectorAll('[role="tabpanel"]');
+let activeIndex = 0;
+
+// Listen to clicks and key presses on tabs
+tabElements.forEach(function (tab, index) {
+tab.addEventListener("click", function (event) {
+setActiveTab(index);
+});
+
+tab.addEventListener("keydown", function (event) {
+const lastIndex = tabElements.length - 1;
+
+if (event.code === "ArrowLeft" || event.code === "ArrowUp") {
+if (activeIndex === 0) {
+// First element, jump to end
+setActiveTab(lastIndex);
+} else {
+// Move left
+setActiveTab(activeIndex - 1);
+}
+} else if (event.code === "ArrowRight" || event.code === "ArrowDown") {
+if (activeIndex === lastIndex) {
+// Last element, jump to beginning
+setActiveTab(0);
+} else {
+// Move right
+setActiveTab(activeIndex + 1);
+}
+} else if (event.code === "Home") {
+// Move to beginning
+setActiveTab(0);
+} else if (event.code === "End") {
+// Move to end
+setActiveTab(lastIndex);
+}
+});
+});
+
+function setActiveTab(index) {
+// Make currently active tab inactive
+tabElements[activeIndex].setAttribute("aria-selected", "false");
+tabElements[activeIndex].tabIndex = -1;
+
+// Set the new tab as active
+tabElements[index].setAttribute("aria-selected", "true");
+tabElements[index].tabIndex = 0;
+tabElements[index].focus();
+
+setActivePanel(index);
+activeIndex = index;
+}
+
+function setActivePanel(index) {
+// Hide currently active panel
+panelElements[activeIndex].setAttribute("hidden", "");
+panelElements[activeIndex].tabIndex = -1;
+
+// Show the new active panel
+panelElements[index].removeAttribute("hidden");
+panelElements[index].tabIndex = 0;
+}
+
+const navToggle = document.querySelector('.links-trigger');
+const linksList = document.querySelector(".links-list");
+
+navToggle.addEventListener('click', () => {
+linksList.classList.toggle('trigger-open');
+});
+
+const tumblrControls = document.querySelector(".controls");
+
+tumblrControls.addEventListener('click', () => {
+document.querySelector('iframe.tmblr-iframe').classList.toggle('active');
+})
+
+let buttonContainer = document.querySelector(".scroll-and-credit");
+let scrollButton = document.querySelector(".scroll-to-top");
+
+window.onscroll = function() {
+scrollFunction();
+}
+
+function scrollFunction() {
+if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+buttonContainer.classList.add("show-scroll");
+} else {
+buttonContainer.classList.remove("show-scroll");
+}
+}
+
+// When the user clicks on the button, scroll to the top of the document
+scrollButton.addEventListener('click', () => {
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+})
+
+
+tippy('[title]', {
+theme: 'custom',
+arrow: tippy.roundArrow,
+followCursor: true,
+zIndex: 9999999999,
+maxWidth: 300,
+
+content(reference) {
+const title = reference.getAttribute('title');
+reference.removeAttribute('title');
+return title;
+},
+});
+</script>
+</body>
+</html>
